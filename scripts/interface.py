@@ -1,17 +1,11 @@
 # interface.py
 
 # imports
-import readline
 from scripts import utility
 import os
 import time
 import sys
-from datetime import datetime
-import psutil
 import platform
-
-# globals
-start_time = time.time()
 
 # Ascii Art for the console display
 ASCII_ART = r"""   .____    .__                        ________ __________     ___.           __    
@@ -21,31 +15,36 @@ ASCII_ART = r"""   .____    .__                        ________ __________     _
    |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|   
            \/         \/      \/     \/        \/        \/           \/            """
 
+# New function to calculate optimal threads
+def calculate_optimal_threads():
+    total_threads = os.cpu_count()
+    if total_threads == 1:
+        threads_to_use = 1
+    elif total_threads <= 4:
+        threads_to_use = total_threads - 1
+    elif 5 <= total_threads <= 8:
+        threads_to_use = total_threads - 2
+    elif 9 <= total_threads <= 12:
+        threads_to_use = total_threads - 3
+    else:
+        threads_to_use = total_threads - 4
+    print(f"\n\n Calculating optimal threads...")
+    print(f" Cpu info: {platform.processor()}-T{total_threads}")
+    print(f" Using {threads_to_use} threads out of {total_threads}.\n")
+    time.sleep(2)
+    return threads_to_use
+
+
 # function
-def fancy_delay(duration, message=" Clearing screen..."):
+def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
-    for i in range(63):
+    for i in range(70):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
     sys.stdout.write("]\n")
-
-# Function to get system info
-def get_system_info(elapsed_time):
-    cpu_freq_info = psutil.cpu_freq()
-    current_cpu_speed = round(cpu_freq_info.current / 1000, 2)
-    ram_info = psutil.virtual_memory()
-    used_ram = round(ram_info.used / (1024 ** 3), 1)
-    free_ram = round(ram_info.available / (1024 ** 3), 1)
-    days, remainder = divmod(int(elapsed_time), 86400)
-    hours, remainder = divmod(remainder, 3600)
-    minutes = remainder // 60
-    formatted_time = f"{days:02d}:{hours:02d}:{minutes:02d}"
-    
-    # Combine all info into a string
-    system_info_str = f"Cpu Speed: {current_cpu_speed}GHz, Ram Load/Free: {used_ram}/{free_ram}GB, Timer: {formatted_time}"
-    return system_info_str
+    time.sleep(1)
 
 # New function to display the intro screen
 def display_intro_screen():
@@ -55,7 +54,9 @@ def display_intro_screen():
     print("-"*85)
     print("                                   Introduction")
     print("="*85)
-    print("\n\n                              Welcome to Llama2Robot!\n\n")
+    print("\n\n                              Welcome to Llama2Robot!")
+    time.sleep(2)
+    return calculate_optimal_threads()
 
 # function to display the model selection menu
 def display_model_selection():
@@ -83,7 +84,6 @@ def display_startup_menu():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
-    print(f"           {get_system_info(elapsed_time)}")
     print("="*85)
     print(ASCII_ART)
     print("-"*85)  
