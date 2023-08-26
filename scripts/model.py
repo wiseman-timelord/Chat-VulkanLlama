@@ -12,7 +12,7 @@ llm = None  # Declare the Llama model variable
 # Initialize the Llama model
 def initialize_model(selected_model_path, optimal_threads):
     global llm
-    print(" Loading model, be patient...")
+    print("\n Loading model, be patient...")
     llm = Llama(
         model_path=selected_model_path,
         n_ctx=4096, 
