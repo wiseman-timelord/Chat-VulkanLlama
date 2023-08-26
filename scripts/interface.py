@@ -14,7 +14,7 @@ import platform
 ASCII_ART = r"""
   .____    .__                        ________ __________     ___.           __    
   |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_  
-  |    |   |  | \__  \  /     \\__  \ /  ____/ |       __/  _ \| __ \ /  _ \   __\ 
+  |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\ 
   |    |___|  |__/ __ \|  Y Y  \/ __ \|      \ |    |   (  <_> ) \_\ (  <_> )  |   
   |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|   
           \/         \/      \/     \/        \/        \/           \/            
@@ -35,7 +35,8 @@ def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
-
+    print("="*85)
+    
     # Get the current time and date
     current_time = datetime.now().strftime("%H:%M")
     current_date = datetime.now().strftime("%Y/%m/%d")
@@ -48,10 +49,9 @@ def display_intro_screen():
     free_ram = round(ram_info.available / (1024 ** 3), 1)
     used_ram = round(ram_info.used / (1024 ** 3), 1)
     
-    print(f" Used/Free: {used_ram}/{free_ram}GB                                              Date: {current_date}")
+    print(f"\n Used/Free: {used_ram}/{free_ram}GB                                              Date: {current_date}")
     print(f" Cpu: {cpu_info}-T{total_threads}                                                         Time: {current_time}")
     print("                             Welcome to Llama2Robot!")
-
     print("\n\n Initializing the system, please wait...")
     time.sleep(3)
 
