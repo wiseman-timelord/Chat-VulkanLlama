@@ -11,13 +11,13 @@ import platform
 llm = None  # Declare the Llama model variable
 
 # Initialize the Llama model
-def initialize_model():
+def initialize_model(selected_model_path):
     global llm
     cpu_info = platform.processor()
     total_threads = os.cpu_count()
     print(f"\n Calculating optimal threads...")
     if total_threads == 1:
-        threads_to_use = 1  # Use the single available thread
+        threads_to_use = 1
     elif total_threads <= 4:
         threads_to_use = total_threads - 1
     elif 5 <= total_threads <= 8:
@@ -31,7 +31,7 @@ def initialize_model():
     time.sleep(2)
     print(" Loading model, be patient...")
     llm = Llama(
-        model_path="./llama2_7b_chat_uncensored-GGML/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin", 
+        model_path=selected_model_path,
         n_ctx=4096, 
         embedding=True,
         n_threads=threads_to_use,

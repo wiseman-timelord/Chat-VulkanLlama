@@ -49,26 +49,47 @@ def get_system_info(elapsed_time):
 
 # New function to display the intro screen
 def display_intro_screen():
-    elapsed_time = round(time.time() - start_time, 2)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
     print("-"*85)
-    print(f"           {get_system_info(elapsed_time)}")
-    print("="*85)    
-    print("\n\n Startup procedure initiated...")
-    time.sleep(2)
+    print("                                   Introduction")
+    print("="*85)
+    print("\n\n                              Welcome to Llama2Robot!\n\n")
 
-# function to display the startup menu
-def display_startup_menu():
-    elapsed_time = round(time.time() - start_time, 2)
+# function to display the model selection menu
+def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
-    print("-"*85)
+    print("-"*85)  
+    available_models = utility.list_available_models()
+    print("                                Model Configuraton")
+    print("="*85)
+    print("")
+    for idx, model in enumerate(available_models, 1):
+        print(f"                 {idx}. {model.split('/')[-1]}")
+    for i in range(len(available_models) + 1, 10):
+        print(f"                 {i}. None")
+    selected = int(input("\n Select a model from 1-9: "))
+    if selected >= 1 and selected <= len(available_models):
+        return available_models[selected - 1]
+    else:
+        return None
+
+# function to display the startup menu
+def display_startup_menu():
+    fancy_delay(5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("="*85)
     print(f"           {get_system_info(elapsed_time)}")
-    print("="*85)  
+    print("="*85)
+    print(ASCII_ART)
+    print("-"*85)  
+    available_models = utility.list_available_models()
+    print("                                AI Configuration")
+    print("="*85)
     default_human_name = "Human"
     default_model_name = "Llama2Robot"
     default_model_role = "AI Assistant to Human"
@@ -84,13 +105,12 @@ def display_startup_menu():
     
 # function
 def display_interface():
-    elapsed_time = round(time.time() - start_time, 2)
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
     print("-"*85)
-    print(f"           {get_system_info(elapsed_time)}")
+    print("                              Dialogue Display")    
     print("="*85)   
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')

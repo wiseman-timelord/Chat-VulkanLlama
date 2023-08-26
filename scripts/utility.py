@@ -2,7 +2,12 @@
 
 # imports
 import yaml
+import glob
 from scripts import model as model_module 
+
+# function to list all available models
+def list_available_models():
+    return glob.glob("./models/*.bin")
 
 # function to read from YAML file
 def read_yaml(file_path='./config.yaml'):
