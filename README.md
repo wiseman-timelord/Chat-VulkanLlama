@@ -1,5 +1,5 @@
 # Llama2Robot
-Status: Amost working, does produce a response.
+Status: Amost "working", does produce a response.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations.
