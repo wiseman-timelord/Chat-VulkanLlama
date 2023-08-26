@@ -8,6 +8,45 @@ This is a, Llama 2 language model and llama-cpp, based chatbot, it uses, python 
 1) Get scripts working 100%, and perfect text based interface along the way.
 2) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects, that themeselves, may or may not, be released to the public. 
 
+### INTERFACE:
+```
+=====================================================================================
+
+  .____    .__                        ________ __________     ___.           __
+  |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_
+  |    |   |  | \__  \  /     \\__  \ /  ____/ |       __/  _ \| __ \ /  _ \   __\
+  |    |___|  |__/ __ \|  Y Y  \/ __ \|      \ |    |   (  <_> ) \_\ (  <_> )  |
+  |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|
+          \/         \/      \/     \/        \/        \/           \/
+
+ Used/Free: 0.2/49.5GB                                              Date: 2023/08/26
+ Cpu: x86_64-T24                                                         Time: 13:40
+                             Welcome to Llama2Robot!
+
+
+Initializing the system, please wait...
+
+Calculating optimal threads...
+Using 20 threads out of 24.
+
+Loading model, be patient...
+llama.cpp: loading model from ./llama2_7b_chat_uncensored-GGML/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
+llama_model_load_internal: format     = ggjt v3 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 4096
+llama_model_load_internal: n_embd     = 4096
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 32
+llama_model_load_internal: n_layer    = 32
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: ftype      = 2 (mostly Q4_0)
+llama_model_load_internal: n_ff       = 11008
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 7B
+llama_model_load_internal: ggml ctx size =    0.07 MB
+llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
+```
+
 ### USAGE:
 1) Download the package, put somewhere on drive, open folder.
 2a) For Windows users, install requirements by double clicking 'Install.bat" or run "wsl pip install -r requirements.txt".
