@@ -12,9 +12,10 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 5) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
+* Contextual awareness of, previous statements combined with summarized session history.
 * Support currently for "llama2_7b_chat_uncensored-GGML", others are currently untested/optimized.
-* Auto-Calculation of threads based on hardware.
-* Thought-out text based interface design.
+* Auto-Calculation of threads, it will use the logically optimal number for your hardware level.
+* Thought-out text based interface design, continually, analyzed and tweaked, during development.
 
 ### INTERFACE:
 Things are looking good so far...
@@ -56,7 +57,7 @@ You:
 ```
 
 ### USAGE:
-1) Download the package, extract somewhere on drive, to its own folder, then open folder.
+1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer or shell, with administrator rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. For Linux users run `pip install -r requirements.txt`
 3) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.
 4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. For Linux users, run `python3 main.py` and ensure to use 85 columns for the window.
