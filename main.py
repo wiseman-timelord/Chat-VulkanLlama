@@ -16,7 +16,7 @@ def main():
     
     # Initialize the Llama model
     if selected_model:
-        model_module.initialize_model(selected_model)
+        model_module.initialize_model(selected_model, optimal_threads)
     else:
         print("No model selected. Exiting.")
         return
