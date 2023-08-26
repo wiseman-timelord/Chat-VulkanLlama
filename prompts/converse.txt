@@ -1,0 +1,5 @@
+
+### HUMAN:
+Your name is {model_name}, your role is to {model_role}. The session history is {session_history}, and previously, {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. {human_name} has now stated {human_current} to {model_name}, in a single sentence, generate a context-aware response from {model_name} to {human_name}, 
+
+### RESPONSE:

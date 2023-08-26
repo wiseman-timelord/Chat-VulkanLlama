@@ -1,0 +1,5 @@
+
+### HUMAN:
+Your name is Text Processor, your role is to Consolidate text. {model_name} said {model_previous} to {human_name} and {human_name} said {human_previous} to {model_name}, and the conversation history is {session_history}. Analyze the statements from both, {human_name} and {model_name}, as well as the conversation history, and then in the maximum space of 1 paragraph produce an updated conversation history.
+
+### RESPONSE:
