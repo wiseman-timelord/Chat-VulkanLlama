@@ -13,7 +13,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### FEATURES:
 * Support for "llama2_7b_chat_uncensored-GGML".
 * Auto-Calculation of threads based on hardware.
-* Optimized text design.
+* Thought-out text based interface design.
 
 ### INTERFACE:
 Things are looking good so far...
