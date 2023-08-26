@@ -5,10 +5,11 @@ Status: Not working yet, but it will.
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations.
 
 ### FUTURE PLANS:
-1) Get scripts working 100%, and perfect text based interface along the way.
-2) Ensure compatibility with all major Llama 2 GGML based models, including, uncensored 8bit 13b, etc. 
+1) Get scripts working 100%, currently some, response parsing and pompt logic, issues.
+2) implement, compatibility with and optimizations for, all major Llama 2 GGML based models, including firstly, uncensored 8bit 7b and uncensored 8bit 13b, wont have enough memory for 70b in 8bit, etc. Potentially this could then involve loading 2 models at start, and using faster model for simpler things and larger model for complex things.  
 3) Implement ClBlas, this may require use of "llama-cpp-python", and special commands in batch installer to install GPU brand specific version of Blas, hence controlled through installer menu.
-4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public. 
+4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public.
+5) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
 * Support currently for "llama2_7b_chat_uncensored-GGML", others are currently untested/optimized.
@@ -16,7 +17,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 * Thought-out text based interface design.
 
 ### INTERFACE:
-Things are looking good so far, actually got a response, but it needs a little, logic tweaking and response parsing...
+Things are looking good so far...
 ```
 =====================================================================================
    .____    .__                        ________ __________     ___.           __
