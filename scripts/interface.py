@@ -22,9 +22,9 @@ ASCII_ART = r"""
 
 # function
 def fancy_delay(duration, message=" Loading..."):
-    step = duration / 15
+    step = duration / 100
     sys.stdout.write(f"{message} [")
-    for i in range(15):
+    for i in range(71):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
@@ -51,9 +51,8 @@ def display_intro_screen():
     
     print(f"\n Used/Free: {used_ram}/{free_ram}GB                                              Date: {current_date}")
     print(f" Cpu: {cpu_info}-T{total_threads}                                                         Time: {current_time}")
-    print("                             Welcome to Llama2Robot!")
-    print("\n\n Initializing the system, please wait...")
-    time.sleep(5)
+    print("                             Welcome to Llama2Robot!\n")
+    time.sleep(2)
 
 # function to display the startup menu
 def display_startup_menu():
