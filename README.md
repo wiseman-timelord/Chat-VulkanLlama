@@ -2,7 +2,7 @@
 Status: Not working yet, but, by golly it will.
 
 ### DESCRIPTION:
-This is a, Llama 2 language model and llama-cpp, based chatbot, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations...
+This is a, Llama 2 language model and llama-cpp, based chatbot, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations.
 
 ### FUTURE PLANS:
 1) Get scripts working 100%, and perfect text based interface along the way.
