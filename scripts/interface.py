@@ -22,9 +22,9 @@ ASCII_ART = r"""
 
 # function
 def fancy_delay(duration, message=" Loading..."):
-    step = duration / 20  # 20 segments in the progress bar
+    step = duration / 15
     sys.stdout.write(f"{message} [")
-    for i in range(20):
+    for i in range(15):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
@@ -53,29 +53,32 @@ def display_intro_screen():
     print(f" Cpu: {cpu_info}-T{total_threads}                                                         Time: {current_time}")
     print("                             Welcome to Llama2Robot!")
     print("\n\n Initializing the system, please wait...")
-    time.sleep(3)
+    time.sleep(5)
 
 # function to display the startup menu
 def display_startup_menu():
-    fancy_delay(3)
+    fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
-    print("\n\n\n\n Enter your first name, or leave blank for Human...")
+    print("="*85)
+    print("\n\n Enter your first name, or leave blank for default...")
     human_name = input(" name: ").strip()
     if not human_name:
         human_name = "Human"
-    print("\n Enter 'name, role', or leave blank for 'Llama2Robot, AI Assistant'...")
-    
-    model_info = input(" name, role: ").split(", ")
-    model_name = model_info[0].strip() if model_info[0].strip() else "Llama2Robot"
+        print(f" name: {human_name}")
+    print("\n Enter 'name, role', or leave blank for default...")
+    model_info_input = input(" name, role: ")
+    model_info = model_info_input.split(", ") if model_info_input else []
+    model_name = model_info[0].strip() if model_info and model_info[0].strip() else "Llama2Robot"
     model_role = model_info[1].strip() if len(model_info) > 1 else f"AI Assistant to {human_name}"
-    
+    if not model_info_input:
+        print(f" name, role: {model_name}, {model_role}")
     return model_name, model_role, human_name.strip()
     
 # function
 def display_interface():
-    fancy_delay(3)
+    fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
