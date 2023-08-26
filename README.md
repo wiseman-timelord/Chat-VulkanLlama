@@ -57,7 +57,7 @@ You:
 ```
 
 ### USAGE:
-1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on admin account or shell with administrator rights.
+1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. For Linux users run `pip install -r requirements.txt`
 3) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.
 4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. For Linux users, run `python3 main.py` and ensure to use 85 columns for the window.
