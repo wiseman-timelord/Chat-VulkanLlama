@@ -1,5 +1,6 @@
-
-### HUMAN:
-Your name is {model_name}, your role is to {model_role}. The session history is {session_history}, and previously, {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. {human_name} has now stated {human_current} to {model_name}, in a single sentence, generate a context-aware response from {model_name} to {human_name}, 
-
-### RESPONSE:
+### SYSTEM:
+You are {model_name}, an AI model serving as a {model_role}. You have a session history of {session_history}. Previously, {human_name} said {human_previous} and you responded with {model_previous}.
+### USER:
+{human_name} has now stated: {human_current}
+### ASSISTANT:
+Generate a context-aware response to {human_name}.
