@@ -11,8 +11,15 @@ def main():
     # Display the intro screen
     interface.display_intro_screen()
     
+    # Display model selection menu and get selected model
+    selected_model = interface.display_model_selection()
+    
     # Initialize the Llama model
-    model_module.initialize_model()
+    if selected_model:
+        model_module.initialize_model(selected_model)
+    else:
+        print("No model selected. Exiting.")
+        return
 
     # Clear keys at the start
     utility.clear_keys()
@@ -32,13 +39,14 @@ def main():
         user_input = input("You: ")
         utility.write_to_yaml('human_current', user_input)
         utility.shift_responses('model')
-        start_time = time.time() # Start Timer
+        start_time = time.time()  # Start Timer
         model_response = model_module.get_response(user_input)
-        end_time = time.time() # End timer
+        end_time = time.time()  # End Timer
         print(f"Debug: Model response time: {end_time - start_time} seconds")
         utility.write_to_yaml('model_current', model_response)
         utility.merge_responses()
         interface.display_interface()
+
 
 # function
 if __name__ == "__main__":
