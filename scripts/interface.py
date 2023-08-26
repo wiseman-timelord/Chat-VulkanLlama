@@ -19,10 +19,10 @@ ASCII_ART = r"""  .____    .__                        ________ __________     __
           \/         \/      \/     \/        \/        \/           \/            """
 
 # function
-def fancy_delay(duration, message=" Loading..."):
+def fancy_delay(duration, message=" Clearing screen..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
-    for i in range(71):
+    for i in range(63):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
@@ -42,7 +42,7 @@ def get_system_info():
     used_swap = round(swap_info.used / (1024 ** 3), 1)
     free_swap = round(swap_info.free / (1024 ** 3), 1)
     
-    system_info_str = f"Cpu: {cpu_info}, RAM: {used_ram}/{free_ram}GB, Swap: {used_swap}/{free_swap}GB, Time: {current_time}, Date: {current_date}"
+    system_info_str = f"Cpu: {cpu_info}, Ram: {used_ram}/{free_ram}GB, Swap: {used_swap}/{free_swap}GB, Time: {current_time}, Date: {current_date}"
     return system_info_str
 
 # New function to display the intro screen
@@ -53,7 +53,7 @@ def display_intro_screen():
     print("-"*85)
     print(f"    {get_system_info()}")
     print("="*85)    
-    print("\n\n                               Welcome to Llama2Robot!\n")
+    print("\n\n Startup procedure initiated...")
     time.sleep(2)
 
 # function to display the startup menu
@@ -90,7 +90,6 @@ def display_interface():
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
-    print("="*85)
     print(f"\n {human_name}:")
     print(data['human_current'].center(64))
     print("\n")

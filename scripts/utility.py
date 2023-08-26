@@ -17,7 +17,6 @@ def write_to_yaml(key, value, file_path='./config.yaml'):
     data[key] = value
     with open(file_path, 'w') as file:
         yaml.dump(data, file)
-    print(f"Debug: Writing {key} = {value} to {file_path}")
 
 # function to shift responses for both model and human
 def shift_responses(entity):
