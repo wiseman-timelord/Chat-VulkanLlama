@@ -18,22 +18,24 @@ Things are looking good so far...
 
   .____    .__                        ________ __________     ___.           __
   |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_
-  |    |   |  | \__  \  /     \\__  \ /  ____/ |       __/  _ \| __ \ /  _ \   __\
+  |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\
   |    |___|  |__/ __ \|  Y Y  \/ __ \|      \ |    |   (  <_> ) \_\ (  <_> )  |
   |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|
           \/         \/      \/     \/        \/        \/           \/
 
- Used/Free: 0.2/49.5GB                                              Date: 2023/08/26
- Cpu: x86_64-T24                                                         Time: 13:40
+=====================================================================================
+
+ Used/Free: 0.4/49.4GB                                              Date: 2023/08/26
+ Cpu: x86_64-T24                                                         Time: 15:26
                              Welcome to Llama2Robot!
 
 
-Initializing the system, please wait...
+ Initializing the system, please wait...
 
-Calculating optimal threads...
-Using 20 threads out of 24.
+ Calculating optimal threads...
+ Using 20 threads out of 24.
 
-Loading model, be patient...
+ Loading model, be patient...
 llama.cpp: loading model from ./llama2_7b_chat_uncensored-GGML/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_vocab    = 32000
@@ -49,6 +51,7 @@ llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
+
 ```
 
 ### USAGE:
