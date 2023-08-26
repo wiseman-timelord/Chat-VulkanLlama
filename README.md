@@ -1,11 +1,11 @@
 # Llama2Robot
-Status: Not working yet, but it will.
+Status: Amost working, does produce a response.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations.
 
 ### FUTURE PLANS:
-1) Get scripts working 100%, currently some, response parsing and pompt logic, issues.
+1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
 2) implement, compatibility with and optimizations for, all major Llama 2 GGML based models, including firstly, uncensored 8bit 7b and uncensored 8bit 13b, wont have enough memory for 70b in 8bit, etc. Potentially this could then involve loading 2 models at start, and using faster model for simpler things and larger model for complex things.  
 3) Implement ClBlas, this may require use of "llama-cpp-python", and special commands in batch installer to install GPU brand specific version of Blas, hence controlled through installer menu.
 4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public.
