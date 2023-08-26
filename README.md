@@ -11,7 +11,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public. 
 
 ### FEATURES:
-* Support for "llama2_7b_chat_uncensored-GGML".
+* Support currently for "llama2_7b_chat_uncensored-GGML", others are currently untested/optimized.
 * Auto-Calculation of threads based on hardware.
 * Thought-out text based interface design.
 
@@ -26,32 +26,20 @@ Things are looking good so far...
    |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|
            \/         \/      \/     \/        \/        \/           \/
 -------------------------------------------------------------------------------------
-           Cpu Speed: 3.79GHz, Ram Load/Free: 0.2/49.5GB, Timer: 00:00:00
+                                Model Configuraton
 =====================================================================================
 
+                 1. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
+                 2. None
+                 3. None
+                 4. None
+                 5. None
+                 6. None
+                 7. None
+                 8. None
+                 9. None
 
- Startup procedure initiated...
-
- Calculating optimal threads...
- Cpu info: x86_64-T24
- Using 20 threads out of 24.
-
- Loading model, be patient...
-llama.cpp: loading model from ./llama2_7b_chat_uncensored-GGML/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
-llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_vocab    = 32000
-llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: n_embd     = 4096
-llama_model_load_internal: n_mult     = 256
-llama_model_load_internal: n_head     = 32
-llama_model_load_internal: n_layer    = 32
-llama_model_load_internal: n_rot      = 128
-llama_model_load_internal: ftype      = 2 (mostly Q4_0)
-llama_model_load_internal: n_ff       = 11008
-llama_model_load_internal: n_parts    = 1
-llama_model_load_internal: model size = 7B
-llama_model_load_internal: ggml ctx size =    0.07 MB
-llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
+ Select a model from 1-9:
 ```
 
 ### USAGE:
