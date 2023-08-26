@@ -58,7 +58,7 @@ llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 1) Download the package, put somewhere on drive, open folder.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. For Linux users run `pip install -r requirements.txt`
 3) Copy Llama 2 GGML model folder eg `llama2_7b_chat_uncensored-GGML` directly into `Llama2Robot` folder, currently the scripts only support `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`.
-4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. For Linux users, run `python3 main.py`, and ensure you are using 85 columns for the window.
+4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. For Linux users, run `python3 main.py` and ensure to use 85 columns for the window.
 
 ### REQUIREMENTS:
 Windows with WSL, Linux is unconfirmed. 
