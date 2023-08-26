@@ -26,13 +26,14 @@ Things are looking good so far...
    |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|
            \/         \/      \/     \/        \/        \/           \/
 -------------------------------------------------------------------------------------
-    Cpu: x86_64, Ram: 0.2/49.5GB, Swap: 0.0/13.0GB, Time: 17:52, Date: 2023/08/26
+           Cpu Speed: 3.79GHz, Ram Load/Free: 0.2/49.5GB, Timer: 00:00:00
 =====================================================================================
 
 
  Startup procedure initiated...
 
  Calculating optimal threads...
+ Cpu info: x86_64-T24
  Using 20 threads out of 24.
 
  Loading model, be patient...
