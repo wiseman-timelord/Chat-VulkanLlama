@@ -1,5 +1,5 @@
 # Llama2Robot
-Status: Not working yet, but, by golly it will.
+Status: Not working yet, but it will.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations.
