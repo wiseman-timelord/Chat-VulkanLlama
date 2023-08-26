@@ -40,6 +40,7 @@ Things are looking good so far...
                  9. None
 
  Select a model from 1-9: 1
+
  Loading model, be patient...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
