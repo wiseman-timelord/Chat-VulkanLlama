@@ -7,7 +7,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### FUTURE PLANS:
 1) Get scripts working 100%, and perfect text based interface along the way.
 2) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public. 
-3) Make compatible with all major Llama 2 GGML based models, including uncensored 8bit etc.
+3) Ensure compatibility with all major Llama 2 GGML based models, including uncensored 8bit etc.
 
 ### INTERFACE:
 Things are looking good so far...
