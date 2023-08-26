@@ -1,5 +1,5 @@
 @echo off
-mode 85,40
+mode 85,43
 rem con:cols=85 lines=100
 title Llama2Robot
 cls
