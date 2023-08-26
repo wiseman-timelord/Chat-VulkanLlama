@@ -51,7 +51,6 @@ llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
-
 ```
 
 ### USAGE:
