@@ -16,7 +16,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 * Thought-out text based interface design.
 
 ### INTERFACE:
-Things are looking good so far...
+Things are looking good so far, actually got a response, but it needs a little, logic tweaking and response parsing...
 ```
 =====================================================================================
    .____    .__                        ________ __________     ___.           __
