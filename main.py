@@ -8,8 +8,8 @@ import time
 
 # function
 def main():
-    # Display the intro screen
-    interface.display_intro_screen()
+    # Display the intro screen and get optimal threads
+    optimal_threads = interface.display_intro_screen()  # Capture the returned value here
     
     # Display model selection menu and get selected model
     selected_model = interface.display_model_selection()
