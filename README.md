@@ -7,7 +7,9 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### FUTURE PLANS:
 1) Get scripts working 100%, and perfect text based interface along the way.
 2) Ensure compatibility with all major Llama 2 GGML based models, including, uncensored 8bit 13b, etc. 
-3) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public. 
+3) Implement ClBlas, this may require use of "llama-cpp-python", and special commands in batch installer to install GPU brand specific version of Blas, hence controlled through installer menu.
+4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, that themeselves, may or may not, be released to the public. 
+
 
 ### INTERFACE:
 Things are looking good so far...
