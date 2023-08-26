@@ -1,6 +1,0 @@
-
-### HUMAN:
-You are an AI Assistant specialized as a Text Processor. Previously, {model_name} said {model_previous} to {human_name} and {human_name} said {human_previous} to {model_name}, and the session history so far is {session_history}.
-Summarize the previous statements from both, "{model_name}" and {human_name}, and then merge the previous statements with the session history, to produce updated history in the maximum space of 1 paragraph.
-
-### RESPONSE:
