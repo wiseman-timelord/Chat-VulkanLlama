@@ -50,14 +50,14 @@ llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 
 ### USAGE:
 1) Download the package, put somewhere on drive, open folder.
-2a) For Windows users, install requirements by double clicking 'Install.bat" or run "wsl pip install -r requirements.txt".
-2b) For Linux users run "pip install -r requirements.txt"
-3) Copy Llama 2 GGML model folder eg 'llama2_7b_chat_uncensored-GGML' directly into 'Llama2Robot' folder, currently the scripts only support 'llama2_7b_chat_uncensored.ggmlv3.q4_0.bin'.
-4a) For Windows users, double click the 'Llama2Robot.bat' or run 'wsl python3 main.py'.
-4b) For Linux users, run 'python3 main.py', and ensure you are using 85 columns for the window.
+2a) For Windows users, install requirements by double clicking `Install.bat` or run `wsl pip install -r requirements.txt`.
+2b) For Linux users run `pip install -r requirements.txt`
+3) Copy Llama 2 GGML model folder eg `llama2_7b_chat_uncensored-GGML` directly into `Llama2Robot` folder, currently the scripts only support `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`.
+4a) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`.
+4b) For Linux users, run `python3 main.py`, and ensure you are using 85 columns for the window.
 
 ### REQUIREMENTS:
 Windows with WSL, Linux is unconfirmed. 
 
 ### NOTES:
-*) This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, 'jaxlib' and 'jax[cpu]'. 
+*) This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
