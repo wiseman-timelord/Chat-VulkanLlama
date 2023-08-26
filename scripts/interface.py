@@ -21,10 +21,10 @@ ASCII_ART = r"""
 """
 
 # function
-def fancy_delay(duration, message="Loading..."):
-    step = duration / 25  # 25 segments in the progress bar
+def fancy_delay(duration, message=" Loading..."):
+    step = duration / 20  # 20 segments in the progress bar
     sys.stdout.write(f"{message} [")
-    for i in range(25):
+    for i in range(20):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
@@ -52,7 +52,7 @@ def display_intro_screen():
     print(f" Cpu: {cpu_info}-T{total_threads}                                                         Time: {current_time}")
     print("                             Welcome to Llama2Robot!")
 
-    print("\n\nInitializing the system, please wait...")
+    print("\n\n Initializing the system, please wait...")
     time.sleep(3)
 
 # function to display the startup menu
@@ -62,12 +62,12 @@ def display_startup_menu():
     print("="*85)
     print(ASCII_ART)
     print("\n\n\n\n Enter your first name, or leave blank for Human...")
-    human_name = input("name: ").strip()
+    human_name = input(" name: ").strip()
     if not human_name:
         human_name = "Human"
     print("\n Enter 'name, role', or leave blank for 'Llama2Robot, AI Assistant'...")
     
-    model_info = input("name, role: ").split(", ")
+    model_info = input(" name, role: ").split(", ")
     model_name = model_info[0].strip() if model_info[0].strip() else "Llama2Robot"
     model_role = model_info[1].strip() if len(model_info) > 1 else f"AI Assistant to {human_name}"
     
@@ -83,14 +83,17 @@ def display_interface():
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
     print("="*85)
-    print(f"{human_name}:")  # Display the human's name
+    print(f"\n {human_name}:")
     print(data['human_current'].center(64))
+    print("\n")
     print("-"*85)
-    print(f"{agent_name}:")  # Display the model's name
+    print(f"\n {agent_name}:")
     if data['model_current'] is None:
         data['model_current'] = ""
     print(data['model_current'].center(64))
+    print("\n")
     print("-"*85)
-    print("History:")
+    print("\n History:")
     print(data['session_history'].center(64))
+    print("\n")
     print("="*85)

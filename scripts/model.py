@@ -12,7 +12,7 @@ llm = None  # Declare the Llama model variable
 def initialize_model():
     global llm
     total_threads = os.cpu_count()
-    print(f"\nCalculating optimal threads...")
+    print(f"\n Calculating optimal threads...")
     if total_threads == 1:
         threads_to_use = 1  # Use the single available thread
     elif total_threads <= 4:
@@ -23,8 +23,8 @@ def initialize_model():
         threads_to_use = total_threads - 3
     else:
         threads_to_use = total_threads - 4
-    print(f"Using {threads_to_use} threads out of {total_threads}.\n")
-    print("Loading model, be patient...")
+    print(f" Using {threads_to_use} threads out of {total_threads}.\n")
+    print(" Loading model, be patient...")
     llm = Llama(
         model_path="./llama2_7b_chat_uncensored-GGML/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin", 
         n_ctx=4096, 
@@ -61,11 +61,11 @@ def get_response(input_text):
     print("Debug: Model response generated.")
     return model_response
 
-
 # function to summarize the session
 def summarize_session(session_history):
-    # Read the current state from config.yaml
+    # Read the config.yaml file
     data = utility.read_yaml()
+    human_name = data.get('human_name', 'Human')
     
     # Check if either model_previous or human_previous are "Empty"
     if data['model_previous'] == "Empty" or data['human_previous'] == "Empty":
@@ -84,7 +84,7 @@ def summarize_session(session_history):
     )
     
     # Here, you would typically call the language model to generate a summarized paragraph.
-    summarized_paragraph = "This is a summarized paragraph based on the previous interactions."
+    summarized_paragraph = " This is a paragraph based on previous interactions."
     
     # Merge the new summary with the existing session history
     new_session_history = session_history + " " + summarized_paragraph

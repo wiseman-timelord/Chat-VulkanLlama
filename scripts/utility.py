@@ -12,6 +12,8 @@ def read_yaml(file_path='./config.yaml'):
 # function to write to YAML file
 def write_to_yaml(key, value, file_path='./config.yaml'):
     data = read_yaml(file_path)
+    if value is None:
+        value = "Empty"
     data[key] = value
     with open(file_path, 'w') as file:
         yaml.dump(data, file)
