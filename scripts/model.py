@@ -34,9 +34,9 @@ def initialize_model():
 
 # function to get a response from the model
 def get_response(input_text):
-    # Read the prompt1.txt file from the new location "./prompts/"
-    print("Debug: Reading prompt1.txt...")
-    with open("./prompts/prompt1.txt", "r") as file:
+    # Read the converse prompts from "./prompts/"
+    print("Debug: Reading converse.txt...")
+    with open("./prompts/converse.txt", "r") as file:
         prompt = file.read()
     
     # Read data from config.yaml
@@ -71,8 +71,9 @@ def summarize_session(session_history):
     if data['model_previous'] == "Empty" or data['human_previous'] == "Empty":
         return session_history  # No summarization
     
-    # Read the prompt2.txt file from the new location "./prompts/"
-    with open("./prompts/prompt2.txt", "r") as file:
+    # Read the summarize prompt from "./prompts/"
+    print("Debug: Reading summarize.txt...")
+    with open("./prompts/summarize.txt", "r") as file:
         prompt = file.read()
     
     # Fill in the placeholders
