@@ -64,4 +64,4 @@ llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 Windows with WSL, Linux is unconfirmed. 
 
 ### NOTES:
-*) This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
+* This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
