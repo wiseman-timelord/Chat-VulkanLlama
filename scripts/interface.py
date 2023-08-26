@@ -10,6 +10,9 @@ from datetime import datetime
 import psutil
 import platform
 
+# globals
+start_time = time.time()
+
 # Ascii Art for the console display
 ASCII_ART = r"""   .____    .__                        ________ __________     ___.           __    
    |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_  
@@ -29,42 +32,43 @@ def fancy_delay(duration, message=" Clearing screen..."):
     sys.stdout.write("]\n")
 
 # Function to get system info
-def get_system_info():
-    current_time = datetime.now().strftime("%H:%M")
-    current_date = datetime.now().strftime("%Y/%m/%d")
-    cpu_info = platform.processor()
-    total_threads = psutil.cpu_count()
+def get_system_info(elapsed_time):
+    cpu_freq_info = psutil.cpu_freq()
+    current_cpu_speed = round(cpu_freq_info.current / 1000, 2)
     ram_info = psutil.virtual_memory()
-    total_ram = round(ram_info.total / (1024 ** 3), 1)
-    free_ram = round(ram_info.available / (1024 ** 3), 1)
     used_ram = round(ram_info.used / (1024 ** 3), 1)
-    swap_info = psutil.swap_memory()
-    used_swap = round(swap_info.used / (1024 ** 3), 1)
-    free_swap = round(swap_info.free / (1024 ** 3), 1)
+    free_ram = round(ram_info.available / (1024 ** 3), 1)
+    days, remainder = divmod(int(elapsed_time), 86400)
+    hours, remainder = divmod(remainder, 3600)
+    minutes = remainder // 60
+    formatted_time = f"{days:02d}:{hours:02d}:{minutes:02d}"
     
-    system_info_str = f"Cpu: {cpu_info}, Ram: {used_ram}/{free_ram}GB, Swap: {used_swap}/{free_swap}GB, Time: {current_time}, Date: {current_date}"
+    # Combine all info into a string
+    system_info_str = f"Cpu Speed: {current_cpu_speed}GHz, Ram Load/Free: {used_ram}/{free_ram}GB, Timer: {formatted_time}"
     return system_info_str
 
 # New function to display the intro screen
 def display_intro_screen():
+    elapsed_time = round(time.time() - start_time, 2)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
     print("-"*85)
-    print(f"    {get_system_info()}")
+    print(f"           {get_system_info(elapsed_time)}")
     print("="*85)    
     print("\n\n Startup procedure initiated...")
     time.sleep(2)
 
 # function to display the startup menu
 def display_startup_menu():
+    elapsed_time = round(time.time() - start_time, 2)
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
     print("-"*85)
-    print(f"    {get_system_info()}")
-    print("="*85)    
+    print(f"           {get_system_info(elapsed_time)}")
+    print("="*85)  
     default_human_name = "Human"
     default_model_name = "Llama2Robot"
     default_model_role = "AI Assistant to Human"
@@ -80,13 +84,14 @@ def display_startup_menu():
     
 # function
 def display_interface():
+    elapsed_time = round(time.time() - start_time, 2)
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     print(ASCII_ART)
     print("-"*85)
-    print(f"    {get_system_info()}")
-    print("="*85)     
+    print(f"           {get_system_info(elapsed_time)}")
+    print("="*85)   
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')

@@ -5,6 +5,7 @@ from scripts import utility
 from llama_cpp import Llama  # Make sure to import the Llama library
 import os
 import time
+import platform
 
 # globals
 llm = None  # Declare the Llama model variable
@@ -12,6 +13,7 @@ llm = None  # Declare the Llama model variable
 # Initialize the Llama model
 def initialize_model():
     global llm
+    cpu_info = platform.processor()
     total_threads = os.cpu_count()
     print(f"\n Calculating optimal threads...")
     if total_threads == 1:
@@ -24,6 +26,7 @@ def initialize_model():
         threads_to_use = total_threads - 3
     else:
         threads_to_use = total_threads - 4
+    print(f" Cpu info: {cpu_info}-T{total_threads}")
     print(f" Using {threads_to_use} threads out of {total_threads}.\n")
     time.sleep(2)
     print(" Loading model, be patient...")
