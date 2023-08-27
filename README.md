@@ -26,7 +26,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 
 ### INTERFACE:
-Things are looking good so far, getting a logical response at least...
+Interface is acceptable for now, currently the main chat window...
 ```
 =====================================================================================
    .____    .__                        ________ __________     ___.           __
