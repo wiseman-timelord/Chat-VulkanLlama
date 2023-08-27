@@ -1,5 +1,5 @@
 # Llama2Robot
-Status: Amost "working".
+Status: Nearly Working how intended.
 * Model compatibility delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying, have to rely upon browser based downloads on mobile broadband, this somewhat sabotages my plans for testing other Llama 2 based models, though do have a few variants to test Llama2Robot on already, for now we will have to go with them.
 
 ### DESCRIPTION:
