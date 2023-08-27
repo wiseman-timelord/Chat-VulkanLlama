@@ -30,7 +30,7 @@ def calculate_optimal_threads():
         threads_to_use = total_threads - 4
     print(f"\n\n Calculating optimal threads...")
     print(f" Cpu info: {platform.processor()}-T{total_threads}")
-    print(f" Using {threads_to_use} threads out of {total_threads}.\n")
+    print(f" ...using {threads_to_use} out of {total_threads} threads.\n")
     time.sleep(2)
     return threads_to_use
 
@@ -119,6 +119,11 @@ def display_interface():
     print(data['human_current'].center(64))
     print("\n")
     print("-"*85)
+    print(f"\n {agent_name}:")
+    if data['model_current'] is None:
+        data['model_current'] = ""
+    cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
+    print(cleaned_model_response.center(64))
     print(f"\n {agent_name}:")
     if data['model_current'] is None:
         data['model_current'] = ""

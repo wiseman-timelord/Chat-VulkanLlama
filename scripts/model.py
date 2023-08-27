@@ -42,7 +42,8 @@ def get_response(input_text):
 
     print("Debug: Generating a response from the model...")
     try:
-        model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.36, max_tokens=150)["choices"][0]["text"]
+        raw_model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.36, max_tokens=150)["choices"][0]["text"]
+        model_response = raw_model_response.replace("### USER:", "").strip()
     except Exception as e:
         model_response = f"An error occurred: {e}"
     print("Debug: Model response generated.")
