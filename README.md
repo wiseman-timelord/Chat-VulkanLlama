@@ -1,6 +1,6 @@
 # Llama2Robot
 Status: Beta, current issues are to do with...
-* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. After which can tune, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output for clarity.
+* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. With this data then can tune, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output in the log, for clarity.
 * Correct Prompt logic. Begin, Summarize and Consolidate, only after 2nd response from both, {human_name) and {model_name}, at which point, there should be history.
 * Initial prompts. Utilize, "converse1.txt", "converse2.txt", "converse3.txt", when there is relevantly, no history and previous responses, no history but previous messages. history and previous messages are present.
 * Further tuning of responses and summarization. Consider short example in the prompts to guide model better in worst case scenario.
