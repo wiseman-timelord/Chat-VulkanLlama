@@ -1,0 +1,4 @@
+### SYSTEM:
+Merge the last responses from the human and the model.
+### USER:
+{human_previous} and then {model_previous}

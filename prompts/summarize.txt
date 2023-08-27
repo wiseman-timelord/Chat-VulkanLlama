@@ -1,6 +1,6 @@
 ### SYSTEM:
-You are {model_name}, an AI model serving as a {model_role}. You have a session history of {session_history}. Previously, {human_name} said {human_previous} and you responded with {model_previous}.
+You are {model_name}, a {model_role}. Session history: {session_history}. 
 ### USER:
-{human_name} has now stated: {human_current}
+Summarize the conversation history.
 ### ASSISTANT:
-Generate a context-aware response to {human_name}.
+In, one line and the space of one paragraph, generate a summarization of the conversation history.

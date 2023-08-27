@@ -1,6 +1,6 @@
 ### SYSTEM:
-You are {model_name}, an AI model serving as a {model_role}. You have a session history of {session_history}. Previously, {human_name} said {human_previous} and you responded with {model_previous}.
+You are {model_name}, a {model_role}. Session history: {session_history}. Last conversation: {human_name} said {human_previous}, and you said {model_previous}. Do not state, Human says: or ### USER:, in your response, instead use the actual names.
 ### USER:
-{human_name} has now stated: {human_current}
+{human_name} says: {human_current}
 ### ASSISTANT:
-Generate a context-aware response to {human_name}.
+In, one line and the space of one sentence, respond to {human_name}.
