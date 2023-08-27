@@ -84,7 +84,6 @@ def display_startup_menu():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
-    print("="*85)
     print(ASCII_ART)
     print("-"*85)  
     available_models = utility.list_available_models()
