@@ -5,4 +5,5 @@ model_current: Empty
 model_name: Empty
 model_previous: Empty
 model_role: Empty
-session_history: Empty
+summarized_statements: Empty
+consolidated_history: Empty
