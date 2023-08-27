@@ -46,7 +46,6 @@ Hello, Llama here. I am happy to talk about Llamas with you! What would you like
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
  History:
 -------------------------------------------------------------------------------------
 Empty Sure! The llama said that it was empty to the human who replied with an affirmative statement. The llama's name is Llama and the human's name is Human. Hello, Llama here. I am happy to talk about Llamas with you! What would you like to know? Hello, lets talk about Llamas!
