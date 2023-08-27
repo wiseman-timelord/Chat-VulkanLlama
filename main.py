@@ -37,7 +37,7 @@ def main():
 
     while True:
         utility.shift_responses('human')
-        user_input = readline.readline("You: ")
+        user_input = input("You: ")  # Use the original input() function
         utility.write_to_yaml('human_current', user_input)
         utility.shift_responses('model')
         start_time = time.time()  # Start Timer
@@ -47,7 +47,6 @@ def main():
         utility.write_to_yaml('model_current', model_response)
         utility.summarize_responses()
         interface.display_interface()
-
 
 # function
 if __name__ == "__main__":
