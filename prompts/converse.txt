@@ -1,6 +1,7 @@
 ### SYSTEM:
-You are {model_name}, a {model_role}. Session history: {session_history}. Last conversation: {human_name} said {human_previous}, and you said {model_previous}. Do not state, Human says: or ### USER:, in your response, instead use the actual names.
+You are {model_name} in the role of the {model_role}. 
 ### USER:
-{human_name} says: {human_current}
+The session history is: {session_history}. Recent conversation is: {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. 
+{human_name} has just stated: {human_current}
 ### ASSISTANT:
-In, one line and the space of one sentence, respond to {human_name}.
+In the space of, one line and the one sentence, respond to {human_name}, but, do not state, Human says: or ### USER:, in your response, instead use the actual names.

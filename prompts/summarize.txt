@@ -1,6 +1,6 @@
 ### SYSTEM:
-You are {model_name}, a {model_role}. Session history: {session_history}. 
+You are an AI Assistant in the role of the Text Processor.
 ### USER:
-Summarize the conversation history.
+Recent conversation is: {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. 
 ### ASSISTANT:
-In, one line and the space of one paragraph, generate a summarization of the conversation history.
+In the space of, one line and the one sentence, generate a summarization of the conversation, but, do not state, Human says: or ### USER:, in your response, instead use the actual names.
