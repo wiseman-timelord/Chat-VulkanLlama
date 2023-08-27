@@ -117,7 +117,7 @@ def display_interface():
     print(cleaned_model_response)
     print("\n")
     print("=-"*42)
-    print("\n History:")
+    print(" History:")
     print("-"*85)
     print(data['consolidated_history'])
     print("\n")
