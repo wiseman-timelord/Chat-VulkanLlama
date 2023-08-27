@@ -3,3 +3,4 @@ torch
 PyYAML
 jax[cpu]
 jaxlib
+readline

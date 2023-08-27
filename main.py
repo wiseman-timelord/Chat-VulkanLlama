@@ -5,6 +5,7 @@ from scripts import interface
 from scripts import model as model_module  # Renamed to avoid conflict
 from scripts import utility
 import time
+import readline
 
 # function
 def main():
@@ -36,7 +37,7 @@ def main():
 
     while True:
         utility.shift_responses('human')
-        user_input = input("You: ")
+        user_input = readline.readline("You: ")
         utility.write_to_yaml('human_current', user_input)
         utility.shift_responses('model')
         start_time = time.time()  # Start Timer
@@ -44,7 +45,7 @@ def main():
         end_time = time.time()  # End Timer
         print(f"Debug: Model response time: {end_time - start_time} seconds")
         utility.write_to_yaml('model_current', model_response)
-        utility.merge_responses()
+        utility.summarize_responses()
         interface.display_interface()
 
 
