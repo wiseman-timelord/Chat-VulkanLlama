@@ -2,7 +2,7 @@
 Status: Amost "working", does produce a response and interface mostly there.
 
 ### DESCRIPTION:
-This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks, if you have an idea, then create a fork, and save me some time.
+This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time.
 
 ### FUTURE PLANS:
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
