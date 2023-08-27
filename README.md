@@ -1,8 +1,7 @@
 # Llama2Robot
-Status: Alpha.
-* Traceback issue after summarize text "KeyError: human_name", will sort out, soon or tomorrow. 
-* Current issue is to do with, parsing output from model and/or logic behind handling of prompt links in scripts and/or the order the keys are being saved to the "config.yaml".
-* Model compatibility delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying, have to rely upon browser based downloads on mobile broadband.
+Status: Beta.
+* Current issue is to do with, parsing output from model and/or logic behind handling of prompt links in scripts.
+* Model compatibility somewhat delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying.
 
 
 ### DESCRIPTION:
@@ -23,7 +22,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 * Intelligent Response Generation, utilizes predefined prompts to generate contextually relevant and coherent responses.
 * YAML State Management, manages session state, user preferences, and more through YAML file operations.
 * User-Friendly Chat Interface, offers a clean and intuitive chat interface, complete with ASCII art and dialogue history.
-* Customizable Model Selection, allows users to select from a list of available Llama models.
+* Customizable Model Selection, allows users to select from a list of available Llama 2 models in "./models".
 
 
 ### INTERFACE:
