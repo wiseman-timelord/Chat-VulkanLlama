@@ -7,8 +7,8 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### FUTURE PLANS:
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
 2) implement, compatibility with and optimizations for, all major Llama 2 GGML based models, including firstly, uncensored 8bit 7b and uncensored 8bit 13b, wont have enough memory for 70b in 8bit, etc. Potentially this could then involve loading 2 models at start, and using faster model for simpler things and larger model for complex things. They are also still holding back the 30b, so, no work there.
-3) Implement ClBlas, this may require use of "llama-cpp-python", and special commands in batch installer to install GPU brand specific version of Blas, hence controlled through installer menu. Thing about CLBlas, if you want to play a game when you are locked into a llm session with 1 GPU, but it is indeed faster. Currently on, 7B models and low tokens, generation time is minimal, like 5 seconds or something. 
-4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, which could be in the form of forks.
+3) Implement "llama-cpp-python" as alternate, thus enabling ClBlas, through option in upgrading "Install.bat", to install GPU brand specific version of Blas. Limitations of CLBlas, if you are only using 1 gpu, and you require gpu for other purpose, but with GPU enabled with enough ram, it is indeed faster.
+4) 4) Introduce more features, but stop somewhere before it becomes significantly customised, hence producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, which could be in the form of forks.
 5) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
@@ -56,14 +56,14 @@ Sure, what do you need from me? Hello, are you ready to help me with my issues t
 You:
 ```
 
-### USAGE:
+### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
-2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. For Linux users run `pip install -r requirements.txt`
-3) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.
-4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. For Linux users, run `python3 main.py` and ensure to use 85 columns for the window.
+2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
+3) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.)
+4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ) .
 
 ### REQUIREMENTS:
-Windows with WSL, Linux is unconfirmed. 
+Windows with WSL (later also linux)
 
 ### NOTES:
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
