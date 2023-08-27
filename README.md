@@ -6,10 +6,12 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 ### FUTURE PLANS:
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
-2) implement, compatibility with and optimizations for, all major Llama 2 GGML based models, including firstly, uncensored 8bit 7b and uncensored 8bit 13b, wont have enough memory for 70b in 8bit, etc. Potentially this could then involve loading 2 models at start, and using faster model for simpler things and larger model for complex things. They are also still holding back the 30b, so, no work there.
-3) Implement "llama-cpp-python" as alternate, thus enabling ClBlas, through option in upgrading "Install.bat", to install GPU brand specific version of Blas. Limitations of CLBlas, if you are only using 1 gpu, and you require gpu for other purpose, but with GPU enabled with enough ram, it is indeed faster.
-4) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
-5) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
+2) implement optimizations for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc.
+3) Multi-model support, so as, to be using, faster model for simpler things and larger model for complex things,
+4) They are also still holding back the 30b, so, no work there.
+5) Implement "llama-cpp-python" as alternate, thus enabling ClBlas, through option in upgrading "Install.bat", to install GPU brand specific version of Blas. Limitations of CLBlas, if you are only using 1 gpu, and you require gpu for other purpose, but with GPU enabled with enough ram, it is indeed faster.
+6) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
+7) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
 * Contextual awareness of, previous statements combined with summarized session history.
