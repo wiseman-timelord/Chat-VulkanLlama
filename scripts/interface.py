@@ -116,18 +116,12 @@ def display_interface():
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
     print(f"\n {human_name}:")
-    print(data['human_current'].center(64))
+    print(data['human_current'].ljust(5))
     print("\n")
     print("-"*85)
     print(f"\n {agent_name}:")
-    if data['model_current'] is None:
-        data['model_current'] = ""
-    cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
-    print(cleaned_model_response.center(64))
-    print(f"\n {agent_name}:")
-    if data['model_current'] is None:
-        data['model_current'] = ""
-    print(data['model_current'].center(64))
+    cleaned_model_response = data['model_current'].replace("### ASSISTANT:", "").strip()
+    print(cleaned_model_response.ljust(5))
     print("\n")
     print("-"*85)
     print("\n History:")

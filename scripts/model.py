@@ -42,8 +42,8 @@ def get_response(input_text):
 
     print("Debug: Generating a response from the model...")
     try:
-        raw_model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.36, max_tokens=150)["choices"][0]["text"]
-        model_response = raw_model_response.replace("### USER:", "").strip()
+        raw_model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.75, max_tokens=100)["choices"][0]["text"]
+        model_response = raw_model_response.replace("### ASSISTANT:", "").strip()
     except Exception as e:
         model_response = f"An error occurred: {e}"
     print("Debug: Model response generated.")
@@ -71,7 +71,7 @@ def summarize_session(session_history):
     )
     
     try:
-        summarized_paragraph = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.36, max_tokens=1250)["choices"][0]["text"]
+        summarized_paragraph = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=1000)["choices"][0]["text"]
     except Exception as e:
         summarized_paragraph = f"An error occurred: {e}"
     
