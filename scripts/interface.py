@@ -102,7 +102,7 @@ def display_startup_menu():
     model_name = model_info[0].strip() if model_info and model_info[0].strip() else default_model_name
     model_role = model_info[1].strip() if len(model_info) > 1 else f"AI Assistant to {human_name}"
     return model_name, model_role, human_name.strip()
-    
+   
 # function
 def display_interface():
     fancy_delay(5)
@@ -111,20 +111,28 @@ def display_interface():
     print(ASCII_ART)
     print("-"*85)
     print("                              Dialogue Display")    
-    print("="*85)   
+    print("="*85)
+    
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
-    print(f"\n {human_name}:")
-    print(data['human_current'].ljust(5))
-    print("\n")
+    
+    print(f"\n {human_name}")
     print("-"*85)
-    print(f"\n {agent_name}:")
-    cleaned_model_response = data['model_current'].replace("### ASSISTANT:", "").strip()
-    print(cleaned_model_response.ljust(5))
+    print(data['human_current'])
     print("\n")
+    print("=-"*42)
+    
+    print(f"\n {agent_name}")
     print("-"*85)
+    cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
+    print(cleaned_model_response)
+    
+    print("\n")
+    print("=-"*42)
+    
     print("\n History:")
-    print(data['session_history'].center(64))
+    print("-"*85)
+    print(data['session_history'])
     print("\n")
     print("="*85)

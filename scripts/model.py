@@ -49,31 +49,30 @@ def get_response(input_text):
     print("Debug: Model response generated.")
     return model_response
 
-# function to summarize the session
-def summarize_session(session_history):
+# function to merge and summarize the session
+def merge_and_summarize(session_history):
+    print("Debug: Reading merge.txt...")
+    with open("./prompts/merge.txt", "r") as file:
+        merge_prompt = file.read()
+    
     print("Debug: Reading summarize.txt...")
     with open("./prompts/summarize.txt", "r") as file:
-        prompt = file.read()
-    
+        summarize_prompt = file.read()
+
     data = utility.read_yaml()
-    
-    if not data['session_history']:
-        return "No session history available."
-    
-    prompt = prompt.format(
-        model_name=data['model_name'],
-        model_role=data['model_role'],
-        session_history=data['session_history'],
-        model_previous=data['model_previous'],
+
+    # Merge previous responses
+    merge_prompt = merge_prompt.format(
         human_previous=data['human_previous'],
-        human_current=data['human_current'],
-        human_name=data.get('human_name', 'Human')
+        model_previous=data['model_previous'].replace("### USER:", "").strip()
     )
-    
-    try:
-        summarized_paragraph = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=1000)["choices"][0]["text"]
-    except Exception as e:
-        summarized_paragraph = f"An error occurred: {e}"
-    
+    merged_text = llm(merge_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"]
+
+    # Summarize the merged text and history
+    summarize_prompt = summarize_prompt.format(
+        session_history=session_history + " " + merged_text
+    )
+    summarized_paragraph = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=1000)["choices"][0]["text"]
+
     new_session_history = session_history + " " + summarized_paragraph
     return new_session_history
