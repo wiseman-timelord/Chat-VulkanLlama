@@ -18,9 +18,14 @@ class SuppressPrints:
 
 # function
 def main():
-    # Display the intro screen and get optimal threads
+    # Display the intro screen and get optimal threads    
     optimal_threads = interface.display_intro_screen()  # Capture the returned value here
+    time.sleep(1) 
     
+    # Clear Keys
+    utility.clear_keys()
+    time.sleep(1) 
+   
     # Display model selection menu and get selected model
     selected_model = interface.display_model_selection()
     
@@ -31,18 +36,21 @@ def main():
         print("No model selected. Exiting.")
         return
 
-    # Clear keys at the start
-    utility.clear_keys()
-
     # Display startup menu and get model_name, model_role, and human_name
     model_name, model_role, human_name = interface.display_startup_menu()
     if not model_name:
         model_name = "Llama2Robot"
 
-    # Write these values to config.yaml
+    # Write these values to config.yaml in the desired order
     utility.write_to_yaml('human_name', human_name)
+    utility.write_to_yaml('human_current', "Empty")
+    utility.write_to_yaml('human_previous', "Empty")
     utility.write_to_yaml('model_name', model_name)
     utility.write_to_yaml('model_role', model_role)
+    utility.write_to_yaml('model_current', "Empty")
+    utility.write_to_yaml('model_previous', "Empty")
+    utility.write_to_yaml('summarized_statements', "Empty")
+    utility.write_to_yaml('consolidated_history', "Empty")
 
     while True:
         utility.shift_responses('human')

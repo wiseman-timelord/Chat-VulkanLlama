@@ -29,11 +29,9 @@ def calculate_optimal_threads():
     else:
         threads_to_use = total_threads - 4
     print(f"\n\n Calculating optimal threads...")
-    print(f" Cpu info: {platform.processor()}-T{total_threads}")
+    print(f" Cpu info: {platform.processor()}-T{total_threads}...")
     print(f" ...using {threads_to_use} out of {total_threads} threads.\n")
-    time.sleep(2)
     return threads_to_use
-
 
 # function
 def fancy_delay(duration, message=" Loading..."):
@@ -71,9 +69,9 @@ def display_model_selection():
     print("")
     for idx, model in enumerate(available_models, 1):
         print(f"                 {idx}. {model.split('/')[-1]}")
-    for i in range(len(available_models) + 1, 10):
+    for i in range(len(available_models) + 1, 4):
         print(f"                 {i}. None")
-    selected = int(input("\n Select a model from 1-9: "))
+    selected = int(input("\n Select a model from 1-3: "))
     if selected >= 1 and selected <= len(available_models):
         return available_models[selected - 1]
     else:
@@ -90,8 +88,8 @@ def display_startup_menu():
     print("                                AI Configuration")
     print("="*85)
     default_human_name = "Human"
-    default_model_name = "Mr.Llama"
-    default_model_role = "AI Chatbot to {human_name}"
+    default_model_name = "Llama"
+    default_model_role = "Chatbot to {human_name}"
     print("\n\n Enter your first name, or leave blank for default...")
     human_name = input(f" name [{default_human_name}]: ").strip()
     human_name = human_name if human_name else default_human_name
@@ -132,6 +130,6 @@ def display_interface():
     
     print("\n History:")
     print("-"*85)
-    print(data['session_history'])
+    print(data['consolidated_history'])
     print("\n")
     print("="*85)

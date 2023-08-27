@@ -1,6 +1,5 @@
 ### SYSTEM:
-You are an AI Assistant in the role of the Text Processor. 
+You are an AI Assistant in the role of the Text Processor. The session history is: {consolidated_history}. Recent conversation between, {human_name} and {model_name}, is: {summarized_statements}.
 ### USER:
-The session history is: {consolidated_history}. Recent conversation between, {human_name} and {model_name}, is: {summarized_statements}.
-### ASSISTANT:
 In the space of, one line and the one paragraph, consolidate the recent conversation into the session history, but, do not state, Human says: or ### USER:, in your response, instead use the actual names.
+### ASSISTANT:

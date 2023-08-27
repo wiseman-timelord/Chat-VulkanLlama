@@ -31,7 +31,7 @@ def get_response(input_text):
     prompt = prompt.format(
         model_name=data['model_name'],
         model_role=data['model_role'],
-        session_history=data['session_history'],
+        consolidated_history=data['consolidated_history'],
         model_previous=data['model_previous'],
         human_previous=data['human_previous'],
         human_current=data['human_current'],
@@ -78,7 +78,7 @@ def summarize(human_previous, model_previous):
     return summarized_text
 
 # consolidate summarized statements into history
-def consolidate(session_history, summarized_text):
+def consolidate(consolidated_history, summarized_text):
     print("Debug: Reading consolidate.txt...")
     with open("./prompts/consolidate.txt", "r") as file:
         consolidate_prompt = file.read()
@@ -94,8 +94,8 @@ def consolidate(session_history, summarized_text):
     consolidate_prompt = consolidate_prompt.format(
         model_name=model_name,
         model_role=model_role,
-        consolidated_history=session_history,
-        summarized_statements=session_history + " " + summarized_text
+        consolidated_history=consolidated_history,
+        summarized_statements=consolidated_history + " " + summarized_text
     )
     
     # Generate the consolidated paragraph using the Llama model
@@ -108,12 +108,12 @@ def consolidate(session_history, summarized_text):
     )["choices"][0]["text"]
     
     # Update the session history with the consolidated paragraph
-    new_session_history = session_history + " " + consolidated_paragraph
+    new_consolidated_history = consolidated_history + " " + consolidated_paragraph
     
     # Write the consolidated history to config.yaml
-    utility.write_to_yaml('consolidated_history', new_session_history)
+    utility.write_to_yaml('consolidated_history', new_consolidated_history)
     
-    return new_session_history
+    return new_consolidated_history
 
 
     

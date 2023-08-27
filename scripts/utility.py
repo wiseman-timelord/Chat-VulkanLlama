@@ -3,7 +3,9 @@
 # imports
 import yaml
 import glob
+import os
 from scripts import model as model_module 
+
 
 # function to list all available models
 def list_available_models():
@@ -20,8 +22,14 @@ def write_to_yaml(key, value, file_path='./config.yaml'):
     if value is None:
         value = "Empty"
     data[key] = value
+    ordered_keys = [
+        'human_name', 'human_current', 'human_previous',
+        'model_name', 'model_role', 'model_current', 'model_previous',
+        'summarized_statements', 'consolidated_history'
+    ]
+    ordered_data = {k: data.get(k, "Empty") for k in ordered_keys}
     with open(file_path, 'w') as file:
-        yaml.dump(data, file)
+        yaml.dump(ordered_data, file)
 
 # function to shift responses for both model and human
 def shift_responses(entity):
@@ -37,27 +45,26 @@ def shift_responses(entity):
 def summarize_responses():
     data = read_yaml()
     summarized_text = model_module.summarize(data['human_previous'], data['model_previous'])
-    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
-    
-    # Store the summarized statements and consolidated history
+    consolidated_history = model_module.consolidate(data['consolidated_history'], summarized_text)
     write_to_yaml('summarized_statements', summarized_text)
     write_to_yaml('consolidated_history', consolidated_history)
-    
-    # Handle None values
     if consolidated_history is None:
         consolidated_history = ""
     if data['model_current'] is None:
         data['model_current'] = ""
     if data['human_current'] is None:
         data['human_current'] = ""
-        
-    # Update the session history
     summarized = consolidated_history + " " + data['model_current'] + " " + data['human_current']
-    write_to_yaml('session_history', summarized)
-
+    write_to_yaml('consolidated_history', summarized)
 
 # function to clear all keys to "Empty" at the start of the program
 def clear_keys():
-    keys_to_clear = ['human_name', 'human_current', 'human_previous', 'model_name', 'model_role', 'model_current', 'model_previous', 'session_history']
-    for key in keys_to_clear:
-        write_to_yaml(key, "Empty")
+    print("Resetting config.yaml...")
+    if os.path.exists('./config.yaml'):
+        print("File config.yaml found...")
+        keys_to_clear = ['human_name', 'human_current', 'human_previous', 'model_name', 'model_role', 'model_current', 'model_previous', 'summarized_statements', 'consolidated_history']
+        for key in keys_to_clear:
+            write_to_yaml(key, "Empty")
+        print("File config.yaml reset.\n")
+    else:
+        print("File config.yaml missing!\n")
