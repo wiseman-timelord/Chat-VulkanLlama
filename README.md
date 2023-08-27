@@ -38,23 +38,19 @@ Interface is acceptable for now, currently the main chat window...
 =====================================================================================
 
  Human:
-     Hello, are you ready to help me with my issues today?
+Hello, are you ready to help me with my issues today?
 
 
 -------------------------------------------------------------------------------------
 
  Llama2Robot:
-
-### USER:
 Sure, what do you need from me?
 
 
 -------------------------------------------------------------------------------------
 
  History:
-Empty ### USER:
-What is the purpose of having a conversation with Llama2Robot?
-### USER:
+Empty What is the purpose of having a conversation with Llama2Robot?
 Sure, what do you need from me? Hello, are you ready to help me with my issues today?
 
 
