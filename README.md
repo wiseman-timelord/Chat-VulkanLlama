@@ -1,6 +1,8 @@
 # Llama2Robot
 Status: Nearly Working how intended.
-* Model compatibility delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying, have to rely upon browser based downloads on mobile broadband, added to this, my bandwidth seems to have dropped significantly in the last week, this combined somewhat sabotages my plans for testing other Llama 2 based models, though do have a few variants to test Llama2Robot on already, for now we will have to go with them, and download the others at night.
+* Still small issues with, parsing output from model and logic behind handling of prompt links in scripts, still focusing upon improvements to other interface enhancements along the way.    
+* Model compatibility delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying, have to rely upon browser based downloads on mobile broadband.
+
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
