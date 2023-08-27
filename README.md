@@ -2,7 +2,7 @@
 Status: Amost "working", does produce a response and interface mostly there. Delayed due to Huggingface changing downloads to not work on my downlord app, have to rely upon unrelyable browser based downloads on mobile broadband, sabotaged my plans for testing "llama2_7b_chat_uncensored.ggmlv3.q8_0.bin", will have to use "llama2_13b_chat_uncensored.ggmlv3.q8_0.bin" instead for now.
 
 ### DESCRIPTION:
-This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time.
+This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used for other purposes, such as complex, commands and operations.
 
 ### FUTURE PLANS:
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
@@ -69,7 +69,4 @@ Windows with WSL (later also linux)
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
 
 ### DISCLAIMER:
-* This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models.
-* The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file, if this were the case with MPT, it would be called MPTRobot, however,
-* Llama2Robot uses ".yaml" files, so it should be more than compitent at the task of, reading and creating, multi-line output to be used for other purposes, such as complex, commands and operations.
-
+* This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file, if this were the case with MPT, it would be called MPTRobot. 
