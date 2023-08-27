@@ -25,7 +25,10 @@ def main():
     # Clear Keys
     utility.clear_keys()
     time.sleep(1) 
-   
+    
+    # Initialize human_name right after clearing keys
+    human_name = "DefaultHumanName"
+
     # Display model selection menu and get selected model
     selected_model = interface.display_model_selection()
     
