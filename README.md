@@ -1,8 +1,9 @@
 # Llama2Robot
 Status: Beta, current issues are to do with...
-* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. After which can tune, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output. Consider short example in the prompts to guide model better in worst case scenario.
+* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. After which can tune, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output for clarity.
 * Correct Prompt logic. Begin, Summarize and Consolidate, only after 2nd response from both, {human_name) and {model_name}, at which point, there should be history.
 * Initial prompts. Utilize, "converse1.txt", "converse2.txt", "converse3.txt", when there is relevantly, no history and previous responses, no history but previous messages. history and previous messages are present.
+* Further tuning of responses and summarization. Consider short example in the prompts to guide model better in worst case scenario.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
