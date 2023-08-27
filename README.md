@@ -1,6 +1,6 @@
 # Llama2Robot
 Status: Beta, current issue is to do with...
-* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to files, "prompt.log" and "output.log", that are cleared on run. After which can modify, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output. If still issues, consider short example in the prompts to guide model.
+* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to files, "prompt.log" and "output.log", that are cleared on run. After which can modify, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output. If still issues, consider, tuning temperatures and/or short example in the prompts to guide model.
 * Summarize and Consolidate, only after 2nd response from both, {human_name) and {model_name}, and do not, Summarize or Consolidate, after 1st response from both, {human_name) and {model_name}.
 
 
