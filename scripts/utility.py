@@ -33,20 +33,28 @@ def shift_responses(entity):
         data['human_previous'] = data['human_current']
         write_to_yaml('human_previous', data['human_previous'])
 
-# function to merge responses and update session history
-def merge_responses():
+# function to summarize responses and update session history
+def summarize_responses():
     data = read_yaml()
-    summarized_history = model_module.summarize_session(data['session_history'])  # Use model_module
+    summarized_text = model_module.summarize(data['human_previous'], data['model_previous'])
+    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
     
-    # Check for None and replace with empty string
-    if summarized_history is None:
-        summarized_history = ""
+    # Store the summarized statements and consolidated history
+    write_to_yaml('summarized_statements', summarized_text)
+    write_to_yaml('consolidated_history', consolidated_history)
+    
+    # Handle None values
+    if consolidated_history is None:
+        consolidated_history = ""
     if data['model_current'] is None:
         data['model_current'] = ""
     if data['human_current'] is None:
         data['human_current'] = ""
-    merged = summarized_history + " " + data['model_current'] + " " + data['human_current']
-    write_to_yaml('session_history', merged)
+        
+    # Update the session history
+    summarized = consolidated_history + " " + data['model_current'] + " " + data['human_current']
+    write_to_yaml('session_history', summarized)
+
 
 # function to clear all keys to "Empty" at the start of the program
 def clear_keys():

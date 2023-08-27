@@ -11,8 +11,8 @@ import platform
 ASCII_ART = r"""   .____    .__                        ________ __________     ___.           __    
    |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_  
    |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\ 
-   |    |___|  |__/ __ \|  Y Y  \/ __ \|      \ |    |   (  <_> ) \_\ (  <_> )  |   
-   |_______ \____(____  /__|_|  (____  Y_______\|____|___ \____/|_____/\____/|__|   
+   |    |___|  |__/ __ \|  Y Y  \/ __ \|       \|    |   (  <_> ) \_\ (  <_> )  |   
+   |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|   
            \/         \/      \/     \/        \/        \/           \/            """
 
 # New function to calculate optimal threads
@@ -91,8 +91,8 @@ def display_startup_menu():
     print("                                AI Configuration")
     print("="*85)
     default_human_name = "Human"
-    default_model_name = "Llama2Robot"
-    default_model_role = "AI Assistant to Human"
+    default_model_name = "Mr.Llama"
+    default_model_role = "AI Chatbot to {human_name}"
     print("\n\n Enter your first name, or leave blank for default...")
     human_name = input(f" name [{default_human_name}]: ").strip()
     human_name = human_name if human_name else default_human_name
