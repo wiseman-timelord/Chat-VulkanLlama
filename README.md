@@ -1,5 +1,6 @@
 # Llama2Robot
-Status: Beta.
+Status: Alpha.
+* Traceback issue when run, will sort out, soon or tomorrow. 
 * Current issue is to do with, parsing output from model and/or logic behind handling of prompt links in scripts and/or the order the keys are being saved to the "config.yaml".
 * Model compatibility delayed due to Huggingface downloads suddenly not work on Downlord app, keeps retrying, have to rely upon browser based downloads on mobile broadband.
 
