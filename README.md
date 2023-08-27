@@ -15,10 +15,12 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 7) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
-* Contextual awareness of, previous statements combined with summarized session history.
-* Support currently for "llama2_7b_chat_uncensored-GGML", others are currently untested/optimized.
-* Auto-Calculation of threads, it will use the logically optimal number for your hardware level.
-* Thought-out text based interface design, continually, analyzed and tweaked, during development.
+* Model Initialization (model.py): This is crucial as it sets up the core component of the application—the Llama model. Without this, the chatbot wouldn't function.
+* User Interaction Loop (main.py): This is the heart of the user experience, allowing for continuous interaction with the model. It takes user input, gets a model response, and updates the display.
+* Response Generation (model.py): This feature is responsible for generating the chatbot's responses based on user input and a predefined prompt, making it essential for the chatbot's primary function.
+* YAML Operations (utility.py): Reading from and writing to the YAML configuration file is vital for maintaining session state, user preferences, and other settings.
+* Chat Interface (interface.py): The chat interface is the user's window into interacting with the model, making it a significant part of the user experience.
+* Model Selection (main.py): Allows the user to choose from available models, providing flexibility and customization to the user experience.
 
 ### INTERFACE:
 Things are looking good so far, getting a logical response at least...
