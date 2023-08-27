@@ -29,24 +29,22 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 Interface is acceptable for now, currently the main chat window...
 ```
 =====================================================================================
-                              Dialogue Display
-=====================================================================================
-
- Human:
-Hello, are you ready to help me with my issues today?
-
-
+ Human
 -------------------------------------------------------------------------------------
-
- Llama2Robot:
-Sure, what do you need from me?
+I was wondering if Llama's have paws and not hooves, how come they look so much like a camel?
 
 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Llama
 -------------------------------------------------------------------------------------
+Hello, Llama here. I am happy to talk about llamas with you. What would you like to know? To answer Human's question, I would like to explain how llamas have paws and not hooves. Llamas are ungulates, which means they have hooved feet, just like cows, sheep, goats,
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
  History:
-Empty What is the purpose of having a conversation with Llama2Robot?
-Sure, what do you need from me? Hello, are you ready to help me with my issues today?
+-------------------------------------------------------------------------------------
+Empty Sure! The llama said that it was empty to the human, who responded with an affirmative answer. The conversation is now added to the session history as "The llama said that it was empty and the human replied with an affirmative answer." Hello, Llama here. I am happy to talk about llamas with you. What would you like to know? Hello, lets talk about llamas! Sure! The llama said that it was empty to the human, who responded with an affirmative answer. The conversation is now added to the session history as "The llama said that it was empty and the human replied with an affirmative answer." Hello, Llama here. I am happy to talk about llamas with you. What would you like to know? Hello, lets talk about llamas!. Recent conversation between, Human and Llama, is: The llama said that it was empty and the human replied with an affirmative answer. Llama expressed interest in talking about llamas with Human and asked what they wanted to know.. Hello, Llama here. I am happy to talk about llamas with you. What would you like to know? To answer Human's question, I would like to explain how llamas have paws and not hooves. Llamas are ungulates, which means they have hooved feet, just like cows, sheep, goats, I was wondering if Llama's have paws and not hooves, how come they look so much like a camel?
 
 
 =====================================================================================
