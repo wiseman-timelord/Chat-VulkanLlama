@@ -10,7 +10,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 2) implement optimizations for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc.
 3) Multi-model support, so as, to be using, faster model for simpler things and larger model for complex things,
 4) At the time of writing the developers of Llama 2 are still holding back the 30b, so at some point later will have to test it works.
-5) Implement "llama-cpp-python" as alternate, thus enabling ClBlas, through option in upgrading "Install.bat", to install GPU brand specific version of Blas. Limitations of CLBlas, if you are only using 1 gpu, and you require gpu for other purpose, but with GPU enabled with enough ram, it is indeed faster.
+5) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
 6) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
 7) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
