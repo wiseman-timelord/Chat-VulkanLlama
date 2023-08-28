@@ -54,7 +54,25 @@ Empty Sure! The llama said that it was empty to the human who replied with an af
 =====================================================================================
 You:
 ```
+```
+=====================================================================================
+                                Model Configuraton
+=====================================================================================
 
+                 1. llama2_13b_chat_uncensored.ggmlv3.q8_0.bin
+                 2. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
+                 3. llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+                 4. None
+                 5. None
+                 6. None
+                 7. None
+                 8. None
+                 9. None
+
+-------------------------------------------------------------------------------------
+
+ Select a model from 1-9:
+```
 ### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
