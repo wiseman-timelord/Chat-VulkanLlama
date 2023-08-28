@@ -36,9 +36,37 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### INTERFACE:
 Interface is under development...
 ```
+=======================================================================================
+                                    Dialogue Display
+=======================================================================================
+ Human
+---------------------------------------------------------------------------------------
+Hello Llama, I am having a productive day, I am upgrading my python scripts.
 
-Updating...
 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Llama
+---------------------------------------------------------------------------------------
+Human, please elaborate on your statement. What exactly is it that you are upgrading? Do you require any assistance from me?
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ History:
+---------------------------------------------------------------------------------------
+Empty
+The session history is now: Empty. Recent conversation between, Llama and Human, is:
+Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
+Human replied, "I am upgrading my computer system to improve its performance."
+The session history now reads as follows: Empty. Recent conversation between Llama and Human is:
+Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
+Human replied, "I am upgrading my computer system to improve its performance."
+The session history now reads as follows: Empty. Recent conversation between Llama and Human is:
+Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
+Human Human, please elaborate on your statement. What exactly is it that you are upgrading? Do you require any assistance from me? Hello Llama, I am having a productive day, I am upgrading my python scripts.
+
+
+=======================================================================================
+You:
 ```
 ```
 =======================================================================================
