@@ -40,10 +40,9 @@ Interface is under development...
 Updating...
 
 ```
-```
-=====================================================================================
-                                  Model Selection
-=====================================================================================
+=======================================================================================
+                                    Model Selection
+=======================================================================================
 
                  1. llama2_13b_chat_uncensored.ggmlv3.q8_0.bin
                  2. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
@@ -55,12 +54,12 @@ Updating...
                  8. None
                  9. None
 
--------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
- Select a model from 1-9: 3
+ Select a model from 1-9: 2
 
  Loading model, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_vocab    = 32000
 llama_model_load_internal: n_ctx      = 4096
@@ -69,12 +68,12 @@ llama_model_load_internal: n_mult     = 256
 llama_model_load_internal: n_head     = 32
 llama_model_load_internal: n_layer    = 32
 llama_model_load_internal: n_rot      = 128
-llama_model_load_internal: ftype      = 7 (mostly Q8_0)
+llama_model_load_internal: ftype      = 2 (mostly Q4_0)
 llama_model_load_internal: n_ff       = 11008
 llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
-llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 
 ```
 ### USAGE: (including linux)
