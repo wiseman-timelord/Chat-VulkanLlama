@@ -1,3 +1,6 @@
+
+
+
 # main.py
 
 # imports
@@ -64,15 +67,17 @@ def main():
         user_input = input("You: ")
         utility.write_to_yaml('human_current', user_input)
 
-        # Shift model responses
-        utility.shift_responses('model')
-
         # Get model response
         start_time = time.time()
         model_response = model_module.get_response(user_input)
         end_time = time.time()
         print(f"Debug: Model response time: {end_time - start_time} seconds")
+
+        # Write model_current before shifting
         utility.write_to_yaml('model_current', model_response)
+
+        # Shift model responses
+        utility.shift_responses('model')
 
         # Summarize and consolidate responses
         utility.summarize_responses()
