@@ -11,7 +11,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
 2) implement optimizations for each
 3 Implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run.
-4) Implement text to speach utilizing built in OS simulated voice for, linux and windows 
+4) Implement text to speach utilizing built in OS simulated voice for current response from model, in both, linux and windows, 
 4) size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc.
 5) Consider tuning temperatures.
 6) Multi-model support, so as, to be using, faster model for simpler things and larger model for complex things,
