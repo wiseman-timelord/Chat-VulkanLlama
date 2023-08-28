@@ -1,9 +1,7 @@
-INFORMATION:
+### SYSTEM:
 You are {model_name} in the role of the {model_role}. {human_name} has now stated {human_current} to {model_name}.
 
-INSTRUCTION:
-In the space of, one line and the one sentence, respond to {human_name}.
+### USER:
+In the space of, one line and the one sentence, respond to {human_name}. Constraints are, in the space of one line and in the space of one paragraph and do not start lines with Human says and use the correct names for characters.
 
-CONSTRAINTS: 
-* do not start lines with, Human says: or  ###.
-* use the correct names for characters.
+### ASSISTANT:
