@@ -46,11 +46,11 @@ def fancy_delay(duration, message=" Loading..."):
 # New function to display the intro screen
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*85)
+    print("="*90)
     print(ASCII_ART)
-    print("-"*85)
+    print("-"*90)
     print("                                   Introduction")
-    print("="*85)
+    print("="*90)
     print("\n\n                              Welcome to Llama2Robot!")
     time.sleep(2)
     return calculate_optimal_threads()
@@ -59,17 +59,17 @@ def display_intro_screen():
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*85)
+    print("="*90)
     available_models = utility.list_available_models()
-    print("                                  Model Selection")
-    print("="*85)
+    print("                                    Model Selection")
+    print("="*90)
     print("")
     for idx, model in enumerate(available_models, 1):
         print(f"                 {idx}. {model.split('/')[-1]}")
     for i in range(len(available_models) + 1, 10):
         print(f"                 {i}. None")
     print("")
-    print("-"*85)
+    print("-"*90)
     selected = int(input("\n Select a model from 1-9: "))
     if selected >= 1 and selected <= len(available_models):
         return available_models[selected - 1]
@@ -80,10 +80,10 @@ def display_model_selection():
 def display_startup_menu():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*85)
+    print("="*90)
     available_models = utility.list_available_models()
     print("                                Config & 1st Message")
-    print("="*85)
+    print("="*90)
     default_human_name = "Human"
     default_model_name = "Llama"
     default_model_role = "Chatbot to {human_name}"
@@ -101,25 +101,25 @@ def display_startup_menu():
 def display_interface():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*85)
+    print("="*90)
     print("                              Dialogue Display")    
-    print("="*85)
+    print("="*90)
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
     print(f" {human_name}")
-    print("-"*85)
+    print("-"*90)
     print(data['human_current'])
     print("\n")
     print("=-"*42)
     print(f" {agent_name}")
-    print("-"*85)
+    print("-"*90)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n")
     print("=-"*42)
     print(" History:")
-    print("-"*85)
+    print("-"*90)
     print(data['session_history'])
     print("\n")
-    print("="*85)
+    print("="*90)
