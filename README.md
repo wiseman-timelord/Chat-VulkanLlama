@@ -31,7 +31,6 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### INTERFACE:
 Interface is acceptable for now, currently the main chat window...
 ```
-
 =====================================================================================
                               Dialogue Display
 =====================================================================================
@@ -50,10 +49,6 @@ Hello, Llama here. I am happy to talk about Llamas with you! What would you like
  History:
 -------------------------------------------------------------------------------------
 Empty Sure! The llama said that it was empty to the human who replied with an affirmative statement. The llama's name is Llama and the human's name is Human. Hello, Llama here. I am happy to talk about Llamas with you! What would you like to know? Hello, lets talk about Llamas!
-
-
-=====================================================================================
-You:
 ```
 ```
 =====================================================================================
@@ -90,7 +85,6 @@ llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
-
 ```
 ### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
