@@ -31,24 +31,9 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### INTERFACE:
 Interface is acceptable for now, currently the main chat window...
 ```
-=====================================================================================
-                              Dialogue Display
-=====================================================================================
- Human
--------------------------------------------------------------------------------------
-Hello, lets talk about Llamas!
 
+Updating...
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Llama
--------------------------------------------------------------------------------------
-Hello, Llama here. I am happy to talk about Llamas with you! What would you like to know?
-
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- History:
--------------------------------------------------------------------------------------
-Empty Sure! The llama said that it was empty to the human who replied with an affirmative statement. The llama's name is Llama and the human's name is Human. Hello, Llama here. I am happy to talk about Llamas with you! What would you like to know? Hello, lets talk about Llamas!
 ```
 ```
 =====================================================================================
