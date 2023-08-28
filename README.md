@@ -4,7 +4,11 @@ Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 * Summarization and Consolidation: These steps are essential for maintaining a coherent and concise history of the conversation.
 * Display Interface: This provides the user with a real-time view of the conversation, enhancing the interactive experience.
 
-### DESCRIPTION:
+
+### GPT4 DESCRIPTION:
+Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
+
+### HUMAN DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
 
 ### FUTURE PLANS:
