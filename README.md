@@ -12,6 +12,7 @@ Llama2Robot uses the Llama 2 language model for conversation and YAML files for 
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
 
 ### FUTURE PLANS:
+1) Implement 2 models, 1 for text processing "Llama-2-7B-32K-Instruct-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML". 
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
 2) implement optimizations for each
 3 Implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run.
@@ -107,9 +108,10 @@ llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 ```
 ### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
-2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
-3) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.)
-4) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ) .
+2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML". (note: proposed instruct model for later implementation "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML").
+3) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
+4) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.)
+5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ) .
 
 ### REQUIREMENTS:
 Windows with WSL (later also linux)
