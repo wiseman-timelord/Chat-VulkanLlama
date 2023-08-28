@@ -1,5 +1,5 @@
 # Llama2Robot
-Status: Beta, Currently upgrading, Prompt and key, logic. Key Points are...
+Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 * Key Rotation: This is crucial for maintaining the state of the conversation. It ensures that the current and previous messages from both the human and the model are available for generating responses and summaries.
 * Summarization and Consolidation: These steps are essential for maintaining a coherent and concise history of the conversation.
 * Display Interface: This provides the user with a real-time view of the conversation, enhancing the interactive experience.
