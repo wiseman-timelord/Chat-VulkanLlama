@@ -44,7 +44,7 @@ def main():
     if not model_name:
         model_name = "Llama2Robot"
     print("\n")
-    print("-"*90)
+    print("-"*87)
     print("\n")
 
     # Write these values to config.yaml in the desired order

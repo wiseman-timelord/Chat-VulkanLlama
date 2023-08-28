@@ -8,16 +8,17 @@ import sys
 import platform
 
 # Ascii Art for the console display
-ASCII_ART = r"""   .____    .__                        ________ __________     ___.           __    
-   |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_  
-   |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\ 
-   |    |___|  |__/ __ \|  Y Y  \/ __ \|       \|    |   (  <_> ) \_\ (  <_> )  |   
-   |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|   
-           \/         \/      \/     \/        \/        \/           \/            """
+ASCII_ART = r"""    .____    .__                        ________ __________     ___.           __    
+    |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_  
+    |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\ 
+    |    |___|  |__/ __ \|  Y Y  \/ __ \|       \|    |   (  <_> ) \_\ (  <_> )  |   
+    |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|   
+            \/         \/      \/     \/        \/        \/           \/            """
 
 # New function to calculate optimal threads
 def calculate_optimal_threads():
     total_threads = os.cpu_count()
+    print(f"\n\n Optimizing for {platform.processor()}-T{total_threads}...")
     if total_threads == 1:
         threads_to_use = 1
     elif total_threads <= 4:
@@ -28,7 +29,6 @@ def calculate_optimal_threads():
         threads_to_use = total_threads - 3
     else:
         threads_to_use = total_threads - 4
-    print(f"\n\n Calculating threads for {platform.processor()}-T{total_threads}...")
     print(f" ...using {threads_to_use} out of {total_threads} threads.\n")
     return threads_to_use
 
@@ -36,7 +36,7 @@ def calculate_optimal_threads():
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
-    for i in range(65):
+    for i in range(62):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
@@ -46,11 +46,11 @@ def fancy_delay(duration, message=" Loading..."):
 # New function to display the intro screen
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*90)
+    print("="*87)
     print(ASCII_ART)
-    print("-"*90)
+    print("-"*87)
     print("                                   Introduction")
-    print("="*90)
+    print("="*87)
     print("\n\n                              Welcome to Llama2Robot!")
     time.sleep(2)
     return calculate_optimal_threads()
@@ -59,17 +59,17 @@ def display_intro_screen():
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*90)
+    print("="*87)
     available_models = utility.list_available_models()
     print("                                    Model Selection")
-    print("="*90)
+    print("="*87)
     print("")
     for idx, model in enumerate(available_models, 1):
         print(f"                 {idx}. {model.split('/')[-1]}")
     for i in range(len(available_models) + 1, 10):
         print(f"                 {i}. None")
     print("")
-    print("-"*90)
+    print("-"*87)
     selected = int(input("\n Select a model from 1-9: "))
     if selected >= 1 and selected <= len(available_models):
         return available_models[selected - 1]
@@ -80,10 +80,10 @@ def display_model_selection():
 def display_startup_menu():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*90)
+    print("="*87)
     available_models = utility.list_available_models()
     print("                                Config & 1st Message")
-    print("="*90)
+    print("="*87)
     default_human_name = "Human"
     default_model_name = "Llama"
     default_model_role = "Chatbot to {human_name}"
@@ -101,25 +101,25 @@ def display_startup_menu():
 def display_interface():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("="*90)
+    print("="*87)
     print("                              Dialogue Display")    
-    print("="*90)
+    print("="*87)
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
     print(f" {human_name}")
-    print("-"*90)
+    print("-"*87)
     print(data['human_current'])
     print("\n")
     print("=-"*42)
     print(f" {agent_name}")
-    print("-"*90)
+    print("-"*87)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n")
     print("=-"*42)
     print(" History:")
-    print("-"*90)
+    print("-"*87)
     print(data['session_history'])
     print("\n")
-    print("="*90)
+    print("="*87)

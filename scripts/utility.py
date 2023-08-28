@@ -12,12 +12,12 @@ def list_available_models():
     return glob.glob("./models/*.bin")
 
 # function to read from YAML file
-def read_yaml(file_path='./config.yaml'):
+def read_yaml(file_path='./cache/config.yaml'):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
 
 # function to write to YAML file
-def write_to_yaml(key, value, file_path='./config.yaml'):
+def write_to_yaml(key, value, file_path='./cache/config.yaml'):
     data = read_yaml(file_path)
     if value is None:
         value = "Empty"
@@ -73,8 +73,8 @@ def summarize_responses():
 # function to clear all keys to "Empty" at the start of the program
 def clear_keys():
     print(" Resetting config.yaml...")
-    if os.path.exists('./config.yaml'):
-        print("...config.yaml reset.\n\n")
+    if os.path.exists('./cache/config.yaml'):
+        print("...config.yaml keys wiped.\n\n")
         keys_to_clear = ['human_name', 'human_current', 'human_previous', 'model_name', 'model_role', 'model_current', 'model_previous', 'recent_statements', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")

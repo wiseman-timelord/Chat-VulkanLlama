@@ -112,4 +112,3 @@ def consolidate(session_history, recent_statements):
     utility.write_to_yaml('session_history', new_session_history)
     
     return new_session_history
- 
