@@ -1,9 +1,7 @@
 # Llama2Robot
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
-* Key Rotation: This is crucial for maintaining the state of the conversation. It ensures that the current and previous messages from both the human and the model are available for generating responses and summaries.
-* Summarization and Consolidation: These steps are essential for maintaining a coherent and concise history of the conversation.
-* Display Interface: This provides the user with a real-time view of the conversation, enhancing the interactive experience.
-
+* Need to logically analyze, "summarize" and "consolidate", functions..
+* Need to implement, "Instruct" model for text processing and "Chat" model for chatting to the user, this 32k instruct version could be epic later on when there is, file reading or websearch, code.  
 
 ### GPT4 DESCRIPTION:
 Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
