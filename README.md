@@ -1,10 +1,9 @@
 # Llama2Robot
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 1) Need to logically analyze, "summarize" and "consolidate", functions in "model.py".
-2) Need to implement, "Instruct" model for text processing and "Chat" model for chatting to the user, intended currently for '2 x 7b' models, essentially tuned for their tasks, has got to be faster, but may also possibly be better overall, than using 1 x llama2 13b chat model for both tasks. 
-* It is hard to find the Llama2 8bit instruct uncensored GGML, literally files disappear infront of my face on huggingface. will be using the "Llama-2-7B-GGML" censored version for now, however, this 32k instruct version could be epic later on when there is, file reading or websearch, code. will have to, test and compare, "32k instruct" and "and 8k instruct", the 32k one could wildly hallucinate for all I know.
-* auto-model-detection feature would be a bit iffy, as most of the llama 2 instruct models do not have "instruct" written on them, however, all instruct models are named llama-2 models that but not have chat in the filename. so its doable.
-* we will be only testing with 8 bit version of the GGML models
+2) While working on, summarize and consolidate, it could be an option to implement, "Instruct" model for text processing and "Chat" model for chatting to the user
+* It is hard or impossible, to find the Llama2 8bit instruct uncensored GGML, will be using, the, "Llama-2-7B-GGML" or "Llama-2-7B-32K-Instruct-GGML", version, will have to test both.
+* auto-model-detection feature would be insteresting, all instruct models are named llama-2 models but not have chat in the filename.
  
 ### GPT4 DESCRIPTION:
 Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
