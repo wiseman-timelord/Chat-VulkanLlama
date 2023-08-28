@@ -1,0 +1,10 @@
+INFORMATION:
+You are {model_name} in the role of the {model_role}. The session history is that, {consolidated_history}. Recent conversation is, {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. 
+{human_name} has just stated {human_current}
+
+INSTRUCTION:
+In the space of, one line and the one sentence, respond to {human_name}.
+
+CONSTRAINTS: 
+* do not start lines with, Human says: or  ###.
+* use the correct names for characters.

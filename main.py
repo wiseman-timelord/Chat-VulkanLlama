@@ -41,6 +41,9 @@ def main():
 
     # Display startup menu and get model_name, model_role, and human_name
     model_name, model_role, human_name = interface.display_startup_menu()
+    Print ("\n")
+    print ("-"*85)
+    Print ("\n")
     if not model_name:
         model_name = "Llama2Robot"
 
@@ -52,20 +55,29 @@ def main():
     utility.write_to_yaml('model_role', model_role)
     utility.write_to_yaml('model_current', "Empty")
     utility.write_to_yaml('model_previous', "Empty")
-    utility.write_to_yaml('summarized_statements', "Empty")
-    utility.write_to_yaml('consolidated_history', "Empty")
+    utility.write_to_yaml('recent_statements', "Empty")
+    utility.write_to_yaml('session_history', "Empty")
 
     while True:
+        # Shift human responses
         utility.shift_responses('human')
-        user_input = input("You: ")  # Use the original input() function
+        user_input = input("You: ")
         utility.write_to_yaml('human_current', user_input)
+
+        # Shift model responses
         utility.shift_responses('model')
-        start_time = time.time()  # Start Timer
+
+        # Get model response
+        start_time = time.time()
         model_response = model_module.get_response(user_input)
-        end_time = time.time()  # End Timer
+        end_time = time.time()
         print(f"Debug: Model response time: {end_time - start_time} seconds")
         utility.write_to_yaml('model_current', model_response)
+
+        # Summarize and consolidate responses
         utility.summarize_responses()
+
+        # Display interface
         interface.display_interface()
 
 # function

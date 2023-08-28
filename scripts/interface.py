@@ -28,8 +28,7 @@ def calculate_optimal_threads():
         threads_to_use = total_threads - 3
     else:
         threads_to_use = total_threads - 4
-    print(f"\n\n Calculating optimal threads...")
-    print(f" Cpu info: {platform.processor()}-T{total_threads}...")
+    print(f"\n\n Calculating threads for {platform.processor()}-T{total_threads}...")
     print(f" ...using {threads_to_use} out of {total_threads} threads.\n")
     return threads_to_use
 
@@ -67,9 +66,11 @@ def display_model_selection():
     print("")
     for idx, model in enumerate(available_models, 1):
         print(f"                 {idx}. {model.split('/')[-1]}")
-    for i in range(len(available_models) + 1, 4):
+    for i in range(len(available_models) + 1, 10):
         print(f"                 {i}. None")
-    selected = int(input("\n Select a model from 1-3: "))
+    print("")
+    print("-"*85)
+    selected = int(input("\n Select a model from 1-9: "))
     if selected >= 1 and selected <= len(available_models):
         return available_models[selected - 1]
     else:
@@ -81,7 +82,7 @@ def display_startup_menu():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     available_models = utility.list_available_models()
-    print("                                AI Configuration")
+    print("                                Config & 1st Message")
     print("="*85)
     default_human_name = "Human"
     default_model_name = "Llama"
@@ -119,6 +120,6 @@ def display_interface():
     print("=-"*42)
     print(" History:")
     print("-"*85)
-    print(data['consolidated_history'])
+    print(data['session_history'])
     print("\n")
     print("="*85)
