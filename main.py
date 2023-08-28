@@ -41,11 +41,11 @@ def main():
 
     # Display startup menu and get model_name, model_role, and human_name
     model_name, model_role, human_name = interface.display_startup_menu()
-    Print ("\n")
-    print ("-"*85)
-    Print ("\n")
     if not model_name:
         model_name = "Llama2Robot"
+    print("\n")
+    print("-"*90)
+    print("\n")
 
     # Write these values to config.yaml in the desired order
     utility.write_to_yaml('human_name', human_name)
