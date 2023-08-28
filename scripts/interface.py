@@ -61,7 +61,7 @@ def display_model_selection():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("="*85)
     available_models = utility.list_available_models()
-    print("                                Model Configuraton")
+    print("                                  Model Selection")
     print("="*85)
     print("")
     for idx, model in enumerate(available_models, 1):
