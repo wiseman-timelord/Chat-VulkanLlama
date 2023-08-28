@@ -1,8 +1,11 @@
 # Llama2Robot
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
-* Need to logically analyze, "summarize" and "consolidate", functions..
-* Need to implement, "Instruct" model for text processing and "Chat" model for chatting to the user. This 32k instruct version could be epic later on when there is, file reading or websearch, code, however, auto-model-detection feature would be a bit iffy, as most of the llama 2 instruct models do not have "instruct" written on them.  
-
+1) Need to logically analyze, "summarize" and "consolidate", functions in "model.py".
+2) Need to implement, "Instruct" model for text processing and "Chat" model for chatting to the user, intended currently for '2 x 7b' models, essentially tuned for their tasks, has got to be faster, but may also possibly be better overall, than using 1 x llama2 13b chat model for both tasks. 
+* It is hard to find the Llama2 8bit instruct uncensored GGML, literally files disappear infront of my face on huggingface. This 32k instruct version could be epic later on when there is, file reading or websearch, code. will have to test it.
+* auto-model-detection feature would be a bit iffy, as most of the llama 2 instruct models do not have "instruct" written on them, however, all instruct models are named llama-2 models that but not have chat in the filename. so its doable.
+* we will be only testing with 8 bit version of the GGML models
+ 
 ### GPT4 DESCRIPTION:
 Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
 
