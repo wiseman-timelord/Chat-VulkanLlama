@@ -74,7 +74,7 @@ def summarize_responses():
 def clear_keys():
     print(" Resetting config.yaml...")
     if os.path.exists('./config.yaml'):
-        print("...config.yaml reset.")
+        print("...config.yaml reset.\n\n")
         keys_to_clear = ['human_name', 'human_current', 'human_previous', 'model_name', 'model_role', 'model_current', 'model_previous', 'recent_statements', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")

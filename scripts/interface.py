@@ -36,11 +36,11 @@ def calculate_optimal_threads():
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
-    for i in range(70):
+    for i in range(65):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
-    sys.stdout.write("]\n")
+    sys.stdout.write("] Complete.\n")
     time.sleep(1)
 
 # New function to display the intro screen
