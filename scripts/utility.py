@@ -35,12 +35,11 @@ def write_to_yaml(key, value, file_path='./cache/config.yaml'):
 def shift_responses(entity):
     data = read_yaml()
     if entity == 'model':
-        data['model_previous'] = data['model_current']
+        data['model_previous'] = data['model_current'] if data['model_current'] != "Empty" else "Empty"
         write_to_yaml('model_previous', data['model_previous'])
     elif entity == 'human':
-        data['human_previous'] = data['human_current']
+        data['human_previous'] = data['human_current'] if data['human_current'] != "Empty" else "Empty"
         write_to_yaml('human_previous', data['human_previous'])
-
 
 # function to summarize responses and update session history
 def summarize_responses():
@@ -54,14 +53,14 @@ def summarize_responses():
     else:
         raise ValueError("Invalid state for summarization")
     
-    summarized_text = model_module.summarize(data['human_current'], data['model_current'], summarize_file)
+    summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)
     
     write_to_yaml('recent_statements', summarized_text)
     consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
     write_to_yaml('session_history', consolidated_history)
     
-    if consolidated_history is None:
-        consolidated_history = ""
+    if consolidated_history == "Empty":
+        consolidated_history = summarized_text.strip()
     if data['model_current'] is None:
         data['model_current'] = ""
     if data['human_current'] is None:
@@ -74,7 +73,7 @@ def summarize_responses():
 def clear_keys():
     print(" Resetting config.yaml...")
     if os.path.exists('./cache/config.yaml'):
-        print("...config.yaml keys wiped.\n\n")
+        print(" ...config.yaml keys wiped.\n\n")
         keys_to_clear = ['human_name', 'human_current', 'human_previous', 'model_name', 'model_role', 'model_current', 'model_previous', 'recent_statements', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")

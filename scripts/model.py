@@ -106,7 +106,10 @@ def consolidate(session_history, recent_statements):
     )["choices"][0]["text"]
     
     # Update session history
-    new_session_history = session_history + " " + consolidated_paragraph
+    new_session_history = (session_history + " " + consolidated_paragraph).strip()
+    if new_session_history == "Empty":
+        new_session_history = consolidated_paragraph.strip()
+
     
     # Write the new session history back to YAML
     utility.write_to_yaml('session_history', new_session_history)
