@@ -71,7 +71,25 @@ You:
 
 -------------------------------------------------------------------------------------
 
- Select a model from 1-9:
+ Select a model from 1-9: 3
+
+ Loading model, be patient...
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+llama_model_load_internal: format     = ggjt v3 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 4096
+llama_model_load_internal: n_embd     = 4096
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 32
+llama_model_load_internal: n_layer    = 32
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: ftype      = 7 (mostly Q8_0)
+llama_model_load_internal: n_ff       = 11008
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 7B
+llama_model_load_internal: ggml ctx size =    0.07 MB
+llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+
 ```
 ### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
