@@ -1,22 +1,23 @@
 # Llama2Robot
-Status: Beta, current issues are to do with...
-* Parsing output from model and/or logic behind handling of prompt links in scripts. Need to implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. With this data then can tune, the prompts and parsing code, accordingly. This should also involve print("-"*85) between each prompt/output in the log, for clarity.
-* Correct Prompt logic. Begin, Summarize and Consolidate, only after 2nd response from both, {human_name) and {model_name}, at which point, there should be history.
-* Initial prompts. Utilize, "converse1.txt", "converse2.txt", "converse3.txt", when there is relevantly, no history and previous responses, no history but previous messages. history and previous messages are present.
-* Further tuning of responses and summarization. Consider short example in the prompts to guide model better in worst case scenario.
+Status: Beta, Currently upgrading, Prompt and key, logic. Key Points are...
+* Key Rotation: This is crucial for maintaining the state of the conversation. It ensures that the current and previous messages from both the human and the model are available for generating responses and summaries.
+Summarization and Consolidation: These steps are essential for maintaining a coherent and concise history of the conversation.
+Display Interface: This provides the user with a real-time view of the conversation, enhancing the interactive experience.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
 
 ### FUTURE PLANS:
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
-2) implement optimizations for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc.
-3) Consider tuning temperatures.
-4) Multi-model support, so as, to be using, faster model for simpler things and larger model for complex things,
-5) At the time of writing the developers of Llama 2 are still holding back the 30b, so at some point later will have to test it works.
-6) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
-7) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
-8) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
+2) implement optimizations for each
+3 Implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. 
+4) size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc.
+5) Consider tuning temperatures.
+6) Multi-model support, so as, to be using, faster model for simpler things and larger model for complex things,
+7) At the time of writing the developers of Llama 2 are still holding back the 30b, so at some point later will have to test it works.
+8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
+9) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
+10) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
