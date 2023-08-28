@@ -22,8 +22,15 @@ def initialize_model(selected_model_path, optimal_threads):
 
 # function to get a response from the model
 def get_response(input_text):
-    print("Debug: Reading converse.txt...")
-    with open("./prompts/converse.txt", "r") as file:
+    data = utility.read_yaml()
+    if data['human_previous'] == "Empty" and data['model_previous'] == "Empty":
+        prompt_file = "./prompts/converse1.txt"
+    elif data['session_history'] == "Empty":
+        prompt_file = "./prompts/converse2.txt"
+    else:
+        prompt_file = "./prompts/converse3.txt"
+    print(f"Debug: Reading {prompt_file}...")
+    with open(prompt_file, "r") as file:
         prompt = file.read()
     print("Debug: Reading data from config.yaml...")
     data = utility.read_yaml()
@@ -46,21 +53,31 @@ def get_response(input_text):
     print("Debug: Model response generated.")
     return model_response
 
-# function to summarize responses and update session history
-def summarize_responses():
-    data = read_yaml()
-    summarized_text = model_module.summarize(data['human_current'], data['model_current'])
-    write_to_yaml('recent_statements', summarized_text)
-    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
-    write_to_yaml('session_history', consolidated_history)
-    if consolidated_history is None:
-        consolidated_history = ""
-    if data['model_current'] is None:
-        data['model_current'] = ""
-    if data['human_current'] is None:
-        data['human_current'] = ""
-    updated_session_history = consolidated_history + " " + data['model_current'] + " " + data['human_current']
-    write_to_yaml('session_history', updated_session_history)
+# function to summarize previous statements
+def summarize(human_previous, model_previous, summarize_file):
+    data = utility.read_yaml()
+    
+    # Determine which summarize prompt to use based on the conversation state
+    if data['human_previous'] == "Empty" and data['model_previous'] == "Empty":
+        summarize_file = "./prompts/summarize1.txt"
+    elif data['session_history'] == "Empty":
+        summarize_file = "./prompts/summarize2.txt"
+    else:
+        raise ValueError("Invalid state for summarization")
+    print(f"Debug: Reading {summarize_file}...")
+    with open(summarize_file, "r") as file:
+        summarize_prompt = file.read()
+    summarize_prompt = summarize_prompt.format(
+        human_current=data['human_current'],
+        human_previous=human_previous,
+        model_current=data['model_current'].replace("### USER:", "").strip(),
+        model_previous=model_previous.replace("### USER:", "").strip(),
+        human_name=data.get('human_name', 'Human'),
+        model_name=data.get('model_name', 'DefaultName')
+    )
+    summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"]
+    utility.write_to_yaml('recent_statements', summarized_text)
+    return summarized_text
 
 # consolidate summarized statements into history
 def consolidate(session_history, recent_statements):
