@@ -2,7 +2,7 @@
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 1) Need to logically analyze, "summarize" and "consolidate", functions in "model.py".
 2) Need to implement, "Instruct" model for text processing and "Chat" model for chatting to the user, intended currently for '2 x 7b' models, essentially tuned for their tasks, has got to be faster, but may also possibly be better overall, than using 1 x llama2 13b chat model for both tasks. 
-* It is hard to find the Llama2 8bit instruct uncensored GGML, literally files disappear infront of my face on huggingface. This 32k instruct version could be epic later on when there is, file reading or websearch, code. will have to test it.
+* It is hard to find the Llama2 8bit instruct uncensored GGML, literally files disappear infront of my face on huggingface. will be using the "Llama-2-7B-GGML" censored version for now, however, this 32k instruct version could be epic later on when there is, file reading or websearch, code. will have to, test and compare, "32k instruct" and "and 8k instruct", the 32k one could wildly hallucinate for all I know.
 * auto-model-detection feature would be a bit iffy, as most of the llama 2 instruct models do not have "instruct" written on them, however, all instruct models are named llama-2 models that but not have chat in the filename. so its doable.
 * we will be only testing with 8 bit version of the GGML models
  
