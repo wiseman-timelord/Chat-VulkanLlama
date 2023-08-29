@@ -105,13 +105,13 @@ Hello Human! How can I help you today?
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Llama's State:
+ Llama's State
 ---------------------------------------------------------------------------------------
 Empty
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Event History:
+ Event History
 ---------------------------------------------------------------------------------------
 Human and Llama had a conversation where Human stated that they were feeling productive and asked how Llama could help them today, to which Llama responded by asking how they could assist Human. The conversation was friendly and professional in nature.
 
