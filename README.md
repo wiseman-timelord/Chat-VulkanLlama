@@ -33,55 +33,46 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 Interface is under development...
 ```
 =======================================================================================
-                                    Dialogue Display
+                              Dialogue Display
 =======================================================================================
  Human
 ---------------------------------------------------------------------------------------
-Hello Llama, I am having a productive day, I am upgrading my python scripts.
+Hello Llama, I am feeling productive, how are you today?
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Llama
 ---------------------------------------------------------------------------------------
-Human, please elaborate on your statement. What exactly is it that you are upgrading? Do you require any assistance from me?
+Hello Human, I am feeling productive as well. How can I assist you today?
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Motivation:
+---------------------------------------------------------------------------------------
+Empty
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  History:
 ---------------------------------------------------------------------------------------
-Empty
-The session history is now: Empty. Recent conversation between, Llama and Human, is:
-Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
-Human replied, "I am upgrading my computer system to improve its performance."
-The session history now reads as follows: Empty. Recent conversation between Llama and Human is:
-Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
-Human replied, "I am upgrading my computer system to improve its performance."
-The session history now reads as follows: Empty. Recent conversation between Llama and Human is:
-Llama said, "Please elaborate on your statement. What exactly are you upgrading? Do you require any assistance from me?"
-Human Human, please elaborate on your statement. What exactly is it that you are upgrading? Do you require any assistance from me? Hello Llama, I am having a productive day, I am upgrading my python scripts.
+Unknown
 
 
 =======================================================================================
-You:
+ Your input is:
 ```
 ```
 =======================================================================================
                                     Model Selection
 =======================================================================================
 
+
                  1. llama2_13b_chat_uncensored.ggmlv3.q8_0.bin
                  2. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
                  3. llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
-                 4. None
-                 5. None
-                 6. None
-                 7. None
-                 8. None
-                 9. None
 
----------------------------------------------------------------------------------------
+ Select a model from 1-3: 2
 
- Select a model from 1-9: 2
 
  Loading model, be patient...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
@@ -101,6 +92,7 @@ llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 
 ```
+
 ### USAGE: (including unteseted linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
