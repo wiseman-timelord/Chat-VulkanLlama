@@ -27,7 +27,7 @@ def get_response(input_text):
         prompt_file = "./prompts/converse1.txt"
     else:
         prompt_file = "./prompts/converse2.txt"
-    print(f"Debug: Reading {prompt_file}...")
+    print(f" Reading {prompt_file}...")
     with open(prompt_file, "r") as file:
         prompt = file.read()
     print("Reading config.yaml...")
@@ -78,7 +78,7 @@ def summarize(human_previous, model_previous, summarize_file):
         # Use the new "emotions.txt" prompt
         summarize_file = "./prompts/emotions.txt"
         
-        print(f"Debug: Reading {summarize_file}...")
+        print(f" Reading {summarize_file}...")
         with open(summarize_file, "r") as file:
             summarize_prompt = file.read()
         
@@ -96,13 +96,11 @@ def summarize(human_previous, model_previous, summarize_file):
         # Generate summarized text for emotions
         summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"]
         
-        # Update the model_emotion in the YAML file
-        utility.write_to_yaml('model_emotion', summarized_text)
         print("Motivations determined.")
-        return summarized_text
+        return summarized_text.strip()  # Return the summarized text
     else:
         print("More responses required...")
-        return None
+        return None  # Return None if more responses are required
 
 # function to consolidate current messages
 def consolidate(session_history, data):
@@ -156,3 +154,11 @@ def consolidate(session_history, data):
     utility.write_to_yaml('session_history', new_session_history)
 
     return new_session_history
+
+# function to update model's emotional state
+def update_model_emotion():
+    # Your logic here
+    summarized_text = model_module.summarize(None, None, None)  # Replace None with actual parameters if needed
+    if summarized_text:
+        write_to_yaml('model_emotion', summarized_text)
+        print("Model emotion updated.")
