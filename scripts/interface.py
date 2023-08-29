@@ -128,14 +128,14 @@ def display_interface():
     print("\n")
     print("=-"*43)
     
-    print("f {agent_name}'s Response")
+    print(f" {agent_name}'s Response")
     print("-"*87)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n")
     
     print("=-"*43)
-    print("f {agent_name}'s State")
+    print(f" {agent_name}'s State")
     print("-"*87)
     model_emotion = data.get('model_emotion', 'Unknown')
     print(model_emotion)

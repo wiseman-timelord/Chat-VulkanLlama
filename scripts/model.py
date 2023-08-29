@@ -157,8 +157,35 @@ def consolidate(session_history, data):
 
 # function to update model's emotional state
 def update_model_emotion():
-    # Your logic here
-    summarized_text = model_module.summarize(None, None, None)  # Replace None with actual parameters if needed
-    if summarized_text:
-        write_to_yaml('model_emotion', summarized_text)
+    data = utility.read_yaml()
+    
+    # Check if all model_previous slots are filled
+    if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
+        
+        # Use the "emotions.txt" prompt
+        summarize_file = "./prompts/emotions.txt"
+        
+        print(f"Debug: Reading {summarize_file}...")
+        with open(summarize_file, "r") as file:
+            summarize_prompt = file.read()
+        
+        # Fill in placeholders in the prompt
+        summarize_prompt = summarize_prompt.format(
+            human_name=data.get('human_name', 'Human'),
+            model_name=data.get('model_name', 'DefaultName'),
+            model_current=data['model_current'].replace("### USER:", "").strip(),
+            model_previous_1=data['model_previous1'].replace("### USER:", "").strip(),
+            model_previous_2=data['model_previous2'].replace("### USER:", "").strip(),
+            model_previous_3=data['model_previous3'].replace("### USER:", "").strip()
+        )
+        
+        # Generate summarized text for emotions
+        summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
+        
+        # Update the model_emotion in the YAML file
+        utility.write_to_yaml('model_emotion', summarized_text)
         print("Model emotion updated.")
+        return summarized_text
+    else:
+        print("More responses required...")
+        return None

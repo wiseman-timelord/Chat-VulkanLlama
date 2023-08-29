@@ -2,7 +2,8 @@
 
 # imports
 from scripts import interface
-from scripts import model as model_module  # Renamed to avoid conflict
+from scripts import model as model_module
+from scripts.model import update_model_emotion
 from scripts import utility
 import time
 import readline
@@ -89,7 +90,7 @@ def main():
 
         # Update model_emotion every 1 in 4 rotations
         if rotation_counter == 3:
-            new_emotion = utility.update_model_emotion()
+            new_emotion = update_model_emotion()  # Call the function from model.py
             if new_emotion:
                 utility.write_to_yaml('model_emotion', new_emotion)
 
