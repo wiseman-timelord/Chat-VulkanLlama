@@ -35,31 +35,32 @@ Interface is under development...
 =======================================================================================
                               Dialogue Display
 =======================================================================================
- Human
+ Human's Input
 ---------------------------------------------------------------------------------------
 Hello Llama, I am feeling productive, how are you today?
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Llama
+ Llama's Response
 ---------------------------------------------------------------------------------------
-Hello Human, I am feeling productive as well. How can I assist you today?
+Hello Human! How can I help you today?
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Motivation:
+ {agent_name}'s Motivs:
 ---------------------------------------------------------------------------------------
 Empty
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- History:
+ Event History:
 ---------------------------------------------------------------------------------------
-Unknown
+Human and Llama had a conversation where Human stated that they were feeling productive and asked how Llama could help them today, to which Llama responded by asking how they could assist Human. The conversation was friendly and professional in nature.
 
 
 =======================================================================================
  Your input is:
+
 ```
 ```
 =======================================================================================
