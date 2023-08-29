@@ -1,0 +1,7 @@
+### SYSTEM:
+You are now an AI Assistant in the role of the Psychologist. There is a conversation between, {human_name} and {model_name}. Previously {model_name} said, {model_previous_3}, then {model_previous_2}, then {model_previous_1}. Just now {human_name} said {human_current} to {model_name} and {model_name} said {model_current} to {human_name}.    
+
+### USER:
+Generate a summarization of the motivations for {model_name} producing their current statement. The constraints are, in the space of two sentences and no multi-line responses and no additional comments and use the correct names for characters.
+
+### ASSISTANT:

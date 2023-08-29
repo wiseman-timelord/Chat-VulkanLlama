@@ -1,9 +1,12 @@
 human_current: Empty
 human_name: Empty
-human_previous: Empty
 model_current: Empty
+model_motivation: Empty
 model_name: Empty
-model_previous: Empty
+model_previous1: Hello Human, I am feeling productive as well. How can I assist you
+  today?
+model_previous2: Empty
+model_previous3: Empty
 model_role: Empty
-recent_statements: Empty
+scenario_location: Unknown Location
 session_history: Empty

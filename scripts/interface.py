@@ -63,18 +63,18 @@ def display_model_selection():
     available_models = utility.list_available_models()
     print("                                    Model Selection")
     print("="*87)
-    print("")
+    print("\n")
     for idx, model in enumerate(available_models, 1):
         print(f"                 {idx}. {model.split('/')[-1]}")
-    for i in range(len(available_models) + 1, 10):
-        print(f"                 {i}. None")
-    print("")
-    print("-"*87)
-    selected = int(input("\n Select a model from 1-9: "))
-    if selected >= 1 and selected <= len(available_models):
-        return available_models[selected - 1]
+    
+    if available_models:
+        selected = int(input(f"\n\n Select a model from 1-{len(available_models)}: "))
+        if selected >= 1 and selected <= len(available_models):
+            return available_models[selected - 1]
     else:
-        return None
+        print("\n No models available.")
+    
+    return None
 
 # function to display the startup menu
 def display_startup_menu():
@@ -85,19 +85,30 @@ def display_startup_menu():
     print("                                Config & 1st Message")
     print("="*87)
     default_human_name = "Human"
+    print(f"\n\n Default Human Name = {default_human_name}")    
     default_model_name = "Llama"
-    default_model_role = "Chatbot to {human_name}"
+    default_model_role = "Chatbot to {default_human_name}"
+    print(f" Default Model Name, Role = {default_model_name}, {default_model_role}")  
+    default_scenario_location = "Unknown Location"
+    print(f" Default Location = {default_scenario_location}")
+    
     print("\n\n Enter your first name, or leave blank for default...")
-    human_name = input(f" name [{default_human_name}]: ").strip()
+    human_name = input(" Your name is: ").strip()
     human_name = human_name if human_name else default_human_name
-    print("\n Enter 'name, role', or leave blank for default...")
-    model_info_input = input(f" name, role [{default_model_name}, {default_model_role}]: ")
+    
+    print("\n Enter 'Name, Role', or leave blank for default...")
+    model_info_input = input(" Model's 'name, role' is: ")
     model_info = model_info_input.split(", ") if model_info_input else []
     model_name = model_info[0].strip() if model_info and model_info[0].strip() else default_model_name
     model_role = model_info[1].strip() if len(model_info) > 1 else f"AI Assistant to {human_name}"
-    return model_name, model_role, human_name.strip()
-   
-# function
+    
+    print("\n Enter the location, or leave blank for default...")
+    scenario_location = input(" The location is: ").strip()
+    scenario_location = scenario_location if scenario_location else default_scenario_location
+    
+    return model_name, model_role, human_name, scenario_location
+
+# function for Dialogue Display
 def display_interface():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -107,19 +118,31 @@ def display_interface():
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
+    model_motivation = data.get('model_motivation', 'Unknown')
+    
     print(f" {human_name}")
     print("-"*87)
     print(data['human_current'])
     print("\n")
     print("=-"*43)
+    
     print(f" {agent_name}")
     print("-"*87)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n")
+    
+    print("=-"*43)
+    print(" Motivation:")
+    print("-"*87)
+    model_motivation = data.get('model_motivation', 'Unknown')
+    print(model_motivation)
+    print("\n")
+    
     print("=-"*43)
     print(" History:")
     print("-"*87)
-    print(data['session_history'])
+    consolidated_history = data.get('consolidated_history', 'Unknown')  # Change this line to get consolidated history
+    print(consolidated_history)
     print("\n")
     print("="*87)

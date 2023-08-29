@@ -23,26 +23,28 @@ def write_to_yaml(key, value, file_path='./cache/config.yaml'):
         value = "Empty"
     data[key] = value
     ordered_keys = [
-        'human_name', 'human_current', 'human_previous',
-        'model_name', 'model_role', 'model_current', 'model_previous',
-        'recent_statements', 'session_history'
+        'human_name', 'human_current',
+        'model_name', 'model_role', 'model_current', 
+        'model_previous1', 'model_previous2', 'model_previous3',
+        'model_motivation', 'scenario_location', 'session_history'
     ]
     ordered_data = {k: data.get(k, "Empty") for k in ordered_keys}
     with open(file_path, 'w') as file:
         yaml.dump(ordered_data, file)
 
-# function to shift responses for both model and human
-def shift_responses(entity):
+# shift responses for the model only
+def shift_responses():
     data = read_yaml()
-    if entity == 'model':
-        data['model_previous'] = data['model_current'] if data['model_current'] != "Empty" else "Empty"
-        write_to_yaml('model_previous', data['model_previous'])
-    elif entity == 'human':
-        data['human_previous'] = data['human_current'] if data['human_current'] != "Empty" else "Empty"
-        write_to_yaml('human_previous', data['human_previous'])
+    data['model_previous3'] = data['model_previous2']
+    data['model_previous2'] = data['model_previous1']
+    data['model_previous1'] = data['model_current']
+    write_to_yaml('model_previous3', data['model_previous3'])
+    write_to_yaml('model_previous2', data['model_previous2'])
+    write_to_yaml('model_previous1', data['model_previous1'])
+
 
 # function to summarize responses and update session history
-def summarize_responses():
+def summarize_responses(data):
     data = read_yaml()
     
     # Determine which summarize prompt to use based on the conversation state

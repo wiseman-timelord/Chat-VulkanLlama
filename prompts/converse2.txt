@@ -1,7 +1,7 @@
 ### SYSTEM:
-You are {model_name} in the role of the {model_role}. Recent conversation is: {human_name} said {human_previous} to {model_name} and {model_name} said {model_previous} to {human_name}. {human_name} has now stated: {human_current} to {model_name}.
+Your name is {model_name}, you are and in the role of the {model_role}. The location of the conversation is {scenario_location}, where, {human_name} and {model_name}, are present. The session history is that, {consolidated_history}, and now {human_name} has just stated {human_current} to {model_name}.
 
 ### USER:
-In the space of, one line and the one sentence, respond to {human_name}. Constraints are, in the space of one line and in the space of one paragraph and do not start lines with Human says and use the correct names for characters.
+Respond to {human_name}. The constraints are, in the space of two sentences and no multi-line responses and no additional comments and use the correct names for characters.
 
 ### ASSISTANT:

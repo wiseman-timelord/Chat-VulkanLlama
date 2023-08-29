@@ -1,6 +1,3 @@
-
-
-
 # main.py
 
 # imports
@@ -9,6 +6,7 @@ from scripts import model as model_module  # Renamed to avoid conflict
 from scripts import utility
 import time
 import readline
+import os
 
 import sys
 class SuppressPrints:
@@ -22,12 +20,15 @@ class SuppressPrints:
 # function
 def main():
     # Display the intro screen and get optimal threads    
-    optimal_threads = interface.display_intro_screen()  # Capture the returned value here
-    time.sleep(1) 
+    optimal_threads = interface.display_intro_screen()
+    time.sleep(1)
     
     # Clear Keys
     utility.clear_keys()
-    time.sleep(1) 
+    time.sleep(1)
+    
+    # Read the Yaml now
+    data = utility.read_yaml()
     
     # Initialize human_name right after clearing keys
     human_name = "DefaultHumanName"
@@ -42,29 +43,33 @@ def main():
         print("No model selected. Exiting.")
         return
 
-    # Display startup menu and get model_name, model_role, and human_name
-    model_name, model_role, human_name = interface.display_startup_menu()
+    # Display startup menu and get model_name, model_role, human_name, and scenario_location
+    model_name, model_role, human_name, scenario_location = interface.display_startup_menu()
     if not model_name:
         model_name = "Llama2Robot"
     print("\n")
-    print("-"*87)
+    print("-" * 87)
     print("\n")
 
     # Write these values to config.yaml in the desired order
     utility.write_to_yaml('human_name', human_name)
     utility.write_to_yaml('human_current', "Empty")
-    utility.write_to_yaml('human_previous', "Empty")
     utility.write_to_yaml('model_name', model_name)
     utility.write_to_yaml('model_role', model_role)
     utility.write_to_yaml('model_current', "Empty")
-    utility.write_to_yaml('model_previous', "Empty")
-    utility.write_to_yaml('recent_statements', "Empty")
+    utility.write_to_yaml('model_previous1', "Empty")
+    utility.write_to_yaml('model_previous2', "Empty")
+    utility.write_to_yaml('model_previous3', "Empty")
+    utility.write_to_yaml('model_motivation', "Empty")
+    utility.write_to_yaml('scenario_location', scenario_location)
     utility.write_to_yaml('session_history', "Empty")
 
+    rotation_counter = 0  # Initialize rotation counter for model_motivation
+
     while True:
-        # Shift human responses
-        utility.shift_responses('human')
-        user_input = input("You: ")
+        user_input = input(" Your input is: ")
+        
+        # Overwrite human_current in config.yaml
         utility.write_to_yaml('human_current', user_input)
 
         # Get model response
@@ -77,10 +82,20 @@ def main():
         utility.write_to_yaml('model_current', model_response)
 
         # Shift model responses
-        utility.shift_responses('model')
+        utility.shift_responses()
 
-        # Summarize and consolidate responses
-        utility.summarize_responses()
+        # Update rotation counter
+        rotation_counter = (rotation_counter + 1) % 4
+
+        # Update model_motivation every 1 in 4 rotations
+        if rotation_counter == 3:
+            utility.update_model_motivation()
+
+        # Consolidate responses into session history
+        new_session_history = model_module.consolidate(data['session_history'], data)
+
+        # Update session history in the YAML file
+        utility.write_to_yaml('session_history', new_session_history)
 
         # Display interface
         interface.display_interface()
