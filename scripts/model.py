@@ -45,8 +45,16 @@ def get_response(input_text):
     print("Generating a response...")
     debug_log_path = './cache/debug.log'  # Define the path to the debug log
     try:
-        raw_model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
+        raw_model_response = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
         model_response = raw_model_response.replace("### ASSISTANT:", "").strip()
+        
+        # Remove the model_name prefix
+        model_name_prefix = f"{data['model_name']}: "
+        model_response = model_response.replace(model_name_prefix, "")
+        
+        # Remove lines starting with human_name
+        human_name_prefix = f"{data.get('human_name', 'Human')}: "
+        model_response = '\n'.join([line for line in model_response.split('\n') if not line.startswith(human_name_prefix)])
         
         # Log raw model output to debug.log
         with open(debug_log_path, 'a') as debug_log:
@@ -60,16 +68,15 @@ def get_response(input_text):
     print("Model response generated.")
     return model_response
 
-
-# function to summarize motivations
+# function to summarize emotions
 def summarize(human_previous, model_previous, summarize_file):
     data = utility.read_yaml()
     
     # Check if all model_previous slots are filled
     if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
         
-        # Use the new "motivations.txt" prompt
-        summarize_file = "./prompts/motivations.txt"
+        # Use the new "emotions.txt" prompt
+        summarize_file = "./prompts/emotions.txt"
         
         print(f"Debug: Reading {summarize_file}...")
         with open(summarize_file, "r") as file:
@@ -86,11 +93,11 @@ def summarize(human_previous, model_previous, summarize_file):
             model_name=data.get('model_name', 'DefaultName')
         )
         
-        # Generate summarized text for motivations
+        # Generate summarized text for emotions
         summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"]
         
-        # Update the model_motivation in the YAML file
-        utility.write_to_yaml('model_motivation', summarized_text)
+        # Update the model_emotion in the YAML file
+        utility.write_to_yaml('model_emotion', summarized_text)
         print("Motivations determined.")
         return summarized_text
     else:

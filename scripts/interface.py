@@ -120,7 +120,7 @@ def display_interface():
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
-    model_motivation = data.get('model_motivation', 'Unknown')
+    model_emotion = data.get('model_emotion', 'Unknown')
     
     print(f" {human_name}'s Input")
     print("-"*87)
@@ -135,10 +135,10 @@ def display_interface():
     print("\n")
     
     print("=-"*43)
-    print(" {agent_name}'s Motivs:")
+    print("f {agent_name}'s State:")
     print("-"*87)
-    model_motivation = data.get('model_motivation', 'Unknown')
-    print(model_motivation)
+    model_emotion = data.get('model_emotion', 'Unknown')
+    print(model_emotion)
     print("\n")
     
     print("=-"*43)

@@ -26,7 +26,7 @@ def write_to_yaml(key, value, file_path='./cache/config.yaml'):
         'human_name', 'human_current',
         'model_name', 'model_role', 'model_current', 
         'model_previous1', 'model_previous2', 'model_previous3',
-        'model_motivation', 'scenario_location', 'session_history'
+        'model_emotion', 'scenario_location', 'session_history'
     ]
     ordered_data = {k: data.get(k, "Empty") for k in ordered_keys}
     with open(file_path, 'w') as file:
@@ -81,7 +81,7 @@ def clear_keys():
     time.sleep(1)
     print("\n Resetting config.yaml...")
     if os.path.exists('./cache/config.yaml'):
-        keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_previous3', 'model_motivation', 'scenario_location', 'session_history']
+        keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_previous3', 'model_emotion', 'scenario_location', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")
         print(" ...config.yaml keys wiped.\n\n")

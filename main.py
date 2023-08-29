@@ -60,11 +60,11 @@ def main():
     utility.write_to_yaml('model_previous1', "Empty")
     utility.write_to_yaml('model_previous2', "Empty")
     utility.write_to_yaml('model_previous3', "Empty")
-    utility.write_to_yaml('model_motivation', "Empty")
+    utility.write_to_yaml('model_emotion', "Empty")
     utility.write_to_yaml('scenario_location', scenario_location)
     utility.write_to_yaml('session_history', "Empty")
 
-    rotation_counter = 0  # Initialize rotation counter for model_motivation
+    rotation_counter = 0  # Initialize rotation counter for model_emotion
 
     while True:
         user_input = input(" Your input is: ")
@@ -87,9 +87,9 @@ def main():
         # Update rotation counter
         rotation_counter = (rotation_counter + 1) % 4
 
-        # Update model_motivation every 1 in 4 rotations
+        # Update model_emotion every 1 in 4 rotations
         if rotation_counter == 3:
-            utility.update_model_motivation()
+            utility.update_model_emotion()
 
         # Consolidate responses into session history
         new_session_history = model_module.consolidate(data['session_history'], data)
