@@ -101,12 +101,12 @@ llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 
 ```
-### USAGE: (including linux)
+### USAGE: (including unteseted linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
-2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
-3) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
-4) Copy Llama 2 GGML bsed chat model with the "*.bin" extention into the "./models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.
-5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ) .
+2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
+2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML", then copy files with "*.bin" extention into the "./models" folder, note the required "config.json" is already in the "./models" folder.
+5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ). 
+*) For Windows ueser, optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
 ### REQUIREMENTS:
 Windows with WSL (later also linux)
