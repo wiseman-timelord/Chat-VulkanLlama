@@ -33,36 +33,32 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 Interface is under development...
 ```
 =======================================================================================
-                              Dialogue Display
+    .____    .__                        ________ __________     ___.           __
+    |    |   |  | _____    _____ _____  \_____  \\______   \____\_ |__   _____/  |_
+    |    |   |  | \__  \  /     \\__  \ /  _____/|       __/  _ \| __ \ /  _ \   __\
+    |    |___|  |__/ __ \|  Y Y  \/ __ \|       \|    |   (  <_> ) \_\ (  <_> )  |
+    |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|
+            \/         \/      \/     \/        \/        \/           \/
+---------------------------------------------------------------------------------------
+                                   Introduction
 =======================================================================================
- Human's Input
----------------------------------------------------------------------------------------
-Hello Llama, I am feeling productive, how are you today?
 
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Llama's Response
----------------------------------------------------------------------------------------
-Hello Human! How can I help you today?
+                              Welcome to Llama2Robot!
 
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- {agent_name}'s Motivs:
----------------------------------------------------------------------------------------
-Empty
+ Optimizing for x86_64-T24...
+ ...using 20 out of 24 threads.
 
+ Clearing debug.log...
+ ...debug.log cleared.
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Event History:
----------------------------------------------------------------------------------------
-Human and Llama had a conversation where Human stated that they were feeling productive and asked how Llama could help them today, to which Llama responded by asking how they could assist Human. The conversation was friendly and professional in nature.
-
-
-=======================================================================================
- Your input is:
+ Resetting config.yaml...
+ ...config.yaml keys wiped.
 
 ```
 ```
+
 =======================================================================================
                                     Model Selection
 =======================================================================================
@@ -92,6 +88,37 @@ llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
 llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
+
+```
+```
+=======================================================================================
+                              Dialogue Display
+=======================================================================================
+ Human's Input
+---------------------------------------------------------------------------------------
+Hello Llama, I am feeling productive, how are you today?
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Llama's Response
+---------------------------------------------------------------------------------------
+Hello Human! How can I help you today?
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ {agent_name}'s Motivs:
+---------------------------------------------------------------------------------------
+Empty
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ Event History:
+---------------------------------------------------------------------------------------
+Human and Llama had a conversation where Human stated that they were feeling productive and asked how Llama could help them today, to which Llama responded by asking how they could assist Human. The conversation was friendly and professional in nature.
+
+
+=======================================================================================
+ Your input is:
 
 ```
 
