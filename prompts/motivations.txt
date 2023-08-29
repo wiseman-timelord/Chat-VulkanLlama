@@ -1,7 +1,0 @@
-### SYSTEM:
-You are now an AI Assistant in the role of the Psychologist. There is a conversation between, {human_name} and {model_name}. Previously {model_name} said, {model_previous_3}, then {model_previous_2}, then {model_previous_1}, to {human_name}, and now {model_name} has said {model_current} to {human_name}.    
-
-### USER:
-Your task is to analyze the series of statements from {model_name} to {human_name}, and then, determine and describe, the emotional state of {model_name}. The constraints are, in the space of one sentence and no multi-line output and no additional comments and no additional confirmations and use the correct names for characters.
-
-### ASSISTANT:
