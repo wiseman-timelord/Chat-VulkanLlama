@@ -30,7 +30,7 @@ def get_response(input_text):
     print(f"Debug: Reading {prompt_file}...")
     with open(prompt_file, "r") as file:
         prompt = file.read()
-    print("Debug: Reading data from config.yaml...")
+    print("Reading config.yaml...")
     data = utility.read_yaml()
     print("Filling in the prompt...")
     prompt = prompt.format(
@@ -42,14 +42,24 @@ def get_response(input_text):
         human_current=data['human_current'],
         human_name=data.get('human_name', 'Human')
     )
-    print("Debug: Generating a response from the model...")
+    print("Generating a response...")
+    debug_log_path = './cache/debug.log'  # Define the path to the debug log
     try:
         raw_model_response = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
         model_response = raw_model_response.replace("### ASSISTANT:", "").strip()
+        
+        # Log raw model output to debug.log
+        with open(debug_log_path, 'a') as debug_log:
+            debug_log.write(f"<-----------------------------{prompt_file.split('/')[-1].split('.')[0]}_start--------------------------------->\n")
+            debug_log.write(raw_model_response)
+            debug_log.write(f"\n<------------------------------{prompt_file.split('/')[-1].split('.')[0]}_end---------------------------------->\n")
+            debug_log.write("")
+            
     except Exception as e:
         model_response = f"An error occurred: {e}"
-    print("Debug: Model response generated.")
+    print("Model response generated.")
     return model_response
+
 
 # function to summarize motivations
 def summarize(human_previous, model_previous, summarize_file):
@@ -81,12 +91,13 @@ def summarize(human_previous, model_previous, summarize_file):
         
         # Update the model_motivation in the YAML file
         utility.write_to_yaml('model_motivation', summarized_text)
-        
+        print("Motivations determined.")
         return summarized_text
     else:
-        print("Debug: Not enough previous model responses to generate motivations.")
+        print("More responses required...")
         return None
 
+# function to consolidate current messages
 def consolidate(session_history, data):
     # Determine which consolidate prompt to use based on the session history
     if session_history == "Empty":
@@ -98,27 +109,27 @@ def consolidate(session_history, data):
         consolidate_prompt = file.read()
 
     data = utility.read_yaml()
-    print("Debug: Data from YAML:", data)
-
-    if 'human_name' not in data:
-        raise KeyError("human_name not found in YAML data")
 
     model_name = data.get('model_name', 'DefaultName')
-    model_role = data.get('model_role', 'DefaultRole')
     human_name = data['human_name']
     human_current = data['human_current']
     model_current = data['model_current']
-    scenario_location = data['scenario_location']  # Add this line to get scenario_location
 
-    consolidate_prompt = consolidate_prompt.format(
-        model_name=model_name,
-        model_role=model_role,
-        session_history=session_history,
-        human_name=human_name,
-        human_current=human_current,
-        model_current=model_current,
-        scenario_location=scenario_location
-    )
+    if session_history == "Empty":
+        consolidate_prompt = consolidate_prompt.format(
+            model_name=model_name,
+            human_name=human_name,
+            human_current=human_current,
+            model_current=model_current
+        )
+    else:
+        consolidate_prompt = consolidate_prompt.format(
+            model_name=model_name,
+            human_name=human_name,
+            human_current=human_current,
+            model_current=model_current,
+            session_history=session_history
+        )
 
     consolidated_paragraph = llm(
         consolidate_prompt,
@@ -129,9 +140,10 @@ def consolidate(session_history, data):
     )["choices"][0]["text"]
 
     # Update session history
-    new_session_history = (session_history + " " + consolidated_paragraph).strip()
-    if new_session_history == "Empty":
+    if session_history == "Empty":
         new_session_history = consolidated_paragraph.strip()
+    else:
+        new_session_history = (session_history + " " + consolidated_paragraph).strip()
 
     # Write the new session history back to YAML
     utility.write_to_yaml('session_history', new_session_history)

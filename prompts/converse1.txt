@@ -2,6 +2,6 @@
 Your name is {model_name}, you are and in the role of the {model_role}. The location of the conversation is {scenario_location}, where, {human_name} and {model_name}, are present. {human_name} has just stated {human_current} to {model_name}.
 
 ### USER:
-Respond to {human_name}. The constraints are, in the space of two sentences and no multi-line responses and no additional comments and use the correct names for characters.
+Respond to {human_name}. The constraints are, in the space of two sentences and no multi-line output and no additional comments and no additional confirmations and use the correct names for characters.
 
 ### ASSISTANT:

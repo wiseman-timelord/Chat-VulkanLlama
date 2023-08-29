@@ -2,7 +2,7 @@
 Your name is AI Assistant, and you are and in the role of the Consolidator. People present are, {human_name} and {model_name}, {human_name} has just stated {human_current} to {model_name} and {model_name} has just stated {model_current} to {human_name}.
 
 ### USER:
-Your task is to summarize the current the current conversation into a description of events, and then print only the summarization of events. The constraints are, in the space of two sentences and no multi-line responses and no additional comments and use the correct names for characters.
+Your task is to summarize the current communications between, {human_name} and {model_name}, as a description of an event. The constraints are, in the space of two sentences and no multi-line output and no additional comments and no additional confirmations and use the correct names for characters.
 
 
 ### ASSISTANT:

@@ -17,6 +17,7 @@ ASCII_ART = r"""    .____    .__                        ________ __________     
 
 # New function to calculate optimal threads
 def calculate_optimal_threads():
+    time.sleep(1)
     total_threads = os.cpu_count()
     print(f"\n\n Optimizing for {platform.processor()}-T{total_threads}...")
     if total_threads == 1:
@@ -29,7 +30,7 @@ def calculate_optimal_threads():
         threads_to_use = total_threads - 3
     else:
         threads_to_use = total_threads - 4
-    print(f" ...using {threads_to_use} out of {total_threads} threads.\n")
+    print(f" ...using {threads_to_use} out of {total_threads} threads.")
     return threads_to_use
 
 # function
@@ -53,7 +54,8 @@ def display_intro_screen():
     print("="*87)
     print("\n\n                              Welcome to Llama2Robot!")
     time.sleep(2)
-    return calculate_optimal_threads()
+    calculate_optimal_threads()
+    return utility.handle_debug_log()
 
 # function to display the model selection menu
 def display_model_selection():
@@ -120,29 +122,29 @@ def display_interface():
     agent_name = data.get('model_name', 'Llama2Robot')
     model_motivation = data.get('model_motivation', 'Unknown')
     
-    print(f" {human_name}")
+    print(f" {human_name}'s Input")
     print("-"*87)
     print(data['human_current'])
     print("\n")
     print("=-"*43)
     
-    print(f" {agent_name}")
+    print(f" {agent_name}'s Response")
     print("-"*87)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n")
     
     print("=-"*43)
-    print(" Motivation:")
+    print(" {agent_name}'s Motivs:")
     print("-"*87)
     model_motivation = data.get('model_motivation', 'Unknown')
     print(model_motivation)
     print("\n")
     
     print("=-"*43)
-    print(" History:")
+    print(" Event History:")
     print("-"*87)
-    consolidated_history = data.get('consolidated_history', 'Unknown')  # Change this line to get consolidated history
-    print(consolidated_history)
+    session_history = data.get('session_history', 'Unknown')  # Change this line to get session_history
+    print(session_history)
     print("\n")
     print("="*87)
