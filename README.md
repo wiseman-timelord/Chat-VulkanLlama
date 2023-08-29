@@ -1,9 +1,6 @@
 # Llama2Robot
 Status: Beta, Currently, upgrading and improving, the, Prompt and key, logic.
 
-### GPT4 DESCRIPTION:
-Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
-
 ### HUMAN DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
 
@@ -21,6 +18,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
 9) Introduce more critical fork shared theme features, but stop somewhere before it becomes significantly customised.
 10) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider webserver. 
+11) interesting instruct models for later testing and implementation (possibly into forks) : for larg text summarization "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding python "https://huggingface.co/edumunozsala/llama-2-7b-int4-python-code-20k".
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
@@ -105,9 +103,9 @@ llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
 ```
 ### USAGE: (including linux)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
-2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML". (note: proposed instruct model for later implementation "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML").
+2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
 3) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
-4) Copy Llama 2 GGML bsed model with the "*.bin" extention into the "models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.)
+4) Copy Llama 2 GGML bsed chat model with the "*.bin" extention into the "./models" folder, eg `llama2_7b_chat_uncensored.ggmlv3.q4_0.bin`, the required "config.json" is already present.
 5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ) .
 
 ### REQUIREMENTS:
