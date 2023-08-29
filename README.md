@@ -1,5 +1,5 @@
 # Llama2Robot
-Status: Beta. Currently, finalizing, upgrading and improving, the, Prompt and key, logic. Delays due to, huggingface no longer working with downlord and GPT4 down at 15:00 2023/08/23.
+Status: Beta. Currently, finalizing, upgrading and improving, the, Prompt and key, logic, as well as finializing Emotion/Summarize code.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
