@@ -2,7 +2,7 @@
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 1) Need to logically analyze, "summarize" and "consolidate", functions in "model.py".
 2) While working on, summarize and consolidate, it could be an option to implement, "Instruct" model for text processing and "Chat" model for chatting to the user
-* It is hard or impossible, to find the Llama2 8bit instruct uncensored GGML, will be using, the, "Llama-2-7B-GGML" or "Llama-2-7B-32K-Instruct-GGML", version, will have to test both.
+* It is hard or impossible, to find the Llama2 8bit instruct uncensored GGML, will be using, the "Llama-2-7B-GGML" version.
 * auto-model-detection feature would be insteresting, all instruct models are named llama-2 models bu,t not have chat in the filename and/or do have instruct in filename.
  
 ### GPT4 DESCRIPTION:
@@ -12,7 +12,7 @@ Llama2Robot uses the Llama 2 language model for conversation and YAML files for 
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects such as, personal managers or automated agent, this is intended to be through forks. You have an idea for a fork, then create a fork, you may inadvertantly, inspire my own creations or save me some time. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line output to be used in forks for other purposes, such as complex, commands and operations.
 
 ### FUTURE PLANS:
-1) Implement 2 models, 1 for text processing "Llama-2-7B-32K-Instruct-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML". 
+1) Implement 2 models, 1 for text processing "Llama-2-7B-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML". 
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues.
 2) implement optimizations for each
 3 Implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run.
