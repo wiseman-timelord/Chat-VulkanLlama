@@ -76,7 +76,7 @@ def main():
         start_time = time.time()
         model_response = model_module.get_response(user_input)
         end_time = time.time()
-        print(f"Debug: Model response time: {end_time - start_time} seconds")
+        print(f"\n Model response time: {end_time - start_time} seconds")
 
         # Write model_current before shifting
         utility.write_to_yaml('model_current', model_response)
@@ -89,7 +89,9 @@ def main():
 
         # Update model_emotion every 1 in 4 rotations
         if rotation_counter == 3:
-            utility.update_model_emotion()
+            new_emotion = utility.update_model_emotion()
+            if new_emotion:
+                utility.write_to_yaml('model_emotion', new_emotion)
 
         # Consolidate responses into session history
         new_session_history = model_module.consolidate(data['session_history'], data)
