@@ -2,8 +2,8 @@
 Status: Beta, Currently upgrading, Prompt and key, logic. The factors are...
 1) Need to logically analyze, "summarize" and "consolidate", functions in "model.py".
 2) While working on, summarize and consolidate, it could be an option to implement, "Instruct" model for text processing and "Chat" model for chatting to the user
-* It is hard or impossible, to find the Llama2 instruct uncensored GGML, will be using, the "Llama-2-7B-GGML" version.
-* auto-model-detection feature would be insteresting, all instruct models are named llama-2 models bu,t not have chat in the filename and/or do have instruct in filename.
+* It is hard or impossible, to find the Llama2 instruct uncensored GGML, will be using, the "Llama-2-7B-GGML" version, maybe I dont understand, but I assume it will filter the text while processing it, or possibly it is just instructions, this creates research for after instruct code is implemented.
+* auto-model-detection feature would be insteresting, all instruct models are named llama-2 models but, not have chat in the filename and/or do have instruct in filename.
  
 ### GPT4 DESCRIPTION:
 Llama2Robot uses the Llama 2 language model for conversation and YAML files for state management. The main.py script is the entry point and orchestrates the flow, calling functions from interface.py for UI, model.py for model interactions, and utility.py for utility functions like YAML operations and response shifting. The program is designed to be interactive, allowing users to chat with the model in real-time.
