@@ -67,15 +67,16 @@ Unknown
 =======================================================================================
 
 
-                 1. llama2_13b_chat_uncensored.ggmlv3.q8_0.bin
+                 1. llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
                  2. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
                  3. llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
 
- Select a model from 1-3: 2
+
+ Select a model from 1-3: 1
 
 
  Loading model, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_vocab    = 32000
 llama_model_load_internal: n_ctx      = 4096
@@ -84,12 +85,12 @@ llama_model_load_internal: n_mult     = 256
 llama_model_load_internal: n_head     = 32
 llama_model_load_internal: n_layer    = 32
 llama_model_load_internal: n_rot      = 128
-llama_model_load_internal: ftype      = 2 (mostly Q4_0)
+llama_model_load_internal: ftype      = 10 (mostly Q2_K)
 llama_model_load_internal: n_ff       = 11008
 llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: ggml ctx size =    0.07 MB
-llama_model_load_internal: mem required  = 5407.71 MB (+ 1026.00 MB per state)
+llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
 ```
 
