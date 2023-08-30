@@ -88,15 +88,18 @@ def clear_keys():
     else:
         print(" File config.yaml missing!\n")    
         
-# log raw output to debug,log
-def log_to_output(raw_output, prompt_name, script_name):
+# log raw output to debug.log
+def log_to_output(raw_output, prompt_name, script_name, enable_logging=False):
     output_log_path = './cache/output.log'
-    print(f"Logging {script_name}...")
-    if os.path.exists(output_log_path):
-        with open(output_log_path, 'a') as output_log:
-            output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
-            output_log.write(raw_output)
-            output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
-        print(" Raw Output Logged...")    
+    print(f" Logging {script_name}...")
+    if enable_logging:
+        if os.path.exists(output_log_path):
+            with open(output_log_path, 'a') as output_log:
+                output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
+                output_log.write(raw_output)
+                output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
+            print("...Raw-Output Logged.")    
+        else:
+            print(f"File {output_log_path} not found. Logging failed.")
     else:
-        print(f"File {output_log_path} not found. Logging failed.")
+        print("Logging is disabled.")
