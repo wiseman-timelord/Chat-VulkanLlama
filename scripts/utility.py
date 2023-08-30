@@ -65,16 +65,16 @@ def summarize_responses(data):
     write_to_yaml('session_history', updated_session_history)
 
 # clear debug at start        
-def handle_debug_log():
+def handle_output_log():
     time.sleep(1)
-    print("\n Clearing debug.log...")
-    debug_log_path = './cache/debug.log'
-    if os.path.exists(debug_log_path):
-        with open(debug_log_path, 'w') as file:
+    print("\n Clearing output.log...")
+    output_log_path = './cache/output.log'
+    if os.path.exists(output_log_path):
+        with open(output_log_path, 'w') as file:
             file.write('')
-        print(" ...debug.log cleared.")
+        print(" ...output.log cleared.")
     else:
-        print(" File debug.log missing!")   
+        print(" File output.log missing!")   
 
 # clear keys at start
 def clear_keys():
@@ -84,6 +84,19 @@ def clear_keys():
         keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_previous3', 'model_emotion', 'scenario_location', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")
-        print(" ...config.yaml keys wiped.\n\n")
+        print(" ...config.yaml keys wiped.\n")
     else:
         print(" File config.yaml missing!\n")    
+        
+# log raw output to debug,log
+def log_to_output(raw_output, prompt_name, script_name):
+    output_log_path = './cache/output.log'
+    print(f"Logging {script_name}...")
+    if os.path.exists(output_log_path):
+        with open(output_log_path, 'a') as output_log:
+            output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
+            output_log.write(raw_output)
+            output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
+        print(" Raw Output Logged...")    
+    else:
+        print(f"File {output_log_path} not found. Logging failed.")

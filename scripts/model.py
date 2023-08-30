@@ -5,6 +5,7 @@ from scripts import utility
 from llama_cpp import Llama
 import os
 import time
+import re
 
 # globals
 llm = None
@@ -54,24 +55,22 @@ def get_response(input_text):
         model_role=data['model_role'],
         scenario_location=data['scenario_location'],
         session_history=data['session_history'],
+        model_emotion=data['model_emotion'],
         human_current=data['human_current'],
         human_name=data.get('human_name', 'Human')
     )
     print(" Generating a response...")
-    debug_log_path = './cache/debug.log'  # Define the path to the debug log
     try:
         raw_model_response = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
+        
+        # Log raw model output to output.log (Keep this line)
+        utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__))
         
         # Use the new parse_model_response function
         model_response = parse_model_response(raw_model_response, data)
         
-        # Log raw model output to debug.log
-        with open(debug_log_path, 'a') as debug_log:
-            debug_log.write(f"<-----------------------------{prompt_file.split('/')[-1].split('.')[0]}_start--------------------------------->\n")
-            debug_log.write(raw_model_response)
-            debug_log.write(f"\n<------------------------------{prompt_file.split('/')[-1].split('.')[0]}_end---------------------------------->\n")
-            debug_log.write("")
-            
+        # Removed the second logging block here
+        
     except Exception as e:
         model_response = f"An error occurred: {e}"
     print(" Model response generated.")
@@ -96,9 +95,16 @@ def consolidate(session_history, data):
     )
     
     consolidated_paragraph = llm(consolidate_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=200)["choices"][0]["text"]
+    
+    # Log the consolidated paragraph to output.log
+    utility.log_to_output(consolidated_paragraph, consolidate_file.split('/')[-1].split('.')[0], os.path.basename(__file__))
+    
     new_session_history = consolidated_paragraph.strip() if session_history == "Empty" else (session_history + " " + consolidated_paragraph).strip()
     utility.write_to_yaml('session_history', new_session_history)
     return new_session_history
+
+# Import regular expressions library
+import re
 
 # function to update model's emotional state
 def update_model_emotion():
@@ -126,9 +132,17 @@ def update_model_emotion():
         )
         
         summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
-        utility.write_to_yaml('model_emotion', summarized_text)
+        
+        # Special parsing for emotions
+        emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
+        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", summarized_text, re.IGNORECASE)]
+        
+        # Convert the list of found emotions to a comma-separated string
+        emotion_string = ", ".join(found_emotions)
+        
+        utility.write_to_yaml('model_emotion', emotion_string)
         print(" Model emotion updated.")
-        return summarized_text
+        return emotion_string
     else:
         print(" More responses required...")
         time.sleep(1)

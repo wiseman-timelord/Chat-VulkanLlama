@@ -55,7 +55,7 @@ def display_intro_screen():
     print("\n\n                              Welcome to Llama2Robot!")
     time.sleep(2)
     calculate_optimal_threads()
-    return utility.handle_debug_log()
+    return utility.handle_output_log()
 
 # function to display the model selection menu
 def display_model_selection():
@@ -107,7 +107,7 @@ def display_startup_menu():
     print("\n Enter the location, or leave blank for default...")
     scenario_location = input(" The location is: ").strip()
     scenario_location = scenario_location if scenario_location else default_scenario_location
-    
+
     return model_name, model_role, human_name, scenario_location
 
 # function for Dialogue Display
