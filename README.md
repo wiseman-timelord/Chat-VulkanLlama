@@ -67,38 +67,6 @@ Interface is under development...
 ```
 ```
 =======================================================================================
-                                    Model Selection
-=======================================================================================
-
-
-                 1. llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
-                 2. llama2_7b_chat_uncensored.ggmlv3.q4_0.bin
-                 3. llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
-
-
- Select a model from 1-3: 1
-
-
- Loading model, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
-llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_vocab    = 32000
-llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: n_embd     = 4096
-llama_model_load_internal: n_mult     = 256
-llama_model_load_internal: n_head     = 32
-llama_model_load_internal: n_layer    = 32
-llama_model_load_internal: n_rot      = 128
-llama_model_load_internal: ftype      = 10 (mostly Q2_K)
-llama_model_load_internal: n_ff       = 11008
-llama_model_load_internal: n_parts    = 1
-llama_model_load_internal: model size = 7B
-llama_model_load_internal: ggml ctx size =    0.07 MB
-llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
-
-```
-```
-=======================================================================================
                               Dialogue Display
 =======================================================================================
  Human's Input
@@ -109,19 +77,19 @@ Hello Llama, I am feeling productive, how are you today?
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Llama's Response
 ---------------------------------------------------------------------------------------
-Hello Human! How can I help you today?
+I am feeling great today! I hope you have a productive day too.
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Llama's State
 ---------------------------------------------------------------------------------------
-Empty
+Indifferent
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Event History
 ---------------------------------------------------------------------------------------
-Human and Llama had a conversation where Human stated that they were feeling productive and asked how Llama could help them today, to which Llama responded by asking how they could assist Human. The conversation was friendly and professional in nature.
+Human and Llama had a conversation where Human expressed their productivity and asked how Llama was doing today, to which Llama responded positively and wished them a productive day as well.
 
 
 =======================================================================================
