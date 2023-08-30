@@ -135,7 +135,7 @@ Human and Llama had a conversation where Human stated that they were feeling pro
 2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML", we only need 1 of the ".bin" files for it to work not all of them, then copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already in the "./models" folder.
 5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ). 
 * Optionally, edit "Llama2Robot.bat" or run python, with arguement --output, to log raw output from the model to "./cache/output.log".
-* For Windows ueser, optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
+* (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
 ### REQUIREMENTS:
 Windows with WSL (later also linux)
