@@ -2,8 +2,8 @@
 Status: Beta. Currently, working on...
 1) Implement  a --output switch to enable printout of complete output, during the session to file "debug.log", that are cleared on run. (finalizing)
 2) Analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
-3) Prompts, The scripts are only using "consolidate1.txt", and failing to progress to using "consolidate2.txt".
-4) Parsing, when "### USER:" appears, the scripts did remove "### USER:", but did not stop the rest of the output. is the parser or log interfering with the stop. whatever it is, the history in converse2 is confusing the model.   
+3) Prompts, The scripts are only using "consolidate1.txt", and failing to progress to using "consolidate2.txt". Also the history in converse2 is confusing the model, need to, 1) put history in its own sentence or 2) limit history length.   
+4) Parsing, when "### USER:" appears, the scripts did remove "### USER:", but did not stop the rest of the output. is the parser or log interfering with the stop. whatever it is,
 * Delay, wrote and developed, my other program "ScriptClean", is good to have, but took 3-4 hours, I will get that back though.
 
 ### DESCRIPTION:
