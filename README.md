@@ -2,6 +2,7 @@
 Status: Beta. Currently, working on...
 1) Implement  a --output switch to enable printout of complete output, during the session to file "debug.log", that are cleared on run. (finalizing)
 2) Analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
+3) Issue with prompt "converse1.txt", consistent response is starting with "Hello Llama...", probably wrong link somewhere.
 * Delay, wrote and developed, my other program "ScriptClean", is good to have, but took 3-4 hours, I will get that back though.
 
 ### DESCRIPTION:
