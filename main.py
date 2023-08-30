@@ -8,8 +8,15 @@ from scripts import utility
 import time
 import readline
 import os
-
+import argparse
 import sys
+
+# globals
+parser = argparse.ArgumentParser(description='Your script description here.')
+parser.add_argument('--output', action='store_true', help='Enable writing of raw output to output.log')
+args = parser.parse_args()
+
+# classes
 class SuppressPrints:
     def __enter__(self):
         self._original_stdout = sys.stdout
@@ -17,9 +24,11 @@ class SuppressPrints:
     def __exit__(self, exc_type, exc_val, exc_tb):
         sys.stdout.close()
         sys.stdout = self._original_stdout
+        
 
 # function
 def main():
+    
     # Display the intro screen and get optimal threads    
     optimal_threads = interface.display_intro_screen()
     time.sleep(1)
