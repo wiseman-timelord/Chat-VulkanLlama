@@ -2,7 +2,7 @@
 Status: Beta. Currently, working on...
 1) full --debug switch/debug.log implementation, this will enable display of raw output. (move current code from converse code, put in new functon, implement in all functions sending prompt to model).
 2) raw output from above used to tune, new parser function and existing prompts.
-3) emotions code/prompts need, analyzing and correcting to produce 1-2 word answer from model_previous_1+2+3. (worst case scenario then include options, ie do they feel, sad, happy, etc).
+3) emotions code/prompts need, analyzing and correcting to produce 1-2 word answer from model_previous_1/2/3. (worst case scenario then include options, ie do they feel, sad, happy, etc).
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
