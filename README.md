@@ -52,11 +52,17 @@ Interface is under development...
  Optimizing for x86_64-T24...
  ...using 20 out of 24 threads.
 
- Clearing debug.log...
- ...debug.log cleared.
+ Clearing output.log...
+ ...output.log cleared.
 
  Resetting config.yaml...
  ...config.yaml keys wiped.
+
+ Defaulting Emotions...
+ ...Model is Indifferent.
+
+
+ Loading... [=============================================================] Complete.
 
 ```
 ```
