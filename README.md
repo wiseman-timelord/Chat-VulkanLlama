@@ -1,7 +1,8 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
 1) Implement  a --output switch to enable printout of complete output, during the session to file "debug.log", that are cleared on run. (finalizing)
-2) analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
+2) Analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
+* Delay, wrote and developed, my other program "ScriptClean", is good to have, but took 3-4 hours, I will get that back though.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
