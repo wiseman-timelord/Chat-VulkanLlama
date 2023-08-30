@@ -97,7 +97,7 @@ def consolidate(session_history, data, enable_logging=False):
     consolidated_paragraph = llm(consolidate_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=200)["choices"][0]["text"]
     
     # Log raw model output to output.log (Keep this line)
-    utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
+    utility.log_to_output(consolidated_paragraph, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
     
     new_session_history = consolidated_paragraph.strip() if session_history == "Empty" else (session_history + " " + consolidated_paragraph).strip()
     utility.write_to_yaml('session_history', new_session_history)
@@ -131,7 +131,7 @@ def update_model_emotion(enable_logging=False):
         summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
         
         # Log raw model output to output.log (Keep this line)
-        utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
+        utility.log_to_output(summarized_text, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
         
         # Special parsing for emotions
         emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
