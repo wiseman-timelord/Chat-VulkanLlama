@@ -106,7 +106,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 * (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
 ### REQUIREMENTS:
-Windows with WSL (later also linux)
+Windows with WSL (linux needs testing, does llama.cpp even run on it?)
 
 ### NOTES:
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
