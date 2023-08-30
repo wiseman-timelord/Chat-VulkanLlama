@@ -97,7 +97,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 
 ```
 
-### USAGE: (including unteseted linux)
+### USAGE: (linux unteseted)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
 2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML", we only need 1 of the ".bin" files for it to work not all of them, then copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already in the "./models" folder.
@@ -106,7 +106,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 * (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
 ### REQUIREMENTS:
-Windows with WSL (linux needs testing, does llama.cpp even run on it?)
+Windows with WSL (linux untested)
 
 ### NOTES:
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
