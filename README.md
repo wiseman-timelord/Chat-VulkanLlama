@@ -17,7 +17,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
 10) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
 9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material.. 
-* interesting instruct models for, later testing and implementation, (possibly in forks) : for large text summarization "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding python "https://huggingface.co/edumunozsala/llama-2-7b-int4-python-code-20k".
+* interesting instruct models for, later testing and implementation, (possibly in forks) : for large text summarization "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding python "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML".
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
