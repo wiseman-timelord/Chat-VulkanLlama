@@ -1,24 +1,24 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
-1) --output  arguement for debug.log, testing and fixing. this will enable reading of raw output.
-2) analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3.
+1) Implement  a --output switch to enable printout of complete output, during the session to file "debug.log", that are cleared on run. (finalizing)
+2) analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
 
 ### FUTURE PLANS:
-1) Different image for each of the emotional states, thus producing a somewhat animated chatbot.
-1) Application Sounds, with an optional --nosounds, to disable sounds at commandline.
+1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 1) Multi-model support. 2 models, 1 for text processing "Llama-2-7B-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML", leading to, autodetection of models based on name, and for duplicates of same type show dynamic menu with options for the specific items within the type. 
-1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues, then implement, reformatting and optimizations, of the code for all scripts, then fix the scripts.
-3) implement a  --sounds switch, to enable some default sounds.
+1) implement, reformatting and optimizations, of all scripts
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
-3) Implement  a --logs switch to enable printout of complete, input and output, during the session to file "debug.log", that are cleared on run. (partly implemented)
 4) Optimizations of model parameters for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc, also Consider tuning temperatures further for each task.
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
-10) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
 9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material.. 
-* interesting instruct models for, later testing and implementation, (possibly in forks) : for large text summarization "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding python "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML".
+
+### FORK IDEAS:
+1) Different image for each of the emotional states, thus producing a somewhat animated chatbot.
+2) * interesting instruct models for, later testing and implementation, (possibly in forks) : for large text summarization "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding python "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML".
+3) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
