@@ -8,7 +8,7 @@ Status: Beta. Currently, working on...
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
 
 ### FUTURE PLANS:
-1) Multi-model support. 2 models, 1 for text processing "Llama-2-7B-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML". 
+1) Multi-model support. 2 models, 1 for text processing "Llama-2-7B-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML", leading to, autodetection of models based on name, and for duplicates of same type show dynamic menu with options for the specific items within the type. 
 1) Get scripts working 100% as intended, currently there are some, response parsing and pompt logic, issues, then implement, reformatting and optimizations, of the code for all scripts, then fix the scripts.
 3) implement a  --sounds switch, to enable some default sounds.
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
