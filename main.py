@@ -28,12 +28,17 @@ def main():
     utility.clear_keys()
     time.sleep(1)
     
+    # default emotion to "Indifferent"
+    print(" Defaulting Emotions...")
+    utility.write_to_yaml('model_emotion', "Indifferent")
+    print(" ...Model is Indifferent.\n\n")
+    
     # Read the Yaml now
     data = utility.read_yaml()
     
-    # Initialize human_name right after clearing keys
+    # Initialize human_name after clearing keys
     human_name = "DefaultHumanName"
-
+    
     # Display model selection menu and get selected model
     selected_model = interface.display_model_selection()
     
