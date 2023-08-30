@@ -1,6 +1,6 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
-1) full --debug switch/debug.log implementation, this will enable display of raw output.
+1) full --debug switch/debug.log implementation, this will enable display of raw output. (move current code from converse code, put in new functon, implement in all functions sending prompt to model).
 2) raw output from above used to tune, new parser function and existing prompts.
 3) emotions code/prompts need, analyzing and correcting to produce 1-2 word answer from model_previous_1+2+3.
 
