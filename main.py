@@ -24,9 +24,8 @@ class SuppressPrints:
     def __exit__(self, exc_type, exc_val, exc_tb):
         sys.stdout.close()
         sys.stdout = self._original_stdout
-        
 
-# function
+# the main function
 def main():
     
     # Display the intro screen and get optimal threads    
@@ -75,7 +74,6 @@ def main():
     utility.write_to_yaml('model_previous1', "Empty")
     utility.write_to_yaml('model_previous2', "Empty")
     utility.write_to_yaml('model_previous3', "Empty")
-    utility.write_to_yaml('model_emotion', "Empty")
     utility.write_to_yaml('scenario_location', scenario_location)
     utility.write_to_yaml('session_history', "Empty")
 
@@ -89,8 +87,9 @@ def main():
 
         # Get model response
         start_time = time.time()
-        model_response = model_module.get_response(user_input)
+        model_response = model_module.get_response(user_input, args.output)  # Pass the args.output flag
         end_time = time.time()
+
         print(f"\n Model response time: {end_time - start_time} seconds")
 
         # Write model_current before shifting
@@ -104,12 +103,12 @@ def main():
 
         # Update model_emotion every 1 in 4 rotations
         if rotation_counter == 3:
-            new_emotion = update_model_emotion()  # Call the function from model.py
+            new_emotion = model_module.update_model_emotion(args.output)  # Call the function from model.py and pass the args.output flag
             if new_emotion:
                 utility.write_to_yaml('model_emotion', new_emotion)
 
         # Consolidate responses into session history
-        new_session_history = model_module.consolidate(data['session_history'], data)
+        new_session_history = model_module.consolidate(data['session_history'], data, args.output)  # Pass the args.output flag
 
         # Update session history in the YAML file
         utility.write_to_yaml('session_history', new_session_history)
@@ -117,6 +116,6 @@ def main():
         # Display interface
         interface.display_interface()
 
-# function
+# the __main__ function
 if __name__ == "__main__":
     main()
