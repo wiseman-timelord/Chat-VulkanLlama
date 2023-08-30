@@ -37,7 +37,7 @@ def parse_model_response(raw_model_response, data):
     return cleaned_response
 
 # function to get a response from the model
-def get_response(input_text):
+def get_response(input_text, enable_logging=False):
     data = utility.read_yaml()
     if data['session_history'] == "Empty":
         prompt_file = "./prompts/converse1.txt"
@@ -64,7 +64,7 @@ def get_response(input_text):
         raw_model_response = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
         
         # Log raw model output to output.log (Keep this line)
-        utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__))
+        utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
         
         # Use the new parse_model_response function
         model_response = parse_model_response(raw_model_response, data)
@@ -73,11 +73,11 @@ def get_response(input_text):
         
     except Exception as e:
         model_response = f"An error occurred: {e}"
-    print(" Model response generated.")
+    print("\n Model response generated.")
     return model_response
 
 # function to consolidate current messages
-def consolidate(session_history, data):
+def consolidate(session_history, data, enable_logging=False):
     data = utility.read_yaml()
     consolidate_file = "./prompts/consolidate1.txt" if session_history == "Empty" else "./prompts/consolidate2.txt"
     with open(consolidate_file, "r") as file:
@@ -96,18 +96,15 @@ def consolidate(session_history, data):
     
     consolidated_paragraph = llm(consolidate_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=200)["choices"][0]["text"]
     
-    # Log the consolidated paragraph to output.log
-    utility.log_to_output(consolidated_paragraph, consolidate_file.split('/')[-1].split('.')[0], os.path.basename(__file__))
+    # Log raw model output to output.log (Keep this line)
+    utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
     
     new_session_history = consolidated_paragraph.strip() if session_history == "Empty" else (session_history + " " + consolidated_paragraph).strip()
     utility.write_to_yaml('session_history', new_session_history)
     return new_session_history
 
-# Import regular expressions library
-import re
-
 # function to update model's emotional state
-def update_model_emotion():
+def update_model_emotion(enable_logging=False):
     data = utility.read_yaml()
     
     if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
@@ -132,6 +129,9 @@ def update_model_emotion():
         )
         
         summarized_text = llm(summarize_prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
+        
+        # Log raw model output to output.log (Keep this line)
+        utility.log_to_output(raw_model_response, prompt_file.split('/')[-1].split('.')[0], os.path.basename(__file__), enable_logging)  # Pass enable_logging
         
         # Special parsing for emotions
         emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
