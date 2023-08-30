@@ -76,11 +76,16 @@ def get_response(input_text, enable_logging=False):
     print("\n Model response generated.")
     return model_response
 
+Update the 2 functions, then print the 2 functions complete without shortening...
+
+
 # function to consolidate current messages
 def consolidate(session_history, data, enable_logging=False):
+    # Define prompt_file within the function's scope
+    prompt_file = "./prompts/consolidate1.txt" if session_history == "Empty" else "./prompts/consolidate2.txt"
+    
     data = utility.read_yaml()
-    consolidate_file = "./prompts/consolidate1.txt" if session_history == "Empty" else "./prompts/consolidate2.txt"
-    with open(consolidate_file, "r") as file:
+    with open(prompt_file, "r") as file:
         consolidate_prompt = file.read()
 
     # Use the parse_model_response function
@@ -103,14 +108,17 @@ def consolidate(session_history, data, enable_logging=False):
     utility.write_to_yaml('session_history', new_session_history)
     return new_session_history
 
+
 # function to update model's emotional state
 def update_model_emotion(enable_logging=False):
+    # Define prompt_file within the function's scope
+    prompt_file = "./prompts/emotions.txt"
+    
     data = utility.read_yaml()
     
     if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
-        summarize_file = "./prompts/emotions.txt"
-        print(f"\n Reading {summarize_file}...")
-        with open(summarize_file, "r") as file:
+        print(f"\n Reading {prompt_file}...")
+        with open(prompt_file, "r") as file:
             summarize_prompt = file.read()
         
         # Use the parse_model_response function
@@ -147,3 +155,4 @@ def update_model_emotion(enable_logging=False):
         print(" More responses required...")
         time.sleep(1)
         return None
+

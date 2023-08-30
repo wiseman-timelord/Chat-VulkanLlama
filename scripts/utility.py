@@ -98,7 +98,7 @@ def log_to_output(raw_output, prompt_name, script_name, enable_logging=False):
                 output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
                 output_log.write(raw_output)
                 output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
-            print("...Raw-Output Logged.")    
+            print(" ...Raw-Output Logged.")    
         else:
             print(f"File {output_log_path} not found. Logging failed.")
     else:
