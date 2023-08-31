@@ -20,8 +20,8 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material.. 
 
 ### FORK IDEAS & THOUGHTS:
-1) Different image for each of the emotional states, thus producing a somewhat animated chatbot.
-3) develop interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
+* Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
+* Develop Interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
 * interesting models : for instruct "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML" (need find 7b), for chat "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
 
 ### FEATURES:
