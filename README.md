@@ -20,7 +20,6 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 ### FORK IDEAS & THOUGHTS:
 * Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
 * Develop Interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
-* interesting models : for instruct "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML" (need find 7b), for chat "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
@@ -148,6 +147,7 @@ Windows with WSL or Linux (untested)
 
 ### NOTES:
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
+* interesting models are, for instruct "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML" (need find 7b), for chat "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
 
 ### DISCLAIMER:
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file, if this were the case with MPT, it would be called MPTRobot. 
