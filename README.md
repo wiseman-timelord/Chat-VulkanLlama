@@ -108,6 +108,10 @@ Human and Llama had a conversation where Human expressed their productivity and 
 * Optionally, edit "Llama2Robot.bat" or run python, with arguement --output, to log raw output from the model to "./cache/output.log".
 * (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
+### TEST PROMPTS:
+1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?
+
+
 ### REQUIREMENTS:
 Windows with WSL or Linux (untested)
 
