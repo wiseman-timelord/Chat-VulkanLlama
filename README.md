@@ -5,6 +5,7 @@ Status: Beta. Currently, working on...
 3) Prompts, The scripts are only using "consolidate1.txt", and failing to progress to using "consolidate2.txt". Also the history in converse2 is confusing the model, need to, 1) put history in its own sentence or 2) limit history length.   
 4) Parsing, when "### USER:" appears, the scripts did remove "### USER:", but did not stop the rest of the output. is the parser or log interfering with the stop. whatever it is,
 * Delay, wrote and developed, my other program "ScriptClean", is good to have, but took 3-4 hours, I will get that back though.
+* Delay, started writing LSL script for advanced follower prim (such as mesh human).
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
