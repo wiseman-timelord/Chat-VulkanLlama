@@ -1,11 +1,9 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
-1) Implement  a --output switch to enable printout of complete output, during the session to file "debug.log", that are cleared on run. (finalizing)
-2) Analyze emotions to choose words from list, that best describe the emotions displayed in recent model_previous_1/2/3. (finalizing).
-3) Prompts, The scripts are only using "consolidate1.txt", and failing to progress to using "consolidate2.txt". Also the history in converse2 is confusing the model, need to, 1) put history in its own sentence or 2) limit history length.   
-4) Parsing, when "### USER:" appears, the scripts did remove "### USER:", but did not stop the rest of the output. is the parser or log interfering with the stop. whatever it is,
-* Delay, wrote and developed, my other program "ScriptClean", is good to have, but took 3-4 hours, I will get that back though.
-* Delay, started writing LSL script for advanced follower prim (such as mesh human).
+1) multi-model implementation, chat and instruct, best for task. (finalizing).
+1) Implement  a --output switch to enable printout of raw output. (finalizing).
+2) Psychological analysis for model emotional state indication (finalizing).
+3) Prompts prompts needed tweaking, this must be re-assesed...   
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
@@ -45,12 +43,8 @@ Interface is under development...
     |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|
             \/         \/      \/     \/        \/        \/           \/
 ---------------------------------------------------------------------------------------
-                                   Introduction
+                                Welcome to Llama2Robot!
 =======================================================================================
-
-
-                              Welcome to Llama2Robot!
-
 
  Optimizing for x86_64-T24...
  ...using 20 out of 24 threads.
@@ -62,12 +56,49 @@ Interface is under development...
  ...config.yaml keys wiped.
 
  Defaulting Emotions...
- ...Model is Indifferent.
+ ...State is Indifferent.
 
-
- Loading... [=============================================================] Complete.
+ Loading... [==============================================================] Complete.
 
 ```
+
+Multi-model support implemented...
+```
+=======================================================================================
+                                    Model Selection
+=======================================================================================
+
+ Search For Models...
+ ...Chatting Model - llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+ ...Instruct Model - llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
+
+ Loading chat model, be patient...
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+llama_model_load_internal: format     = ggjt v3 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 4096
+llama_model_load_internal: n_embd     = 4096
+llama_model_load_internal: n_mult     = 256
+llama_model_load_internal: n_head     = 32
+llama_model_load_internal: n_layer    = 32
+llama_model_load_internal: n_rot      = 128
+llama_model_load_internal: ftype      = 7 (mostly Q8_0)
+llama_model_load_internal: n_ff       = 11008
+llama_model_load_internal: n_parts    = 1
+llama_model_load_internal: model size = 7B
+llama_model_load_internal: ggml ctx size =    0.07 MB
+llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+
+ Loading instruct model, be patient...
+llama.cpp: loading model from ./models/llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
+llama_model_load_internal: format     = ggjt v3 (latest)
+llama_model_load_internal: n_vocab    = 32000
+llama_model_load_internal: n_ctx      = 4096
+llama_model_load_internal: n_embd     = 4096
+
+```
+
+The main display is like this...
 ```
 =======================================================================================
                               Dialogue Display
