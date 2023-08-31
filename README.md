@@ -69,8 +69,8 @@ Multi-model support implemented...
 =======================================================================================
 
  Search For Models...
- ...Chatting Model - llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
- ...Instruct Model - llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
+ ...Chatting Model is llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+ ...Instruct Model is llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
 
  Loading chat model, be patient...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
