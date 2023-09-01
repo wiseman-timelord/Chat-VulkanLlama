@@ -29,7 +29,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 ### INTERFACE:
 Images are for upcoming version.
-Starting up...
+* Starting up...
 ```
 =======================================================================================
     .____    .__                        ________ __________     ___.           __
@@ -57,7 +57,7 @@ Starting up...
  Loading... [==============================================================] Complete.
 
 ```
-Multi-model support implemented...
+* Multi-model support implemented...
 ```
 =======================================================================================
                                     Model Selection
@@ -92,7 +92,7 @@ llama_model_load_internal: n_ctx      = 4096
 llama_model_load_internal: n_embd     = 4096
 
 ```
-The main display...
+* The main display...
 ```
 =======================================================================================
                               Dialogue Display
