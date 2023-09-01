@@ -39,13 +39,13 @@ Images are for upcoming version.
 =========================================================================================
 
 
-     \/
-     l'> -=< I'm not lazy; I'm just on energy-saving mode!
-     ll
-     ll
-     LlamaSay~
-     ||    ||
-     ''    ''
+             \/
+             l'> -=< I'm not lazy; I'm just on energy-saving mode!
+             ll
+             ll
+             LlamaSay~
+             ||    ||
+             ''    ''
 
 
  Optimizing for x86_64-T24...
