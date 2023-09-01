@@ -54,7 +54,7 @@ Images are for upcoming version.
  Loading... [==============================================================] Complete.
 
 ```
-* Multi-model support implemented...
+* Could this be the first existing robust multi-model support for llms...?
 ```
 =========================================================================================
                                      Model Selection
