@@ -26,7 +26,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 ### INTERFACE:
 Images are for upcoming version.
-* Starting up...
+* Starting up, all gravy here...
 ```
 =======================================================================================
     .____    .__                        ________ __________     ___.           __
@@ -54,7 +54,7 @@ Images are for upcoming version.
  Loading... [==============================================================] Complete.
 
 ```
-* Could this be the first existing robust multi-model support for llms...?
+* Could this be the first existing robust multi-model support for llms?...
 ```
 =========================================================================================
                                      Model Selection
@@ -85,7 +85,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* The main display...
+* The main display, prompts worked at this point...
 ```
 =======================================================================================
                               Dialogue Display
