@@ -130,7 +130,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 * (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
 
 ### TEST PROMPTS:
-1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?
+1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?!
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 
 ### REQUIREMENTS:
