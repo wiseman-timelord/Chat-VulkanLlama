@@ -9,8 +9,6 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 ### FUTURE PLANS:
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
-1) Multi-model support. 2 models, 1 for text processing "Llama-2-7B-GGML" and 1 for chat "llama2_7b_chat_uncensored-GGML", leading to, autodetection of models based on name, and for duplicates of same type show dynamic menu with options for the specific items within the type. 
-1) implement, reformatting and optimizations, of all scripts
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
 4) Optimizations of model parameters for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc, also Consider tuning temperatures further for each task.
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
