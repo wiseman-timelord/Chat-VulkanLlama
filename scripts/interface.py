@@ -129,7 +129,7 @@ def display_startup_menu():
         'human_name': "Human",
         'model_name': "Llama",
         'model_role': "ChatBot to Human",
-        'scenario_location': "An Oasis in the Desert"
+        'scenario_location': "On a hill"
     }
     return gather_user_input(default_values)
 
