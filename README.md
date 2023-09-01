@@ -59,38 +59,34 @@ Images are for upcoming version.
 ```
 * Multi-model support implemented...
 ```
-=======================================================================================
-                                    Model Selection
-=======================================================================================
+=========================================================================================
+                                     Model Selection
+=========================================================================================
 
  Search For Models...
- ...Chatting Model is llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
- ...Instruct Model is llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
+ Is 'llama-2-7b.ggmlv3.q2_K.bin' a, chat or instruct, model?
+ Press, 'c' or 'i', to continue: i
+
+ Chatting Model is llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
+ Instruct Model is llama-2-7b.ggmlv3.q2_K.bin
 
  Loading chat model, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_vocab    = 32000
 llama_model_load_internal: n_ctx      = 4096
 llama_model_load_internal: n_embd     = 4096
-llama_model_load_internal: n_mult     = 256
-llama_model_load_internal: n_head     = 32
-llama_model_load_internal: n_layer    = 32
-llama_model_load_internal: n_rot      = 128
-llama_model_load_internal: ftype      = 7 (mostly Q8_0)
-llama_model_load_internal: n_ff       = 11008
-llama_model_load_internal: n_parts    = 1
 llama_model_load_internal: model size = 7B
-llama_model_load_internal: ggml ctx size =    0.07 MB
-llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading instruct model, be patient...
-llama.cpp: loading model from ./models/llama-2-7b-32k-instruct.ggmlv3.q8_0.bin
+llama.cpp: loading model from ./models/llama-2-7b.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_vocab    = 32000
 llama_model_load_internal: n_ctx      = 4096
 llama_model_load_internal: n_embd     = 4096
+llama_model_load_internal: model size = 7B
+llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
+ Loading... [==============================================================] Complete.
 ```
 * The main display...
 ```
