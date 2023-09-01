@@ -1,10 +1,9 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
-1) multi-model implementation, chat and instruct, best for task. (finalizing).
-2) Automatic detection of model type, and solutions to, duplicates or badly named files (complete).
 1) Implement  a --output switch to enable printout of raw output. (finalizing).
 2) Psychological analysis for model emotional state indication (finalizing).
-3) Prompts prompts needed tweaking, this must be re-assesed...   
+3) Prompts needed re-working since breaking while introducing instruct (in progress).
+4) use "data" folder instead of "cache". 
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
