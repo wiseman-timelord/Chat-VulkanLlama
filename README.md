@@ -1,6 +1,7 @@
 # Llama2Robot
 Status: Beta. Currently, working on...
 1) multi-model implementation, chat and instruct, best for task. (finalizing).
+2) Automatic detection of model type, and solutions to, duplicates or badly named files (complete).
 1) Implement  a --output switch to enable printout of raw output. (finalizing).
 2) Psychological analysis for model emotional state indication (finalizing).
 3) Prompts prompts needed tweaking, this must be re-assesed...   
