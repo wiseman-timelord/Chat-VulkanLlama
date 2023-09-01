@@ -1,15 +1,12 @@
 # main.py
 
 # imports
-from scripts import interface
-from scripts import model as model_module
-from scripts.model import update_model_emotion
-from scripts import utility
+from scripts import interface, model as model_module, utility
 import time
-import readline
-import os
 import argparse
 import sys
+import os
+import readline
 
 # globals
 parser = argparse.ArgumentParser(description='Your script description here.')
@@ -25,96 +22,73 @@ class SuppressPrints:
         sys.stdout.close()
         sys.stdout = self._original_stdout
 
+
 # the main function
 def main():
-    
-    # Display the intro screen and get optimal threads    
     optimal_threads = interface.display_intro_screen()
     time.sleep(1)
-    
-    # Clear Keys
     utility.clear_keys()
     time.sleep(1)
-    
-    # default emotion to "Indifferent"
     print(" Defaulting Emotions...")
     utility.write_to_yaml('model_emotion', "Indifferent")
-    print(" ...Model is Indifferent.\n\n")
-    
-    # Read the Yaml now
-    data = utility.read_yaml()
-    
-    # Initialize human_name after clearing keys
-    human_name = "DefaultHumanName"
-    
-    # Display model selection menu and get selected model
-    selected_model = interface.display_model_selection()
-    
-    # Initialize the Llama model
-    if selected_model:
-        model_module.initialize_model(selected_model, optimal_threads)
-    else:
-        print("No model selected. Exiting.")
+    print(" ...State is Indifferent.\n")
+    selected_models = interface.display_model_selection()
+    if not selected_models:
+        print("No Models, Exiting!")
+        time.sleep(2)
         return
-
-    # Display startup menu and get model_name, model_role, human_name, and scenario_location
+    for model_type in ['chat', 'instruct']:
+        model = selected_models.get(model_type)
+        if model:
+            model_module.initialize_model(model, optimal_threads, model_type=model_type)
     model_name, model_role, human_name, scenario_location = interface.display_startup_menu()
-    if not model_name:
-        model_name = "Llama2Robot"
-    print("\n")
-    print("-" * 87)
-    print("\n")
-
-    # Write these values to config.yaml in the desired order
-    utility.write_to_yaml('human_name', human_name)
-    utility.write_to_yaml('human_current', "Empty")
-    utility.write_to_yaml('model_name', model_name)
-    utility.write_to_yaml('model_role', model_role)
-    utility.write_to_yaml('model_current', "Empty")
-    utility.write_to_yaml('model_previous1', "Empty")
-    utility.write_to_yaml('model_previous2', "Empty")
-    utility.write_to_yaml('model_previous3', "Empty")
-    utility.write_to_yaml('scenario_location', scenario_location)
-    utility.write_to_yaml('session_history', "Empty")
-
-    rotation_counter = 0  # Initialize rotation counter for model_emotion
-
+    model_name = model_name or "Llama2Robot"
+    print("\n" + "-" * 89 + "\n")
+    yaml_data = {
+        'human_name': human_name,
+        'human_current': "Empty",
+        'model_name': model_name,
+        'model_role': model_role,
+        'model_current': "Empty",
+        'model_previous1': "Empty",
+        'model_previous2': "Empty",
+        'model_previous3': "Empty",
+        'scenario_location': scenario_location,
+        'session_history': "Empty"
+    }
+    for key, value in yaml_data.items():
+        utility.write_to_yaml(key, value)
+    rotation_counter = 0
+    current_task = None  # Initialize a variable to hold the current task name
     while True:
         user_input = input(" Your input is: ")
-        
-        # Overwrite human_current in config.yaml
+        readline.add_history(user_input)
         utility.write_to_yaml('human_current', user_input)
-
-        # Get model response
         start_time = time.time()
-        model_response = model_module.get_response(user_input, args.output)  # Pass the args.output flag
-        end_time = time.time()
 
-        print(f"\n Model response time: {end_time - start_time} seconds")
-
-        # Write model_current before shifting
-        utility.write_to_yaml('model_current', model_response)
-
-        # Shift model responses
-        utility.shift_responses()
-
-        # Update rotation counter
-        rotation_counter = (rotation_counter + 1) % 4
-
-        # Update model_emotion every 1 in 4 rotations
+        # Update the current_task based on your logic or conditions
+        # For example:
         if rotation_counter == 3:
-            new_emotion = model_module.update_model_emotion(args.output)  # Call the function from model.py and pass the args.output flag
+            current_task = 'update_model_emotion'
+        else:
+            current_task = 'converse'
+
+        model_type_to_use = model_module.determine_model_type_for_task(current_task, selected_models.get('instruct'))
+        model_response = model_module.get_response(user_input, args.output, model_type=model_type_to_use)
+        end_time = time.time()
+        print(f"\n Model response time: {end_time - start_time} seconds")
+        utility.write_to_yaml('model_current', model_response)
+        utility.shift_responses()
+        rotation_counter = (rotation_counter + 1) % 4
+        if rotation_counter == 3:
+            new_emotion = model_module.update_model_emotion(args.output, model_type=model_type_to_use)
             if new_emotion:
                 utility.write_to_yaml('model_emotion', new_emotion)
-
-        # Consolidate responses into session history
-        new_session_history = model_module.consolidate(data['session_history'], data, args.output)  # Pass the args.output flag
-
-        # Update session history in the YAML file
+        data = utility.read_yaml()
+        new_session_history = model_module.consolidate(data['session_history'], data, args.output, model_type=model_type_to_use, instruct_model=selected_models.get('instruct'))
         utility.write_to_yaml('session_history', new_session_history)
-
-        # Display interface
         interface.display_interface()
+
 
 # the __main__ function
 if __name__ == "__main__":

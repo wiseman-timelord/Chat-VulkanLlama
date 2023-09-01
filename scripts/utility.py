@@ -1,46 +1,78 @@
-# utility.py
-
 # imports
 import yaml
 import glob
 import os
-from scripts import model as model_module 
+from scripts import model as model_module
 import time
+import platform
 
-# function to list all available models
+
+def calculate_optimal_threads():
+    time.sleep(1)
+    total_threads = os.cpu_count()
+    print(f"\n Optimizing for {platform.processor()}-T{total_threads}...")
+    # Simplified thread calculation logic
+    threads_to_use = max(1, total_threads - min(4, total_threads // 4))
+    print(f" ...using {threads_to_use} out of {total_threads} threads.")
+    return threads_to_use
+
 def list_available_models():
-    return glob.glob("./models/*.bin")
+    model_files = glob.glob("./models/*.bin")
+    # Used dictionary comprehension for cleaner code
+    return {
+        'chat': [f for f in model_files if 'chat' in os.path.basename(f).lower()],
+        'instruct': [f for f in model_files if 'instruct' in os.path.basename(f).lower() or 'llama-2' in os.path.basename(f).lower()]
+    }
 
-# function to read from YAML file
+# Helper function to update identify.log
+def update_identify_log(model_name, model_type):
+    with open('./cache/identify.log', 'a') as f:
+        f.write(f"{model_name} {model_type}\n")
+
+# Read identify.log
+def read_identify_log():
+    try:
+        with open('./cache/identify.log', 'r') as f:
+            lines = f.readlines()
+        return {line.split()[0]: line.split()[1] for line in lines}
+    except FileNotFoundError:
+        return {}
+
+# write identify.log
+def write_identify_log(model_name, model_type):
+    with open('./cache/identify.log', 'a') as f:
+        f.write(f"{model_name} {model_type}\n")
+
 def read_yaml(file_path='./cache/config.yaml'):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
 
-# function to write to YAML file
+# read config.yaml
 def write_to_yaml(key, value, file_path='./cache/config.yaml'):
     data = read_yaml(file_path)
-    if value is None:
-        value = "Empty"
-    data[key] = value
-    ordered_keys = [
-        'human_name', 'human_current',
-        'model_name', 'model_role', 'model_current', 
-        'model_previous1', 'model_previous2', 'model_previous3',
-        'model_emotion', 'scenario_location', 'session_history'
-    ]
+    data[key] = value if value is not None else "Empty"
+    # Moved ordered_keys list outside of the function to avoid re-creation
     ordered_data = {k: data.get(k, "Empty") for k in ordered_keys}
     with open(file_path, 'w') as file:
         yaml.dump(ordered_data, file)
 
-# shift responses for the model only
+# write config.yaml
 def shift_responses():
     data = read_yaml()
-    data['model_previous3'] = data['model_previous2']
-    data['model_previous2'] = data['model_previous1']
+    # Used a loop to shift keys, making it easier to extend in the future
+    for i in range(3, 1, -1):
+        data[f'model_previous{i}'] = data[f'model_previous{i-1}']
     data['model_previous1'] = data['model_current']
     write_to_yaml('model_previous3', data['model_previous3'])
     write_to_yaml('model_previous2', data['model_previous2'])
     write_to_yaml('model_previous1', data['model_previous1'])
+
+ordered_keys = [
+    'human_name', 'human_current',
+    'model_name', 'model_role', 'model_current',
+    'model_previous1', 'model_previous2', 'model_previous3',
+    'model_emotion', 'scenario_location', 'session_history'
+]
 
 # function to summarize responses and update session history
 def summarize_responses(data):
@@ -91,14 +123,14 @@ def clear_keys():
 # log raw output to debug.log
 def log_to_output(raw_output, prompt_name, script_name, enable_logging=False):
     output_log_path = './cache/output.log'
-    print(f" Logging {script_name}...")
+    print(f"\n Logging {script_name}...")
     if enable_logging:
         if os.path.exists(output_log_path):
             with open(output_log_path, 'a') as output_log:
                 output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
                 output_log.write(raw_output)
                 output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
-            print(" ...Raw-Output Logged.")    
+            print(" ...Raw-Output Logged.\n")    
         else:
             print(f"File {output_log_path} not found. Logging failed.")
     else:

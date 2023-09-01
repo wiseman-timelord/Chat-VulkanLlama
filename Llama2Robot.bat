@@ -1,13 +1,15 @@
 @echo off
-mode 87,37
-rem con:cols=87 lines=100
+mode 89,37
+rem con:cols=89 lines=100
 title Llama2Robot
 cls
 
 :: Run the freqbeat.py script
 echo Launching Llama2Robot...
 echo.
-@echo on
+echo Options: --output
+echo.
+@echo 
 wsl python3 main.py
 @echo off
 echo.

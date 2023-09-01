@@ -1,12 +1,20 @@
-human_current: Empty
-human_name: Empty
-model_current: Empty
-model_motivation: Empty
-model_name: Empty
-model_previous1: Hello Human, I am feeling productive as well. How can I assist you
-  today?
+human_current: Hello there! I am glad to meet you here in the middle of nowhere. Do
+  you come here often?
+human_name: Human
+model_current: 'As Llama, respond to Human''s statement. Your response should be unique
+  and not a repetition of what Human said. The constraints are: respond in the space
+  of one sentences, no multi-line output, no additional comments,'
+model_emotion: Indifferent
+model_name: Llama
+model_previous1: 'As Llama, respond to Human''s statement. Your response should be
+  unique and not a repetition of what Human said. The constraints are: respond in
+  the space of one sentences, no multi-line output, no additional comments,'
 model_previous2: Empty
 model_previous3: Empty
-model_role: Empty
+model_role: AI Assistant to Human
 scenario_location: Unknown Location
-session_history: Empty
+session_history: 'Your task is to succinctly summarize the recent exchange between
+  Human and Llama. Your response should be unique and not a repetition of this prompt.
+  Adhere to the following constraints: limit your summary to two sentences, avoid
+  multi-line output, additional comments, and confirmations, and ensure you use the
+  correct names for the characters involved.'

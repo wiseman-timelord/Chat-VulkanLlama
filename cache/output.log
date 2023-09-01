@@ -1,1 +1,11 @@
 
+<-----------------------------converse1c_start--------------------------------->
+
+As Llama, respond to Human's statement. Your response should be unique and not a repetition of what Human said. The constraints are: respond in the space of one sentences, no multi-line output, no additional comments,
+<------------------------------converse1c_end---------------------------------->
+
+<-----------------------------consolidate1c_start--------------------------------->
+
+Your task is to succinctly summarize the recent exchange between Human and Llama. Your response should be unique and not a repetition of this prompt. Adhere to the following constraints: limit your summary to two sentences, avoid multi-line output, additional comments, and confirmations, and ensure you use the correct names for the characters involved.
+
+<------------------------------consolidate1c_end---------------------------------->
