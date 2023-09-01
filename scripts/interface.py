@@ -15,6 +15,17 @@ ASCII_ART = r"""     .____    .__                        ________ __________    
      |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____/\____/|__|   
              \/         \/      \/     \/        \/        \/           \/            """
 
+# Ascii Art for the fortune cookie
+LLAMA_ART = r"""
+     \/    
+     l'> -=< 
+     ll     
+     ll
+     LlamaSay~
+     ||    || 
+     ''    '' 
+"""
+
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -31,7 +42,10 @@ def display_intro_screen():
     print(ASCII_ART)
     print("-" * 89)
     print("                                Welcome To Llama2Robot!")
-    print("=" * 89)
+    print("=" * 89, "")
+    fortune = utility.get_random_fortune()
+    llama_with_fortune = LLAMA_ART.replace("l'> -=< ", f"l'> -=< {fortune}")
+    print(llama_with_fortune)
     time.sleep(2)
     utility.calculate_optimal_threads()
     return utility.handle_output_log()
@@ -49,8 +63,8 @@ def display_model_selection():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
     print("                                     Model Selection")
-    print("=" * 89)
-    print("\n Search For Models...")
+    print("=" * 89, "\n")
+    print(" Search For Models...")
     
     # Get available models
     available_models_dict = utility.list_available_models()
@@ -115,7 +129,7 @@ def display_startup_menu():
         'human_name': "Human",
         'model_name': "Llama",
         'model_role': "ChatBot to Human",
-        'scenario_location': "Unknown Location"
+        'scenario_location': "An Oasis in the Desert"
     }
     return gather_user_input(default_values)
 
@@ -147,21 +161,17 @@ def display_dialogue_data():
     print(f" {human_name}'s Input")
     print("-" * 89)
     print(data['human_current'])
-    print("\n")
-    print("=-" * 44)
+    print("\n", "=-" * 44)
     print(f" {agent_name}'s Response")
     print("-" * 89)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
-    print("\n")
-    print("=-" * 44)
+    print("\n", "=-" * 44)
     print(f" {agent_name}'s State")
     print("-" * 89)
     print(model_emotion)
-    print("\n")
-    print("=-" * 44)
+    print("\n", "=-" * 44)
     print(" Event History")
     print("-" * 89)
     print(data.get('session_history', 'Unknown'))
-    print("\n")
-    print("=" * 89)
+    print("\n", "=" * 89)

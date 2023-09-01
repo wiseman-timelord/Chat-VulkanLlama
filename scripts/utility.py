@@ -5,7 +5,7 @@ import os
 from scripts import model as model_module
 import time
 import platform
-
+import random
 
 def calculate_optimal_threads():
     time.sleep(1)
@@ -15,6 +15,11 @@ def calculate_optimal_threads():
     threads_to_use = max(1, total_threads - min(4, total_threads // 4))
     print(f" ...using {threads_to_use} out of {total_threads} threads.")
     return threads_to_use
+
+def get_random_fortune():
+    with open('./data/fortune.txt', 'r') as f:
+        lines = f.readlines()
+    return random.choice(lines).strip()
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
