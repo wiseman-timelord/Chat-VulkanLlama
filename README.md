@@ -132,7 +132,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 
 ### TEST PROMPTS:
 1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?
-
+2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 
 ### REQUIREMENTS:
 Windows with WSL or Linux (untested)
