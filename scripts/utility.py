@@ -26,13 +26,13 @@ def list_available_models():
 
 # Helper function to update identify.log
 def update_identify_log(model_name, model_type):
-    with open('./cache/identify.log', 'a') as f:
+    with open('./data/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
 # Read identify.log
 def read_identify_log():
     try:
-        with open('./cache/identify.log', 'r') as f:
+        with open('./data/identify.log', 'r') as f:
             lines = f.readlines()
         return {line.split()[0]: line.split()[1] for line in lines}
     except FileNotFoundError:
@@ -40,15 +40,15 @@ def read_identify_log():
 
 # write identify.log
 def write_identify_log(model_name, model_type):
-    with open('./cache/identify.log', 'a') as f:
+    with open('./data/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
-def read_yaml(file_path='./cache/config.yaml'):
+def read_yaml(file_path='./data/config.yaml'):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
 
 # read config.yaml
-def write_to_yaml(key, value, file_path='./cache/config.yaml'):
+def write_to_yaml(key, value, file_path='./data/config.yaml'):
     data = read_yaml(file_path)
     data[key] = value if value is not None else "Empty"
     # Moved ordered_keys list outside of the function to avoid re-creation
@@ -78,9 +78,9 @@ ordered_keys = [
 def summarize_responses(data):
     data = read_yaml()
     if data['human_previous'] == "Empty" and data['model_previous'] == "Empty":
-        summarize_file = "./prompts/summarize1.txt"
+        summarize_file = "./data/prompts/summarize1.txt"
     elif data['session_history'] == "Empty":
-        summarize_file = "./prompts/summarize2.txt"
+        summarize_file = "./data/prompts/summarize2.txt"
     else:
         raise ValueError("Invalid state for summarization")
     summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)
@@ -100,7 +100,7 @@ def summarize_responses(data):
 def handle_output_log():
     time.sleep(1)
     print("\n Clearing output.log...")
-    output_log_path = './cache/output.log'
+    output_log_path = './data/output.log'
     if os.path.exists(output_log_path):
         with open(output_log_path, 'w') as file:
             file.write('')
@@ -112,7 +112,7 @@ def handle_output_log():
 def clear_keys():
     time.sleep(1)
     print("\n Resetting config.yaml...")
-    if os.path.exists('./cache/config.yaml'):
+    if os.path.exists('./data/config.yaml'):
         keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_previous3', 'model_emotion', 'scenario_location', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")
@@ -122,7 +122,7 @@ def clear_keys():
         
 # log raw output to debug.log
 def log_to_output(raw_output, prompt_name, script_name, enable_logging=False):
-    output_log_path = './cache/output.log'
+    output_log_path = './data/output.log'
     print(f"\n Logging {script_name}...")
     if enable_logging:
         if os.path.exists(output_log_path):

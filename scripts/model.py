@@ -58,7 +58,7 @@ def get_response(input_text, enable_logging=False, model_type='chat'):
     if data is None:
         return "Error: Could not read config file."
 
-    prompt_file = f"./prompts/{'converse1' if data['session_history'] == 'Empty' else 'converse2'}{model_type[0]}.txt"
+    prompt_file = f"./data/prompts/{'converse1' if data['session_history'] == 'Empty' else 'converse2'}{model_type[0]}.txt"
     prompt = read_and_format_prompt(prompt_file, data)
     if prompt is None:
         return "Error: Prompt file not found."
@@ -73,7 +73,7 @@ def get_response(input_text, enable_logging=False, model_type='chat'):
 # function to consolidate current messages
 def consolidate(session_history, data, enable_logging=False, model_type='chat', instruct_model=None):
     model_type = determine_model_type_for_task('consolidate', instruct_model)
-    prompt_file = f"./prompts/{'consolidate1' if session_history == 'Empty' else 'consolidate2'}{model_type[0]}.txt"
+    prompt_file = f"./data/prompts/{'consolidate1' if session_history == 'Empty' else 'consolidate2'}{model_type[0]}.txt"
     prompt = read_and_format_prompt(prompt_file, data)
     if prompt is None:
         return "Error: Prompt file not found."
@@ -92,7 +92,7 @@ def update_model_emotion(enable_logging=False, model_type='chat'):
         return "Error: Could not read config file."
 
     if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
-        prompt_file = f"./prompts/emotions{model_type[0]}.txt"
+        prompt_file = f"./data/prompts/emotions{model_type[0]}.txt"
         prompt = read_and_format_prompt(prompt_file, data)
         if prompt is None:
             return "Error: Prompt file not found."
