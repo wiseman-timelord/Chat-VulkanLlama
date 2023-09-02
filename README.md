@@ -97,7 +97,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* The main display, before I broke things...
+* The main display, have since broke prompts upgrading code...
 ```
 =======================================================================================
                               Dialogue Display
