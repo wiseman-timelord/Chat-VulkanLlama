@@ -26,7 +26,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 
 ### INTERFACE:
-Images are for upcoming version.
+Images may be from differing versions...
 * Starting up, yup that is indeed a llama themed fortune cookie!...
 ```
 =========================================================================================
@@ -96,7 +96,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* The main display, prompts worked at this point...
+* The main display, before I broke things...
 ```
 =======================================================================================
                               Dialogue Display
