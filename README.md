@@ -1,4 +1,4 @@
-# Llama2Robot
+# Llama2Robot-GGML
 Status: Beta. Currently, working on...
 1) Implement  a --output switch to enable printout of raw output. (delayed).
 3) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
