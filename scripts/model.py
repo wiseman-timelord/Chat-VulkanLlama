@@ -64,7 +64,7 @@ def prompt_response(task_name, session_history=None, enable_logging=False, instr
         return {"error": "Could not read config file."}
     
     model_type = determine_model_type_for_task(task_name, instruct_model)
-     print(f"\n Using prompt {prompt_file} with model {model_type}...")
+    print(f"\n Using prompt {prompt_file} with model {model_type}...")
     
     # Get the temperature based on the model type
     temperature = MODEL_TYPE_TO_TEMPERATURE.get(model_type, 0.75)  # Default to 0.75 if model_type is not found
