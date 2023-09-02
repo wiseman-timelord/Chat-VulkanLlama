@@ -9,12 +9,12 @@ Status: Beta. Currently, working on...
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
 
 ### FUTURE PLANS:
-1) scripts must be updated to GGUF based models, and try to keep support for GGML in process. Update, have to wait for more, information and models, to become available, and then there is the report that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB, so people may even reject the format.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
 4) Optimizations of model parameters for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc, also Consider tuning temperatures further for each task.
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
-9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material.. 
+9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material..
+10) scripts must be updated to GGUF based models, and try to keep support for GGML in process. Update, have to wait for more, information and models, to become available, and then there is the report that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB, so people may even reject the format. This is one on the back burner.
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
