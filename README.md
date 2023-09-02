@@ -14,7 +14,10 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 4) Optimizations of model parameters for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc, also Consider tuning temperatures further for each task.
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
 9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material..
-10) scripts must be updated to GGUF based models, and try to keep support for GGML in process. Update, have to wait for more, information and models, to become available, and then there is the report that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB, so people may even reject the format. This is one on the back burner.
+
+### FAILED UPDATES:
+Updates on the back burner...
+1) Scripts must be updated to GGUF based models, and try to keep support for GGML in process. Tried twice, 1 to include and 1 to not include, backwards compatibility, neither worked due to lack of available concise information, model cards are also not commonly found. Have to wait for more, information and models, to become available. Additionally I should wait anyhow, as a report stated that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB! So people may even reject the format.
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
