@@ -17,7 +17,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 
 ### FAILED UPDATES:
 Updates on the back burner...
-1) Scripts must be updated to GGUF based models, and try to keep support for GGML in process. Tried twice, 1 to include and 1 to not include, backwards compatibility, neither worked due to lack of available concise information, model cards are also not commonly found. Have to wait for more, information and models, to become available. Additionally I should wait anyhow, as a report stated that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB! So people may even reject the format.
+* Scripts must be updated to GGUF based models, and try to keep support for GGML in process. Tried twice, 1 to include and 1 to not include, backwards compatibility, neither worked due to lack of available concise information, model cards are also not commonly found. Have to wait for more, information and models, to become available. Additionally I should wait anyhow, as a report stated that GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would possibly even make 13b impossible to run on 64GB! So people may even reject the format.
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
