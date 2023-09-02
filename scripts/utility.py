@@ -7,11 +7,11 @@ import time
 import platform
 import random
 
+
 def calculate_optimal_threads():
     time.sleep(1)
     total_threads = os.cpu_count()
     print(f"\n Optimizing for {platform.processor()}-T{total_threads}...")
-    # Simplified thread calculation logic
     threads_to_use = max(1, total_threads - min(4, total_threads // 4))
     print(f" ...using {threads_to_use} out of {total_threads} threads.")
     return threads_to_use
@@ -23,7 +23,6 @@ def get_random_fortune():
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
-    # Used dictionary comprehension for cleaner code
     return {
         'chat': [f for f in model_files if 'chat' in os.path.basename(f).lower()],
         'instruct': [f for f in model_files if 'instruct' in os.path.basename(f).lower() or 'llama-2' in os.path.basename(f).lower()]
@@ -56,7 +55,6 @@ def read_yaml(file_path='./data/config.yaml'):
 def write_to_yaml(key, value, file_path='./data/config.yaml'):
     data = read_yaml(file_path)
     data[key] = value if value is not None else "Empty"
-    # Moved ordered_keys list outside of the function to avoid re-creation
     ordered_data = {k: data.get(k, "Empty") for k in ordered_keys}
     with open(file_path, 'w') as file:
         yaml.dump(ordered_data, file)
@@ -64,7 +62,6 @@ def write_to_yaml(key, value, file_path='./data/config.yaml'):
 # write config.yaml
 def shift_responses():
     data = read_yaml()
-    # Used a loop to shift keys, making it easier to extend in the future
     for i in range(3, 1, -1):
         data[f'model_previous{i}'] = data[f'model_previous{i-1}']
     data['model_previous1'] = data['model_current']

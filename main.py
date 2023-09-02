@@ -22,6 +22,15 @@ class SuppressPrints:
         sys.stdout.close()
         sys.stdout = self._original_stdout
 
+# Create a mapping of prompt types to the number of expected return values
+prompt_value_count = {
+    'converse1': 6,
+    'converse2': 7,
+    'consolidate1': 4,
+    'consolidate2': 5,
+    'emotions': 6
+}
+
 
 # the main function
 def main():
@@ -59,38 +68,42 @@ def main():
     for key, value in yaml_data.items():
         utility.write_to_yaml(key, value)
     rotation_counter = 0
-    current_task = None  # Initialize a variable to hold the current task name
+    current_task = None  
     while True:
         user_input = input(" Your input is: ")
         readline.add_history(user_input)
         utility.write_to_yaml('human_current', user_input)
         start_time = time.time()
-
-        # Update the current_task based on your logic or conditions
-        # For example:
         if rotation_counter == 3:
             current_task = 'update_model_emotion'
         else:
             current_task = 'converse'
         
+        # Read YAML data
+        data = utility.read_yaml()
+        
         model_type_to_use = model_module.determine_model_type_for_task(current_task, selected_models.get('instruct'))
         
-        print(f"\n Using prompt {current_task}{model_type_to_use[0]} with model {model_type_to_use}...")
-        model_response = model_module.get_response(user_input, args.output, model_type=model_type_to_use)
-        print(" ...response completed.")
+        # Capture the output from prompt_response
+        response_dict = model_module.prompt_response(current_task, session_history=data['session_history'], enable_logging=args.output, instruct_model=selected_models.get('instruct'))
+        
+        model_response = response_dict.get('model_response')
+        new_session_history = response_dict.get('new_session_history')
+        new_emotion = response_dict.get('new_emotion')
+        
         end_time = time.time()
         print(f"\n Response time: {end_time - start_time} seconds.")
+        
+        # Update YAML with new session history and emotion
         utility.write_to_yaml('model_current', model_response)
+        if new_session_history:
+            utility.write_to_yaml('session_history', new_session_history)
+        if new_emotion:
+            utility.write_to_yaml('model_emotion', new_emotion)
         
         utility.shift_responses()
         rotation_counter = (rotation_counter + 1) % 4
-        if rotation_counter == 3:
-            new_emotion = model_module.update_model_emotion(args.output, model_type=model_type_to_use)
-            if new_emotion:
-                utility.write_to_yaml('model_emotion', new_emotion)
-        data = utility.read_yaml()
-        new_session_history = model_module.consolidate(data['session_history'], data, args.output, model_type=model_type_to_use, instruct_model=selected_models.get('instruct'))
-        utility.write_to_yaml('session_history', new_session_history)
+        
         interface.display_interface()
 
 

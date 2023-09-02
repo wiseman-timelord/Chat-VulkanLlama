@@ -10,11 +10,15 @@ import re
 # globals
 llm = None
 
-# Create a mapping of task names to model types
+# Dictionaries
 TASK_MODEL_MAPPING = {
     'consolidate': ['instruct', 'chat'],
     'converse': ['chat'],
     'update_model_emotion': ['instruct', 'chat']
+}
+MODEL_TYPE_TO_TEMPERATURE = {
+    'chat': 0.75,
+    'instruct': 0.25
 }
 
 
@@ -50,63 +54,56 @@ def initialize_model(selected_model_path, optimal_threads, model_type='chat'):
 # Function to parse the model's raw response
 def parse_model_response(raw_model_response, data):
     cleaned_response = raw_model_response.replace("### ASSISTANT:", "").strip()
+    print(" ...response parsed.")
     return cleaned_response.replace(f"{data['model_name']}: ", "")
 
-# function to get a response from the model
-def get_response(input_text, enable_logging=False, model_type='chat'):
+# Prompt response from model
+def prompt_response(task_name, session_history=None, enable_logging=False, instruct_model=None):
     data = utility.read_yaml()
     if data is None:
-        return "Error: Could not read config file."
-
-    prompt_file = f"./data/prompts/{'converse1' if data['session_history'] == 'Empty' else 'converse2'}{model_type[0]}.txt"
-    prompt = read_and_format_prompt(prompt_file, data)
-    if prompt is None:
-        return "Error: Prompt file not found."
-
-    try:
-        raw_model_response = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.75, max_tokens=50)["choices"][0]["text"]
-        utility.log_to_output(raw_model_response, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__), enable_logging)
-        return parse_model_response(raw_model_response, data)
-    except Exception as e:
-        return f"An error occurred: {e}"
-
-# function to consolidate current messages
-def consolidate(session_history, data, enable_logging=False, model_type='chat', instruct_model=None):
-    model_type = determine_model_type_for_task('consolidate', instruct_model)
-    prompt_file = f"./data/prompts/{'consolidate1' if session_history == 'Empty' else 'consolidate2'}{model_type[0]}.txt"
-    prompt = read_and_format_prompt(prompt_file, data)
-    if prompt is None:
-        return " Error: Prompt file not found."
-
-    consolidated_paragraph = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.25, max_tokens=200)["choices"][0]["text"]
-    utility.log_to_output(consolidated_paragraph, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__), enable_logging)
+        return {"error": "Could not read config file."}
     
-    new_session_history = consolidated_paragraph.strip() if session_history == "Empty" else f"{session_history} {consolidated_paragraph}".strip()
-    utility.write_to_yaml('session_history', new_session_history)
-    return new_session_history
-
-# function to update model's emotional state
-def update_model_emotion(enable_logging=False, model_type='chat'):
-    data = utility.read_yaml()
-    if data is None:
-        return " Error: Could not read config file."
-
-    if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
-        prompt_file = f"./data/prompts/emotions{model_type[0]}.txt"
-        prompt = read_and_format_prompt(prompt_file, data)
-        if prompt is None:
-            return " Error: Prompt file not found."
-
-        summarized_text = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
-        utility.log_to_output(summarized_text, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__), enable_logging)
+    model_type = determine_model_type_for_task(task_name, instruct_model)
+     print(f"\n Using prompt {prompt_file} with model {model_type}...")
+    
+    # Get the temperature based on the model type
+    temperature = MODEL_TYPE_TO_TEMPERATURE.get(model_type, 0.75)  # Default to 0.75 if model_type is not found
+    
+    prompt_file = f"./data/prompts/{task_name}1{model_type[0]}.txt" if session_history == 'Empty' else f"./data/prompts/{task_name}2{model_type[0]}.txt"
+    prompt = read_and_format_prompt(prompt_file, data)
+    
+    if prompt is None:
+        return {"error": "Prompt file not found."}
+    
+    try:
+        # llm function call
+        raw_model_response = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=temperature, max_tokens=50)["choices"][0]["text"]
         
-        emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
-        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", summarized_text, re.IGNORECASE)]
+        if enable_logging:
+            utility.log_to_output(raw_model_response, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__))
         
-        emotion_string = ", ".join(found_emotions)
-        utility.write_to_yaml('model_emotion', emotion_string)
-        return emotion_string
-    else:
-        print(" More responses required...")
-        time.sleep(1)
-        return None
+        new_session_history = None
+        new_emotion = None
+        
+        if task_name == 'consolidate':
+            new_session_history = raw_model_response.strip() if session_history == "Empty" else f"{session_history} {raw_model_response}".strip()
+            utility.write_to_yaml('session_history', new_session_history)
+        
+        if task_name == 'emotions':
+            emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
+            found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", raw_model_response, re.IGNORECASE)]
+            new_emotion = ", ".join(found_emotions)
+            utility.write_to_yaml('model_emotion', new_emotion)
+        
+        parsed_response = parse_model_response(raw_model_response, data)
+        
+        return {
+            'model_response': parsed_response,
+            'new_session_history': new_session_history,
+            'new_emotion': new_emotion
+        }
+        
+    except Exception as e:
+        return {"error": f"An error occurred: {e}"}
+
+

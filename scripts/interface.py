@@ -26,6 +26,7 @@ LLAMA_ART = r"""
    ''    '' 
 """
 
+
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -65,17 +66,12 @@ def display_model_selection():
     print("                                     Model Selection")
     print("=" * 89, "")
     print(" Search For Models...")
-    
-    # Get available models
     available_models_dict = utility.list_available_models()
     chat_models = available_models_dict.get('chat', [])
     instruct_models = available_models_dict.get('instruct', [])
-    
-    # Identify unknown models
     identify_log = utility.read_identify_log()
     model_files = glob.glob("./models/*.bin")
     unknown_models = [f for f in model_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
-    
     for model in unknown_models:
         model_name = os.path.basename(model)
         if model_name in identify_log:
@@ -84,39 +80,28 @@ def display_model_selection():
             model_type = input(f" Is '{model_name}' a, chat or instruct, model?\n Press, 'c' or 'i', to continue: ")
             model_type = 'chat' if model_type.lower() == 'c' else 'instruct'
             utility.write_identify_log(model_name, model_type)
-        
         if model_type == 'chat' and model not in chat_models:
             chat_models.append(model)
         elif model_type == 'instruct' and model not in instruct_models:
             instruct_models.append(model)
-    
-     # Select models
     selected_models = {}
     if len(chat_models) == 1:
         selected_models['chat'] = chat_models[0]
     elif len(chat_models) > 1:
-        display_and_select_models(chat_models, 'chat', selected_models)  # Added third argument
-
+        display_and_select_models(chat_models, 'chat', selected_models)  
     if len(instruct_models) == 1:
         selected_models['instruct'] = instruct_models[0]
     elif len(instruct_models) > 1:
-        display_and_select_models(instruct_models, 'instruct', selected_models)  # Added third argument
-
-    # Display selected models
+        display_and_select_models(instruct_models, 'instruct', selected_models)  
     if 'chat' in selected_models:
         print(f" Chatting model is {os.path.basename(selected_models['chat'])}")
     if 'instruct' in selected_models:
         print(f" Instruct model is {os.path.basename(selected_models['instruct'])}")
-    
-    # Check if at least one chat model is available
     if not chat_models:
         print(" No chat model, exiting!")
         exit()
-    
-    # If only chat model is available, set to chat-only mode
     if not instruct_models:
         print("No instruct model, chat-only mode!")
-    
     return selected_models if selected_models else None
 
 def display_startup_menu():
