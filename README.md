@@ -148,6 +148,7 @@ Windows with WSL or Linux (untested)
 ### NOTES:
 * This program is designed to be run on Windows/WSL/Python, it will not work in Windows/Python without WSL, this is because of the use of, `jaxlib` and `jax[cpu]`. 
 * interesting models are, for instruct "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML" (need find 7b), for chat "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
+* Interesting 7B models in GGUF currently includes, https://huggingface.co/teleprint-me/llama-2-7b-chat-GGUF/tree/main, https://huggingface.co/rozek/LLaMA-2-7B-32K_GGUF, https://huggingface.co/TheBloke/Yarn-Llama-2-7B-64K-GGUF, https://huggingface.co/s3nh/NousResearch-Yarn-Llama-2-7b-128k-GGUF, 
 
 ### FORK IDEAS:
 * Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
