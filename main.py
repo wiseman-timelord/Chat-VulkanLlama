@@ -72,12 +72,16 @@ def main():
             current_task = 'update_model_emotion'
         else:
             current_task = 'converse'
-
+        
         model_type_to_use = model_module.determine_model_type_for_task(current_task, selected_models.get('instruct'))
+        
+        print(f"\n Using prompt {current_task}{model_type_to_use[0]} with model {model_type_to_use}...")
         model_response = model_module.get_response(user_input, args.output, model_type=model_type_to_use)
+        print(" ...response completed.")
         end_time = time.time()
-        print(f"\n Model response time: {end_time - start_time} seconds")
+        print(f"\n Response time: {end_time - start_time} seconds.")
         utility.write_to_yaml('model_current', model_response)
+        
         utility.shift_responses()
         rotation_counter = (rotation_counter + 1) % 4
         if rotation_counter == 3:

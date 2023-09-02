@@ -76,7 +76,7 @@ def consolidate(session_history, data, enable_logging=False, model_type='chat', 
     prompt_file = f"./data/prompts/{'consolidate1' if session_history == 'Empty' else 'consolidate2'}{model_type[0]}.txt"
     prompt = read_and_format_prompt(prompt_file, data)
     if prompt is None:
-        return "Error: Prompt file not found."
+        return " Error: Prompt file not found."
 
     consolidated_paragraph = llm(prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=0.25, max_tokens=200)["choices"][0]["text"]
     utility.log_to_output(consolidated_paragraph, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__), enable_logging)
@@ -89,13 +89,13 @@ def consolidate(session_history, data, enable_logging=False, model_type='chat', 
 def update_model_emotion(enable_logging=False, model_type='chat'):
     data = utility.read_yaml()
     if data is None:
-        return "Error: Could not read config file."
+        return " Error: Could not read config file."
 
     if all(data.get(key, "Empty") != "Empty" for key in ['model_previous1', 'model_previous2', 'model_previous3']):
         prompt_file = f"./data/prompts/emotions{model_type[0]}.txt"
         prompt = read_and_format_prompt(prompt_file, data)
         if prompt is None:
-            return "Error: Prompt file not found."
+            return " Error: Prompt file not found."
 
         summarized_text = llm(prompt, stop=["Q:", "### Human:"], echo=False, temperature=0.25, max_tokens=100)["choices"][0]["text"].strip()
         utility.log_to_output(summarized_text, os.path.basename(prompt_file).split('.')[0], os.path.basename(__file__), enable_logging)

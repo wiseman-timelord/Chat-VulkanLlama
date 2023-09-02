@@ -17,13 +17,13 @@ ASCII_ART = r"""     .____    .__                        ________ __________    
 
 # Ascii Art for the fortune cookie
 LLAMA_ART = r"""
-     \/    
-     l'> -=< 
-     ll     
-     ll
-     LlamaSay~
-     ||    || 
-     ''    '' 
+   \/    
+   l'> -=< 
+   ll     
+   ll
+   LlamaSay~
+   ||    || 
+   ''    '' 
 """
 
 def fancy_delay(duration, message=" Loading..."):
@@ -63,7 +63,7 @@ def display_model_selection():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
     print("                                     Model Selection")
-    print("=" * 89, "\n")
+    print("=" * 89, "")
     print(" Search For Models...")
     
     # Get available models
@@ -104,18 +104,18 @@ def display_model_selection():
 
     # Display selected models
     if 'chat' in selected_models:
-        print(f" Chatting Model is {os.path.basename(selected_models['chat'])}")
+        print(f" Chatting model is {os.path.basename(selected_models['chat'])}")
     if 'instruct' in selected_models:
-        print(f" Instruct Model is {os.path.basename(selected_models['instruct'])}")
+        print(f" Instruct model is {os.path.basename(selected_models['instruct'])}")
     
     # Check if at least one chat model is available
     if not chat_models:
-        print("No chat models available. Exiting program.")
+        print(" No chat model, exiting!")
         exit()
     
     # If only chat model is available, set to chat-only mode
     if not instruct_models:
-        print("No instruct models available. Setting to chat-only mode.")
+        print("No instruct model, chat-only mode!")
     
     return selected_models if selected_models else None
 
@@ -160,8 +160,8 @@ def display_dialogue_data():
     model_emotion = data.get('model_emotion', 'Unknown')
     print(f" {human_name}'s Input")
     print("-" * 89)
-    print(data['human_current'])
-    print("\n", "=-" * 44)
+    print(data['human_current'], "\n")
+    print("=-" * 44)
     print(f" {agent_name}'s Response")
     print("-" * 89)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
