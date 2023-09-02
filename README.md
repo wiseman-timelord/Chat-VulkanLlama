@@ -2,7 +2,7 @@
 Status: Beta. Currently, working on...
 1) Implement  a --output switch to enable printout of raw output. (delayed).
 3) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
-4) Combining, converse, consolidate, emotions, functions into 1 function (finalizing).
+4) Combining, converse, consolidate, emotions, functions through maps into 1 function (finalizing).
 * since combining functions, main is only running converse, and not consolidating, presumably not emotions. rest of it is seemingly ok now. temperatures and values and prompt, have their own map now too (the reason why we were stuck with 3 functions before). solution is to continue work on, main and prompt_response.
 
 ### DESCRIPTION:
