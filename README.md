@@ -13,7 +13,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot framework, it use
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
 4) Optimizations of model parameters for each size of Llama 2 GGML based models, eg, 7b, 13b, 30b, 70b, etc, also Consider tuning temperatures further for each task.
 8) Implement "llama-cpp-python", thus enabling ClBlas through option in "Install.bat", to install brand specific version of Blas.
-9) Introduce all remaining critical core features, but stop somewhere before it becomes fork material..
+9) When all done brainstorm any critical upgrades, but stop somewhere before it becomes fork material..
 
 ### FEATURES:
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
