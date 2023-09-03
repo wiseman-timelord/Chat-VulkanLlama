@@ -152,7 +152,7 @@ Windows with WSL or Linux (untested)
 
 ### FAILED UPDATES:
 Updates on the back burner...
-* Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information, model cards are also not commonly found with full concise instructons upon interference. Have to wait for more, information and models, to become available. Additionally A thing to note is that one report stated GGUF takes up 4x memory requirement compared to GGML, thats a lot, it would make 13b impossible for a lot of people, if this is the case then people will stay with GGML for a while.
+* Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information, waiting for more, information and models, to become available. Additionally not really a priority to have larger context in the current version of the application.
 
 ### FORK IDEAS:
 * Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
