@@ -41,6 +41,7 @@ Images may be from differing versions...
 =========================================================================================
 
 
+
              \/
              l'> -=< I'm not lazy; I'm just on energy-saving mode!
              ll
@@ -48,6 +49,7 @@ Images may be from differing versions...
              LlamaSay~
              ||    ||
              ''    ''
+
 
 
  Optimizing for x86_64-T24...
@@ -61,6 +63,7 @@ Images may be from differing versions...
 
  Defaulting Emotions...
  ...State is Indifferent.
+
 
  Loading... [==============================================================] Complete.
 
