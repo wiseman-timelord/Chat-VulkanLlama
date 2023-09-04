@@ -58,12 +58,7 @@ Images may be from differing versions...
  Resetting config.yaml...
  ...config.yaml keys wiped.
 
- Defaulting, Emotions & History...
- ...Keys = Indifferent, Started.
-
-
  Loading... [==============================================================] Complete.
-
 ```
 * Could this be the first existing robust multi-model support for llms?...
 ```
@@ -71,13 +66,11 @@ Images may be from differing versions...
                                      Model Selection
 =========================================================================================
 
-
  Search For Models...
  Is 'llama-2-7b.ggmlv3.q8_0.bin' a, chat or instruct, model?
  Press, 'c' or 'i', to continue: i
  Chat model is llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
  Instruct model is llama-2-7b.ggmlv3.q8_0.bin
-
 
  Loading chat model, be patient...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
@@ -95,7 +88,6 @@ llama_model_load_internal: ftype      = 7 (mostly Q8_0)
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
 
-
  Loading... [==============================================================] Complete.
 ```
 * The main display, have since broke prompts upgrading code...
@@ -107,24 +99,20 @@ llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
 ---------------------------------------------------------------------------------------
 Hello Llama, I am feeling productive, how are you today?
 
-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Llama's Response
 ---------------------------------------------------------------------------------------
 I am feeling great today! I hope you have a productive day too.
-
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Llama's State
 ---------------------------------------------------------------------------------------
 Indifferent
 
-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Event History
 ---------------------------------------------------------------------------------------
 Human and Llama had a conversation where Human expressed their productivity and asked how Llama was doing today, to which Llama responded positively and wished them a productive day as well.
-
 
 =======================================================================================
  Your input is:
