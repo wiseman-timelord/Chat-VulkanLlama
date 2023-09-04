@@ -11,7 +11,6 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 1) Fix the prompts, did work as shown below, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
-4) Optimizations of model parameters, so as, for each model to have their own context length, and if 8K, 16K, 32K, 64K, 128K, is in filename, then to use that context size. This will be a handy feature later on.
 9) When all done brainstorm any critical upgrades, but stop somewhere before it becomes fork material..
 
 ### FEATURES:
