@@ -114,7 +114,17 @@ def display_model_selection():
             context_key = re.search(r'(4K|8K|16K|32K|64K|128K)', model_name)
             if context_key:
                 selected_models[model_type + '_context'] = context_key.group(1)
-                print(f"{model_type.capitalize()} model is {model_name} - CTX {context_key.group(1)}")    
+    
+    # Moved the print statements here to ensure they are displayed
+    if 'chat' in selected_models:
+        model_name = os.path.basename(selected_models['chat'])
+        context_key = selected_models.get('chat_context', 'Unknown')
+        print(f"Chat model is {model_name} - CTX {context_key}")
+    
+    if 'instruct' in selected_models:
+        model_name = os.path.basename(selected_models['instruct'])
+        context_key = selected_models.get('instruct_context', 'Unknown')
+        print(f"Instruct model is {model_name} - CTX {context_key}")
     
     if not chat_models:
         print(" No chat model, exiting!")
