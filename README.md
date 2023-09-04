@@ -60,7 +60,7 @@ Images may be from differing versions...
 
  Loading... [==============================================================] Complete.
 ```
-* Could this be the first existing robust multi-model support for llms?...
+* Robust multi-model support for llms (how the display will be)...
 ```
 =========================================================================================
                                      Model Selection
@@ -90,7 +90,7 @@ llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* The main display, have since broke prompts upgrading code...
+* The main display (how the display will be)...
 ```
 =======================================================================================
                               Dialogue Display
