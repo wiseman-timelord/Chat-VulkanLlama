@@ -8,11 +8,13 @@ import sys
 import os
 import readline
 
+
 # globals
 parser = argparse.ArgumentParser(description='Your script description here.')
 parser.add_argument('--output', action='store_true', help='Enable writing of raw output to output.log')
 args = parser.parse_args()
 loaded_models = {}
+
 
 # classes
 class SuppressPrints:
@@ -37,8 +39,9 @@ def main():
         return
     for model_type in ['chat', 'instruct']:
         model = selected_models.get(model_type)
+        context_key = selected_models.get(model_type + '_context', '4K')
         if model:
-            model_module.initialize_model(model, optimal_threads, model_type=model_type)
+            model_module.initialize_model(model, optimal_threads, model_type=model_type, context_key=context_key)
             loaded_models[model_type] = True
     model_name, model_role, human_name, scenario_location = interface.display_startup_menu()
     model_name = model_name or "Llama2Robot"
