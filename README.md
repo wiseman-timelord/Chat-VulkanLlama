@@ -143,6 +143,7 @@ Windows with WSL or Linux (untested)
 ### FAILED UPDATES:
 Updates on the back burner...
 * Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
+* Reset Keys with confirmation and go back to Roleplay configuration, upon typing "reset" at prompt. Next time implement this in smaller steps.
 
 ### FORK IDEAS:
 * Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
