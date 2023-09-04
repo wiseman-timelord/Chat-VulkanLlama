@@ -34,6 +34,26 @@ PROMPT_TO_MAXTOKENS = {
     'emotions': 150
 }
 
+CONTEXT_LENGTH_MAP = {
+    'chat': {
+        '4K': 4096,
+        '8K': 8192,
+        '16K': 16384,
+        '32K': 32768,
+        '64K': 65536,
+        '128K': 131072
+    },
+    'instruct': {
+        '4K': 4096,
+        '8K': 8192,
+        '16K': 16384,
+        '32K': 32768,
+        '64K': 65536,
+        '128K': 131072
+    }
+}
+
+
 # Helper function to read and format prompt files
 def read_and_format_prompt(file_name, data):
     try:
@@ -53,12 +73,13 @@ def determine_model_type_for_task(task_name, loaded_models):
     return 'chat' 
 
 # initialize the model
-def initialize_model(selected_model_path, optimal_threads, model_type='chat'):
+def initialize_model(selected_model_path, optimal_threads, model_type='chat', context_key='4K'):
     global llm
-    print(f"\n Loading {model_type} model, be patient...")
+    context_length = CONTEXT_LENGTH_MAP[model_type].get(context_key, 4096)
+    print(f"\n Loading {model_type} model with context length {context_length}, be patient...")
     llm = Llama(
         model_path=selected_model_path,
-        n_ctx=4096,
+        n_ctx=context_length,
         embedding=True,
         n_threads=optimal_threads,
     )

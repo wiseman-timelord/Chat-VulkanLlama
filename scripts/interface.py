@@ -6,6 +6,7 @@ import os
 import time
 import sys
 import glob
+import re
 
 # Ascii Art for the console display
 ASCII_ART = r"""     .____    .__                        ________ __________     ___.           __    
@@ -26,19 +27,20 @@ LLAMA_ART = r"""
    ''    '' 
 """
 # Ascii Art for the landscape
-LANDSCAPE_ART = r"""
-                                    \o/        /^L_      ,."\      M
-                W         /~\       _H       /~    \   ./    \
-                   M     /   _\   _/  \     /T~\|~\_\ / \_  /~|          
-                       / \ /W  \ / V^\/X  /~         T  . \/   \    ,v-.
-                ,'`-. /~   ^     H  ,  . \/    ;   .   \      `. \-'   
-                    M      ~     | . ;  /         ,  _   :  .    ~\
+LANDSCAPE_ART = r"""                                                 a
+                           e        \o/         /^L      ,."\      
+                          /~\       _X       /~    \   ./    \
+                         /  ,_\   _/  \     /"~\|~\_\ / \_  /~|          
+                       / \ /   \ /  ^\/I  /~         S  . \/   \  ,~-.
+                 ,'`-./~   ^    ?  ,  . \/    ;   .   \      `. -'   
+                    _/      ~    \ . ;  /         ,  _   :  .    ~\
                    /    ~    .    \    /   :                   '   \   ,
-                  I o. ^    oP     '98b         -      _  9.`       `\9b.
+                  ; o. ^    oP     '&         -      _      9.`    `\  9b.
               .o8oO888.  oO888P  d888b9bo. .8o 888o.       8bo.  o     988o.
                d88888888888888888888888888bo.98888888bo.    98888bo. .d888P
              .o888888888888888888888888888888888888888888888888888888888888o.
 """
+
 
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
@@ -63,6 +65,8 @@ def display_intro_screen():
     print("")  
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
+
+Update the function, then print the complete function, and be careful not to remove anything else..
 
 def display_model_selection():
     fancy_delay(5)
@@ -107,7 +111,11 @@ def display_model_selection():
             selected_models[model_type] = models[int(selected) - 1]
         
         if model_type in selected_models:
-            print(f" {model_type.capitalize()} model is {os.path.basename(selected_models[model_type])}")
+            model_name = os.path.basename(selected_models[model_type])
+            context_key = re.search(r'(4K|8K|16K|32K|64K|128K)', model_name)
+            if context_key:
+                selected_models[model_type + '_context'] = context_key.group(1)
+            print(f"{model_type.capitalize()} model is {model_name} - CTX {context_key.group(1)}")    
     
     if not chat_models:
         print(" No chat model, exiting!")

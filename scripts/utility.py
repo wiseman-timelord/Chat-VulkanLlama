@@ -9,6 +9,7 @@ import time
 import platform
 import random
 
+
 # Fortune cookie
 def get_random_fortune():
     with open('./data/fortune.txt', 'r') as f:
