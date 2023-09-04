@@ -25,7 +25,20 @@ LLAMA_ART = r"""
    ||    || 
    ''    '' 
 """
-
+# Ascii Art for the landscape
+LANDSCAPE_ART = r"""
+                                    \o/        /^L_      ,."\      M
+                W         /~\       _H       /~    \   ./    \
+                   M     /   _\   _/  \     /T~\|~\_\ / \_  /~|          
+                       / \ /W  \ / V^\/X  /~         T  . \/   \    ,v-.
+                ,'`-. /~   ^     H  ,  . \/    ;   .   \      `. \-'   
+                    M      ~     | . ;  /         ,  _   :  .    ~\
+                   /    ~    .    \    /   :                   '   \   ,
+                  I o. ^    oP     '98b         -      _  9.`       `\9b.
+              .o8oO888.  oO888P  d888b9bo. .8o 888o.       8bo.  o     988o.
+               d88888888888888888888888888bo.98888888bo.    98888bo. .d888P
+             .o888888888888888888888888888888888888888888888888888888888888o.
+"""
 
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
@@ -41,23 +54,15 @@ def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
     print(ASCII_ART)
-    print("-" * 89)
     print("                                Welcome To Llama2Robot!")
-    print("=" * 89, "")
+    print("=" * 89, "\n")
     fortune = utility.get_random_fortune()
     llama_with_fortune = LLAMA_ART.replace("l'> -=< ", f"l'> -=< {fortune}")
     print(llama_with_fortune)
     time.sleep(2)
+    print("")  
     utility.calculate_optimal_threads()
-    return utility.handle_output_log()
-
-# Helper function to display and select models
-def display_and_select_models(models, model_type, selected_models):
-    print(f"\nAvailable {model_type} models:")
-    for i, model in enumerate(models):
-        print(f"{i+1}. {os.path.basename(model)}")
-    selected = input(f"Select a {model_type} model by entering its number: ")
-    selected_models[model_type] = models[int(selected) - 1]
+    return utility.clear_debug_logs()
 
 def display_model_selection():
     fancy_delay(5)
@@ -66,12 +71,15 @@ def display_model_selection():
     print("                                     Model Selection")
     print("=" * 89, "")
     print(" Search For Models...")
+    
     available_models_dict = utility.list_available_models()
     chat_models = available_models_dict.get('chat', [])
     instruct_models = available_models_dict.get('instruct', [])
     identify_log = utility.read_identify_log()
+    
     model_files = glob.glob("./models/*.bin")
     unknown_models = [f for f in model_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
+    
     for model in unknown_models:
         model_name = os.path.basename(model)
         if model_name in identify_log:
@@ -80,54 +88,64 @@ def display_model_selection():
             model_type = input(f" Is '{model_name}' a, chat or instruct, model?\n Press, 'c' or 'i', to continue: ")
             model_type = 'chat' if model_type.lower() == 'c' else 'instruct'
             utility.write_identify_log(model_name, model_type)
+        
         if model_type == 'chat' and model not in chat_models:
             chat_models.append(model)
         elif model_type == 'instruct' and model not in instruct_models:
             instruct_models.append(model)
+    
     selected_models = {}
-    if len(chat_models) == 1:
-        selected_models['chat'] = chat_models[0]
-    elif len(chat_models) > 1:
-        display_and_select_models(chat_models, 'chat', selected_models)  
-    if len(instruct_models) == 1:
-        selected_models['instruct'] = instruct_models[0]
-    elif len(instruct_models) > 1:
-        display_and_select_models(instruct_models, 'instruct', selected_models)  
-    if 'chat' in selected_models:
-        print(f" Chatting model is {os.path.basename(selected_models['chat'])}")
-    if 'instruct' in selected_models:
-        print(f" Instruct model is {os.path.basename(selected_models['instruct'])}")
+    
+    for model_type, models in {'chat': chat_models, 'instruct': instruct_models}.items():
+        if len(models) == 1:
+            selected_models[model_type] = models[0]
+        elif len(models) > 1:
+            print(f"\nAvailable {model_type} models:")
+            for i, model in enumerate(models):
+                print(f"{i+1}. {os.path.basename(model)}")
+            selected = input(f"Select a {model_type} model by entering its number: ")
+            selected_models[model_type] = models[int(selected) - 1]
+        
+        if model_type in selected_models:
+            print(f" {model_type.capitalize()} model is {os.path.basename(selected_models[model_type])}")
+    
     if not chat_models:
         print(" No chat model, exiting!")
         exit()
     if not instruct_models:
         print("No instruct model, chat-only mode!")
+    
     return selected_models if selected_models else None
 
 def display_startup_menu():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
-    print("                                 Config & 1st Message")
+    print("                                Roleplay Configuration")
     print("=" * 89)
+    print(LANDSCAPE_ART)
+    print("-" * 89)
     default_values = {
         'human_name': "Human",
         'model_name': "Llama",
         'model_role': "ChatBot to Human",
         'scenario_location': "On a hill"
     }
-    return gather_user_input(default_values)
-
-def gather_user_input(default_values):
+    
     print(f"\n Default Human Name = {default_values['human_name']}")
     print(f" Default Model Name, Role = {default_values['model_name']}, {default_values['model_role']}")
     print(f" Default Location = {default_values['scenario_location']}")
+    
     human_name = input("\n Your name is: ").strip() or default_values['human_name']
     model_info_input = input(" Model's 'name, role' is: ")
     model_info = model_info_input.split(", ") if model_info_input else []
     model_name = model_info[0].strip() if model_info and model_info[0].strip() else default_values['model_name']
-    model_role = model_info[1].strip() if len(model_info) > 1 else f"AI Assistant to {human_name}"
+    model_role = model_info[1].strip() if len(model_info) > 1 else f"Chatbot to {human_name}"
     scenario_location = input(" The location is: ").strip() or default_values['scenario_location']
+    
+    print(" ...details collected.")
+    utility.set_default_keys()  # Call set_default_keys from utility.py
+    
     return model_name, model_role, human_name, scenario_location
 
 def display_interface():
@@ -136,27 +154,32 @@ def display_interface():
     print("=" * 89)
     print("                               Dialogue Display")
     print("=" * 89)
-    display_dialogue_data()
-
-def display_dialogue_data():
+    
     data = utility.read_yaml()
     human_name = data.get('human_name', 'Human')
     agent_name = data.get('model_name', 'Llama2Robot')
     model_emotion = data.get('model_emotion', 'Unknown')
+    
     print(f" {human_name}'s Input")
     print("-" * 89)
     print(data['human_current'], "\n")
     print("=-" * 44)
+    
     print(f" {agent_name}'s Response")
     print("-" * 89)
     cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
     print(cleaned_model_response)
     print("\n", "=-" * 44)
+    
     print(f" {agent_name}'s State")
     print("-" * 89)
     print(model_emotion)
     print("\n", "=-" * 44)
+    
     print(" Event History")
     print("-" * 89)
     print(data.get('session_history', 'Unknown'))
     print("\n", "=" * 89)
+    
+    # Prompt User
+    user_input = input(" Your input is (reset, quit): ")

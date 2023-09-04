@@ -9,8 +9,8 @@ echo Launching Llama2Robot...
 echo.
 echo Options: --output
 echo.
-@echo 
-wsl python3 main.py
+@echo on
+wsl python3 main.py --output
 @echo off
 echo.
 echo.

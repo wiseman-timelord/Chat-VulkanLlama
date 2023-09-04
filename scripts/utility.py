@@ -1,3 +1,5 @@
+# utility.py
+
 # imports
 import yaml
 import glob
@@ -7,19 +9,38 @@ import time
 import platform
 import random
 
-
-def calculate_optimal_threads():
-    time.sleep(1)
-    total_threads = os.cpu_count()
-    print(f"\n Optimizing for {platform.processor()}-T{total_threads}...")
-    threads_to_use = max(1, total_threads - min(4, total_threads // 4))
-    print(f" ...using {threads_to_use} out of {total_threads} threads.")
-    return threads_to_use
-
+# Fortune cookie
 def get_random_fortune():
     with open('./data/fortune.txt', 'r') as f:
         lines = f.readlines()
     return random.choice(lines).strip()
+
+def calculate_optimal_threads():
+    time.sleep(1)
+    total_threads = os.cpu_count()
+    print(f" Optimizing for {platform.processor()}-T{total_threads}...")
+    threads_to_use = max(1, total_threads - min(4, total_threads // 4))
+    print(f" ...using {threads_to_use} out of {total_threads} threads.")
+    return threads_to_use
+
+# Reset all keys to "Empty"
+def reset_keys_to_empty():
+    print("\n Emptying keys...")
+    keys_to_clear = [
+        'human_name', 'human_current', 'model_name', 'model_role', 
+        'model_current', 'model_previous1', 'model_previous2', 
+        'model_emotion', 'scenario_location', 'session_history'
+    ]
+    for key in keys_to_clear:
+        write_to_yaml(key, "Empty")
+    print(" ...Keys reset.\n\n\n")    
+
+# Set default keys
+def set_default_keys():
+    print("\n Defaulting keys....")
+    write_to_yaml('model_emotion', "Indifferent")
+    write_to_yaml('session_history', "Conversation started")
+    print(" ...2 Keys Defaulted.")
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
@@ -65,14 +86,13 @@ def shift_responses():
     for i in range(3, 1, -1):
         data[f'model_previous{i}'] = data[f'model_previous{i-1}']
     data['model_previous1'] = data['model_current']
-    write_to_yaml('model_previous3', data['model_previous3'])
-    write_to_yaml('model_previous2', data['model_previous2'])
     write_to_yaml('model_previous1', data['model_previous1'])
+    write_to_yaml('model_previous2', data['model_previous2'])
 
 ordered_keys = [
     'human_name', 'human_current',
     'model_name', 'model_role', 'model_current',
-    'model_previous1', 'model_previous2', 'model_previous3',
+    'model_previous1', 'model_previous2',
     'model_emotion', 'scenario_location', 'session_history'
 ]
 
@@ -98,42 +118,58 @@ def summarize_responses(data):
     updated_session_history = consolidated_history + " " + data['model_current'] + " " + data['human_current']
     write_to_yaml('session_history', updated_session_history)
 
-# clear debug at start        
-def handle_output_log():
+# clear debug logs at start
+def clear_debug_logs():
     time.sleep(1)
-    print("\n Clearing output.log...")
-    output_log_path = './data/output.log'
-    if os.path.exists(output_log_path):
-        with open(output_log_path, 'w') as file:
-            file.write('')
-        print(" ...output.log cleared.")
-    else:
-        print(" File output.log missing!")   
+    
+    # List of log files to clear
+    log_files = ['./data/input.log', './data/output.log']
+    
+    for log_file in log_files:
+        print(f"\n Clearing {os.path.basename(log_file)}...")
+        
+        if os.path.exists(log_file):
+            with open(log_file, 'w') as file:
+                file.write('')
+            print(f" ...{os.path.basename(log_file)} cleared.")
+        else:
+            print(f" File {os.path.basename(log_file)} missing!")
+ 
 
 # clear keys at start
 def clear_keys():
     time.sleep(1)
     print("\n Resetting config.yaml...")
     if os.path.exists('./data/config.yaml'):
-        keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_previous3', 'model_emotion', 'scenario_location', 'session_history']
+        keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_emotion', 'scenario_location', 'session_history']
         for key in keys_to_clear:
             write_to_yaml(key, "Empty")
         print(" ...config.yaml keys wiped.\n")
     else:
         print(" File config.yaml missing!\n")    
-        
-# log raw output to debug.log
-def log_to_output(raw_output, prompt_name, script_name, enable_logging=False):
-    output_log_path = './data/output.log'
-    print(f"\n Logging {script_name}...")
-    if enable_logging:
-        if os.path.exists(output_log_path):
-            with open(output_log_path, 'a') as output_log:
-                output_log.write(f"\n<-----------------------------{prompt_name}_start--------------------------------->\n")
-                output_log.write(raw_output)
-                output_log.write(f"\n<------------------------------{prompt_name}_end---------------------------------->\n")
-            print(" ...Output logged...")    
-        else:
-            print(f"File {output_log_path} not found. Logging failed.")
+
+
+# log messages to, input.log or output.log
+def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):
+    log_path = f'./data/{log_type}.log'
+    
+    if log_type == 'output' and not enable_logging:
+        print("Logging is disabled!")
+        return
+
+    if os.path.exists(log_path):
+        with open(log_path, 'a') as log_file:
+            # Using the more descriptive log entry name for both input and output
+            log_entry_name = prompt_name if prompt_name else 'processed_input'
+            
+            log_file.write(f"\n<-----------------------------{log_entry_name}_start--------------------------------->\n")
+            log_file.write(message)
+            log_file.write(f"\n<------------------------------{log_entry_name}_end---------------------------------->\n")
+            
+            if log_type == 'output':
+                print(f"\n Logging {event_name}...")
+                print(" ...Output logged...")
     else:
-        print(" Logging is disabled!")
+        print(f"File {log_path} not found. Logging failed.")
+
+       
