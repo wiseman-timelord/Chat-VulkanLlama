@@ -1,6 +1,6 @@
 # Llama2Robot-GGML
 Status: Beta. Currently, working on...
-* Heavy updates dropping tonight, more inspired to get work done than write up exactly whats going on at this stage. Hopefully working program for tonight. Have updated output displays below, rest of content on this page need updating. All features that will be implemented are now 99% known.
+* Heavy updates dropping today, more inspired to get work done than write up exactly whats going on at this stage. Hopefully working program for tonight. Have updated output displays below, rest of content on this page need updating. All features that will be implemented are now 99% known.
 * With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last, but it did work at some point before many implementations. Things to work on are, checking logic and the prompts themselves. This is much easier now due to full implementation of the --output flag on the version I am using.
 
 
