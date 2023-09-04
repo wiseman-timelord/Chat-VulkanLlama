@@ -78,6 +78,7 @@ Images may be from differing versions...
  Chat model is llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
  Instruct model is llama-2-7b.ggmlv3.q8_0.bin
 
+
  Loading chat model, be patient...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
