@@ -71,6 +71,7 @@ Images may be from differing versions...
                                      Model Selection
 =========================================================================================
 
+
  Search For Models...
  Is 'llama-2-7b.ggmlv3.q8_0.bin' a, chat or instruct, model?
  Press, 'c' or 'i', to continue: i
@@ -92,6 +93,7 @@ llama_model_load_internal: n_ctx      = 4096
 llama_model_load_internal: ftype      = 7 (mostly Q8_0)
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+
 
  Loading... [==============================================================] Complete.
 ```
