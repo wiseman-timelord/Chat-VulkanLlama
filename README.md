@@ -1,7 +1,6 @@
 # Llama2Robot-GGML
 Status: Beta. Currently, working on...
 1) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
-2) Combining, converse, consolidate, emotions, functions through maps into 1 function (finalizing).
 * Next update will be today most likely. All features that will be implemented are now 99% known.
 
 
