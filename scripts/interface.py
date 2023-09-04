@@ -66,8 +66,6 @@ def display_intro_screen():
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
 
-Update the function, then print the complete function, and be careful not to remove anything else..
-
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
