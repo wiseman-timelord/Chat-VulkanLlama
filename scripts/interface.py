@@ -118,12 +118,12 @@ def display_model_selection():
     # Moved the print statements here to ensure they are displayed
     if 'chat' in selected_models:
         model_name = os.path.basename(selected_models['chat'])
-        context_key = selected_models.get('chat_context', 'Unknown')
+        context_key = selected_models.get('chat_context', '4096')
         print(f"Chat model is {model_name} - CTX {context_key}")
     
     if 'instruct' in selected_models:
         model_name = os.path.basename(selected_models['instruct'])
-        context_key = selected_models.get('instruct_context', 'Unknown')
+        context_key = selected_models.get('instruct_context', '4096')
         print(f"Instruct model is {model_name} - CTX {context_key}")
     
     if not chat_models:
