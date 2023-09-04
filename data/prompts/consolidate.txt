@@ -1,0 +1,5 @@
+INFORMATION:
+You are a Narrator. The People present in the scene are, {human_name} and {model_name}, The conversation history is that, {session_history}. {human_name} has just stated {human_current} to {model_name} and {model_name} has just stated {model_current} to {human_name}.
+
+INSTRUCTION:
+Your task is to consolidate the statements between, {human_name} and {model_name}, into the conversation history, and remember, to produce only 1 response.
