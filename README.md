@@ -14,6 +14,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 9) When all done brainstorm any critical upgrades, but stop somewhere before it becomes fork material..
 
 ### FEATURES:
+* 4K-128K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
 * Interactive User Loop, features a continuous loop for real-time user interaction.
 * Intelligent Response Generation, utilizes predefined prompts to generate contextually relevant and coherent responses.
