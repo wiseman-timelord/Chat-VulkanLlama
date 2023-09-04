@@ -1,13 +1,14 @@
 # Llama2Robot-GGML
 Status: Beta. Prompts still broken...
-* Heavy updates dropping today, more inspired to get work done than write up exactly whats going on at this stage. Hopefully working program for tonight. Have updated output displays below, rest of content on this page need updating. All features that will be implemented are now 99% known.
-* With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last, but it did work at some point before many implementations. Things to work on are, checking logic and the prompts themselves. This is much easier now due to full implementation of the --output flag on the version I am using.
-* I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, the whole system is BAD. Someone buy me a lower performance 32GB-64GB card with built in fan for desktop, and it would be of interest. I roll with AMD on both, AMD got the, most CPU cores and nVidia blocked hybrid setups.
+* Heavy updates dropping today, hopefully complete program for tonight. Have updated, future plans and output displays below, rest of content on this page need updating.
+* With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last.
+* I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, the whole system is BAD. Someone buy me a lower power 32GB-64GB card with built in fan for desktop, and it would be of interest, not really interested in power hog cards.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
 
 ### FUTURE PLANS:
+1) Fix the prompts, did work at some point before many implementations. check logic and the prompts themselves. This is much easier now due to --output flag.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
 4) Optimizations of model parameters, so as, for each model to have their own context length, and if 8K, 16K, 32K, 64K, 128K, is in filename, then to use that context size. This will be a handy feature later on.
