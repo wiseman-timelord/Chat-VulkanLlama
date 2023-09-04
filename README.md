@@ -1,9 +1,9 @@
 # Llama2Robot-GGML
 Status: Beta. Currently, working on...
-1) Implement  a --output switch to enable printout of raw output. (delayed).
-3) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
+2) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
 4) Combining, converse, consolidate, emotions, functions through maps into 1 function (finalizing).
-* since combining functions, main is only running converse, and not consolidating, presumably not emotions. rest of it is seemingly ok now. temperatures and values and prompt, have their own map now too (the reason why we were stuck with 3 functions before). solution is to continue work on, main and prompt_response.
+* Next update will be today most likely. All features that will be implemented are now 99% known.
+
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot uses ".yaml" files, so the Llama 2 model should be more than compitent at the task of, reading and creating, multi-line for purposes, such as configuration of complex, commands and operations.
