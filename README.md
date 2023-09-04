@@ -2,7 +2,7 @@
 Status: Beta. Prompts still broken...
 * Heavy updates dropping today, more inspired to get work done than write up exactly whats going on at this stage. Hopefully working program for tonight. Have updated output displays below, rest of content on this page need updating. All features that will be implemented are now 99% known.
 * With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last, but it did work at some point before many implementations. Things to work on are, checking logic and the prompts themselves. This is much easier now due to full implementation of the --output flag on the version I am using.
-* I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, the whole system is BAD. Someone buy me a 32GB-64GB card with built in fan for desktop, and it would be of interest. I roll with AMD on both, as it makes sense, and AMD got the CPU cores for this stuff anyhow.
+* I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, the whole system is BAD. Someone buy me a lower performance 32GB-64GB card with built in fan for desktop, and it would be of interest. I roll with AMD on both, as it makes sense, and AMD got the CPU cores for this stuff.
 
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
