@@ -1,7 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta. Prompts still broken...
 * Heavy updates dropping today, hopefully complete program for tonight. Have updated, future plans and output displays below, rest of content on this page need updating.
-* With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last.
+* With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I may leave til last, untill all features are present.
 * I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, the whole system is BAD. Someone get me a, lower-power AMD 32GB-64GB card with built in fan and a 1250-1500W PSU, and it would be of interest.
   
 ### DESCRIPTION:
