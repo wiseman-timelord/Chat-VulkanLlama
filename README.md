@@ -39,20 +39,19 @@ Images may be from differing versions...
                                 Welcome To Llama2Robot!
 =========================================================================================
 
-
-
-             \/
-             l'> -=< I'm not lazy; I'm just on energy-saving mode!
-             ll
-             ll
-             LlamaSay~
-             ||    ||
-             ''    ''
-
-
+   \/
+   l'> -=< "I'm not arguing; I'm just explaining why I'm right! It's a tough job."
+   ll
+   ll
+   LlamaSay~
+   ||    ||
+   ''    ''
 
  Optimizing for x86_64-T24...
  ...using 20 out of 24 threads.
+
+ Clearing input.log...
+ ...input.log cleared.
 
  Clearing output.log...
  ...output.log cleared.
@@ -60,9 +59,8 @@ Images may be from differing versions...
  Resetting config.yaml...
  ...config.yaml keys wiped.
 
- Defaulting Emotions...
- ...State is Indifferent.
-
+ Defaulting, Emotions & History...
+ ...Keys = Indifferent, Started.
 
  Loading... [==============================================================] Complete.
 
