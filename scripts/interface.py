@@ -66,6 +66,7 @@ def display_intro_screen():
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
 
+
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -113,7 +114,7 @@ def display_model_selection():
             context_key = re.search(r'(4K|8K|16K|32K|64K|128K)', model_name)
             if context_key:
                 selected_models[model_type + '_context'] = context_key.group(1)
-            print(f"{model_type.capitalize()} model is {model_name} - CTX {context_key.group(1)}")    
+                print(f"{model_type.capitalize()} model is {model_name} - CTX {context_key.group(1)}")    
     
     if not chat_models:
         print(" No chat model, exiting!")
