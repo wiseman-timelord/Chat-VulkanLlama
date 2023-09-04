@@ -1,7 +1,6 @@
 # Llama2Robot-GGML
 Status: Beta. Currently, working on...
-1) Prompts need re-working since broken while introducing, emotions or instruct (delayed).
-* Heavy updates dropping tonight, more inspired to get work done than write up whats going on at this stage, I want it done tonight. Am updating output displays below. All features that will be implemented are now 99% known.
+* Heavy updates dropping tonight, more inspired to get work done than write up whats going on at this stage, I want it done tonight. Am updating output displays below. All features that will be implemented are now 99% known. The last thing I am going to work on at the moment is probably the prompts, while thats the part people want to see work most, its also abstract that I may leave til last.
 
 
 ### DESCRIPTION:
