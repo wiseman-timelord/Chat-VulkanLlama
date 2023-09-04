@@ -27,7 +27,8 @@ LLAMA_ART = r"""
    ''    '' 
 """
 # Ascii Art for the landscape
-LANDSCAPE_ART = r"""                                                 a
+LANDSCAPE_ART = r"""
+                                                 a
                            e        \o/         /^L      ,."\      
                           /~\       _X       /~    \   ./    \
                          /  ,_\   _/  \     /"~\|~\_\ / \_  /~|          
