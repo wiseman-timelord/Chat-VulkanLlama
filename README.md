@@ -126,7 +126,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 ### USAGE: (linux is unteseted)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows users, install requirements by double clicking `WinInstall.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
-2) Download models such as "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML", we only need 1 of the ".bin" files for it to work not all of them, then copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already in the "./models" folder.
+2) Download models, you only need 1 of the chat "*.bin" files for it to work, but it will also utilise additional instruction "*.bin" if its there, copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already in the "./models" folder.
 5) For Windows users, double click the `Llama2Robot.bat` or run `wsl python3 main.py`. ( For Linux users, run `python3 main.py` and ensure to use 85 columns for the window ). 
 * Optionally, edit "Llama2Robot.bat" or run python, with arguement --output, to log raw output from the model to "./cache/output.log".
 * (OS dependent) Optionally, hold down crtl and scroll your mouse wheel, to resize the window to your liking.
@@ -137,7 +137,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested). This program is designed to be run on Windows+WSL+Python, it will not work in Windows+Python without WSL, this is because of the use of, jaxlib and (jax[cpu] or jax[gpu] for nVidia), which seem to crash otherwise. 
-* The models the program works well with are currently being reviewed, currently testing, for chat "https://huggingface.co/nkpz/llama2-22b-daydreamer-v3" and for instruct "https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML", it may work with other models, it depends upon the syntax of the prompt. 
+* The models the program are advised to work with are currently under review.
 
 ### FAILED UPDATES:
 Updates on the back burner...
