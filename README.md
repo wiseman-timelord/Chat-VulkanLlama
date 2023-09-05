@@ -2,8 +2,9 @@
 Status: Beta. 4 tasks left, these are...
 1) fix prompts.
 2) output parsing.
-3) text to speech for model_response only (with switch --speech).
-4) sounds for major events (with switch --sounds).
+3) new screen for interactions with models.
+4) text to speech for model_response only (with switch --speech).
+5) sounds for major events (with switch --sounds).
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
