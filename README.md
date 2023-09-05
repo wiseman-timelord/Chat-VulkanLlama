@@ -8,6 +8,7 @@ Status: Beta. Prompts still broken...
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
 
 ### FUTURE PLANS:
+1) A few small tweaks to get the interface how it is intended. 
 1) Fix the prompts, did work as shown below, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 4) implement a --speech switch, to enable built-in os dependent text to speech code. 
