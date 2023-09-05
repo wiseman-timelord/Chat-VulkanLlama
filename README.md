@@ -13,7 +13,8 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 1) A few small tweaks to get the interface how it is intended. 
 1) Fix the prompts, did work as shown below, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
-4) implement a --speech switch, to enable built-in os dependent text to speech code. 
+4) implement a --speech switch, to enable built-in os dependent text to speech code.
+5) dynamic syntax for prompts, or maybe just clearer input of prompts at top of script.
 9) When all done, re-check items on backburner below. Additionally brainstorm any critical upgrades, but not if it just becomes fork material..
 
 ### FEATURES:
@@ -136,6 +137,7 @@ Human and Llama had a conversation where Human expressed their productivity and 
 
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested). This program is designed to be run on Windows+WSL+Python, it will not work in Windows+Python without WSL, this is because of the use of, jaxlib and (jax[cpu] or jax[gpu] for nVidia), which seem to crash otherwise. 
+* The Models the program is designed for are, for chat "https://huggingface.co/nkpz/llama2-22b-daydreamer-v3" and for instruct "https://huggingface.co/TheBloke/Llama-2-13B-GGML", it may work with other models, it depends upon the syntax of the prompt. 
 
 ### NOTES:
 * interesting models are, for instruct "https://huggingface.co/TheBloke/Llama-2-7B-32K-Instruct-GGML", for coding "https://huggingface.co/TheBloke/CodeUp-Llama-2-13B-Chat-HF-GGML" (need find 7b), for chat "https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML".
