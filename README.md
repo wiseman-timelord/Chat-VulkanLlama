@@ -78,7 +78,7 @@ Images may be from differing versions...
 llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: n_embd     = 4096llama_model_load_internal: ftype      = 10 (mostly Q2_K)
+llama_model_load_internal: ftype      = 10 (mostly Q2_K)
 llama_model_load_internal: model size = 7B
 llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
