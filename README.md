@@ -74,21 +74,21 @@ Images may be from differing versions...
  Chat model is llama2_7b_chat_uncensored.ggmlv3.q2_K.bin - CTX 4096
  Instruct model is llama-2-7b-32k-instruct.ggmlv3.q2_K.bin - CTX 4096
 
- Loading chat model, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q8_0.bin
+ Loading chat model with context length 4096, be patient...
+llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: ftype      = 7 (mostly Q8_0)
+llama_model_load_internal: n_embd     = 4096llama_model_load_internal: ftype      = 10 (mostly Q2_K)
 llama_model_load_internal: model size = 7B
-llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
- Loading instruct model, be patient...
-llama.cpp: loading model from ./models/llama-2-7b.ggmlv3.q8_0.bin
+ Loading instruct model with context length 4096, be patient...
+llama.cpp: loading model from ./models/llama-2-7b-32k-instruct.ggmlv3.q2_K.bin
 llama_model_load_internal: format     = ggjt v3 (latest)
 llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: ftype      = 7 (mostly Q8_0)
+llama_model_load_internal: ftype      = 10 (mostly Q2_K)
 llama_model_load_internal: model size = 7B
-llama_model_load_internal: mem required  = 8620.71 MB (+ 1026.00 MB per state)
+llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
