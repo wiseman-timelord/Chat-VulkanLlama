@@ -9,7 +9,6 @@ import time
 import platform
 import random
 
-
 # Fortune cookie
 def get_random_fortune():
     with open('./data/fortune.txt', 'r') as f:
@@ -41,7 +40,7 @@ def set_default_keys():
     print("\n Defaulting keys....")
     write_to_yaml('model_emotion', "Indifferent")
     write_to_yaml('session_history', "Conversation started")
-    print(" ...2 Keys Defaulted.")
+    print(" ...2 Keys Defaulted.\n")
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
@@ -122,13 +121,9 @@ def summarize_responses(data):
 # clear debug logs at start
 def clear_debug_logs():
     time.sleep(1)
-    
-    # List of log files to clear
     log_files = ['./data/input.log', './data/output.log']
-    
     for log_file in log_files:
         print(f"\n Clearing {os.path.basename(log_file)}...")
-        
         if os.path.exists(log_file):
             with open(log_file, 'w') as file:
                 file.write('')
@@ -136,41 +131,20 @@ def clear_debug_logs():
         else:
             print(f" File {os.path.basename(log_file)} missing!")
  
-
-# clear keys at start
-def clear_keys():
-    time.sleep(1)
-    print("\n Resetting config.yaml...")
-    if os.path.exists('./data/config.yaml'):
-        keys_to_clear = ['human_name', 'human_current', 'model_name', 'model_role', 'model_current', 'model_previous1', 'model_previous2', 'model_emotion', 'scenario_location', 'session_history']
-        for key in keys_to_clear:
-            write_to_yaml(key, "Empty")
-        print(" ...config.yaml keys wiped.\n")
-    else:
-        print(" File config.yaml missing!\n")    
-
-
 # log messages to, input.log or output.log
 def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):
     log_path = f'./data/{log_type}.log'
-    
     if log_type == 'output' and not enable_logging:
         print("Logging is disabled!")
         return
-
     if os.path.exists(log_path):
         with open(log_path, 'a') as log_file:
-            # Using the more descriptive log entry name for both input and output
             log_entry_name = prompt_name if prompt_name else 'processed_input'
-            
             log_file.write(f"\n<-----------------------------{log_entry_name}_start--------------------------------->\n")
             log_file.write(message)
             log_file.write(f"\n<------------------------------{log_entry_name}_end---------------------------------->\n")
-            
             if log_type == 'output':
                 print(f"\n Logging {event_name}...")
                 print(" ...Output logged...")
     else:
         print(f"File {log_path} not found. Logging failed.")
-
-       

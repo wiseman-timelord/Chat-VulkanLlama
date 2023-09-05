@@ -55,7 +55,6 @@ CONTEXT_LENGTH_MAP = {
     }
 }
 
-
 # Helper function to read and format prompt files
 def read_and_format_prompt(file_name, data):
     try:
@@ -94,80 +93,54 @@ def parse_model_response(raw_model_response, data):
 
 # Prompt response from model
 def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_models=None, save_to=None):
-    print("\n Reading YAML data...")  # Confirmation
+    print("\n Reading YAML data...")  
     data = utility.read_yaml()
     if data is None:
         return {"error": "Could not read config file."}
-
-    print(f" Task type is {task_name}.")  # Confirmation
+    print(f" Task type is {task_name}.")  
     model_type = determine_model_type_for_task(task_name, loaded_models)
-
-    # Dynamically generate the prompt file name
     prompt_file = f"./data/prompts/{task_name}.txt"
-
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
         return {"error": f"Prompt file {prompt_file} not found."}
-
-    print(f" Prompt is {model_type} format.")  # Confirmation
+    print(f" Prompt is {model_type} format.")  
     prompt = read_and_format_prompt(prompt_file, data)
-
     if prompt is None:
         return {"error": "Failed to read or format the prompt."}
-
-    # NEW: Format the prompt based on the model type
-    print(f" Using {model_type} format...")  # Confirmation
+    print(f" Using {model_type} format...")  
     information_part = prompt.split('INSTRUCTION:')[0].split('INFORMATION:')[1].strip()
     instruction_part = prompt.split('INSTRUCTION:')[1].strip()
-    
     if model_type == 'chat':
         formatted_prompt = f"### SYSTEM:\n{information_part}\n### USER:\n{instruction_part}"
     elif model_type == 'instruct':
         formatted_prompt = f"<s>[INST] <<SYS>>\n{information_part}\n<</SYS>>\n{instruction_part}[/INST]"
-
-    print(f" Prompt sent to {model_type} model...")  # Confirmation
-    max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)  # Default to 100 if task_name is not in the map
+    print(f" Prompt sent to {model_type} model...")  
+    max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)  
     raw_model_response = llm(formatted_prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=MODEL_TYPE_TO_TEMPERATURE[model_type], max_tokens=max_tokens_for_task)["choices"][0]["text"]
-
-    # Logging the formatted prompt to input.log
     if enable_logging:
         log_entry_name = f"{task_name}_{model_type}"
         utility.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
-
-    # Logging the raw model's output to output.log
     if enable_logging:
         utility.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
-
-    # Save model's current response to YAML
     if save_to:
         utility.write_to_yaml(save_to, raw_model_response.strip())
-
     new_session_history = None
     new_emotion = None
-
     if task_name == 'consolidate':
-        print(" Consolidating history...")  # Confirmation
+        print(" Consolidating history...")  
         new_session_history = raw_model_response.strip()
         utility.write_to_yaml('session_history', new_session_history)
-
     if task_name == 'emotions':
-        print(" Identifying emotions...")  # Confirmation
+        print(" Identifying emotions...")  
         emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
         found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", raw_model_response, re.IGNORECASE)]
         new_emotion = ", ".join(found_emotions)
         utility.write_to_yaml('model_emotion', new_emotion)
-
-    print(" Parsing response...")  # Confirmation
+    print(" Parsing response...")  
     parsed_response = parse_model_response(raw_model_response, data)
-
-    print(" Returning response...")  # Confirmation
+    print(" Returning response...")  
     return {
         'model_response': parsed_response,
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
-
-
-
-
-
