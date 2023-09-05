@@ -1,8 +1,9 @@
 # Llama2Robot-GGML
-Status: Beta. Prompts still broken...
-* Almost complete, could have done it today, but, life things and 4K-128K is a good note to leave it on for now. Have updated output screenshots below, rest of content on this page need updating.
-* With regards to the broken prompts, while thats the part people want to see work most, its also abstract work that I will leave til last, before I implement sounds, as obviously dont want sounds until it works correctly.
-* I decided CLBlas is of no interest to me, as I have 1 x 8GB graphics card, and when I use it for LLM, I cant use graphics for other purposes. If I had a, lower-power AMD 32GB-64GB card with built in fan and a 1250-1500W PSU, and it would be of interest.
+Status: Beta. 4 tasks left, these are...
+1) fix prompts.
+2) output parsing.
+3) text to speech for model_response only (with switch --speech).
+4) sounds for major events (with switch --sounds).
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
