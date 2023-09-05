@@ -112,7 +112,7 @@ def display_model_selection():
         
         if model_type in selected_models:
             model_name = os.path.basename(selected_models[model_type])
-            context_key = re.search(r'(4K|8K|16K|32K|64K|128K)', model_name)
+            context_key = re.search(r'(4K|8K|16K|32K|64K|128K|200K)', model_name)
             if context_key:
                 selected_models[model_type + '_context'] = context_key.group(1)
     
