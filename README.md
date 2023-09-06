@@ -7,7 +7,7 @@ Status: Beta.
 4) text to speech for model_response only (with switch --speech).
 5) sounds for major events (with switch --sounds).
 * Features done for next update...
-1) Fixed context detection to include 4-200k, as before it was only detecting 4-200K, with the capitol letter.
+1) Fixed context detection to include 4-200k, as before it was only detecting 4-200K, with the capitol letter (in the filename of the model).
 
   
 ### DESCRIPTION:
