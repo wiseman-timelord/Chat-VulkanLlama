@@ -1,11 +1,10 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * There are a few tasks left, these are...
-1) fix prompts
-2) output parsing.
-3) new screen for interactions with models.
-4) text to speech for model_response only (with switch --speech).
-5) sounds for major events (with switch --sounds).
+1) fix prompts & output parsing.
+2) new screen for interactions with models.
+3) text to speech for model_response only (with switch --speech).
+4) sounds for major events (with switch --sounds).
 * Features done for next update...
 1) Fixed context detection to include 4-200k, as before it was only detecting 4-200K, with the capitol letter (in the filename of the model).
 
