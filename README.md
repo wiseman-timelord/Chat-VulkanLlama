@@ -1,10 +1,14 @@
 # Llama2Robot-GGML
-Status: Beta. 4 tasks left, these are...
-1) fix prompts.
+Status: Beta. 
+* There are a few tasks left, these are...
+1) fix prompts
 2) output parsing.
 3) new screen for interactions with models.
 4) text to speech for model_response only (with switch --speech).
 5) sounds for major events (with switch --sounds).
+* Features done for next update...
+1) Fixed context detection to include 4-200k, as before it was only detecting 4-200K, with the capitol letter.
+
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
