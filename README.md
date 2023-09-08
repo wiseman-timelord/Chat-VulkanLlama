@@ -5,7 +5,7 @@ Status: Beta.
 2) fix prompts & output parsing.
 3) text to speech for model_response only (with switch --speech).
 4) sounds for major events (with switch --sounds).
-* Application now has multi-window interface, through launching of separate scripts in parralel, this is a, workaround to using, curses or tkinter, that I have found to being tricky in the past for such purposes on windows/wsl. This will be able to dedicate window 1 to engine, and have separate windows for later project, for example, project plan window and current tasks window, or for roleplay fork, ascii of roleplay location in addition to the Dialogue display, etc.
+* Application now has multi-window interface, through launching of separate scripts in parralel, this is a, workaround to using, curses or tkinter, that I have found to being tricky in the past for such purposes on windows/wsl. This will be able to dedicate window 1 to engine, and have separate windows for detecting changes to specific files, and re-reading keys for display. This will be usefull for later project, for example, project plan window and current tasks window, or for roleplay fork, ascii or library for image generated or the likes, in addition to the Dialogue display, etc.
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
