@@ -30,8 +30,8 @@ class Handler(FileSystemEventHandler):
     def process(event):
         if event.src_path == './data/config.yaml':
             print(" ...changes detected, re-printing Display...\n")
-            time.sleep(1)
-            fancy_delay(5)  # Added duration parameter
+            time.sleep(2)
+            fancy_delay(5)
             display_interface()
 
     def on_modified(self, event):
