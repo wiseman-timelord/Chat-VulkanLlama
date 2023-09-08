@@ -2,8 +2,9 @@
 Status: Beta. 
 * There are a few tasks left, these are...
 1) fix prompts & output parsing.
-2) text to speech for model_response only (with switch --speech).
-3) sounds for major events (with switch --sounds).
+2) Fix reset, not enough values error.
+3) text to speech for model_response only (with switch --speech).
+4) sounds for major events (with switch --sounds).
 * The application now features a multi-window interface, achieved by running separate scripts in parallel. This approach bypasses the complexities I've encountered with using curses or tkinter on Windows/WSL. One window is dedicated to the engine, while others can monitor file changes and display key inputs. This setup is versatile and can be adapted for future projects, such as displaying project plans, tasks, or even for role-playing forks with ASCII or image libraries. The current window size ("mode 90,45") is designed to fit one windows into each half of a screen, this can be adjusted later, for example, for 4 window agent project, for each window to fit a quarter of the screen of a dedicated virtual desktop.
   
 ### DESCRIPTION:
