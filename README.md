@@ -120,7 +120,8 @@ Indifferent
 Human and Llama had a conversation where Human expressed their productivity and asked how Llama was doing today, to which Llama responded positively and wished them a productive day as well.
 
 =======================================================================================
- Your input is:
+
+ Listening for changes in ./data/config.yaml...
 
 ```
 
