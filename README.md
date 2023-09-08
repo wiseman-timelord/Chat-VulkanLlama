@@ -33,7 +33,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 
 ### INTERFACE:
 Images may be from differing versions...
-* Starting up, yup that is indeed a llama themed fortune cookie!...
+* Window 1 - Starting up, yup that is indeed a llama themed fortune cookie!...
 ```
 =========================================================================================
      .____    .__                        ________ __________     ___.           __
@@ -67,7 +67,7 @@ Images may be from differing versions...
 
  Loading... [==============================================================] Complete.
 ```
-* Robust multi-model support for llms (how the display will be)...
+* Window 1 - Robust multi-model support for Llama 2 GGML llms...
 ```
 =========================================================================================
                                      Model Selection
@@ -95,7 +95,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* The main display (how the display will be)...
+* Window 2 - The Dialogue Display (and how the prompts are meant to work)...
 ```
 =======================================================================================
                               Dialogue Display
