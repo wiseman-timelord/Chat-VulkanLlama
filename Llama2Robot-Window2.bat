@@ -1,0 +1,22 @@
+@echo off
+mode 89,37
+rem con:cols=89 lines=100
+title Llama2Robot-Window2
+cls
+
+:: Run the freqbeat.py script
+echo Launching Llama2Robot-Window2...
+echo.
+echo.
+@echo on
+wsl python3 keys.py
+@echo off
+echo.
+echo.
+
+:: Exiting
+echo Llama2Robot-Window2 shutting down...
+echo.
+echo.
+pause
+exit /b

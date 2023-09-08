@@ -9,6 +9,15 @@ import time
 import platform
 import random
 
+# Maps 
+ordered_keys = [
+    'human_name', 'model_name',
+    'model_role', 'scenario_location', 'model_emotion',
+    'session_history', 'human_current',
+    'model_current', 'model_previous1', 'model_previous2'
+]
+
+
 # Fortune cookie
 def get_random_fortune():
     with open('./data/fortune.txt', 'r') as f:
@@ -34,13 +43,6 @@ def reset_keys_to_empty():
     for key in keys_to_clear:
         write_to_yaml(key, "Empty")
     print(" ...Keys reset.\n\n\n")    
-
-# Set default keys
-def set_default_keys():
-    print("\n Defaulting keys....")
-    write_to_yaml('model_emotion', "Indifferent")
-    write_to_yaml('session_history', "Conversation started")
-    print(" ...2 Keys Defaulted.\n")
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
@@ -89,20 +91,13 @@ def shift_responses():
     write_to_yaml('model_previous1', data['model_previous1'])
     write_to_yaml('model_previous2', data['model_previous2'])
 
-ordered_keys = [
-    'human_name', 'human_current',
-    'model_name', 'model_role', 'model_current',
-    'model_previous1', 'model_previous2',
-    'model_emotion', 'scenario_location', 'session_history'
-]
-
 # function to summarize responses and update session history
 def summarize_responses(data):
     data = read_yaml()
-    if data['human_previous'] == "Empty" and data['model_previous'] == "Empty":
-        summarize_file = "./data/prompts/summarize1.txt"
-    elif data['session_history'] == "Empty":
-        summarize_file = "./data/prompts/summarize2.txt"
+    if data.get('human_previous', "Empty") == "Empty" and data.get('model_previous', "Empty") ==     "Empty":
+        summarize_file = "./data/prompts/consolidate.txt"
+    elif data.get('session_history', "Empty") == "Empty":
+        summarize_file = "./data/prompts/emotions.txt"
     else:
         raise ValueError("Invalid state for summarization")
     summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)

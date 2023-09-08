@@ -1,5 +1,2 @@
-INFORMATION:
-Your name is {model_name}, your role is {model_role}, and your emotional state is {model_emotion}. You are at {scenario_location}, where you and {human_name} are present. The session history is as follows: {session_history}. Now, {human_name} has just stated: "{human_current}" to you.
-
-INSTRUCTION:
-Your task is to respond to {human_name}'s statement in context with the session history, and remember, to produce only 1 response.
+INPUT:
+Your name is {model_name}, your role is {model_role}. The location is {scenario_location}, where, you and {human_name} are present. The event history that, "{session_history}", and now {human_name} has just stated, {human_current} to you. Your task is, in one sentence, to respond to {human_name}'s statement, in a method that are in context with your emotional state being {model_emotion}".  

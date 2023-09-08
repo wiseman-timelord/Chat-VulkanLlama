@@ -4,3 +4,4 @@ PyYAML
 jax[cpu]
 jaxlib
 readline
+watchdog

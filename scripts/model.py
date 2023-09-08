@@ -17,25 +17,26 @@ TASK_MODEL_MAPPING = {
     'emotions': ['instruct', 'chat']
 }
 
-prompt_value_count = {
-    'converse': 6,
-    'consolidate': 5,
-    'emotions': 5
-}
-
 MODEL_TYPE_TO_TEMPERATURE = {
     'chat': 0.75,
     'instruct': 0.25
 }
 
 PROMPT_TO_MAXTOKENS = {
-    'converse': 50,
-    'consolidate': 100,
-    'emotions': 150
+    'converse': 100,
+    'consolidate': 200,
+    'emotions': 300
 }
 
 CONTEXT_LENGTH_MAP = {
     'chat': {
+        '4k': 4096,
+        '8k': 8192,
+        '16k': 16384,
+        '32k': 32768,
+        '64k': 65536,
+        '128k': 131072,
+        '200k': 204800,
         '4K': 4096,
         '8K': 8192,
         '16K': 16384,
@@ -45,6 +46,13 @@ CONTEXT_LENGTH_MAP = {
         '200K': 204800
     },
     'instruct': {
+        '4k': 4096,
+        '8k': 8192,
+        '16k': 16384,
+        '32k': 32768,
+        '64k': 65536,
+        '128k': 131072,
+        '200k': 204800,
         '4K': 4096,
         '8K': 8192,
         '16K': 16384,
@@ -55,12 +63,26 @@ CONTEXT_LENGTH_MAP = {
     }
 }
 
-# Helper function to read and format prompt files
-def read_and_format_prompt(file_name, data):
+
+# function to read and format prompts
+def read_and_format_prompt(file_name, data, model_type, task_name):
     try:
         with open(file_name, "r") as file:
-            prompt = file.read().format(**data)
-        return prompt
+            lines = file.readlines()
+        main_input = ""
+        human_interaction = ""
+        for idx, line in enumerate(lines):
+            if "### Instruction:" in line:  # New syntax
+                single_input = lines[idx + 1].strip().format(**data)
+            elif "INPUT:" in line:  # Old syntax
+                single_input = lines[idx + 1].strip().format(**data)
+        
+        if model_type == 'chat':
+            formatted_prompt = f"### Instruction: {single_input}\n### Response:"
+        else:  # For 'instruct' model type
+            formatted_prompt = f"[INST] {single_input} [/INST]"
+        
+        return formatted_prompt
     except FileNotFoundError:
         print(f"Error: {file_name} not found.")
         return None
@@ -87,40 +109,42 @@ def initialize_model(selected_model_path, optimal_threads, model_type='chat', co
 
 # Function to parse the model's raw response
 def parse_model_response(raw_model_response, data):
-    cleaned_response = raw_model_response.replace("### ASSISTANT:", "").strip()
-    print(" ...response parsed.")
+    cleaned_response = raw_model_response.replace("### ASSISTANT:", "").strip()  # Retaining old rule
+    
+    # New rule for handling "### Response:"
+    if "### Response:" in cleaned_response:
+        cleaned_response = re.sub(r'### Response:', '', cleaned_response).strip()
+        cleaned_response = re.split(r'### Instruction:', cleaned_response)[0].strip()
+    
     return cleaned_response.replace(f"{data['model_name']}: ", "")
+
 
 # Prompt response from model
 def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_models=None, save_to=None):
-    print("\n Reading YAML data...")  
+    print("\n Reading YAML data...")
     data = utility.read_yaml()
     if data is None:
         return {"error": "Could not read config file."}
-    print(f" Task type is {task_name}.")  
+    valid_tasks = ['consolidate', 'emotions', 'converse']
+    if task_name not in valid_tasks:
+        return {"error": f"Invalid task name. Valid tasks are {', '.join(valid_tasks)}."}
+    print(f" Task type is {task_name}.")
     model_type = determine_model_type_for_task(task_name, loaded_models)
     prompt_file = f"./data/prompts/{task_name}.txt"
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
         return {"error": f"Prompt file {prompt_file} not found."}
-    print(f" Prompt is {model_type} format.")  
-    prompt = read_and_format_prompt(prompt_file, data)
-    if prompt is None:
+    print(f" Prompt is {model_type} format.")
+    formatted_prompt = read_and_format_prompt(prompt_file, data, model_type, task_name)
+    if formatted_prompt is None:
         return {"error": "Failed to read or format the prompt."}
-    print(f" Using {model_type} format...")  
-    information_part = prompt.split('INSTRUCTION:')[0].split('INFORMATION:')[1].strip()
-    instruction_part = prompt.split('INSTRUCTION:')[1].strip()
-    if model_type == 'chat':
-        formatted_prompt = f"### SYSTEM:\n{information_part}\n### USER:\n{instruction_part}"
-    elif model_type == 'instruct':
-        formatted_prompt = f"<s>[INST] <<SYS>>\n{information_part}\n<</SYS>>\n{instruction_part}[/INST]"
-    print(f" Prompt sent to {model_type} model...")  
-    max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)  
+    print(f" Using {model_type} format...")
+    print(f" Prompt sent to {model_type} model...")
+    max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)
     raw_model_response = llm(formatted_prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=MODEL_TYPE_TO_TEMPERATURE[model_type], max_tokens=max_tokens_for_task)["choices"][0]["text"]
     if enable_logging:
         log_entry_name = f"{task_name}_{model_type}"
         utility.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
-    if enable_logging:
         utility.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
     if save_to:
         utility.write_to_yaml(save_to, raw_model_response.strip())
@@ -144,3 +168,6 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
+    
+    
+    

@@ -1,5 +1,2 @@
-INFORMATION:
-You are an AI Psychologist. You've been observing a conversation between {human_name} and {model_name}. In this dialogue, {model_name} made the following statements to {human_name} in sequence: first {model_previous_2}, and then {model_previous_1}, and then {model_current}.
-
-INSTRUCT:
-Your task is to analyze the sequence of {model_name}'s statements to {human_name}, and then identify the most fitting emotional state from the following list: Love, Arousal, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate, and remember, to produce only 1 response.
+INPUT:
+The recent communications from {model_name} to {human_name} are in this order, first {model_previous_2}, and then {model_previous_1}, and now {model_current}. Your task is, in one word, to identify the most fitting emotional state of {model_name}'s recent communications, from the choices of the words, Love, Arousal, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate.

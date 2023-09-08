@@ -9,6 +9,7 @@ import glob
 import re
 from scripts.ascii import ASCII_ART, LLAMA_ART, LANDSCAPE_ART
 
+
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -37,7 +38,7 @@ def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
-    print("                                     Model Selection")
+    print("                                    Model Selection")
     print("=" * 89, "")
     print(" Search For Models...")
     available_models_dict = utility.list_available_models()
@@ -70,16 +71,16 @@ def display_model_selection():
             selected_models[model_type] = models[int(selected) - 1]
         if model_type in selected_models:
             model_name = os.path.basename(selected_models[model_type])
-            context_key = re.search(r'(4K|8K|16K|32K|64K|128K|200K)', model_name)
+            context_key = re.search(r'(4k|8k|16k|32k|64k|128k|200k|4K|8K|16K|32K|64K|128K|200K)', model_name)
             if context_key:
                 selected_models[model_type + '_context'] = context_key.group(1)
     if 'chat' in selected_models:
         model_name = os.path.basename(selected_models['chat'])
-        context_key = selected_models.get('chat_context', '4096')
+        context_key = selected_models.get('chat_context', '4k')
         print(f" Chat model is {model_name} - CTX {context_key}")
     if 'instruct' in selected_models:
         model_name = os.path.basename(selected_models['instruct'])
-        context_key = selected_models.get('instruct_context', '4096')
+        context_key = selected_models.get('instruct_context', '4k')
         print(f" Instruct model is {model_name} - CTX {context_key}")
     if not chat_models:
         print("No chat model, exiting!")
@@ -88,7 +89,8 @@ def display_model_selection():
         print("No instruct model, chat-only mode!")
     return selected_models if selected_models else None
 
-def display_startup_menu():
+# Roleplay Configuration Display
+def roleplay_configuration():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
@@ -98,9 +100,11 @@ def display_startup_menu():
     print("-" * 89)
     default_values = {
         'human_name': "Human",
-        'model_name': "Llama",
-        'model_role': "ChatBot to Human",
-        'scenario_location': "On a hill"
+        'model_name': "Wise-Llama",
+        'model_role': "Mystical Oracle",
+        'model_emotion': "Indifferent",   
+        'scenario_location': "on a mountain",
+        'session_history': "the conversation started"
     }
     print(f"\n Default Human Name = {default_values['human_name']}")
     print(f" Default Model Name, Role = {default_values['model_name']}, {default_values['model_role']}")
@@ -109,36 +113,21 @@ def display_startup_menu():
     model_info_input = input(" Model's 'name, role' is: ")
     model_info = model_info_input.split(", ") if model_info_input else []
     model_name = model_info[0].strip() if model_info and model_info[0].strip() else default_values['model_name']
-    model_role = model_info[1].strip() if len(model_info) > 1 else f"Chatbot to {human_name}"
+    model_role = model_info[1].strip() if len(model_info) > 1 else default_values['model_role']
     scenario_location = input(" The location is: ").strip() or default_values['scenario_location']
-    print("\n ...details collected.")
-    utility.set_default_keys()  
-    return model_name, model_role, human_name, scenario_location
-
-def display_interface():
+    model_emotion = default_values['model_emotion']
+    session_history = default_values['session_history']
+    print("\n Details collected...")
+    print("...Others defaulted.\n")
+    return human_name, model_name, model_role, model_emotion, scenario_location, session_history
+    
+# Start Engine
+def display_engine():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 89)
-    print("                               Dialogue Display")
+    print("                                   Engine Display")
     print("=" * 89)
-    data = utility.read_yaml()
-    human_name = data.get('human_name', 'Human')
-    agent_name = data.get('model_name', 'Llama2Robot')
-    model_emotion = data.get('model_emotion', 'Unknown')
-    print(f" {human_name}'s Input")
-    print("-" * 89)
-    print(data['human_current'], "\n")
-    print("=-" * 44)
-    print(f" {agent_name}'s Response")
-    print("-" * 89)
-    cleaned_model_response = data['model_current'].replace("### USER:", "").strip()
-    print(cleaned_model_response)
-    print("\n", "=-" * 44)
-    print(f" {agent_name}'s State")
-    print("-" * 89)
-    print(model_emotion)
-    print("\n", "=-" * 44)
-    print(" Event History")
-    print("-" * 89)
-    print(data.get('session_history', 'Unknown'))
-    print("\n", "=" * 89)
+    print("\n")
+    return 
+    
