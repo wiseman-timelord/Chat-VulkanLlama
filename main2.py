@@ -1,14 +1,16 @@
 from watchdog.observers import Observer
+from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
 import time
 import yaml
 import os
+import sys  # Added import for sys
 
 class Watcher:
     DIRECTORY_TO_WATCH = "./data"
 
     def __init__(self):
-        self.observer = Observer()
+        self.observer = PollingObserver()
 
     def run(self):
         event_handler = Handler()
@@ -27,15 +29,24 @@ class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
         if event.src_path == './data/config.yaml':
-            print(" ...changes detected in './data/config.yaml'...")
+            print(" ...changes detected, re-printing Dialogue Display...\n")
             time.sleep(1)
-            print(" ...re-printing Dialogue Display...")
-            time.sleep(1)
+            fancy_delay(5)  # Added duration parameter
             display_interface()
 
     def on_modified(self, event):
         self.process(event)
 
+def fancy_delay(duration, message=" Loading..."):
+    step = duration / 100
+    sys.stdout.write(f"{message} [")
+    for _ in range(64):
+        time.sleep(step)
+        sys.stdout.write("=")
+        sys.stdout.flush()
+    sys.stdout.write("] Complete.\n")
+    time.sleep(1)
+        
 def read_yaml(file_path='./data/config.yaml'):
     try:
         with open(file_path, 'r') as file:
@@ -79,11 +90,11 @@ def display_interface():
     print(" Event History")
     print("-" * 90)
     print(f" {session_history}\n\n")
-    print("=-" * 45)
-    print("                  ...Listening for changes in './data/config.yaml'...")
     print("=" * 90)
+    print("\n Listening for changes in './data/config.yaml...")
 
 if __name__ == '__main__':
     display_interface()
     w = Watcher()
     w.run()
+   
