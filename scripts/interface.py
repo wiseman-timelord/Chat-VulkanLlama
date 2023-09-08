@@ -22,10 +22,10 @@ def fancy_delay(duration, message=" Loading..."):
 
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 89)
+    print("=" * 90)
     print(ASCII_ART)
     print("                                Welcome To Llama2Robot!")
-    print("=" * 89, "\n")
+    print("=-" * 45)
     fortune = utility.get_random_fortune()
     llama_with_fortune = LLAMA_ART.replace("l'> -=< ", f"l'> -=< {fortune}")
     print(llama_with_fortune)
@@ -37,10 +37,10 @@ def display_intro_screen():
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 89)
+    print("=" * 90)
     print("                                    Model Selection")
-    print("=" * 89, "")
-    print(" Search For Models...")
+    print("=-" * 45)
+    print("\n Search For Models...")
     available_models_dict = utility.list_available_models()
     chat_models = available_models_dict.get('chat', [])
     instruct_models = available_models_dict.get('instruct', [])
@@ -93,11 +93,11 @@ def display_model_selection():
 def roleplay_configuration():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 89)
+    print("=" * 90)
     print("                                Roleplay Configuration")
-    print("=" * 89)
+    print("=" * 90)
     print(LANDSCAPE_ART)
-    print("-" * 89)
+    print("-" * 90)
     default_values = {
         'human_name': "Human",
         'model_name': "Wise-Llama",
@@ -125,9 +125,9 @@ def roleplay_configuration():
 def display_engine():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 89)
+    print("=" * 90)
     print("                                   Engine Display")
-    print("=" * 89)
+    print("=-" * 45)
     print("\n")
     return 
     

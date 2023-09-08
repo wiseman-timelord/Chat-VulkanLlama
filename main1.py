@@ -119,7 +119,7 @@ def main():
         model_current = data.get('model_current') 
         rotation_counter = 0
         while True:
-            user_input = input(" Your input is (reset, quit): ").lower()
+            user_input = input(" Your message is (reset, quit):\n").lower()
             if user_input == 'reset':
                 handle_reset()
             elif user_input == 'quit':

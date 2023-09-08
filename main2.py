@@ -26,7 +26,11 @@ class Handler(FileSystemEventHandler):
 
     @staticmethod
     def process(event):
-        if event.src_path.endswith("config.yaml"):
+        if event.src_path == './data/config.yaml':
+            print(" ...changes detected in './data/config.yaml'...")
+            time.sleep(1)
+            print(" ...re-printing Dialogue Display...")
+            time.sleep(1)
             display_interface()
 
     def on_modified(self, event):
@@ -45,35 +49,39 @@ def read_yaml(file_path='./data/config.yaml'):
 
 def display_interface():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 89)
-    print("                                   Dialogue Display")
-    print("=" * 89)
     data = read_yaml()
-    if data:
-        human_name = data.get('human_name', "Empty")
-        model_name = data.get('model_name', "Empty")
-        model_current = data.get('model_current', "Empty")
-        model_emotion = data.get('model_emotion', "Empty")
-        session_history = data.get('session_history', "Empty")
-        human_current = data.get('human_current', "Empty")
     
+    if data is None:
+        return
+
+    human_name = data.get('human_name')
+    model_name = data.get('model_name')
+    model_current = data.get('model_current')
+    model_emotion = data.get('model_emotion')
+    session_history = data.get('session_history')
+    human_current = data.get('human_current')
+
+    print("=" * 90)
+    print("                                   Dialogue Display")
+    print("=-" * 45)
     print(f" {human_name}'s Input")
-    print("-" * 89)
+    print("-" * 90)
     print(f" {human_current}\n\n")
-    print("=-" * 44)
+    print("=-" * 45)
     print(f" {model_name}'s Response")
-    print("-" * 89)
+    print("-" * 90)
     print(f" {model_current}\n\n")
-    print("=-" * 44)
+    print("=-" * 45)
     print(f" {model_name}'s State")
-    print("-" * 89)
+    print("-" * 90)
     print(f" {model_emotion}\n\n")  
-    print("=-" * 44)
+    print("=-" * 45)
     print(" Event History")
-    print("-" * 89)
+    print("-" * 90)
     print(f" {session_history}\n\n")
-    print("=" * 89)
-    print("\n Listening for changes in ./data/config.yaml...")
+    print("=-" * 45)
+    print("                  ...Listening for changes in './data/config.yaml'...")
+    print("=" * 90)
 
 if __name__ == '__main__':
     display_interface()
