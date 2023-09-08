@@ -4,12 +4,12 @@ rem con:cols=89 lines=100
 title Llama2Robot-Window2
 cls
 
-:: Run the freqbeat.py script
+:: Run the main2.py script
 echo Launching Llama2Robot-Window2...
 echo.
 echo.
 @echo on
-wsl python3 keys.py
+wsl python3 main2.py
 @echo off
 echo.
 echo.
