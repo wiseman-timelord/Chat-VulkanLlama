@@ -1,5 +1,5 @@
 @echo off
-mode 89,37
+mode 89,44
 rem con:cols=89 lines=100
 title Llama2Robot-Window2
 cls
