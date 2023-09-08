@@ -138,7 +138,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
  Keys Status:
 ------------------------------------------------------------------------------------------
 
- Listening for changes in './data/config.yaml...
+ Listening for changes in './data/config.yaml'...
 ```
 
 ### USAGE: (linux is unteseted)
