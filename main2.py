@@ -29,7 +29,7 @@ class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
         if event.src_path == './data/config.yaml':
-            print(" ...changes detected, re-printing Dialogue Display...\n")
+            print(" ...changes detected, re-printing Display...\n")
             time.sleep(1)
             fancy_delay(5)  # Added duration parameter
             display_interface()
