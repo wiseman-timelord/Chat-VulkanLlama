@@ -1,12 +1,10 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * There are a few tasks left, these are...
-1) fix prompts & output parsing.
-2) new screen for interactions with models.
+1) ensure Dialogue Display is detecting updates to "./data/config.yaml".
+2) fix prompts & output parsing.
 3) text to speech for model_response only (with switch --speech).
 4) sounds for major events (with switch --sounds).
-* Features done for next update...
-1) Fixed context detection to include 4-200k, as before it was only detecting 4-200K, with the capitol letter (in the filename of the model).
 
   
 ### DESCRIPTION:
@@ -21,7 +19,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 9) When all done, re-check items on backburner below. Additionally brainstorm any critical upgrades, but not if it just becomes fork material..
 
 ### FEATURES:
-* 4K-128K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
+* 4K-200K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
 * Interactive User Loop, features a continuous loop for real-time user interaction.
 * Intelligent Response Generation, utilizes predefined prompts to generate contextually relevant and coherent responses.
