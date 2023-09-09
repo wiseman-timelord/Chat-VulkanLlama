@@ -7,10 +7,8 @@ cls
 :: Run the main1.py script
 echo Launching Llama2Robot-Window1...
 echo.
-echo Options: --output
-echo.
 @echo on
-wsl python3 main1.py --output
+wsl python3 main1.py %1
 @echo off
 echo.
 echo.
