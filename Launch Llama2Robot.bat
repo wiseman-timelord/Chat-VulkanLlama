@@ -15,6 +15,7 @@ echo Searching for ENV...
 timeout /t 1 /nobreak >nul
 if exist .\.ENV (
     echo ENV file found.
+	echo.
     timeout /t 2 /nobreak >nul
 ) else (
     echo ...ENV file not found...
@@ -33,7 +34,7 @@ if exist .\.ENV (
 
 
 :: Run both windows for Llama2Robot
-echo Launching, Window1 & Window2...
+echo Launching 2 Windows...
 echo.
 timeout /t 1 /nobreak >nul
 echo Options for main1: --output
@@ -42,7 +43,7 @@ echo.
 @echo on
 start cmd.exe /K "call .\scripts\window1.bat --output"
 start cmd.exe /K "call .\scripts\window2.bat"
-echo Window1 & Window2, Launched!
+echo Program Launched!
 @echo off
 timeout /t 1 /nobreak >nul
 echo.
