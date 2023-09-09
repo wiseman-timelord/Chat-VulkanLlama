@@ -10,6 +10,7 @@ Status: Beta.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 2) implement a --speech switch, to enable built-in os dependent text to speech code.
 3) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
+4) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
 
 ### FEATURES:
 * ".ENV" file for default values, if the ".ENV" don't exist, it creates it. Useful for later forks. 
@@ -151,8 +152,8 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 
 ### REQUIREMENTS:
-* Windows with WSL or Linux (untested). This program is designed to be run on Windows+WSL+Python, it will not work in Windows+Python without WSL, this is because of the use of, jaxlib and (jax[cpu] or jax[gpu] for nVidia), which seem to crash otherwise. 
-* The models the program are advised to work with are currently under review.
+* Windows with WSL or Linux (untested). The development of this program would not work on python without WSL past the implementation of , jaxlib and (jax[cpu] or jax[gpu] for nVidia), hence, the workaround is to use WSL. 
+* The models the program are advised to work with are currently under review, but one of the Llama 2 7b 4-8bit chat models will do the task for testing.
 
 ### DISCLAIMER:
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
