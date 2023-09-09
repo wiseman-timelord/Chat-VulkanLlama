@@ -7,6 +7,7 @@ Status: Beta.
 * This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
 
 ### FUTURE PLANS:
+1) Integrate '.ENV' for the default values, this could be used for other purposes later such as API's.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 2) implement a --speech switch, to enable built-in os dependent text to speech code.
 3) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
