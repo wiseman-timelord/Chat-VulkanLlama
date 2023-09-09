@@ -101,7 +101,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* Window 2 - The Dialogue Display (and how the prompts are meant to work)...
+* Window 2 - The Dialogue Display, currently 'Empty', working on prompt system...
 ```
 ==========================================================================================
                                    Dialogue Display
