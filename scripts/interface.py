@@ -129,7 +129,7 @@ def roleplay_configuration():
     model_emotion = default_values.get('model_emotion', 'Indifferent')
     session_history = default_values.get('session_history', 'the conversation started')
 
-    print("\n ...Details collected.")
+    print("\n ...Details collected.\n")
 
     return human_name, model_name, model_role, model_emotion, scenario_location, session_history
 
