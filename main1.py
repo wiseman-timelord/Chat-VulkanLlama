@@ -71,7 +71,7 @@ def handle_other(user_input, rotation_counter, loaded_models):
         
     new_emotion = response_dict.get('new_emotion')
     end_time = time.time()
-    print(f"\n ...Time taken: {end_time - start_time:.2f} seconds.")
+    print(f"\n ...Time taken: {end_time - start_time:.2f} seconds...")
     
     if new_emotion:
         utility.write_to_yaml('model_emotion', new_emotion)
@@ -120,7 +120,7 @@ def main():
         model_current = data.get('model_current') 
         rotation_counter = 0
         while True:
-            user_input = input(f" Enter your message to {model_name} or 'reset' to Restart or 'quit' to Exit)?:\n").lower()
+            user_input = input(f" Enter your message to {model_name} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
             if user_input == 'reset':
                 handle_reset()
             elif user_input == 'quit':
