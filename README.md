@@ -2,18 +2,17 @@
 Status: Beta. 
 * Currently working on...
 1) fix prompts & output parsing. I think some code is corrupt, as prompt syntax dont change much. Did work when initially setup, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
-* Most recent implementation was the multi-batch-launcing batch file, for multi-window output, yes this could be done through complicated code, but, the focus of this project is, simplicity and lightweight. Most of the other projects ended up as, a local web server or linux only, but as I have proven, shell can do it as is, though this makes it little tricky to run on linux currently. 
   
 ### DESCRIPTION:
 * This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
 
 ### FUTURE PLANS:
-1) Integrate '.ENV' for the default values, this could be used for other purposes later such as API's.
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
 2) implement a --speech switch, to enable built-in os dependent text to speech code.
 3) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
 
 ### FEATURES:
+* ".ENV" file for default values, if the ".ENV" don't exist, it creates it. Useful for later forks. 
 * Multi-window interface, running separate scripts parallel, bypassing complexities of, curses or tkinter, on WSL.
 * 4K-200K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
