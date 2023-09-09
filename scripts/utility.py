@@ -44,12 +44,29 @@ def reset_keys_to_empty():
         write_to_yaml(key, "Empty")
     print(" ...Keys reset.\n")    
 
+# List available models
 def list_available_models():
     model_files = glob.glob("./models/*.bin")
     return {
         'chat': [f for f in model_files if 'chat' in os.path.basename(f).lower()],
         'instruct': [f for f in model_files if 'instruct' in os.path.basename(f).lower() or 'llama-2' in os.path.basename(f).lower()]
     }
+
+# Default all keys to .ENV
+def read_env_file(env_file_path='./.ENV'):
+    print("\n Defaulting keys...")   
+    env_data = {}
+    with open(env_file_path, 'r') as file:
+        for line in file:
+            line = line.strip().split("#")[0]  # Ignore anything after #
+            if line and not line.startswith("*"):
+                try:
+                    key, value = line.split("=")
+                    env_data[key.strip()] = value.strip()
+                except ValueError:
+                    print(f"Warning: Ignored malformed line: {line}")
+    print(" ...Keys defaulted.")               
+    return env_data
 
 # Helper function to update identify.log
 def update_identify_log(model_name, model_type):

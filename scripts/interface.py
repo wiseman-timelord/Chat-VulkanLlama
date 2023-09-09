@@ -43,7 +43,7 @@ def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
-    print("                                  Model Selection Display")
+    print("                                     MODEL SELECTION")
     print("=" * 90)
     print("=-" * 45)    
     print(" Model Setup Processes:")
@@ -102,7 +102,7 @@ def roleplay_configuration():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
-    print("                                Roleplay Config Display")
+    print("                                    ROLEPLAY CONFIG")
     print("=" * 90)
     print("=-" * 45)    
     print(LANDSCAPE_ART)
@@ -110,38 +110,39 @@ def roleplay_configuration():
     print("=-" * 45)     
     print(" Roleplay Setup Processes:")
     print("-" * 90)
-    default_values = {
-        'human_name': "Human",
-        'model_name': "Wise-Llama",
-        'model_role': "Mystical Oracle",
-        'model_emotion': "Indifferent",   
-        'scenario_location': "on a mountain",
-        'session_history': "the conversation started"
-    }
-    print(f"\n Default Human Name = {default_values['human_name']}")
-    print(f" Default Model Name, Role = {default_values['model_name']}, {default_values['model_role']}")
-    print(f" Default Location = {default_values['scenario_location']}")
-    human_name = input("\n Your name is: ").strip() or default_values['human_name']
+
+    # Read default values from the .ENV file
+    default_values = utility.read_env_file()
+
+    # Display the default values
+    print(f"\n Default Human Name = {default_values.get('human_name', 'Human')}")
+    print(f" Default Model Name, Role = {default_values.get('model_name', 'Wise-Llama')}, {default_values.get('model_role', 'Mystical Oracle')}")
+    print(f" Default Location = {default_values.get('scenario_location', 'on a mountain')}")
+
+    # Collect user input or use default values
+    human_name = input("\n Your name is: ").strip() or default_values.get('human_name', 'Human')
     model_info_input = input(" Model's 'name, role' is: ")
     model_info = model_info_input.split(", ") if model_info_input else []
-    model_name = model_info[0].strip() if model_info and model_info[0].strip() else default_values['model_name']
-    model_role = model_info[1].strip() if len(model_info) > 1 else default_values['model_role']
-    scenario_location = input(" The location is: ").strip() or default_values['scenario_location']
-    model_emotion = default_values['model_emotion']
-    session_history = default_values['session_history']
-    print("\n Details collected...")
-    print("...Others defaulted.\n")
+    model_name = model_info[0].strip() if model_info and len(model_info) > 0 else default_values.get('model_name', 'Wise-Llama')
+    model_role = model_info[1].strip() if len(model_info) > 1 else default_values.get('model_role', 'Mystical Oracle')
+    scenario_location = input(" The location is: ").strip() or default_values.get('scenario_location', 'on a mountain')
+    model_emotion = default_values.get('model_emotion', 'Indifferent')
+    session_history = default_values.get('session_history', 'the conversation started')
+
+    print("\n ...Details collected.")
+
     return human_name, model_name, model_role, model_emotion, scenario_location, session_history
+
     
 # Start Engine
 def display_engine():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
-    print("                                  Main Loop Display")
+    print("                                    MAIN LOOP")
     print("=" * 90)
     print("=-" * 45)
-    print(" Running Engine Processes:")
+    print(" Engine Processes:")
     print("-" * 90, "")
     return 
     

@@ -73,7 +73,7 @@ def display_interface():
     human_current = data.get('human_current')
 
     print("=" * 90)
-    print("                                   Dialogue Display")
+    print("                                     ROLEPLAY SUMMARY")
     print("=" * 90)
     print("=-" * 45)
     print(f" {human_name}'s Input:")

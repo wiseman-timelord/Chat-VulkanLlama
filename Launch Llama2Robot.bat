@@ -1,5 +1,5 @@
 @echo off
-mode 45,20
+mode 45,18
 title Llama2Robot-Launcher
 
 :: Intro
@@ -7,7 +7,6 @@ echo.
 echo.
 echo The Llama2Robot-Launcher
 echo -=-=-=-=-=-=-=-=-=-=-=-=
-echo.
 
 :: Check for ENV file
 echo.
@@ -37,17 +36,17 @@ if exist .\.ENV (
 echo Launching 2 Windows...
 echo.
 timeout /t 1 /nobreak >nul
-echo Options for main1: --output
-timeout /t 2 /nobreak >nul
+echo Options for main1.py: --output
 echo.
+timeout /t 2 /nobreak >nul
 @echo on
 start cmd.exe /K "call .\scripts\window1.bat --output"
 start cmd.exe /K "call .\scripts\window2.bat"
 echo Program Launched!
 @echo off
 timeout /t 1 /nobreak >nul
-echo.
 echo Exiting Launcher!
 echo.
+timeout /t 1 /nobreak >nul
 exit
 
