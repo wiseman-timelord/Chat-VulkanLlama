@@ -42,7 +42,7 @@ def reset_keys_to_empty():
     ]
     for key in keys_to_clear:
         write_to_yaml(key, "Empty")
-    print(" ...Keys reset.\n\n\n")    
+    print(" ...Keys reset.\n")    
 
 def list_available_models():
     model_files = glob.glob("./models/*.bin")

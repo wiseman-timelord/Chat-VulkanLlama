@@ -18,13 +18,14 @@ loaded_models = {}
 # Handle 'reset' input
 def handle_reset():
     utility.reset_keys_to_empty()
-    human_name, model_name, model_role, scenario_location, model_emotion, session_history, human_current, model_current, model_previous1, model_previous2 = interface.roleplay_configuration()
+    human_name, model_name, model_role, scenario_location, model_emotion, session_history = interface.roleplay_configuration()
     yaml_data = {
-        'human_name': "Empty",
-        'model_name': "Empty",        
-        'model_role': "Empty",
-        'scenario_location': "Empty",
-        'session_history': "Empty",
+        'human_name': human_name,
+        'model_name': model_name,        
+        'model_role': model_role,
+        'scenario_location': scenario_location,
+        'model_emotion': model_emotion,
+        'session_history': session_history,
         'human_current': "Empty",
         'model_current': "Empty",
         'model_previous1': "Empty",
@@ -119,7 +120,7 @@ def main():
         model_current = data.get('model_current') 
         rotation_counter = 0
         while True:
-            user_input = input(" Enter your message or 'reset' to Restart or 'quit' to Exit)?:\n").lower()
+            user_input = input(f" Enter your message to {model_name} or 'reset' to Restart or 'quit' to Exit)?:\n").lower()
             if user_input == 'reset':
                 handle_reset()
             elif user_input == 'quit':
