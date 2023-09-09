@@ -1,21 +1,17 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * There are a few tasks left, these are...
-1) fix prompts & output parsing.
-2) text to speech for model_response only (with switch --speech).
-3) sounds for major events (with switch --sounds).
+1) fix prompts & output parsing. I think some code is corrupt, as prompt syntax dont change much.
 * The application now features a multi-window interface, achieved by running separate scripts in parallel. This approach bypasses the complexities I've encountered with using curses or tkinter on Windows/WSL. One window is dedicated to the engine, while others can monitor file changes and display key inputs. This setup is versatile and can be adapted for future projects, such as displaying project plans, tasks, or even for role-playing forks with ASCII or image libraries. The current window size (90,45) is designed for 2 windows, one window in each half of a screen, this can be adjusted later, for example, for 4 window agent project with each window to fit a quarter of the screen of a dedicated virtual desktop.
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
 
 ### FUTURE PLANS:
-1) A few small tweaks to get the interface how it is intended. 
-1) Fix the prompts, did work as shown below, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
-1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
-4) implement a --speech switch, to enable built-in os dependent text to speech code.
-5) dynamic syntax for prompts, or maybe just clearer input of prompts at top of script.
-9) When all done, re-check items on backburner below. Additionally brainstorm any critical upgrades, but not if it just becomes fork material..
+1) Fix the prompts, did work as shown below, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag. 
+2) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
+3) implement a --speech switch, to enable built-in os dependent text to speech code.
+4) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
 
 ### FEATURES:
 * 4K-200K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
@@ -156,15 +152,6 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested). This program is designed to be run on Windows+WSL+Python, it will not work in Windows+Python without WSL, this is because of the use of, jaxlib and (jax[cpu] or jax[gpu] for nVidia), which seem to crash otherwise. 
 * The models the program are advised to work with are currently under review.
-
-### FAILED UPDATES:
-Updates on the back burner...
-* Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
-
-### FORK IDEAS:
-* Image Generation: Different image for each of the emotional states, image generation for scenes. image generation for characters with option to input own images for characters. Cutting and Pasting, of characters onto scene.
-* Develop Interface, possibly progress to multi-panel, will have to re-visit limitations on WSL with, curses or tkinter, even consider
-* Initialization of chat model at start, and instruct upon requirement to read the applicable context length, then kept online after that, as release of memory before application exit to was a dead end when I investigated. 
 
 ### DISCLAIMER:
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
