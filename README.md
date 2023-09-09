@@ -142,7 +142,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
 2) For Windows WSL users, install requirements by double clicking `Install Requirements.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
 2) Download models, you only need 1 of the GGML "*.bin" chat model files for it to work, but it will also utilise additional GGML "*.bin" instruct model if its there, copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already present in the "./models" folder.
-5) For Windows WSL users, double click the `Launch Llama2Robot.bat`. ( For Linux users, run, `python main1.py` and `python main2.py` ). If you typed it out, then ensure to use 90 columns for the window.
+5) For Windows WSL users, double click the `Launch Llama2Robot.bat`. ( For Linux users, run, `python main1.py` and `python main2.py`, and you will have to manually duplicate "./data/example.ENV" to "./.ENV" ). If you typed it out, then ensure to use 90 columns for the window.
 * Optionally (OS dependent), hold down crtl and scroll your mouse wheel, to resize the given window to your liking.
 * Optional arguements, edit "Launch Llama2Robot.bat" to include or run python with,  relevant arguements: --output to log raw input/output to "./data/*put.log".
 
