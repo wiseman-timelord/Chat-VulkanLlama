@@ -2,7 +2,6 @@
 Status: Beta. 
 * Currently working on...
 1) fix prompts & output parsing. I think some code is corrupt, as prompt syntax dont change much. Did work when initially setup, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag. 
-* The application now features a multi-window interface, achieved by running separate scripts in parallel. This approach bypasses the complexities I've encountered with using curses or tkinter on Windows/WSL. One window is dedicated to the engine, while others can monitor file changes and display key inputs. This setup is versatile and can be adapted for future projects, such as displaying project plans, tasks, or even for role-playing forks with ASCII or image libraries. The current window size (90,45) is designed for 2 windows, one window in each half of a screen, this can be adjusted later, for example, for 4 window agent project with each window to fit a quarter of the screen of a dedicated virtual desktop.
   
 ### DESCRIPTION:
 This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
@@ -13,6 +12,7 @@ This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, 
 3) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
 
 ### FEATURES:
+* Multi-window interface, running separate scripts parallel, bypassing complexities of, curses or tkinter, on WSL.
 * 4K-200K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
 * Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
 * Interactive User Loop, features a continuous loop for real-time user interaction.
