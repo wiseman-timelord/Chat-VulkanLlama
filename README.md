@@ -26,7 +26,7 @@ Status: Beta.
 
 ### INTERFACE:
 Images may be from differing versions...
-* Window 1 - Starting up, yup that is indeed a llama themed fortune cookie!...
+* Window 1 - Starting up, this involves Mr.Llama's choice of fortune cookie!...
 ```
 ==========================================================================================
      .____    .__                        ________ __________     ___.           __
@@ -69,7 +69,7 @@ Images may be from differing versions...
 * Window 1 - Robust multi-model support for Llama 2 GGML llms...
 ```
 ==========================================================================================
-                                  Model Selection Display
+                                       MODEL SELECTION
 ==========================================================================================
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Model Setup Processes:
@@ -97,10 +97,10 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
-* Window 2 - The Dialogue Display, currently 'Empty', working on prompt system...
+* Window 2 - The ROLEPLAY SUMMARY, values of the relevant keys in a display...
 ```
 ==========================================================================================
-                                   Dialogue Display
+                                      ROLEPLAY SUMMARY
 ==========================================================================================
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Empty's Input:
