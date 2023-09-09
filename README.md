@@ -1,7 +1,8 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * Currently working on...
-1) fix prompts & output parsing. I think some code is corrupt, as prompt syntax dont change much. Did work when initially setup, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag. 
+1) fix prompts & output parsing. I think some code is corrupt, as prompt syntax dont change much. Did work when initially setup, before many implementations. check logic and the prompts themselves, this is much easier now due to --output flag.
+* Most recent implementation was the multi-batch-launcing batch file, for multi-window output, yes this could be done through complicated code, but, the focus of this project is, simplicity and lightweight. Most of the other projects ended up as, a local web server or linux only, but as I have proven, shell can do it as is, though this makes it little tricky to run on linux currently. 
   
 ### DESCRIPTION:
 * This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
