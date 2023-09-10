@@ -1,7 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * Currently updates will be in relevance to:
-* Producing any form of audio from WSL is extremely difficult, and requires the user to produce complex system configuration of alien operating systems, as well as additionally install pulseaudio software that affects windows services. In short, producing noise from windows is hastle. Next approach is for scripts to use non-wsl based python for window 2, as window 2 has no code for llama, and so does not require to be WSL, which obviously makes it a GREAT idea I am running the program in 2 separate processes.
+* implementing sounds for major events.
 
   
 ### DESCRIPTION:
@@ -149,9 +149,6 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
 * Optional - Window Resizing: Resize the terminal window to your liking, ensuring to use at least 90 columns.
 * Optional - Arguments: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
-
-*** EDIT
-sudo apt-get install --fix-missing mpg321
 
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
