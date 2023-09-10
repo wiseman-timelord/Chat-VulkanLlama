@@ -5,3 +5,4 @@ jax[cpu]
 jaxlib
 readline
 watchdog
+pyttsx
