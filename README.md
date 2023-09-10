@@ -1,16 +1,15 @@
 # Llama2Robot-GGML
 Status: Beta. 
-* Currently updates will be something along the lines of:
-Implementation of text to speech through Native Windows TTS, this will be a feature for windows users only, so if the scripts are not run on wse, such as linux, then they should be automatically disabled. os dependent built in, windows wsl and linux, compatible text to speach, or if required then libraries too. The speech feature are intended to read updates to "session_history" key in, as possible, then a robotic voice. There should be an option of --nospeach to additionally turn the relevant code off for both, windows and linux, but there should be a place holder for linux TTS, that are able to be developed by other users of the framework I am creating....currently details for instructions on TTS, are irrellevant, as I am updating README.md as I go, but no update yet for that.
+* Currently updates will be in relevance to:
+* Producing any form of audio from WSL is extremely difficult, and requires the user to produce complex system configuration of alien operating systems, as well as additionally install pulseaudio software that affects windows services. In short, producing noise from windows is hastle. Next approach is for scripts to use non-wsl based python for window 2, as window 2 has no code for llama, and so does not require to be WSL. 
+
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.  
 
 ### FUTURE PLANS:
-1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
-2) implement a --speech switch, to enable built-in os dependent text to speech code.
-3) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
-4) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
+1) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
+2) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
 
 ### FEATURES:
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
@@ -23,7 +22,6 @@ Implementation of text to speech through Native Windows TTS, this will be a feat
 * YAML State Management: Manages session state, user preferences, and more through YAML file operations.
 * User-Friendly Chat Interface: Offers a clean and intuitive chat interface, complete with ASCII art and dialogue history.
 * Customizable Model Selection: Allows users to select from a list of available Llama 2 GGML models in the `./models` directory.
-
 
 ### INTERFACE:
 Images may be from differing versions...
