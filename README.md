@@ -1,7 +1,6 @@
 # Llama2Robot-GGML
 Status: Beta. 
-* Currently working on...
-* Prompt converse fixed, however, still tuning prompts, emotions and consilidate, via, --output logs & gpt reformat prompt to test, hopefully get this done soon, or I will l will switch to implementing the, sound and speech, features, and just turn them off for now, while it repeatingly fails.
+* Currently work is, Implementation of text to speach through built in wsl compatible text to speach, preferably using os dependent, windows wsl and linux, built in features, or if required then libraries too. The speach feature are intended to read, updates to "session_history" in a male narrator voice. There should be an option for --nospeach to turn this off.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.  
