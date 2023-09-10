@@ -1,7 +1,6 @@
 # Llama2Robot-GGML
-Status: Beta. 
-* Currently updates will be in relevance to:
-* implementing sounds for major events.
+Status: Beta, currently updates will be in relevance to...
+* implementing a few wav files for sounds for major events.
 
   
 ### DESCRIPTION:
