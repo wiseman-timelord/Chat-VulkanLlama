@@ -137,7 +137,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 * For Windows WSL:
 1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
 2) **Install Requirements**: Double-click `Install Requirements.bat` or run `wsl pip install -r requirements.txt` in the shell.
-3) **Install Packages**: Double-click `Install Packages.bat` or run `wsl sudo apt-get install espeak` in the shell.
+3) **Install Packages**: Double-click `Install Packages.bat` or run `wsl sudo apt-get install alsa-utils espeak` in the shell.
 4) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 5) **Launch the Application**: Double-click `Launch Llama2Robot.bat` to start the program.
 6) **Optional - Window Resizing**: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
@@ -145,7 +145,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 * For Linux (Untested):
 1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
 2) **Install Requirements**: Run `pip install -r requirements.txt` in the shell.
-3) **Install Packages**: run `sudo apt-get install espeak` in the shell.
+3) **Install Packages**: run `sudo apt-get install alsa-utils espeak`
 4) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 5) **Prepare Environment File**: Manually duplicate `./data/example.ENV` to `./.ENV`.
 6) **Launch the Application**: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
