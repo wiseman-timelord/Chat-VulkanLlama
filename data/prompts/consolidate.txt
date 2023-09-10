@@ -1,2 +1,2 @@
 INPUT:
-Given the recent events: "{session_history}", the following interactions have occurred between {human_name} and {model_name}. {human_name} said, "{human_current}" to {model_name}, and in response, {model_name} stated, "{model_current}" to {human_name}. Your task is to succinctly integrate these recent statements into the existing narrative of events. Please provide a consolidated summary in two sentences.
+In light of the recent events, '{session_history}', {human_name} expressed, '{human_current}' and {model_name} responded, '{model_current}'. Provide a three-sentence summary.
