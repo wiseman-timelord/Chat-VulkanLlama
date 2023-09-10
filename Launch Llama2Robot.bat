@@ -35,17 +35,16 @@ if exist .\.ENV (
 echo Launching 2 Windows...
 echo.
 timeout /t 1 /nobreak >nul
-echo Options for main1.py: --output
+echo Options for window1: --logs
+echo Options for window2: --tts
 echo.
 timeout /t 2 /nobreak >nul
 @echo on
-start cmd.exe /K "call .\scripts\window1.bat --output"
-start cmd.exe /K "call .\scripts\window2.bat"
-echo Program Launched!
+start cmd.exe /K "call .\scripts\window1.bat"
+start cmd.exe /K "call .\scripts\window2.bat --tts"
 @echo off
-timeout /t 1 /nobreak >nul
 echo Exiting Launcher!
 echo.
-timeout /t 1 /nobreak >nul
+timeout /t 3 /nobreak >nul
 exit
 

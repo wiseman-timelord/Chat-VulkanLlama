@@ -11,7 +11,7 @@ import readline
 
 # globals
 parser = argparse.ArgumentParser(description='Your script description here.')
-parser.add_argument('--output', action='store_true', help='Enable writing of raw output to output.log')
+parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to output.log')
 args = parser.parse_args()
 loaded_models = {}
 

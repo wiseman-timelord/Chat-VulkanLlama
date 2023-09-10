@@ -1,3 +1,6 @@
+update the script, to be able to 
+
+
 @echo off
 mode 90,45
 rem con:cols=90 lines=100
@@ -9,7 +12,9 @@ echo Launching Llama2Robot-Window2...
 echo.
 echo.
 @echo on
-wsl python3 main2.py
+
+
+python main2.py %1
 @echo off
 echo.
 echo.

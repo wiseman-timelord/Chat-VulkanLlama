@@ -1,10 +1,10 @@
 human_current: Empty
-human_name: Human
+human_name: Empty
 model_current: Empty
-model_emotion: Indifferent
-model_name: Wise-Llama
+model_emotion: Empty
+model_name: Empty
 model_previous1: Empty
 model_previous2: Empty
-model_role: Mystical Oracle
-scenario_location: on a mountain
-session_history: the conversation started
+model_role: Empty
+scenario_location: Empty
+session_history: Empty
