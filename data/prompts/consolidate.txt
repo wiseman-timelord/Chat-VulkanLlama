@@ -1,2 +1,2 @@
 INPUT:
-In light of the recent events, '{session_history}', {human_name} expressed, '{human_current}' and {model_name} responded, '{model_current}'. Provide a three-sentence summary.
+Given the events captured in '{session_history}', and the interactions between, {human_name} and {model_name}, have included both verbal exchanges and actions. Specifically, {human_name} made the statements of '{human_current}', and {model_name} responded with both, a statement and an action, of '{model_current}'. Please provide a three-sentence summary, including both the verbal and non-verbal elements, without, quoting the actual dialogue and/or mentioning the provided instruction.

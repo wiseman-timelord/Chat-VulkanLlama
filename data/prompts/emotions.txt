@@ -1,3 +1,3 @@
 INPUT:
-Based on the sequence of recent communications from {model_name} to {human_name}, which are as follows: first, "{model_previous_2}", then "{model_previous_1}", and most recently, "{model_current}", please identify the prevailing emotional tone in {model_name}'s messages. Choose a single word from the following options: Love, Arousal, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate.
+Based on the sequence of recent interactions from {model_name} to {human_name}, which includes, first, "{model_previous_2}", then "{model_previous_1}", and most recently, "{model_current}", please identify the prevailing emotional tone in {model_name}'s interactions. Choose a single word from the following 14 options: Love, Arousal, Attraction, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate.
 
