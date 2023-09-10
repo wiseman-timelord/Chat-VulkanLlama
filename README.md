@@ -12,6 +12,7 @@ Status: Beta.
 2) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
 
 ### FEATURES:
+* Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
 * Multi-Window Interface: Runs separate scripts in parallel, bypassing the complexities of curses or tkinter on WSL.
 * Context Support: Supports 4K-200K context multi-models with a robust interface for chat or chat+instruct models.
@@ -131,25 +132,23 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
 
-### USAGE:
+### USAGE (windows):
 * For Windows WSL:
-1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
-2) **Install Requirements**: Double-click `Install Requirements.bat` or run `wsl pip install -r requirements.txt` in the shell.
-3) **Install Packages**: Double-click `Install Packages.bat` or run `wsl sudo apt-get install alsa-utils espeak` in the shell.
-4) for tts install full-install of pulse audio for windows, this enables WSL audio "https://pgaskin.net/pulseaudio-win32/".
-5) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
-6) **Launch the Application**: Double-click `Launch Llama2Robot.bat` to start the program.
-7) **Optional - Window Resizing**: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-8) **Optional Arguments**: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
+1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
+2) Install Requirements: Double-click `Install Requirements.bat`.
+3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
+* Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
+* Optional - Arguments: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like, `--output` and '--tts".
+
+### USAGE (linux untested):
 * For Linux (Untested):
-1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
-2) **Install Requirements**: Run `pip install -r requirements.txt` in the shell.
-3) **Install Packages**: run `sudo apt-get install alsa-utils espeak`
-4) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
-5) **Prepare Environment File**: Manually duplicate `./data/example.ENV` to `./.ENV`.
-6) **Launch the Application**: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
-7) **Optional - Window Resizing**: Resize the terminal window to your liking, ensuring to use at least 90 columns.
-8) **Optional Arguments**: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
+1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
+2) Install Requirements: Run `pip install -r requirements.txt` in the shell.
+3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
+* Optional - Window Resizing: Resize the terminal window to your liking, ensuring to use at least 90 columns.
+* Optional - Arguments: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
 
 *** EDIT
 sudo apt-get install --fix-missing mpg321
