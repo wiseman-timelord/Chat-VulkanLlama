@@ -121,6 +121,7 @@ def parse_model_response(raw_model_response, data):
     cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Output:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### ### Answer:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### The Conversation Summary:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^Please make sure.*\n?', '', cleaned_response, flags=re.MULTILINE)
