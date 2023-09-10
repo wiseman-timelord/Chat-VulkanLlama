@@ -145,6 +145,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### TEST PROMPTS:
 1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?!
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
+3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
 
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested). The development of this program would not work on python without WSL past the implementation of , jaxlib and (jax[cpu] or jax[gpu] for nVidia), hence, the workaround is to use WSL. 
