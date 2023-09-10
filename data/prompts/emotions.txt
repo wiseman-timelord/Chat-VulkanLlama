@@ -1,2 +1,3 @@
 INPUT:
-The recent communications from {model_name} to {human_name} are in this order, first {model_previous_2}, and then {model_previous_1}, and now {model_current}. Your task is, in one word, to identify the most fitting emotional state of {model_name}'s recent communications, from the choices of the words, Love, Arousal, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate.
+Based on the sequence of recent communications from {model_name} to {human_name}, which are as follows: first, "{model_previous_2}", then "{model_previous_1}", and most recently, "{model_current}", please identify the prevailing emotional tone in {model_name}'s messages. Choose a single word from the following options: Love, Arousal, Euphoria, Surprise, Curiosity, Indifference, Fatigue, Discomfort, Embarrassment, Anxiety, Stress, Anger, Hate.
+
