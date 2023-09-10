@@ -101,41 +101,36 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 * Window 2 - The ROLEPLAY SUMMARY, values of the relevant keys in a display...
 ```
 ==========================================================================================
-                                      ROLEPLAY SUMMARY
+                                     ROLEPLAY SUMMARY
 ==========================================================================================
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Empty's Input:
+ Human's Input:
 ------------------------------------------------------------------------------------------
 
- Empty
+ hello there! i am glad to meet you here in the middle of nowhere. do you come here often?!
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Empty's Response:
+ Wise-Llama's Response:
 ------------------------------------------------------------------------------------------
 
- Empty
+ "Hello, I'm Wise-Llama and this is my first time being here."
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Empty's State:
+ Wise-Llama's State:
 ------------------------------------------------------------------------------------------
 
- Empty
+ indifferent
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Event History:
 ------------------------------------------------------------------------------------------
 
- Empty
+ Human greeted Wise-Llama with the words "hello there! i am glad to meet you here in the middle of nowhere" before inquiring about how often he comes to this location. Wise-Llama responded by introducing himself and sharing that it was his first time visiting the place, using the phrase "I'm Wise-Llama and this is my first time being here."
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Keys Status:
-------------------------------------------------------------------------------------------
-
- Listening for changes in './data/config.yaml'...
 ```
 
 ### USAGE: (linux is unteseted)
