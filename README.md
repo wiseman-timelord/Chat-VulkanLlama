@@ -151,7 +151,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 7) **Optional Arguments**: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
 
 ### TEST PROMPTS:
-1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?!
+1) Hello there! I never thought I would see you here on the mountain, do you come here often?!
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
 ### REQUIREMENTS:
