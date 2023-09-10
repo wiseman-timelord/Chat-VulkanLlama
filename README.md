@@ -1,7 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * Currently updates will be in relevance to:
-* Producing any form of audio from WSL is extremely difficult, and requires the user to produce complex system configuration of alien operating systems, as well as additionally install pulseaudio software that affects windows services. In short, producing noise from windows is hastle. Next approach is for scripts to use non-wsl based python for window 2, as window 2 has no code for llama, and so does not require to be WSL. 
+* Producing any form of audio from WSL is extremely difficult, and requires the user to produce complex system configuration of alien operating systems, as well as additionally install pulseaudio software that affects windows services. In short, producing noise from windows is hastle. Next approach is for scripts to use non-wsl based python for window 2, as window 2 has no code for llama, and so does not require to be WSL, which obviously makes it a GREAT idea I am running the program in 2 separate processes.
 
   
 ### DESCRIPTION:
