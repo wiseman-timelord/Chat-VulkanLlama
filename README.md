@@ -4,7 +4,7 @@ Status: Beta.
 * Prompt converse fixed, however, still tuning prompts, emotions and consilidate, via, --output logs & gpt reformat prompt to test, hopefully get this done soon, or I will l will switch to implementing the, sound and speech, features, and just turn them off for now, while it repeatingly fails.
   
 ### DESCRIPTION:
-* This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
+* This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.  
 
 ### FUTURE PLANS:
 1) Application Sounds for major events, with an optional --nosounds, to disable sounds at commandline.
@@ -13,16 +13,16 @@ Status: Beta.
 4) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
 
 ### FEATURES:
-* ".ENV" file for default values, if the ".ENV" don't exist, it creates it. Useful for later forks. 
-* Multi-window interface, running separate scripts parallel, bypassing complexities of, curses or tkinter, on WSL.
-* 4K-200K context multi-model support, with robust interface, use, chat or chat+instruct, models. 
-* Dynamic Model Initialization, seamlessly initializes the Llama language model with optimal thread settings.
-* Interactive User Loop, features a continuous loop for real-time user interaction.
-* Intelligent Response Generation, utilizes predefined prompts to generate contextually relevant and coherent responses.
-* Rotation of previous model responses, it is used for character enhancements, but can be modified for loop avoidance.
-* YAML State Management, manages session state, user preferences, and more through YAML file operations.
-* User-Friendly Chat Interface, offers a clean and intuitive chat interface, complete with ASCII art and dialogue history.
-* Customizable Model Selection, allows users to select from a list of available Llama 2 GGML models in "./models".
+* `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
+* Multi-Window Interface: Runs separate scripts in parallel, bypassing the complexities of curses or tkinter on WSL.
+* Context Support: Supports 4K-200K context multi-models with a robust interface for chat or chat+instruct models.
+* Dynamic Model Initialization: Optimizes thread settings for the Llama language model.
+* Interactive User Loop: Features a continuous loop for real-time user interaction.
+* Intelligent Response Generation: Utilizes predefined prompts and ASCII art to generate contextually relevant and coherent responses.
+* Model Response Rotation: Enhances character dialogue and can be modified for loop avoidance.
+* YAML State Management: Manages session state, user preferences, and more through YAML file operations.
+* User-Friendly Chat Interface: Offers a clean and intuitive chat interface, complete with ASCII art and dialogue history.
+* Customizable Model Selection: Allows users to select from a list of available Llama 2 GGML models in the `./models` directory.
 
 
 ### INTERFACE:
@@ -133,24 +133,31 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
 
-### USAGE: (linux is unteseted)
-1) Download the package, extract somewhere on drive, to its own folder, then open folder in, explorer on Admin account or shell with Admin rights.
-2) For Windows WSL users, install requirements by double clicking `Install Requirements.bat` or run `wsl pip install -r requirements.txt`. (For Linux users run `pip install -r requirements.txt`.)
-2) Download models, you only need 1 of the GGML "*.bin" chat model files for it to work, but it will also utilise additional GGML "*.bin" instruct model if its there, copy chosen files with ".bin" extention into the "./models" folder, note the required "config.json" is already present in the "./models" folder.
-5) For Windows WSL users, double click the `Launch Llama2Robot.bat`. ( For Linux users, run, `python main1.py` and `python main2.py`, and you will have to manually duplicate "./data/example.ENV" to "./.ENV" ). If not run by batch, then ensure to use 90 columns on window.
-* Optionally (OS dependent), hold down crtl and scroll your mouse wheel, to resize the given window to your liking.
-* Optional arguements, edit "Launch Llama2Robot.bat" to include or run python with,  relevant arguements: --output to log raw input/output to "./data/*put.log".
-
+### USAGE:
+* For Windows WSL:
+1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
+2) **Install Requirements**: Double-click `Install Requirements.bat` or run `wsl pip install -r requirements.txt` in the shell.
+3) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+4) **Launch the Application**: Double-click `Launch Llama2Robot.bat` to start the program.
+5) **Optional - Window Resizing**: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
+6) **Optional Arguments**: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
+* For Linux (Untested):
+1) **Download the Package**: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
+2) **Install Requirements**: Run `pip install -r requirements.txt` in the shell.
+3) **Download Models**: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+4) **Prepare Environment File**: Manually duplicate `./data/example.ENV` to `./.ENV`.
+5) **Launch the Application**: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
+6) **Optional - Window Resizing**: Resize the terminal window to your liking, ensuring to use at least 90 columns.
+7) **Optional Arguments**: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
 
 ### TEST PROMPTS:
 1) Hello there! I am glad to meet you here in the middle of nowhere. Do you come here often?!
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
-
 ### REQUIREMENTS:
-* Windows with WSL or Linux (untested). The development of this program would not work on python without WSL past the implementation of , jaxlib and (jax[cpu] or jax[gpu] for nVidia), hence, the workaround is to use WSL. 
-* Python 3.x + the requirements in the requirements.txt.
-* The models the scripts are advised to work with are currently under review, but I am testing on the Llama 2 7b Chat 8Bit GGML model, that one https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML specifically.
+* Windows with WSL or Linux (untested). Due to dependencies like jaxlib and jax[cpu] or jax[gpu] for Nvidia, WSL is recommended.
+* Python 3.x and the packages listed in `requirements.txt`.
+* Compatible with Llama 2 7b Chat 8Bit GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML).
 
 ### DISCLAIMER:
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
