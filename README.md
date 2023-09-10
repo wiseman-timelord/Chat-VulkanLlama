@@ -1,6 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta. 
-* Currently work is, Implementation of text to speach through built in wsl compatible text to speach, preferably using os dependent, windows wsl and linux, built in features, or if required then libraries too. The speach feature are intended to read, updates to "session_history" in a male narrator voice. There should be an option for --nospeach to turn this off.
+* Currently work to produce updates for is:
+Implementation of text to specch through Native Windows TTS, this will be a feature for windows users only, so if the scripts are not run on wse, such as linux, then they should be automatically disabled. os dependent built in, windows wsl and linux, compatible text to speach, or if required then libraries too. The speech feature are intended to read updates to "session_history" key in, as possible, then a robotic voice. There should be an option of --nospeach to additionally turn the relevant code off for both, windows and linux, but there should be a place holder for linux TTS, that are able to be developed by other users of the framework I am creating....
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.  
@@ -148,6 +149,9 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 5) **Launch the Application**: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
 6) **Optional - Window Resizing**: Resize the terminal window to your liking, ensuring to use at least 90 columns.
 7) **Optional Arguments**: Run Python with relevant arguments like `--output` to log raw input/output to `./data/*put.log`.
+
+*** EDIT
+sudo apt-get install --fix-missing mpg321
 
 ### TEST PROMPTS:
 1) Hello there! I never thought I would see you here on the mountain, do you come here often?!
