@@ -10,7 +10,7 @@ import re
 from scripts.ascii import ASCII_ART, LLAMA_ART, LANDSCAPE_ART
 
 
-def fancy_delay(duration, message=" Loading..."):
+def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
     for _ in range(64):
@@ -33,7 +33,7 @@ def display_intro_screen():
     time.sleep(2)
     print("=-" * 45)
     print("=-" * 45)
-    print(" Initial Startup Processes:")
+    print(" Startup Processes:")
     print("-" * 90)
     print("")  
     utility.calculate_optimal_threads()
@@ -48,7 +48,7 @@ def display_model_selection():
     print("=-" * 45)    
     print(" Model Setup Processes:")
     print("-" * 90)    
-    print("\n Search For Models...")
+    print("\n Searching For Models...")
     available_models_dict = utility.list_available_models()
     chat_models = available_models_dict.get('chat', [])
     instruct_models = available_models_dict.get('instruct', [])
@@ -126,8 +126,8 @@ def roleplay_configuration():
     model_name = model_info[0].strip() if model_info and len(model_info) > 0 else default_values.get('model_name', 'Wise-Llama')
     model_role = model_info[1].strip() if len(model_info) > 1 else default_values.get('model_role', 'Mystical Oracle')
     scenario_location = input(" The location is: ").strip() or default_values.get('scenario_location', 'on a mountain')
-    model_emotion = default_values.get('model_emotion', 'Indifferent')
-    session_history = default_values.get('session_history', 'the conversation started')
+    model_emotion = default_values.get('model_emotion')
+    session_history = default_values.get('session_history')
 
     print("\n ...Details collected.\n")
 
@@ -142,7 +142,7 @@ def display_engine():
     print("                                    MAIN LOOP")
     print("=" * 90)
     print("=-" * 45)
-    print(" Engine Processes:")
+    print(" Input/Output Processes:")
     print("-" * 90, "")
     return 
     

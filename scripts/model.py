@@ -111,17 +111,22 @@ def initialize_model(selected_model_path, optimal_threads, model_type='chat', co
 def parse_model_response(raw_model_response, data):
     print(" Parsing raw response...")
     cleaned_response = raw_model_response.strip()
-    cleaned_response = re.sub(r'^---\n*', '', cleaned_response)
-    cleaned_response = re.sub(r'^\n+', '', cleaned_response)
-    cleaned_response = re.sub(r'^### Solution:\n', '', cleaned_response)
-    cleaned_response = re.sub(r'^### Response:\n', '', cleaned_response)
-    cleaned_response = re.sub(r'^### Output:\n', '', cleaned_response)    
+    cleaned_response = re.sub(r'^---\n*', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^\n+', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r"'\.'", '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Solution:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Summary:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Response:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Instruction:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Output:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^### The Conversation Summary:\n', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^Please make sure.*\n?', '', cleaned_response, flags=re.MULTILINE)
     model_name = data.get('model_name', '')  # Fetch the model name from the data dictionary
-    cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response)  # Use the actual model name
-    # Add more parsing rules here if needed
-    print(" ...Raw response parsed.")
+    cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response, flags=re.MULTILINE)
     return cleaned_response
-
 
 # Prompt response from model
 def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_models=None, save_to=None):
@@ -150,10 +155,10 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         log_entry_name = f"{task_name}_{model_type}"
         utility.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
         utility.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
-    print(" Parsing response...")  
     parsed_response = parse_model_response(raw_model_response, data)
     if save_to:
         utility.write_to_yaml(save_to, parsed_response)
+        print(" ...Saved parsed response.")
     new_session_history = None
     new_emotion = None
     if task_name == 'consolidate':
