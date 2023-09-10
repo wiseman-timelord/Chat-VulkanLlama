@@ -154,7 +154,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested). The development of this program would not work on python without WSL past the implementation of , jaxlib and (jax[cpu] or jax[gpu] for nVidia), hence, the workaround is to use WSL. 
 * Python 3.x + the requirements in the requirements.txt.
-* The models the program are advised to work with are currently under review, but I am testing on the Llama 2 7b Chat 8Bit GGML model, that one https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML specifically.
+* The models the scripts are advised to work with are currently under review, but I am testing on the Llama 2 7b Chat 8Bit GGML model, that one https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML specifically.
 
 ### DISCLAIMER:
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
