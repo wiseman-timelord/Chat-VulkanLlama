@@ -1,7 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta. 
 * Currently working on...
-* Prompts, converse and consilidate, fixed, however, still tuning prompt emotions via, --output logs & gpt reformat prompt to test, hopefully get this done soon, or I will l have to implement the, sound and speech, features, and just turn them off for now, while it repeatingly fails.
+* Prompt converse fixed, however, still tuning prompts, emotions and consilidate, via, --output logs & gpt reformat prompt to test, hopefully get this done soon, or I will l will switch to implementing the, sound and speech, features, and just turn them off for now, while it repeatingly fails.
   
 ### DESCRIPTION:
 * This is a, Llama 2 language model and llama-cpp, based chatbot/agent framework, it uses, python scripts and prompts and a '.yaml', to produce context aware conversations. Producing a framework for creation of other future Llama 2 based projects intended to be produced through forks. Llama2Robot should be compitent at the task of, reading and creating, files with multi-line output.
