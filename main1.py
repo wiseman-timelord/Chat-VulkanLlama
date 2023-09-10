@@ -1,4 +1,4 @@
-# main.py
+# main1.py
 
 # imports
 from scripts import interface, model as model_module, utility
@@ -64,8 +64,9 @@ def handle_other(user_input, rotation_counter, loaded_models):
     
     response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='model_current')
     consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='session_history')
-    
-    new_session_history = consolidate_dict.get('new_session_history')
+    if args.output:
+        utility.write_to_yaml('raw_output', response_dict['model_response'])
+        new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
         utility.write_to_yaml('session_history', new_session_history)
         
@@ -94,9 +95,9 @@ def main():
         for model_type in ['chat', 'instruct']:
             model = selected_models.get(model_type)
             context_key = selected_models.get(model_type + '_context')
-            if model:
+            if model and model not in loaded_models.values():
                 model_module.initialize_model(model, optimal_threads, model_type=model_type, context_key=context_key)
-                loaded_models[model_type] = True
+                loaded_models[model_type] = model
         human_name, model_name, model_role, model_emotion, scenario_location, session_history = interface.roleplay_configuration()
         yaml_data = {
             'human_name': human_name,

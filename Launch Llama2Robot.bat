@@ -3,10 +3,9 @@ mode 45,18
 title Llama2Robot-Launcher
 
 :: Intro
-echo.
-echo.
-echo The Llama2Robot-Launcher
-echo -=-=-=-=-=-=-=-=-=-=-=-=
+echo *********************************************
+echo                MULTI-LAUNCHR
+echo *********************************************
 
 :: Check for ENV file
 echo.
