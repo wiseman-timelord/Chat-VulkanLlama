@@ -95,10 +95,7 @@ def display_interface():
     print("-" * 90)
     print(f"\n {session_history}\n")
     print("=-" * 45)    
-    print("=-" * 45)
-    print(" Keys Status:")    
-    print("-" * 90)    
-    print("\n Listening for changes in './data/config.yaml'...")
+    print("\n Listening for changes to './data/config.yaml'...")
 
 if __name__ == '__main__':
     display_interface()
