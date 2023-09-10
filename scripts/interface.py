@@ -85,7 +85,7 @@ def display_model_selection():
     if 'chat' in selected_models:
         model_name = os.path.basename(selected_models['chat'])
         context_key = selected_models.get('chat_context', '4k')
-        print(f" Chat model is {model_name} - CTX {context_key}")
+        print(f" Chatting model is {model_name} - CTX {context_key}")
     if 'instruct' in selected_models:
         model_name = os.path.basename(selected_models['instruct'])
         context_key = selected_models.get('instruct_context', '4k')
@@ -94,7 +94,7 @@ def display_model_selection():
         print("No chat model, exiting!")
         exit()
     if not instruct_models:
-        print("No instruct model, chat-only mode!")
+        print(" No Instruct model, chat-only!")
     return selected_models if selected_models else None
 
 # Roleplay Configuration Display

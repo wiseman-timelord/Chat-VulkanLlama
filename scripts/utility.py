@@ -68,15 +68,15 @@ def read_env_file(env_file_path='./.ENV'):
     print(" ...Keys defaulted.")               
     return env_data
 
-# Helper function to update identify.log
+# Update identify.log
 def update_identify_log(model_name, model_type):
-    with open('./data/identify.log', 'a') as f:
+    with open('./models/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
 # Read identify.log
 def read_identify_log():
     try:
-        with open('./data/identify.log', 'r') as f:
+        with open('./models/identify.log', 'r') as f:
             lines = f.readlines()
         return {line.split()[0]: line.split()[1] for line in lines}
     except FileNotFoundError:
@@ -84,7 +84,7 @@ def read_identify_log():
 
 # write identify.log
 def write_identify_log(model_name, model_type):
-    with open('./data/identify.log', 'a') as f:
+    with open('./models/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
 def read_yaml(file_path='./data/config.yaml'):
@@ -143,6 +143,8 @@ def clear_debug_logs():
         else:
             print(f" File {os.path.basename(log_file)} missing!")
  
+ 
+
 # log messages to, input.log or output.log
 def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):
     log_path = f'./data/{log_type}.log'

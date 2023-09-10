@@ -78,7 +78,7 @@ def read_and_format_prompt(file_name, data, model_type, task_name):
                 single_input = lines[idx + 1].strip().format(**data)
         
         if model_type == 'chat':
-            formatted_prompt = f"### Instruction: {single_input}\n### Response:"
+            formatted_prompt = f"### Instruction: {single_input}"
         else:  # For 'instruct' model type
             formatted_prompt = f"[INST] {single_input} [/INST]"
         
@@ -109,14 +109,18 @@ def initialize_model(selected_model_path, optimal_threads, model_type='chat', co
 
 # Function to parse the model's raw response
 def parse_model_response(raw_model_response, data):
-    cleaned_response = raw_model_response.replace("### ASSISTANT:", "").strip()  # Retaining old rule
-    
-    # New rule for handling "### Response:"
-    if "### Response:" in cleaned_response:
-        cleaned_response = re.sub(r'### Response:', '', cleaned_response).strip()
-        cleaned_response = re.split(r'### Instruction:', cleaned_response)[0].strip()
-    
-    return cleaned_response.replace(f"{data['model_name']}: ", "")
+    print(" Parsing raw response...")
+    cleaned_response = raw_model_response.strip()
+    cleaned_response = re.sub(r'^---\n*', '', cleaned_response)
+    cleaned_response = re.sub(r'^\n+', '', cleaned_response)
+    cleaned_response = re.sub(r'^### Solution:\n', '', cleaned_response)
+    cleaned_response = re.sub(r'^### Response:\n', '', cleaned_response)
+    cleaned_response = re.sub(r'^### Output:\n', '', cleaned_response)    
+    model_name = data.get('model_name', '')  # Fetch the model name from the data dictionary
+    cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response)  # Use the actual model name
+    # Add more parsing rules here if needed
+    print(" ...Raw response parsed.")
+    return cleaned_response
 
 
 # Prompt response from model
@@ -146,28 +150,29 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         log_entry_name = f"{task_name}_{model_type}"
         utility.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
         utility.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
+    print(" Parsing response...")  
+    parsed_response = parse_model_response(raw_model_response, data)
     if save_to:
-        utility.write_to_yaml(save_to, raw_model_response.strip())
+        utility.write_to_yaml(save_to, parsed_response)
     new_session_history = None
     new_emotion = None
     if task_name == 'consolidate':
         print(" Consolidating history...")  
-        new_session_history = raw_model_response.strip()
+        new_session_history = parsed_response  # Use parsed_response here
         utility.write_to_yaml('session_history', new_session_history)
     if task_name == 'emotions':
         print(" Identifying emotions...")  
         emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
-        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", raw_model_response, re.IGNORECASE)]
+        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", parsed_response, re.IGNORECASE)]  # Use parsed_response here
         new_emotion = ", ".join(found_emotions)
         utility.write_to_yaml('model_emotion', new_emotion)
-    print(" Parsing response...")  
-    parsed_response = parse_model_response(raw_model_response, data)
     print(" Returning response...")  
     return {
         'model_response': parsed_response,
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
+
     
     
     
