@@ -42,6 +42,17 @@ wsl sudo apt-get install libncurses5-dev
 wsl pip3 install -r ./data/req_wsl.txt
 pip install -r .\data\req_win.txt
 
+:: Prompt user for language model type
+echo Choose between GGML or GGUF language models:
+echo 1. GGML
+echo 2. GGUF (experimental)
+set /p choice="Enter your choice (1/2): "
+if "%choice%"=="1" (
+    wsl pip3 install llamacpp
+) else if "%choice%"=="2" (
+    wsl pip3 install --upgrade --force-reinstall --no-cache-dir llama-cpp-python
+)
+
 :: Check if requirements.txt was found and installed successfully
 if %errorLevel% == 0 (
     echo Requirements install finished.
