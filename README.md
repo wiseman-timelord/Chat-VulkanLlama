@@ -1,16 +1,13 @@
 # Llama2Robot-GGML
-Status: Beta, currently updates will be in relevance to...
-* bugfixing and improving, the sounds feature. Since implementing sounds, that trigger from within "main2.py", I notice, that no sounds play until long after model initialization is started. revert updates to "main2.py" until seemingly no implementation of "sound" within the "main2.sctipt" apart from the sound to handle the other scripts, then re-test.
-* The project is almost complete, though I do advise that people do not fork their own versions until things are complete here, which will likely happen in the next few days, unless there is a severe issue implementing GGUF.
+Status: Working.
+* All that remains to be done, are improvements for, sounds, prompts, design.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
 
-### FUTURE PLANS:
-1) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
-2) Separate, instruct and chat, based prompt inside the prompt; even though this program has been developed to use, chat and instruct, model, it is advised to only use a chat model currently, as the prompts for instructs have not been optimised yet. 
-   
+  
 ### FEATURES:
+* Choice between, GGML and GGUF, models through installer, either installs, regular or experimental, version of llama.cpp. 
 * Program sounds through a few select samples in .wav format, currently a rushed implementation.
 * Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
@@ -135,7 +132,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### USAGE (windows):
 * For Windows WSL:
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
-2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries.
+2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, during which you must specify, GGML or GGUF, model support.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
 * Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
@@ -144,7 +141,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### USAGE (linux untested):
 * For Linux (Untested):
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
-2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell.
+2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell, additionally run, "wsl pip3 install llamacpp" for GGML or "wsl pip3 install --upgrade --force-reinstall --no-cache-dir llama-cpp-python" for GGUF.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
