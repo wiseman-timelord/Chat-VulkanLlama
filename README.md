@@ -1,16 +1,15 @@
 # Llama2Robot-GGML
 Status: Beta, currently updates will be in relevance to...
-* implementing a few wav files for sounds for major events.
-
+* bugfixing and improving, the sounds feature.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.  
 
 ### FUTURE PLANS:
 1) Update to GGUF based models, and try to keep support for GGML in process. Tried 4 times to create script, with, ctransformers, transformers and llama.cpp, none worked due to lack of available concise information.
-2) Figure out some system of prompt format for model, maybe even integrate short prompt test and selection useing code from "llama2syntax", something alike select which syntax worked best.
-
+   
 ### FEATURES:
+* Program sounds through a few select samples in .wav format, currently a rushed implementation.
 * Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
 * Multi-Window Interface: Runs separate scripts in parallel, bypassing the complexities of curses or tkinter on WSL.
