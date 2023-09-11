@@ -1,6 +1,7 @@
 # Llama2Robot
 Status: Working.
-* All that remains to be done, are improvements for, sounds, prompts, design. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. Either way, I'm assuming anyone intending to use this as a framework will be altering all these things themselves in the process, the basic working framework is there, hence, celebrations! We are at version 1.00 (O_o/'. Noteable delays were, Llama2 format change & Huggingface stopped working with DownLord & GPT down & internet down. 
+* All that remains to be done, are improvements for, sounds, prompts, design. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. Either way, I'm assuming anyone intending to use this as a framework will be altering all these things themselves in the process, the basic working framework is there. Noteable delays were, Llama2 format change & Huggingface stopped working with DownLord & GPT down & internet down.
+* There may be a few small updates, nothing major... 
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
