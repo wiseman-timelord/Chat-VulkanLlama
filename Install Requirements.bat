@@ -38,7 +38,9 @@ exit /b
 :: If running with admin privileges, proceed with the script
 echo Installing the requirements...
 echo.
-wsl pip3 install -r requirements.txt
+wsl sudo apt-get install libncurses5-dev
+wsl pip3 install -r ./data/req_wsl.txt
+pip install -r .\data\req_win.txt
 
 :: Check if requirements.txt was found and installed successfully
 if %errorLevel% == 0 (

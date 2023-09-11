@@ -29,7 +29,8 @@ def handle_reset():
         'human_current': "Empty",
         'model_current': "Empty",
         'model_previous1': "Empty",
-        'model_previous2': "Empty"
+        'model_previous2': "Empty",
+        'sound_event': "None" 
     }
     for key, value in yaml_data.items():
         utility.write_to_yaml(key, value)
@@ -109,7 +110,8 @@ def main():
             'model_role': model_role,
             'model_emotion': model_emotion,
             'scenario_location': scenario_location,
-            'session_history': session_history
+            'session_history': session_history,
+            'sound_event': "None" 
         }
         for key, value in yaml_data.items():
             utility.write_to_yaml(key, value)

@@ -1,21 +1,28 @@
+# main2.py
+
 # Imports
 from watchdog.observers import Observer
 from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
-import time
+import sounddevice as sd
 import yaml
+import time
 import os
 import sys
 import argparse
 import platform
 import pyttsx3
+import wavio
 
 # General Variables
 parser = argparse.ArgumentParser(description='Your Project Description')
 parser.add_argument('--tts', action='store_true', help='Enable text-to-speech')
+parser.add_argument('--sound', action='store_true', help='Enable sounds')
 args = parser.parse_args()
 os_name = platform.system()
 last_session_history = None
+last_sound_event = None
+SOUND_DIRECTORY = "./data/sounds"
 
 # TTS Variables
 TTS_RATE = 150  # Speed percent (can go over 100)
@@ -46,13 +53,25 @@ class Watcher:
 class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
-        global last_session_history  # Use the global variable
+        global last_session_history, last_sound_event
         if event.src_path.endswith('config.yaml'):
+            data = read_yaml()
+            
+            # Handle sound events
+            current_sound_event = data.get('sound_event', '')
+            if current_sound_event != last_sound_event:
+                last_sound_event = current_sound_event
+                sound_file = f"{SOUND_DIRECTORY}/{current_sound_event}.wav"
+                if os.path.exists(sound_file) and args.sound:
+                    play_wav(sound_file)
+            
+            # Handle session history
             print(" ...changes detected, re-printing Display...\n")
-            time.sleep(3)
+            if args.sound:
+                play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  # Replace 'change_detected.wav' with the actual file name
+            time.sleep(2)
             fancy_delay(5)
             display_interface()
-            data = read_yaml()
             current_session_history = data.get('session_history', '')
             if current_session_history != last_session_history:
                 last_session_history = current_session_history
@@ -102,6 +121,13 @@ def speak_text(text):
         print("Linux TTS is not yet implemented.")
     else:
         print("Unsupported OS for TTS.")
+
+# Play the sample
+def play_wav(filename):
+    if args.sound:
+        wav = wavio.read(filename)
+        sd.play(wav.data, wav.rate)
+        sd.wait()
 
 # main display
 def display_interface():

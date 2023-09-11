@@ -36,12 +36,12 @@ echo Launching 2 Windows...
 echo.
 timeout /t 1 /nobreak >nul
 echo Options for window1: --logs
-echo Options for window2: --tts
+echo Options for window2: --tts --sound
 echo.
 timeout /t 2 /nobreak >nul
 @echo on
 start cmd.exe /K "call .\scripts\window1.bat"
-start cmd.exe /K "call .\scripts\window2.bat --tts"
+start cmd.exe /K "call .\scripts\window2.bat --tts --sound"
 @echo off
 echo Exiting Launcher!
 echo.
