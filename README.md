@@ -1,4 +1,4 @@
-# Llama2Robot-GGML
+# Llama2Robot
 Status: Working.
 * All that remains to be done, are improvements for, sounds, prompts, design. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed.
   
