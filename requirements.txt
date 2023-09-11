@@ -1,8 +1,0 @@
-transformers
-torch
-PyYAML
-jax[cpu]
-jaxlib
-readline
-watchdog
-pyttsx
