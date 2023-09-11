@@ -1,6 +1,7 @@
 # Llama2Robot-GGML
 Status: Beta, currently updates will be in relevance to...
 * bugfixing and improving, the sounds feature. Since implementing sounds, that trigger from within "main2.py", I notice, that no sounds play until long after model initialization is started. revert updates to "main2.py" until seemingly no implementation of "sound" within the "main2.sctipt" apart from the sound to handle the other scripts, then re-test.
+* The project is almost complete, though I do advise that people do not fork their own versions until things are complete here, which will likely happen in the next few days, unless there is a severe issue implementing GGUF.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
