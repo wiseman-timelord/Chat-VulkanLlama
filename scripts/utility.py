@@ -14,7 +14,7 @@ ordered_keys = [
     'human_name', 'model_name',
     'model_role', 'scenario_location', 'model_emotion',
     'session_history', 'human_current',
-    'model_current', 'model_previous1', 'model_previous2'
+    'model_current', 'model_previous1', 'model_previous2', 'sound_event' 
 ]
 
 
@@ -38,7 +38,7 @@ def reset_keys_to_empty():
     keys_to_clear = [
         'human_name', 'human_current', 'model_name', 'model_role', 
         'model_current', 'model_previous1', 'model_previous2', 
-        'model_emotion', 'scenario_location', 'session_history'
+        'model_emotion', 'scenario_location', 'session_history', 'sound_event'
     ]
     for key in keys_to_clear:
         write_to_yaml(key, "Empty")
@@ -107,6 +107,9 @@ def shift_responses():
     data['model_previous1'] = data['model_current']
     write_to_yaml('model_previous1', data['model_previous1'])
     write_to_yaml('model_previous2', data['model_previous2'])
+
+def trigger_sound_event(event_name):
+    write_to_yaml('sound_event', event_name)
 
 # function to summarize responses and update session history
 def summarize_responses(data):

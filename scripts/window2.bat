@@ -14,7 +14,7 @@ echo.
 @echo on
 
 
-python main2.py %1
+python main2.py %1 %2
 @echo off
 echo.
 echo.

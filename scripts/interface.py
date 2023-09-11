@@ -18,7 +18,8 @@ def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
         sys.stdout.write("=")
         sys.stdout.flush()
     sys.stdout.write("] Complete.\n")
-    time.sleep(1)
+    utility.trigger_sound_event("robot whirr")
+    time.sleep(2)
 
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -26,6 +27,7 @@ def display_intro_screen():
     print(ASCII_ART)
     print("                                Welcome To Llama2Robot!")
     print("=" * 90)
+    utility.trigger_sound_event("startup_process")
     print("=-" * 45)    
     fortune = utility.get_random_fortune()
     llama_with_fortune = LLAMA_ART.replace("l'> -=< ", f"l'> -=< {fortune}")
@@ -86,10 +88,12 @@ def display_model_selection():
         model_name = os.path.basename(selected_models['chat'])
         context_key = selected_models.get('chat_context', '4k')
         print(f" Chatting model is {model_name} - CTX {context_key}")
+        utility.trigger_sound_event("model_used")
     if 'instruct' in selected_models:
         model_name = os.path.basename(selected_models['instruct'])
         context_key = selected_models.get('instruct_context', '4k')
         print(f" Instruct model is {model_name} - CTX {context_key}")
+        utility.trigger_sound_event("model_used")
     if not chat_models:
         print("No chat model, exiting!")
         exit()
@@ -104,6 +108,7 @@ def roleplay_configuration():
     print("=" * 90)
     print("                                    ROLEPLAY CONFIG")
     print("=" * 90)
+    utility.trigger_sound_event("roleplay_configure1")
     print("=-" * 45)    
     print(LANDSCAPE_ART)
     print("=-" * 45) 
@@ -130,6 +135,8 @@ def roleplay_configuration():
     session_history = default_values.get('session_history')
 
     print("\n ...Details collected.\n")
+    utility.trigger_sound_event("roleplay_configure2")
+    time.sleep(2)
 
     return human_name, model_name, model_role, model_emotion, scenario_location, session_history
 
