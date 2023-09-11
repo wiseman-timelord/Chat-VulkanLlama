@@ -1,6 +1,6 @@
 # Llama2Robot-GGML
 Status: Working.
-* All that remains to be done, are improvements for, sounds, prompts, design.
+* All that remains to be done, are improvements for, sounds, prompts, design. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
