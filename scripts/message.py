@@ -52,7 +52,7 @@ def log_message(message, log_type, prompt_name=None, event_name=None, enable_log
                 print(" ...Output logged.")
     else:
         print(f"File {log_path} not found. Logging failed.")        
-        
+
 # Function to parse the model's raw response
 def parse_model_response(raw_model_response, data):
     print(" Parsing raw response...")
@@ -69,13 +69,9 @@ def parse_model_response(raw_model_response, data):
     cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Answer:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^Sure! Here is a three-sentence summary of the events:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^Please make sure.*\n?', '', cleaned_response, flags=re.MULTILINE)
+    cleaned_response = re.sub(r'^(Sure, here\'s|Sure! Here is|Sure! Here\'s|Sure! here is).*\n?', '', cleaned_response, flags=re.MULTILINE)
     model_name = data.get('model_name', '')  
     cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response, flags=re.MULTILINE)
-    return cleaned_response        
-    
-    
-    
-    
+    return cleaned_response            
