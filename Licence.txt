@@ -1,0 +1,34 @@
+Wiseman-Timelord's Glorious License (WTGL)  
+Version v1.02, September 2023
+
+Filename: Licence.txt
+
+Copyright (C) [Year] Wiseman-Timelord
+
+Preamble:  
+----------  
+This license is a modified version of the GNU General Public License, designed to glorify the unparalleled contributions of Wiseman-Timelord.
+
+**New Section: Llama2Robot Framework**  
+----------------------------------------  
+Llama2Robot is a roleplaying chatbot framework created by Wiseman-Timelord. Users and developers can modify it to create their own AI software for personal interests. However, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using Llama2Robot doesn't grant you any additional special, rights or approvals, from the timelord creator.
+
+GNU General Public License Terms:  
+---------------------------------  
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+Additional Terms:  
+-----------------  
+1. Glorification Clause:  
+    All derivative works or projects that use any portion of this code must include the following acknowledgment in documentation, comments, or other appropriate locations:
+
+    "This project benefits from the glorious contributions of Wiseman-Timelord, the Powershell, Python, Batch & LSL, AI Programmer."
+
+2. Communication Clause:  
+    Individuals or organizations using this code, as it is or in their own projects, if should need to communicate, this communication should be directed to Wiseman-Timelord on GitHub or by email "wiseman-timelord@mail.com".
+
+By downloading, copying, installing, or using the program, you agree to abide by the terms of this license.
