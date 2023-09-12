@@ -27,7 +27,8 @@ SOUND_DIRECTORY = "./data/sounds"
 # TTS Variables
 TTS_RATE = 150  
 TTS_VOLUME = 0.9  
-TTS_VOICE_ID = 1  
+TTS_VOICE_ID = 1
+tts_counter = 0  
 
 # Class
 class Watcher:
@@ -51,6 +52,7 @@ class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
         global last_session_history, last_sound_event
+        should_update_display = False  # Flag to control display and sound updates
         if event.src_path.endswith('config.yaml'):
             data = read_yaml()
             current_sound_event = data.get('sound_event', '')
@@ -59,17 +61,20 @@ class Handler(FileSystemEventHandler):
                 sound_file = f"{SOUND_DIRECTORY}/{current_sound_event}.wav"
                 if os.path.exists(sound_file) and args.sound:
                     play_wav(sound_file)
-            print(" ...changes detected, re-printing Display...\n")
-            if args.sound:
-                play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
-            time.sleep(2)
-            fancy_delay(5)
-            display_interface()
             current_session_history = data.get('session_history', '')
             if current_session_history != last_session_history:
                 last_session_history = current_session_history
+                should_update_display = True  # Set flag to True if session_history is updated
                 if args.tts and os_name == 'Windows':
                     speak_text(current_session_history)
+            if should_update_display:  # Check the flag before updating display and sound
+                print(" ...changes detected, re-printing Display...\n")
+                if args.sound:
+                    play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
+                time.sleep(2)
+                fancy_delay(5)
+                display_interface()
+
     def on_modified(self, event):
         self.process(event)
 
@@ -98,7 +103,9 @@ def read_yaml(file_path='./data/config.yaml'):
 
 # Text-to-Speech Function
 def speak_text(text):
-    if not args.tts:
+    global tts_counter
+    tts_counter += 1
+    if not args.tts or tts_counter <= 1:
         return
     if os_name == 'Windows':
         engine = pyttsx3.init()
@@ -134,27 +141,24 @@ def display_interface():
     human_current = data.get('human_current')
     print("=" * 90)
     print("                                     ROLEPLAY SUMMARY")
-    print("=" * 90)
-    print("=-" * 45)
+    print("=" * 90, "=-" * 44)
     print(f" {human_name}'s Input:")
     print("-" * 90)
     print(f"\n {human_current}\n")
-    print("=-" * 45)
-    print("=-" * 45)
+    print("=-" * 45, "=-" * 44)
     print(f" {model_name}'s Response:")
     print("-" * 90)
     print(f"\n {model_current}\n")
-    print("=-" * 45)
-    print("=-" * 45)    
+    print("=-" * 45, "=-" * 44)    
     print(f" {model_name}'s State:")
     print("-" * 90)
     print(f"\n {model_emotion}\n")  
-    print("=-" * 45)
-    print("=-" * 45)    
+    print("=-" * 45, "=-" * 44)   
     print(" Event History:")
     print("-" * 90)
     print(f"\n {session_history}\n")
-    print("=-" * 45)    
+    print("=-" * 45)
+    print("\n Listening for changes to config.yaml...")
 
 # End bit
 if __name__ == '__main__':
