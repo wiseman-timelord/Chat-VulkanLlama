@@ -4,10 +4,10 @@
 import yaml
 import glob
 import os
-from scripts import model as model_module
 import time
 import platform
 import random
+
 
 # Maps 
 ordered_keys = [
@@ -99,38 +99,19 @@ def write_to_yaml(key, value, file_path='./data/config.yaml'):
         yaml.dump(ordered_data, file)
 
 # write config.yaml
-def shift_responses():
+def shift_responses(enable_logging=False, formatted_prompt=None, raw_model_response=None, log_entry_name=None):
     data = read_yaml()
     for i in range(3, 1, -1):
         data[f'model_previous{i}'] = data[f'model_previous{i-1}']
     data['model_previous1'] = data['model_current']
+    if enable_logging and formatted_prompt and raw_model_response and log_entry_name:
+        message.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
+        message.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
     write_to_yaml('model_previous1', data['model_previous1'])
     write_to_yaml('model_previous2', data['model_previous2'])
 
 def trigger_sound_event(event_name):
     write_to_yaml('sound_event', event_name)
-
-# function to summarize responses and update session history
-def summarize_responses(data):
-    data = read_yaml()
-    if data.get('human_previous', "Empty") == "Empty" and data.get('model_previous', "Empty") ==     "Empty":
-        summarize_file = "./data/prompts/consolidate.txt"
-    elif data.get('session_history', "Empty") == "Empty":
-        summarize_file = "./data/prompts/emotions.txt"
-    else:
-        raise ValueError("Invalid state for summarization")
-    summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)
-    write_to_yaml('recent_statements', summarized_text)
-    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
-    write_to_yaml('session_history', consolidated_history)
-    if consolidated_history == "Empty":
-        consolidated_history = summarized_text.strip()
-    if data['model_current'] is None:
-        data['model_current'] = ""
-    if data['human_current'] is None:
-        data['human_current'] = ""
-    updated_session_history = consolidated_history + " " + data['model_current'] + " " + data['human_current']
-    write_to_yaml('session_history', updated_session_history)
 
 # clear debug logs at start
 def clear_debug_logs():
@@ -144,21 +125,3 @@ def clear_debug_logs():
             print(f" ...{os.path.basename(log_file)} cleared.")
         else:
             print(f" File {os.path.basename(log_file)} missing!")
-
-# log messages to, input.log or output.log
-def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):
-    log_path = f'./data/{log_type}.log'
-    if log_type == 'output' and not enable_logging:
-        print("Logging is disabled!")
-        return
-    if os.path.exists(log_path):
-        with open(log_path, 'a') as log_file:
-            log_entry_name = prompt_name if prompt_name else 'processed_input'
-            log_file.write(f"\n<-----------------------------{log_entry_name}_start--------------------------------->\n")
-            log_file.write(message)
-            log_file.write(f"\n<------------------------------{log_entry_name}_end---------------------------------->\n")
-            if log_type == 'output':
-                print(f"\n Logging {event_name}...")
-                print(" ...Output logged...")
-    else:
-        print(f"File {log_path} not found. Logging failed.")

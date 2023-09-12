@@ -1,7 +1,7 @@
 # model.py
 
 # imports
-from scripts import utility
+from scripts import message, utility
 from llama_cpp import Llama
 import os
 import time
@@ -63,26 +63,7 @@ CONTEXT_LENGTH_MAP = {
     }
 }
 
-# function to read and format prompts
-def read_and_format_prompt(file_name, data, model_type, task_name):
-    try:
-        with open(file_name, "r") as file:
-            lines = file.readlines()
-        main_input = ""
-        human_interaction = ""
-        for idx, line in enumerate(lines):
-            if "### Instruction:" in line:  # New syntax
-                single_input = lines[idx + 1].strip().format(**data)
-            elif "INPUT:" in line:  
-                single_input = lines[idx + 1].strip().format(**data)
-        if model_type == 'chat':
-            formatted_prompt = f"### Instruction: {single_input}"
-        else:  
-            formatted_prompt = f"[INST] {single_input} [/INST]"
-        return formatted_prompt
-    except FileNotFoundError:
-        print(f"Error: {file_name} not found.")
-        return None
+
 
 # determine model for task
 def determine_model_type_for_task(task_name, loaded_models):
@@ -104,28 +85,6 @@ def initialize_model(selected_model_path, optimal_threads, model_type='chat', co
         n_threads=optimal_threads,
     )
 
-# Function to parse the model's raw response
-def parse_model_response(raw_model_response, data):
-    print(" Parsing raw response...")
-    cleaned_response = raw_model_response.strip()
-    cleaned_response = re.sub(r'^---\n*', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^\n+', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r"'\.'", '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Solution:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Summary:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Response:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Instruction:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Output:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Example:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Answer:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^### The Conversation Summary:\n', '', cleaned_response, flags=re.MULTILINE)
-    cleaned_response = re.sub(r'^Please make sure.*\n?', '', cleaned_response, flags=re.MULTILINE)
-    model_name = data.get('model_name', '')  
-    cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response, flags=re.MULTILINE)
-    return cleaned_response
-
 # Prompt response from model
 def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_models=None, save_to=None):
     print("\n Reading YAML data...")
@@ -135,14 +94,14 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
     valid_tasks = ['consolidate', 'emotions', 'converse']
     if task_name not in valid_tasks:
         return {"error": f"Invalid task name. Valid tasks are {', '.join(valid_tasks)}."}
-    print(f" Task type is {task_name}.")
     model_type = determine_model_type_for_task(task_name, loaded_models)
-    prompt_file = f"./data/prompts/{task_name}.txt"
+    print(f" Task type is {task_name}.")
+    prompt_file = f"./data/prompts/{task_name}.txt"  # <-- define prompt_file first
+    formatted_prompt = message.read_and_format_prompt(prompt_file, data, model_type, task_name)
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
         return {"error": f"Prompt file {prompt_file} not found."}
     print(f" Prompt is {model_type} format.")
-    formatted_prompt = read_and_format_prompt(prompt_file, data, model_type, task_name)
     if formatted_prompt is None:
         return {"error": "Failed to read or format the prompt."}
     print(f" Using {model_type} format...")
@@ -151,9 +110,9 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
     raw_model_response = llm(formatted_prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=MODEL_TYPE_TO_TEMPERATURE[model_type], max_tokens=max_tokens_for_task)["choices"][0]["text"]
     if enable_logging:
         log_entry_name = f"{task_name}_{model_type}"
-        utility.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
-        utility.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
-    parsed_response = parse_model_response(raw_model_response, data)
+        message.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
+        message.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
+    parsed_response = message.parse_model_response(raw_model_response, data)
     if save_to:
         utility.write_to_yaml(save_to, parsed_response)
         print(" ...Saved parsed response.")
@@ -175,3 +134,27 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
+
+
+# function to summarize responses and update session history
+def summarize_responses(data):
+    data = read_yaml()
+    if data.get('human_previous', "Empty") == "Empty" and data.get('model_previous', "Empty") ==     "Empty":
+        summarize_file = "./data/prompts/consolidate.txt"
+    elif data.get('session_history', "Empty") == "Empty":
+        summarize_file = "./data/prompts/emotions.txt"
+    else:
+        raise ValueError("Invalid state for summarization")
+    summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)
+    write_to_yaml('recent_statements', summarized_text)
+    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
+    write_to_yaml('session_history', consolidated_history)
+    if consolidated_history == "Empty":
+        consolidated_history = summarized_text.strip()
+    if data['model_current'] is None:
+        data['model_current'] = ""
+    if data['human_current'] is None:
+        data['human_current'] = ""
+    updated_session_history = consolidated_history + " " + data['model_current'] + " " + data['human_current']
+    write_to_yaml('session_history', updated_session_history)
+    
