@@ -17,7 +17,6 @@ ordered_keys = [
     'model_current', 'model_previous1', 'model_previous2', 'sound_event' 
 ]
 
-
 # Fortune cookie
 def get_random_fortune():
     with open('./data/fortune.txt', 'r') as f:
@@ -58,7 +57,7 @@ def read_env_file(env_file_path='./.ENV'):
     env_data = {}
     with open(env_file_path, 'r') as file:
         for line in file:
-            line = line.strip().split("#")[0]  # Ignore anything after #
+            line = line.strip().split("#")[0]  
             if line and not line.startswith("*"):
                 try:
                     key, value = line.split("=")
@@ -145,8 +144,6 @@ def clear_debug_logs():
             print(f" ...{os.path.basename(log_file)} cleared.")
         else:
             print(f" File {os.path.basename(log_file)} missing!")
- 
- 
 
 # log messages to, input.log or output.log
 def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):

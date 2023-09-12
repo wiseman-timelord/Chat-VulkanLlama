@@ -9,7 +9,6 @@ import glob
 import re
 from scripts.ascii import ASCII_ART, LLAMA_ART, LANDSCAPE_ART
 
-
 def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -115,16 +114,10 @@ def roleplay_configuration():
     print("=-" * 45)     
     print(" Roleplay Setup Processes:")
     print("-" * 90)
-
-    # Read default values from the .ENV file
     default_values = utility.read_env_file()
-
-    # Display the default values
     print(f"\n Default Human Name = {default_values.get('human_name', 'Human')}")
     print(f" Default Model Name, Role = {default_values.get('model_name', 'Wise-Llama')}, {default_values.get('model_role', 'Mystical Oracle')}")
     print(f" Default Location = {default_values.get('scenario_location', 'on a mountain')}")
-
-    # Collect user input or use default values
     human_name = input("\n Your name is: ").strip() or default_values.get('human_name', 'Human')
     model_info_input = input(" Model's 'name, role' is: ")
     model_info = model_info_input.split(", ") if model_info_input else []
@@ -133,13 +126,10 @@ def roleplay_configuration():
     scenario_location = input(" The location is: ").strip() or default_values.get('scenario_location', 'on a mountain')
     model_emotion = default_values.get('model_emotion')
     session_history = default_values.get('session_history')
-
     print("\n ...Details collected.\n")
     utility.trigger_sound_event("roleplay_configure2")
     time.sleep(2)
-
     return human_name, model_name, model_role, model_emotion, scenario_location, session_history
-
     
 # Start Engine
 def display_engine():
@@ -152,4 +142,3 @@ def display_engine():
     print(" Input/Output Processes:")
     print("-" * 90, "")
     return 
-    

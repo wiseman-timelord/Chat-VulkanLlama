@@ -63,7 +63,6 @@ CONTEXT_LENGTH_MAP = {
     }
 }
 
-
 # function to read and format prompts
 def read_and_format_prompt(file_name, data, model_type, task_name):
     try:
@@ -74,14 +73,12 @@ def read_and_format_prompt(file_name, data, model_type, task_name):
         for idx, line in enumerate(lines):
             if "### Instruction:" in line:  # New syntax
                 single_input = lines[idx + 1].strip().format(**data)
-            elif "INPUT:" in line:  # Old syntax
+            elif "INPUT:" in line:  
                 single_input = lines[idx + 1].strip().format(**data)
-        
         if model_type == 'chat':
             formatted_prompt = f"### Instruction: {single_input}"
-        else:  # For 'instruct' model type
+        else:  
             formatted_prompt = f"[INST] {single_input} [/INST]"
-        
         return formatted_prompt
     except FileNotFoundError:
         print(f"Error: {file_name} not found.")
@@ -125,7 +122,7 @@ def parse_model_response(raw_model_response, data):
     cleaned_response = re.sub(r'^### Prompt Answer:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^### The Conversation Summary:\n', '', cleaned_response, flags=re.MULTILINE)
     cleaned_response = re.sub(r'^Please make sure.*\n?', '', cleaned_response, flags=re.MULTILINE)
-    model_name = data.get('model_name', '')  # Fetch the model name from the data dictionary
+    model_name = data.get('model_name', '')  
     cleaned_response = re.sub(rf'^### {model_name}\n', '', cleaned_response, flags=re.MULTILINE)
     return cleaned_response
 
@@ -164,12 +161,12 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
     new_emotion = None
     if task_name == 'consolidate':
         print(" Consolidating history...")  
-        new_session_history = parsed_response  # Use parsed_response here
+        new_session_history = parsed_response  
         utility.write_to_yaml('session_history', new_session_history)
     if task_name == 'emotions':
         print(" Identifying emotions...")  
         emotion_keywords = ["Love", "Arousal", "Euphoria", "Surprise", "Curiosity", "Indifference", "Fatigue", "Discomfort", "Embarrassment", "Anxiety", "Stress", "Anger", "Hate"]
-        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", parsed_response, re.IGNORECASE)]  # Use parsed_response here
+        found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", parsed_response, re.IGNORECASE)]  
         new_emotion = ", ".join(found_emotions)
         utility.write_to_yaml('model_emotion', new_emotion)
     print(" Returning response...")  
@@ -178,7 +175,3 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
-
-    
-    
-    
