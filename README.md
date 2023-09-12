@@ -1,12 +1,13 @@
 # Llama2Robot
 Status: Working.
-* What remains to be done, are improvements for, sounds, prompts, design, maybe code, optimization and re-distribution. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. Either way, I'm assuming anyone intending to use this as a framework will be altering all these things themselves in the process, the basic working framework is there, hence, there may be a few small updates from now, but nothing major, as its intended to be streamline.
+* What remains to be done, are improvements for, sounds, prompts, design, maybe code re-distribution. Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. Either way, I'm assuming anyone intending to use this as a framework will be altering all these things themselves in the process, the basic working framework is there, hence, there may be a few small updates from now, but nothing major, as its intended to be streamline.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
 
   
 ### FEATURES:
+* Code is well optimised, yet retains clarity in functions such as the parser, further optimisation was limited.
 * Choice between, GGML and GGUF, models through installer, either installs, regular or experimental, version of llama.cpp. 
 * Program sounds through a few select samples in .wav format, currently a rushed implementation.
 * Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
