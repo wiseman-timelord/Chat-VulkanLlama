@@ -102,33 +102,29 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ```
 ==========================================================================================
                                      ROLEPLAY SUMMARY
-==========================================================================================
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+========================================================================================== =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Human's Input:
 ------------------------------------------------------------------------------------------
 
- hello there! i am glad to meet you here in the middle of nowhere. do you come here often?!
+ hello there! i never thought i would see you here on the mountain, do you come here often?!
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Wise-Llama's Response:
 ------------------------------------------------------------------------------------------
 
- "Hello, I'm Wise-Llama and this is my first time being here."
+ "Ah, a surprise encounter indeed! I have been meditating here for some time now, seeking solace in the mountain's wisdom.", Wise-Llama says with a gentle nod as he closes his eyes to focus on his inner peace.
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Wise-Llama's State:
 ------------------------------------------------------------------------------------------
 
  indifferent
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Event History:
 ------------------------------------------------------------------------------------------
 
- Human greeted Wise-Llama with the words "hello there! i am glad to meet you here in the middle of nowhere" before inquiring about how often he comes to this location. Wise-Llama responded by introducing himself and sharing that it was his first time visiting the place, using the phrase "I'm Wise-Llama and this is my first time being here."
+ Human approaches Wise-Llama on the mountain, initiating a conversation with surprise and curiosity. Wise-Llama responds with a gentle nod and closed eyes, focusing on inner peace while expressing his presence in the area through meditation. Both parties exhibit nonverbal cues of calmness and serenity, creating a peaceful atmosphere for their interaction.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
