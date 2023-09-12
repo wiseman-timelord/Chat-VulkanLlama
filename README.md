@@ -1,8 +1,9 @@
 # Llama2Robot
 Status: Working.
 * Outstanding work:
-1) there may be a few small updates from now, but nothing major, as its intended to be streamline.
-2) Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed, hence,  Possibly I can get all this done today.
+1) there may be a few small updates from now, but nothing major, as its intended to be streamline, just finishing touches.
+2) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed.
+3) Need to test generation of emotions, and possibly update parser.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
