@@ -4,7 +4,7 @@ Status: Working.
 1) improving sounds and sound usage. The sounds update is, complete and not uploaded yet. 
 2) moving 3 functions from, "utlity.py" and "model.py", to a new script "message.py", thus, the two previous scripts are more safely within the 7K limit of GPT4.
 3) Improving upon "main2.py", no tts for value from previous session. The "main2.py" update is, complete and uploaded.
-4) 4) optimised code relating to the interface, section lines are missing bit here n there but require less code.
+4) optimised code relating to the interface, section lines are missing bit here n there but require less code.
 * Outstanding work: Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed, hence, there may be a few small updates from now, but nothing major, as its intended to be streamline.
   
 ### DESCRIPTION:
