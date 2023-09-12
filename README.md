@@ -164,7 +164,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
 
 ### REQUIREMENTS:
-* Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev + exoerimental llama-cpp-python (for GGUF).
+* Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev + experimental llama-cpp-python (for GGUF).
 * Python 3.x + libraries listed in `./data/req_win.txt`.
 * Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF).
 
