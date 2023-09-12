@@ -41,7 +41,7 @@ class Watcher:
         self.observer.start()
         try:
             while True:
-                time.sleep(5)
+                time.sleep(1)
         except:
             self.observer.stop()
             print("Observer stopped")
@@ -65,15 +65,17 @@ class Handler(FileSystemEventHandler):
             if current_session_history != last_session_history:
                 last_session_history = current_session_history
                 should_update_display = True  # Set flag to True if session_history is updated
-                if args.tts and os_name == 'Windows':
-                    speak_text(current_session_history)
+                
             if should_update_display:  # Check the flag before updating display and sound
                 print(" ...changes detected, re-printing Display...\n")
                 if args.sound:
                     play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
-                time.sleep(2)
+                time.sleep(1)
                 fancy_delay(5)
                 display_interface()
+                
+                if args.tts and os_name == 'Windows':  # Moved this block here
+                    speak_text(current_session_history)
 
     def on_modified(self, event):
         self.process(event)
