@@ -138,7 +138,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### USAGE (windows):
 * For Windows WSL:
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
-2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, during which you must specify, GGML or GGUF, model support.
+2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, which includes experimental GGUF model support.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
 * Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
@@ -149,7 +149,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### USAGE (linux untested):
 * For Linux (Untested):
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
-2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell, additionally run, "wsl pip3 install llamacpp" for GGML or "wsl pip3 install --upgrade --force-reinstall --no-cache-dir llama-cpp-python" for GGUF.
+2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell, additionally run, "wsl pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python" for GGUF and "wsl pip install libncurses5-dev" for something?!.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
@@ -164,9 +164,10 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
 
 ### REQUIREMENTS:
-* Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev.
+* Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev + exoerimental llama-cpp-python (for GGUF).
 * Python 3.x + libraries listed in `./data/req_win.txt`.
 * Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF).
 
 ### DISCLAIMER:
+* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp-python, ensure to, use environment or perform a backup, before running the install process.  
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
