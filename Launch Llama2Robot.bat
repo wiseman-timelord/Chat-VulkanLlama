@@ -40,7 +40,7 @@ echo Options for window2: --tts --sound
 echo.
 timeout /t 2 /nobreak >nul
 @echo on
-start cmd.exe /K "call .\scripts\window1.bat"
+start cmd.exe /K "call .\scripts\window1.bat --logs"
 start cmd.exe /K "call .\scripts\window2.bat --tts --sound"
 @echo off
 echo Exiting Launcher!
