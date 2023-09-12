@@ -1,7 +1,7 @@
 # Llama2Robot
 Status: Working.
 * Outstanding work:
-1) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There may be 1, but bah, that can wait.
+1) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There probably isnt, there may be 1, but bah, that can wait.
 2) Need to test generation of emotions, and possibly update parser/prompt. 
   
 ### DESCRIPTION:
