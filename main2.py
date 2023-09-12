@@ -25,18 +25,15 @@ last_sound_event = None
 SOUND_DIRECTORY = "./data/sounds"
 
 # TTS Variables
-TTS_RATE = 150  # Speed percent (can go over 100)
-TTS_VOLUME = 0.9  # Volume level (0.0 to 1.0)
-TTS_VOICE_ID = 1  # Voice ID (0 for male, 1 for female, etc.)
-
+TTS_RATE = 150  
+TTS_VOLUME = 0.9  
+TTS_VOICE_ID = 1  
 
 # Class
 class Watcher:
     DIRECTORY_TO_WATCH = "./data"
-
     def __init__(self):
         self.observer = PollingObserver()
-
     def run(self):
         event_handler = Handler()
         self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
@@ -56,19 +53,15 @@ class Handler(FileSystemEventHandler):
         global last_session_history, last_sound_event
         if event.src_path.endswith('config.yaml'):
             data = read_yaml()
-            
-            # Handle sound events
             current_sound_event = data.get('sound_event', '')
             if current_sound_event != last_sound_event:
                 last_sound_event = current_sound_event
                 sound_file = f"{SOUND_DIRECTORY}/{current_sound_event}.wav"
                 if os.path.exists(sound_file) and args.sound:
                     play_wav(sound_file)
-            
-            # Handle session history
             print(" ...changes detected, re-printing Display...\n")
             if args.sound:
-                play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  # Replace 'change_detected.wav' with the actual file name
+                play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
             time.sleep(2)
             fancy_delay(5)
             display_interface()
@@ -77,7 +70,6 @@ class Handler(FileSystemEventHandler):
                 last_session_history = current_session_history
                 if args.tts and os_name == 'Windows':
                     speak_text(current_session_history)
-
     def on_modified(self, event):
         self.process(event)
 
@@ -117,7 +109,6 @@ def speak_text(text):
         engine.say(text)
         engine.runAndWait()
     elif os_name == 'Linux':
-        # Placeholder for Linux TTS
         print("Linux TTS is not yet implemented.")
     else:
         print("Unsupported OS for TTS.")
@@ -133,17 +124,14 @@ def play_wav(filename):
 def display_interface():
     os.system('cls' if os.name == 'nt' else 'clear')
     data = read_yaml()
-    
     if data is None:
         return
-
     human_name = data.get('human_name')
     model_name = data.get('model_name')
     model_current = data.get('model_current')
     model_emotion = data.get('model_emotion')
     session_history = data.get('session_history')
     human_current = data.get('human_current')
-
     print("=" * 90)
     print("                                     ROLEPLAY SUMMARY")
     print("=" * 90)

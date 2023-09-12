@@ -8,7 +8,6 @@ import sys
 import os
 import readline
 
-
 # globals
 parser = argparse.ArgumentParser(description='Your script description here.')
 parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to output.log')
@@ -47,7 +46,6 @@ def handle_other(user_input, rotation_counter, loaded_models):
     if 'model_previous1' not in data:
         print("Error: 'model_previous1' key not found in YAML data.")
         return
-
     human_name = data.get('human_name')
     model_name = data.get('model_name')
     model_role = data.get('model_role')
@@ -58,33 +56,24 @@ def handle_other(user_input, rotation_counter, loaded_models):
     model_current = data.get('model_current')
     model_previous1 = data.get('model_previous1')   
     model_previous2 = data.get('model_previous2')      
-    
     start_time = time.time()
     current_task = 'emotions' if rotation_counter == 3 else 'converse'
     model_type_to_use = model_module.determine_model_type_for_task(current_task, loaded_models)
-    
     response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='model_current')
     consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='session_history')
-    
     if args.output:
         utility.write_to_yaml('raw_output', response_dict['model_response'])
-        
     new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
         utility.write_to_yaml('session_history', new_session_history)
-        
     if rotation_counter == 3:
         new_emotion = response_dict.get('new_emotion')
         if new_emotion:
             utility.write_to_yaml('model_emotion', new_emotion)
-    
     end_time = time.time()
     print(f"\n ...Time taken: {end_time - start_time:.2f} seconds...")
-    
     utility.shift_responses()
     print(" ...Key Display window updated.\n")
-
-
 
 # Main function
 def main():
@@ -115,7 +104,6 @@ def main():
         }
         for key, value in yaml_data.items():
             utility.write_to_yaml(key, value)
-
         data = utility.read_yaml()
         human_name = data.get('human_name')
         model_name = data.get('model_name')
