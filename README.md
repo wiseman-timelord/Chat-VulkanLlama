@@ -1,8 +1,8 @@
 # Llama2Robot
 Status: Working.
 * Outstanding work:
-1) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There probably isnt, there may be 1, but bah, that can wait.
-2) Need to test generation of emotions, and possibly update parser/prompt. 
+1) Issue with 4th prompt. Possibly causes: a) emotions code activates, b) model_previous keys used up. 
+2) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There probably isnt, there may be 1, but bah, that can wait.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
@@ -155,6 +155,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 1) Hello there! I never thought I would see you here on the mountain, do you come here often?!
 2) Wow, you can actually talk? That's super amazing! What brings you to this remote place?
 3) You look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
+4) Oh, please do tell about the great mysteries Wise-Llama, what is the purpose of humanity?
 
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev + experimental llama-cpp-python (for GGUF).
