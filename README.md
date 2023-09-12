@@ -1,11 +1,8 @@
 # Llama2Robot
 Status: Working.
-* Today I set about finishing the program off to my satisfaction, however, this has resulted in a further issue with the prompts in the version I am using, I must now fix this before I can update. This may be due to the fact I am now using GGUF models, in which case, I would have to make this GGUF only, as I just got rid of my GGML models, and I am on mobile broadband, so logically, FROM VERSION 1.04 ITS BEING DEVELOPED AS A GGUF ONLY FOLKS. If you do not use an evnvironment, you may be left with a decision, to develop your own fork of Llama2Robot to do what you want or keep using other peoples software with "depreciated" GGML support or use version <=1.03 as the base. Updates for today so far involve...
-1) improving sounds and sound usage. The sounds update is, complete and not uploaded yet. 
-2) moving 3 functions from, "utlity.py" and "model.py", to a new script "message.py", thus, the two previous scripts are more safely within the 7K limit of GPT4. Not uploaded.
-3) Improving upon "main2.py", no tts for value from previous session. The "main2.py" update is, complete and uploaded.
-4) optimised code relating to the interface, section lines are missing bit here n there but require less code. Not uploaded.
-* Outstanding work: Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed, hence, there may be a few small updates from now, but nothing major, as its intended to be streamline. Possibly I can get all this done today.
+* Outstanding work:
+1) there may be a few small updates from now, but nothing major, as its intended to be streamline.
+2) Need to also check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed, hence,  Possibly I can get all this done today.
   
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
