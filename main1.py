@@ -10,9 +10,12 @@ import readline
 
 # globals
 parser = argparse.ArgumentParser(description='Your script description here.')
-parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to output.log')
+parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to logs')
 args = parser.parse_args()
 loaded_models = {}
+
+
+
 
 # Handle 'reset' input
 def handle_reset():
@@ -58,10 +61,9 @@ def handle_other(user_input, rotation_counter, loaded_models):
     model_previous2 = data.get('model_previous2')      
     start_time = time.time()
     current_task = 'emotions' if rotation_counter == 3 else 'converse'
-    model_type_to_use = model_module.determine_model_type_for_task(current_task, loaded_models)
-    response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='model_current')
-    consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.output, loaded_models=loaded_models, save_to='session_history')
-    if args.output:
+    response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_current')
+    consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='session_history')
+    if args.logs:
         utility.write_to_yaml('raw_output', response_dict['model_response'])
     new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
