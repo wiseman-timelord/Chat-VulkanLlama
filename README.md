@@ -169,5 +169,5 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 * Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF).
 
 ### DISCLAIMER:
-* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp-python, ensure to, use environment or perform a backup, before running the install process.  
+* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp-python, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot.  
 * This program is in no way affiliated with the Llama 2 developers, it merely is a Chatbot that runs through the use of Llama 2 GGML based. models. The Llama 2 model has been chosen because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, that are able to correctly write a ".json" file. Thus if this were the case with other models beforehand, it would be named after them. 
