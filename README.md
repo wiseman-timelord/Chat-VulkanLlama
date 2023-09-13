@@ -1,7 +1,7 @@
 # Llama2Robot
 Status: Working.
 * Outstanding work:
-1) Issue with 4th prompt. Possibly causes: a) emotions code activates, b) model_previous keys used up. 
+1) Issue with 4th prompt. Possibly causes: a) emotions code activates, b) model_previous keys used up c) GPT4 keeps creeping in . 
 2) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There probably isnt, there may be 1, but bah, that can wait.
   
 ### DESCRIPTION:
@@ -10,8 +10,8 @@ Status: Working.
   
 ### FEATURES:
 * Code is optimised yet retains clarity in certain functions, code has been distributed soes each file under 7K GPT4 limit.
-* Choice between, GGML and GGUF, models through installer, either installs, regular or experimental, version of llama.cpp. 
-* Program sounds through a few select samples in .wav format, currently a rushed implementation.
+* Choice of only GGUF now, gotta stay current, if you want GGML, check out <=v1.03, its to do with llama. 
+* Program sounds through a few select samples in .wav format, goes through key to window 2 which is non-WSL.
 * Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
 * Multi-Window Interface: Runs separate scripts in parallel, bypassing the complexities of curses or tkinter on WSL.
