@@ -1,6 +1,6 @@
 # Llama2Robot
 Status: Working.
-* Outstanding work, currently I am working on another project, but will come back to this in next few days, as have already lost 2 days trying to fix it, and it is somewhat agonizing being the last thing to fix, when it worked fine at some point, now seemingly impossible to fix. I will fix this, but, I have an undisclosed project, that may mean life or death. BTE did you notice the Crowdfund on my profile...
+* Outstanding work, currently I am working on another project, but will come back to this in next few days, as have already lost 2 days trying to fix it, and it is somewhat agonizing being the last thing to fix, when it worked fine at some point, now seemingly impossible to fix. I will fix this, but, I have an undisclosed project, that may mean life or death. BTW did you notice the Crowdfund on my profile...
 1) There is an issue with the emotions prompt, this is because of the GPT4 keeps creeping in for example key_1 at the end of a key instead of key1, the solution long-term is to use the _1 format, this will require re-working the scripts to implement this for all numbered keys. After fixing the issue, there may be other issues, but I dont think they will be show stoppers.
 2) Need to check all of the requirements in the, "req_wsl.txt" and "req_win.txt", are actually needed. To do this properly I would be required to uninstall all, python and WSL, libraries, then install each requirement individually. There probably isnt, there may be 1.
 
