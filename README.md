@@ -4,7 +4,7 @@ Status: Working.
 1) There is an issue with the emotions prompt, this is because of the GPT4 keeps creeping in for example key_1 at the end of a key instead of key1, the solution long-term is to use the _1 format, this will require re-working the scripts to implement this for all numbered keys. After fixing the issue, there may be other issues, but I dont think they will be show stoppers.
 2) New parsing of output can be done by window2.py, seems as window2, doesnt do so much and is the one that displays the information.
 * Upcoming updates in next release are...
-1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing additional package "xterm", before this was done through batch and only available to windows users.
+1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users.
 
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
