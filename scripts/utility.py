@@ -51,10 +51,10 @@ def list_available_models():
     for f in model_files:
         basename = os.path.basename(f)
         file_extension = basename.split('.')[-1]
-        if file_extension in ['bin', 'gguf']:
-            if 'chat' in basename.lower():
+        if file_extension in ['bin', 'BIN', 'gguf', 'GGUF']:
+            if 'chat' in basename.lower() or 'CHAT' in basename.lower():
                 chat_models.append(f)
-            elif 'instruct' in basename.lower() or 'llama-2' in basename.lower():
+            elif 'instruct' in basename.lower() or 'INSTRUCT' in basename.lower():
                 instruct_models.append(f)
     return {
         'chat': chat_models,
