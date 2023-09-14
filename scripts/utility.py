@@ -1,3 +1,13 @@
+INFORMATION:
+Here is a file with a non-standard name, it has 2 "." in the filename...
+
+llama-2-7b-chat.Q2_K.gguf
+
+...the scripts need to be able to handle this, maybe to detect the last "." in the file name, and take the extension from there, instead of the 1st "." it finds...
+
+
+
+
 # utility.py
 
 # imports
@@ -45,10 +55,21 @@ def reset_keys_to_empty():
 
 # List available models
 def list_available_models():
-    model_files = glob.glob("./models/*.bin")
+    model_files = glob.glob("./models/*")
+    chat_models = []
+    instruct_models = []
+    for f in model_files:
+        basename = os.path.basename(f)
+        # Extract the file extension considering multiple periods in the filename
+        file_extension = basename.split('.')[-1]
+        if file_extension == 'bin':
+            if 'chat' in basename.lower():
+                chat_models.append(f)
+            elif 'instruct' in basename.lower() or 'llama-2' in basename.lower():
+                instruct_models.append(f)
     return {
-        'chat': [f for f in model_files if 'chat' in os.path.basename(f).lower()],
-        'instruct': [f for f in model_files if 'instruct' in os.path.basename(f).lower() or 'llama-2' in os.path.basename(f).lower()]
+        'chat': chat_models,
+        'instruct': instruct_models
     }
 
 # Default all keys to .ENV
