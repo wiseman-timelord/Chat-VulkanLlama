@@ -138,8 +138,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
 * Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
 * Optional - Arguments: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
-* Note - Sounds and TTS, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch Llama2Robot.bat".
-* Note - Logging is disabled by default, this may be altered through the editing of the arguements --logs in the file "Launch Llama2Robot.bat".
+* Note - Sounds and TTS and Logging, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch Llama2Robot.bat".
 
 ### USAGE (linux untested):
 * For Linux (Untested):
@@ -148,9 +147,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
 4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for main1.py) and '--tts' (for main2.py).
-* Note - Sounds and TTS, are disabled by default, this may be altered through running window 2 as "python main2.py --tts and --sound".
-* Note - Logging is disabled by default, this may be altered through running window 1 as "python main1.py --logs".
+* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for main1.py), and, '--tts' or '--sound' (for main2.py).
 
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
