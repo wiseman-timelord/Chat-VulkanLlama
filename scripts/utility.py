@@ -50,9 +50,8 @@ def list_available_models():
     instruct_models = []
     for f in model_files:
         basename = os.path.basename(f)
-        # Extract the file extension considering multiple periods in the filename
         file_extension = basename.split('.')[-1]
-        if file_extension == 'bin':
+        if file_extension in ['bin', 'gguf']:
             if 'chat' in basename.lower():
                 chat_models.append(f)
             elif 'instruct' in basename.lower() or 'llama-2' in basename.lower():
