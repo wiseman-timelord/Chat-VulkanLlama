@@ -5,6 +5,7 @@ Status: Working.
 2) New parsing of output can be done by window2.py, seems as window2, doesnt do so much and is the one that displays the information.
 * Updates done for next release are...
 1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users. (a improvement from the "other" project I have been working on).
+2) leftover requirements from attempted transformers/torch/jax implementation have been removed, the program now only installs required requirements, apologies, you can remove the 4 non-required libraries with, 'pip uninstall transformers torch jax jaxlib -y' or 'wsl pip uninstall transformers torch jax jaxlib -y'.
 
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
