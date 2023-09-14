@@ -1,4 +1,4 @@
-# main2.py
+# window2.py
 
 # Imports
 from watchdog.observers import Observer

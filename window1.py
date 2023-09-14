@@ -1,4 +1,4 @@
-# main1.py
+# window1.py
 
 # imports
 from scripts import interface, model as model_module, utility
