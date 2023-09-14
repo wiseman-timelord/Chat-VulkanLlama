@@ -1,13 +1,3 @@
-INFORMATION:
-Here is a file with a non-standard name, it has 2 "." in the filename...
-
-llama-2-7b-chat.Q2_K.gguf
-
-...the scripts need to be able to handle this, maybe to detect the last "." in the file name, and take the extension from there, instead of the 1st "." it finds...
-
-
-
-
 # utility.py
 
 # imports
