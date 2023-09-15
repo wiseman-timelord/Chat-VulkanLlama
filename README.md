@@ -3,8 +3,7 @@
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
 2) Do testing with, chat and instruct, models, tune prompts appropriately.
-3) When the response comes in for converse for the 3rd time, then immediately it should produce the emotions prompt, before moving on to consolidate, or after 3rd consolidate, but definately before it re-draws the display.
-4) When all is done, need to update docs.
+3) When all is done, need to update docs.
 * Updates done for release v1.06 will be...
 1) none since last release.
 
