@@ -1,7 +1,7 @@
 # Llama2Robot-GGUF
 ### STATUS - BETA:
 * Outstanding/Current work...
-1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3".
+1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on.
 2) New parsing of output can be done by window2.py, seems as window2, doesnt do so much and is the one that displays the information (another improvement from my "other" project. (though may not do this, as some people may just want the window2, to be easier to replicate or something. Additionally it would require more overall code.).
 3) Chat Input should be done through window 2, reducing window 1 to, functions for the engine and printed confirmations.
 4) When all is done, need to update docs.
