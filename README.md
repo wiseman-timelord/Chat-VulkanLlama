@@ -1,18 +1,12 @@
 # Llama2Robot-GGUF
-### STATUS - BETA:
+### STATUS - WORKING:
 * Outstanding/Current work...
-1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on. As soon as I fix this, I will release as 1.05.
-2) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
-3) Do testing with, chat and instruct, models, tune prompts appropriately.
-4) When the response comes in for converse for the 3rd time, then immediately it should produce the emotions prompt, before moving on to consolidate, or after 3rd consolidate, but definately before it re-draws the display.
-5) When all is done, need to update docs.
-* Updates done for release v1.05 will be...
-1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users. (a improvement from the "other" project I have been working on).
-2) leftover requirements from attempted transformers/torch/jax implementation have been removed, the program now only installs required requirements. This was possibly the case because no support for GGUF on main llamacpp branch, or otherwise just didnt check this after switching to llama during early development. You can remove the 4 non-required libraries with, 'pip uninstall transformers torch jax jaxlib -y' or 'wsl pip uninstall transformers torch jax jaxlib -y', though this may be used by other applications you use, that utilize transformers/torch.
-3) scripts now correctly detect, extension of model files with multiple "." and UPPER/lower case, in the filename, such as "llama-2-7b-chat.Q8_K.gguf"
-4) Key names improved, the names for the, human_current and model_current and model_previous1 and model_previous2, have been renamed, to better names.
-5) Bad key name in emotions prompt fixed, logic for emotions prompt sending improved.
-6) Rotation counter moved to shift responses.
+1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
+2) Do testing with, chat and instruct, models, tune prompts appropriately.
+3) When the response comes in for converse for the 3rd time, then immediately it should produce the emotions prompt, before moving on to consolidate, or after 3rd consolidate, but definately before it re-draws the display.
+4) When all is done, need to update docs.
+* Updates done for release v1.06 will be...
+1) none since last release.
 
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
