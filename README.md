@@ -2,7 +2,7 @@
 ### STATUS - BETA:
 * Outstanding/Current work...
 1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on.
-2) Moving some of the messaging code to "window2.py", such as parsing output and prompting for input, but, then how far do I go, do I put all interaction of any type into "window2.py", and have "window1.py" just for the engine?, dunno yet, will think about it, but its how my private powershell project is going.
+2) Moving some of the messaging code to "window2.py", such as parsing output and prompting for input, but, then how far do I go, do I put all interaction of any type into "window2.py", and have "window1.py" just for the engine?, dunno yet, will think about it, but its how one of my private projects is going.
 3) When all is done, need to update docs.
 * Updates done for release v1.05 will be...
 1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users. (a improvement from the "other" project I have been working on).
