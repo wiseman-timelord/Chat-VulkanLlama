@@ -149,9 +149,9 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
 2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell, additionally run, "wsl pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python" for GGUF and "wsl pip install libncurses5-dev" for something?!.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
-4) Launch the Application: Run `python main1.py` and `python main2.py` in separate shell windows to start the program.
+4) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for main1.py), and, '--tts' or '--sound' (for main2.py).
+* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
 
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
