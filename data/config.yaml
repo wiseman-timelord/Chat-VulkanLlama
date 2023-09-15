@@ -1,10 +1,11 @@
-human_current: Empty
+human_input: Empty
 human_name: Empty
-model_current: Empty
 model_emotion: Empty
 model_name: Empty
-model_previous1: Empty
-model_previous2: Empty
+model_output_1: Empty
+model_output_2: Empty
+model_output_3: Empty
 model_role: Empty
 scenario_location: Empty
 session_history: Empty
+sound_event: model_used
