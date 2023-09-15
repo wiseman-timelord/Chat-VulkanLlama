@@ -119,6 +119,10 @@ Images may be from differing versions...
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
 * Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
 
+### CODE INFO:
+* Scripts are, '.\window1.py' and '.\window2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
+* Prompts are having code for preset, instruct or chat, versions of prompts using links to keys stored in YAML files, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window. 
+
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
 1) Hello there! I never thought I would see you here on the mountain, do you come here often?
