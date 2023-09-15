@@ -2,7 +2,7 @@
 ### STATUS - WORKING:
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
-2) Do testing with, chat and instruct, models, tune prompts appropriately.
+2) Do testing with, chat and instruct, models, tune prompts appropriately, instruct is supposed to be better for text processing, so it should be used optimally (currently I advise just using a chat model).
 3) When all is done, need to update docs.
 * Updates done for release v1.06 will be...
 1) none since last release.
@@ -135,7 +135,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 * For Windows WSL:
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
 2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, which includes experimental GGUF model support.
-3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder. 
 4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
 * Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
 * Optional - Arguments: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
@@ -160,7 +160,7 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev & xterm + experimental llama-cpp-python (for GGUF).
 * Python 3.x + libraries listed in `./data/req_win.txt`.
-* Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF).
+* Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF). I recommend using at least a 4-bit model to avoid grammatical errors, unless you're tweaking the code, then a 2-bit model for faster loading.
 
 ### DISCLAIMER:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot. I can tell you that the GGUF is a superior product as shown above, and the prompt syntax is standardaized between, chat and instruct, however, some models designed for roleplay may differ.  
