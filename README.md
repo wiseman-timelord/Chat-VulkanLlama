@@ -13,7 +13,7 @@
   
 ### FEATURES:
 * Code is optimised yet retains clarity in certain functions, code has been distributed soes each file under 7K GPT4 limit.
-* Choice of only GGUF now, gotta stay current, if you want GGML, check out <=v1.03, its to do with llama. 
+* Only testing with GGUF now, gotta stay current, if you want GGML and it dont work, check out <=v1.03, its to do with llama. 
 * Program sounds through a few select samples in .wav format, goes through key to window 2 which is non-WSL.
 * Text To Speech for Wndows users through windows native audio, whereby, window 1 is WSL Python and window 2 is Python.
 * `.ENV` File Management: Creates a default `.ENV` file if it doesn't exist. Useful for later forks.
@@ -21,11 +21,11 @@
 * Context Support: Supports 4K-200K context multi-models with a robust interface for chat or chat+instruct models.
 * Dynamic Model Initialization: Optimizes thread settings for the Llama language model.
 * Interactive User Loop: Features a continuous loop for real-time user interaction.
-* Intelligent Response Generation: Utilizes predefined prompts and ASCII art to generate contextually relevant and coherent responses.
-* Model Response Rotation: Enhances character dialogue and can be modified for loop avoidance.
+* Intelligent Response Generation: Utilizes optimized multi-key prompts to generate, contextual and coherent, responses.
+* Model Response Rotation: Enhances character dialogue and can be modified later for loop avoidance.
 * YAML State Management: Manages session state, user preferences, and more through YAML file operations.
 * User-Friendly Chat Interface: Offers a clean and intuitive chat interface, complete with ASCII art and dialogue history.
-* Customizable Model Selection: Allows users to select from a list of available Llama 2 GGML models in the `./models` directory.
+* Customizable Model Selection: Scans models and creates options of available Llama 2 GGML models in the `./models` directory.
 
 ### INTERFACE:
 Images may be from differing versions...
@@ -66,37 +66,6 @@ Images may be from differing versions...
 
  Emptying keys...
  ...Keys reset.
-
- Loading... [==============================================================] Complete.
-```
-* Window 1 - Robust multi-model support for Llama 2 GGML llms...
-```
-==========================================================================================
-                                       MODEL SELECTION
-==========================================================================================
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- Model Setup Processes:
-------------------------------------------------------------------------------------------
-
- Search For Models...
- Chat model is llama2_7b_chat_uncensored.ggmlv3.q2_K.bin - CTX 4k
- Instruct model is llama-2-7b-32k-instruct.ggmlv3.q2_K.bin - CTX 32k
-
- Loading chat model with context length 4096, be patient...
-llama.cpp: loading model from ./models/llama2_7b_chat_uncensored.ggmlv3.q2_K.bin
-llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: ftype      = 10 (mostly Q2_K)
-llama_model_load_internal: model size = 7B
-llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
-
- Loading instruct model with context length 4096, be patient...
-llama.cpp: loading model from ./models/llama-2-7b-32k-instruct.ggmlv3.q2_K.bin
-llama_model_load_internal: format     = ggjt v3 (latest)
-llama_model_load_internal: n_ctx      = 4096
-llama_model_load_internal: ftype      = 10 (mostly Q2_K)
-llama_model_load_internal: model size = 7B
-llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
 
  Loading... [==============================================================] Complete.
 ```
