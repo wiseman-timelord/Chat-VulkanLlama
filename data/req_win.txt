@@ -3,3 +3,4 @@ pyttsx
 watchdog
 PyYAML
 wavio
+readline
