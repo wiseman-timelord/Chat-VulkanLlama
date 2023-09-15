@@ -139,9 +139,12 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 * Python 3.x + libraries listed in `./data/req_win.txt`.
 * Large Language Models in the format of, Llama 2 GGUF, that could be between, 2GB and 40GB, or more if you should choose, and are typically sourced from website "www.huggingface.co", such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF), I notice grammatical errors on a 2 Bit, so higher bit is better, or if working on code, then 2-bit model in [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF) for faster loading.
 
+### KNOWLEDGE:
+* At the time of, inception and creation, of Robot, Llama 2 and GGML, was the, model and format, because it was the only language model review on YouTube, that was able to correctly write a ".json" file, thereby denoting compitence on multi-line output especially when combined with storage forms such as YAML.
+
 ### WARNINGS:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot. 
 
 ### DISCLAIMER:
-* This program is in no way affiliated with the producers of, Llama 2 or GGUF, the name means it runs through the use of such things, and to note we are using Llama 2 because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, of Robot, this was at the time GGML variant of Llama2 model in its quantized format, according to youtube review of the time the was the only one that was able to correctly write a ".json" file correctly, thereby denoting compitence on multi-line output especially when combined with storage forms such as yaml.
+* This program is in no way affiliated with the producers of, Llama 2 or GGUF, the name means it runs through the use of such things as, Llama2 and GGUF, to run the program.
 * Llama2Robot is a roleplaying chatbot framework created by Wiseman-Timelord. Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using Llama2Robot doesn't grant you any personal, rights or approvals, from the timelord himself.
