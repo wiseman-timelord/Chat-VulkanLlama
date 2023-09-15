@@ -9,6 +9,7 @@ import glob
 import re
 from scripts.ascii import ASCII_ART, LLAMA_ART, LANDSCAPE_ART
 
+# function
 def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -20,6 +21,7 @@ def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
     utility.trigger_sound_event("robot whirr")
     time.sleep(2)
 
+# function
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
@@ -39,6 +41,7 @@ def display_intro_screen():
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
 
+# function
 def display_model_selection():
     fancy_delay(5)
     os.system('cls' if os.name == 'nt' else 'clear')

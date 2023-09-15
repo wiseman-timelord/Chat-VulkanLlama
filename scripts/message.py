@@ -27,13 +27,12 @@ def read_and_format_prompt(file_name, data, model_type, task_name):
                 instruct_input += line.strip().format(**data) + " "
         if model_type == 'chat':
             formatted_prompt = f"[INST] <<SYS>>\n{system_input}\n<</SYS>>\n{instruct_input}[/INST]"
-        else:  # for instruct model
+        else:  
             formatted_prompt = f"[INST] <<SYS>>\n{system_input}\n<</SYS>>\n{instruct_input}[/INST]"
         return formatted_prompt
     except FileNotFoundError:
         print(f"Error: {file_name} not found.")
         return None
-
         
 # log messages to, input.log or output.log
 def log_message(message, log_type, prompt_name=None, event_name=None, enable_logging=False):

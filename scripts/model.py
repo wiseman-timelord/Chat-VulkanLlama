@@ -63,8 +63,6 @@ CONTEXT_LENGTH_MAP = {
     }
 }
 
-
-
 # determine model for task
 def determine_model_type_for_task(task_name, loaded_models):
     available_models = TASK_MODEL_MAPPING.get(task_name, ['chat'])
@@ -96,16 +94,15 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         return {"error": f"Invalid task name. Valid tasks are {', '.join(valid_tasks)}."}
     model_type = determine_model_type_for_task(task_name, loaded_models)
     print(f" Task type is {task_name}.")
-    prompt_file = f"./data/prompts/{task_name}.txt"  # <-- define prompt_file first
+    prompt_file = f"./data/prompts/{task_name}.txt"  
     formatted_prompt = message.read_and_format_prompt(prompt_file, data, model_type, task_name)
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
         return {"error": f"Prompt file {prompt_file} not found."}
-    print(f" Prompt is {model_type} format.")
     if formatted_prompt is None:
         return {"error": "Failed to read or format the prompt."}
     print(f" Using {model_type} format...")
-    print(f" Prompt sent to {model_type} model...")
+    print(f" Prompt sent to {model_type} model...\n")
     max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)
     raw_model_response = llm(formatted_prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=MODEL_TYPE_TO_TEMPERATURE[model_type], max_tokens=max_tokens_for_task)["choices"][0]["text"]
     if enable_logging:

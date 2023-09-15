@@ -7,7 +7,7 @@ import os
 import time
 import platform
 import random
-
+from window1 import rotation_counter
 
 # Maps 
 ordered_keys = [
@@ -23,6 +23,7 @@ def get_random_fortune():
         lines = f.readlines()
     return random.choice(lines).strip()
 
+# function
 def calculate_optimal_threads():
     time.sleep(1)
     total_threads = os.cpu_count()
@@ -96,6 +97,7 @@ def write_identify_log(model_name, model_type):
     with open('./models/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
+# function
 def read_yaml(file_path='./data/config.yaml'):
     with open(file_path, 'r') as file:
         return yaml.safe_load(file)
@@ -110,6 +112,8 @@ def write_to_yaml(key, value, file_path='./data/config.yaml'):
 
 # write config.yaml
 def shift_responses(enable_logging=False, formatted_prompt=None, raw_model_response=None, log_entry_name=None):
+    global rotation_counter  
+    rotation_counter = (rotation_counter + 1) % 4
     data = read_yaml()
     for i in range(3, 1, -1):
         data[f'model_output_{i}'] = data[f'model_output_{i-1}']
@@ -120,6 +124,7 @@ def shift_responses(enable_logging=False, formatted_prompt=None, raw_model_respo
     write_to_yaml('model_output_2', data['model_output_2'])
     write_to_yaml('model_output_3', data['model_output_3'])
 
+# function
 def trigger_sound_event(event_name):
     write_to_yaml('sound_event', event_name)
 
