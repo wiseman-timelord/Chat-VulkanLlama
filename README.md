@@ -3,7 +3,6 @@
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
 2) * Prompts are having code for preset, instruct or chat, versions of prompts using links to keys stored in YAML files, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window. 
-3) Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
 4) When all is done, need to update docs.
 * Updates done for release v1.06 will be...
 1) none since last release.
@@ -101,6 +100,10 @@ Images may be from differing versions...
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
 
+### USAGE (general:
+
+* Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
+
 ### USAGE (windows):
 * For Windows WSL:
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
@@ -115,14 +118,14 @@ Images may be from differing versions...
 * For Linux (Untested):
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
 2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and 'pip install -r ./data/req_win.txt`, in the shell, additionally run, "wsl pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python" for GGUF and "wsl pip install libncurses5-dev" for something?!.
-3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
-4) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
+4) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
+5) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
 * Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
 
 ### CODE INFO:
 * Scripts are, '.\window1.py' and '.\window2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
-
+The prompt syntax is standardaized between, chat and instruct, however, some models designed for roleplay may differ,.  
 
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
@@ -134,10 +137,12 @@ Images may be from differing versions...
 ### REQUIREMENTS:
 * Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev & xterm + experimental llama-cpp-python (for GGUF).
 * Python 3.x + libraries listed in `./data/req_win.txt`.
-* Compatible with Llama 2 GGML models, such as [this one](https://huggingface.co/TheBloke/llama2_7b_chat_uncensored-GGML), or otherwise Llama 2 GGUF models, such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF). I recommend using at least a 4-bit model to avoid grammatical errors, unless you're tweaking the code, then a 2-bit model for faster loading.
+* Large Language Models in the format of, Llama 2 GGUF, that could be between, 2GB and 40GB, or more if you should choose, and are typically sourced from website "www.huggingface.co", such as [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF), I notice grammatical errors on a 2 Bit, so higher bit is better, or if working on code, then 2-bit model in [this one](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF) for faster loading.
+
+### WARNINGS:
+* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot. 
 
 ### DISCLAIMER:
-* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot. I can tell you that the GGUF is a superior product as shown above, and the prompt syntax is standardaized between, chat and instruct, however, some models designed for roleplay may differ.  
-* This program is in no way affiliated with the producers of, Llama 2 or GGUF, it merely runs through the use of such things, and relevantly the the, model files required involves the, downloading and storage, of large language models in the format of, Llama 2 or GGUF, that could be between, 2GB and 40GB, or more if you should choose, and are typically sourced from website "www.huggingface.co".
+* This program is in no way affiliated with the producers of, Llama 2 or GGUF, it merely runs through the use of such things.
 * We are using Llama 2 because it is the only local language model that has been reviewed on YouTube to my knowing at the time of, inception and creation, of Robot, this was the GGML variant of Llama2 model, in its quantized format, and the only one that was able to correctly write a ".json" file correctly, thereby denoting compitence on multi-line output.
 * Llama2Robot is a roleplaying chatbot framework created by Wiseman-Timelord. Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using Llama2Robot doesn't grant you any personal, rights or approvals, from the timelord himself.
