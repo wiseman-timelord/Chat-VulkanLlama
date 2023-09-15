@@ -2,9 +2,8 @@
 ### STATUS - BETA:
 * Outstanding/Current work...
 1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on.
-2) New parsing of output can be done by window2.py, seems as window2, doesnt do so much and is the one that displays the information (another improvement from my "other" project. (though may not do this, as some people may just want the window2, to be easier to replicate or something. Additionally it would require more overall code.).
-3) Chat Input should be done through window 2, reducing window 1 to, functions for the engine and printed confirmations.
-4) When all is done, need to update docs.
+2) Moving some of the messaging code to "window2.py", such as parsing output and prompting for input, but, then how far do I go, do I put all interaction of any type into "window2.py", and have "window1.py" just for the engine?, dunno yet, will think about it, but its how my private powershell project is going.
+3) When all is done, need to update docs.
 * Updates done for release v1.05 will be...
 1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users. (a improvement from the "other" project I have been working on).
 2) leftover requirements from attempted transformers/torch/jax implementation have been removed, the program now only installs required requirements. This was possibly the case because no support for GGUF on main llamacpp branch, or otherwise just didnt check this after switching to llama during early development. You can remove the 4 non-required libraries with, 'pip uninstall transformers torch jax jaxlib -y' or 'wsl pip uninstall transformers torch jax jaxlib -y', though this may be used by other applications you use, that utilize transformers/torch.
