@@ -2,8 +2,9 @@
 ### STATUS - WORKING:
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
-2) Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
-3) When all is done, need to update docs.
+2) * Prompts are having code for preset, instruct or chat, versions of prompts using links to keys stored in YAML files, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window. 
+3) Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
+4) When all is done, need to update docs.
 * Updates done for release v1.06 will be...
 1) none since last release.
 
@@ -121,7 +122,7 @@ Images may be from differing versions...
 
 ### CODE INFO:
 * Scripts are, '.\window1.py' and '.\window2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
-* Prompts are having code for preset, instruct or chat, versions of prompts using links to keys stored in YAML files, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window. 
+
 
 ### TEST PROMPTS:
 * Designed for the default roleplay settings...
