@@ -30,10 +30,10 @@ def handle_reset():
         'scenario_location': scenario_location,
         'model_emotion': model_emotion,
         'session_history': session_history,
-        'human_current': "Empty",
-        'model_current': "Empty",
-        'model_previous1': "Empty",
-        'model_previous2': "Empty",
+        'human_input': "Empty",
+        'model_output_1': "Empty",
+        'model_output_2': "Empty",
+        'model_output_3': "Empty",
         'sound_event': "None" 
     }
     for key, value in yaml_data.items():
@@ -48,8 +48,8 @@ def handle_quit():
 # Handle 'other' input
 def handle_other(user_input, rotation_counter, loaded_models):
     data = utility.read_yaml()
-    if 'model_previous1' not in data:
-        print("Error: 'model_previous1' key not found in YAML data.")
+    if 'model_output_2' not in data:
+        print("Error: 'model_output_2' key not found in YAML data.")
         return
     human_name = data.get('human_name')
     model_name = data.get('model_name')
@@ -57,13 +57,13 @@ def handle_other(user_input, rotation_counter, loaded_models):
     model_emotion = data.get('model_emotion')
     scenario_location = data.get('scenario_location')
     session_history = data.get('session_history')
-    human_current = data.get('human_current') 
-    model_current = data.get('model_current')
-    model_previous1 = data.get('model_previous1')   
-    model_previous2 = data.get('model_previous2')      
+    human_input = data.get('human_input') 
+    model_output_1 = data.get('model_output_1')
+    model_output_2 = data.get('model_output_2')   
+    model_output_3 = data.get('model_output_3')      
     start_time = time.time()
     current_task = 'emotions' if rotation_counter == 3 else 'converse'
-    response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_current')
+    response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_output_1')
     consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='session_history')
     if args.logs:
         utility.write_to_yaml('raw_output', response_dict['model_response'])
@@ -113,8 +113,8 @@ def main():
         model_name = data.get('model_name')
         model_emotion = data.get('model_emotion')
         session_history = data.get('session_history')
-        human_current = data.get('human_current')
-        model_current = data.get('model_current') 
+        human_input = data.get('human_input')
+        model_output_1 = data.get('model_output_1') 
         rotation_counter = 0
         while True:
             interface.display_engine()  
@@ -125,7 +125,7 @@ def main():
                 handle_quit()
             else:
                 readline.add_history(user_input)
-                utility.write_to_yaml('human_current', user_input)
+                utility.write_to_yaml('human_input', user_input)
                 handle_other(user_input, rotation_counter, loaded_models)
             rotation_counter = (rotation_counter + 1) % 4
     except Exception as e:

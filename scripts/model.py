@@ -18,8 +18,8 @@ TASK_MODEL_MAPPING = {
 }
 
 MODEL_TYPE_TO_TEMPERATURE = {
-    'chat': 0.75,
-    'instruct': 0.25
+    'chat': 0.666,
+    'instruct': 0.333
 }
 
 PROMPT_TO_MAXTOKENS = {
@@ -134,27 +134,3 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         'new_session_history': new_session_history,
         'new_emotion': new_emotion
     }
-
-
-# function to summarize responses and update session history
-def summarize_responses(data):
-    data = read_yaml()
-    if data.get('human_previous', "Empty") == "Empty" and data.get('model_previous', "Empty") ==     "Empty":
-        summarize_file = "./data/prompts/consolidate.txt"
-    elif data.get('session_history', "Empty") == "Empty":
-        summarize_file = "./data/prompts/emotions.txt"
-    else:
-        raise ValueError("Invalid state for summarization")
-    summarized_text = model_module.summarize(data['human_previous'], data['model_previous'], summarize_file)
-    write_to_yaml('recent_statements', summarized_text)
-    consolidated_history = model_module.consolidate(data['session_history'], summarized_text)
-    write_to_yaml('session_history', consolidated_history)
-    if consolidated_history == "Empty":
-        consolidated_history = summarized_text.strip()
-    if data['model_current'] is None:
-        data['model_current'] = ""
-    if data['human_current'] is None:
-        data['human_current'] = ""
-    updated_session_history = consolidated_history + " " + data['model_current'] + " " + data['human_current']
-    write_to_yaml('session_history', updated_session_history)
-    

@@ -13,8 +13,8 @@ import random
 ordered_keys = [
     'human_name', 'model_name',
     'model_role', 'scenario_location', 'model_emotion',
-    'session_history', 'human_current',
-    'model_current', 'model_previous1', 'model_previous2', 'sound_event' 
+    'session_history', 'human_input',
+    'model_output_1', 'model_output_2', 'model_output_3', 'sound_event' 
 ]
 
 # Fortune cookie
@@ -35,8 +35,8 @@ def calculate_optimal_threads():
 def reset_keys_to_empty():
     print("\n Emptying keys...")
     keys_to_clear = [
-        'human_name', 'human_current', 'model_name', 'model_role', 
-        'model_current', 'model_previous1', 'model_previous2', 
+        'human_name', 'human_input', 'model_name', 'model_role', 
+        'model_output_1', 'model_output_2', 'model_output_3', 
         'model_emotion', 'scenario_location', 'session_history', 'sound_event'
     ]
     for key in keys_to_clear:
@@ -112,13 +112,13 @@ def write_to_yaml(key, value, file_path='./data/config.yaml'):
 def shift_responses(enable_logging=False, formatted_prompt=None, raw_model_response=None, log_entry_name=None):
     data = read_yaml()
     for i in range(3, 1, -1):
-        data[f'model_previous{i}'] = data[f'model_previous{i-1}']
-    data['model_previous1'] = data['model_current']
+        data[f'model_output_{i}'] = data[f'model_output_{i-1}']
+    data['model_output_2'] = data['model_output_1']
     if enable_logging and formatted_prompt and raw_model_response and log_entry_name:
         message.log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
         message.log_message(raw_model_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
-    write_to_yaml('model_previous1', data['model_previous1'])
-    write_to_yaml('model_previous2', data['model_previous2'])
+    write_to_yaml('model_output_2', data['model_output_2'])
+    write_to_yaml('model_output_3', data['model_output_3'])
 
 def trigger_sound_event(event_name):
     write_to_yaml('sound_event', event_name)
