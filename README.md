@@ -1,8 +1,8 @@
 # Llama2Robot-GGUF
 ### STATUS - BETA:
 * Outstanding/Current work...
-1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on.
-2) Window 2 should start with some ascii art, then mode on to roleplay configuration, and then into the chat screen. After doing the model configuration, window 1 should be in "main loop" display, where the user will be observing the processes, and have "window1.py" just for the engine? Its a plan. Moving some of the messaging code to "window2.py", such as detecting raw output updates, then parsing output in window 2, and then saving to window2 own config file. All improvements from my "other" project, where I am remaking from scratch in powershell, taking what I learned, and improving along the way, many, oh I should have done it like this's.
+1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3", are full, but, something else is going on. As soon as I fix this, I will release as 1.05.
+2) Window 2 should start with some ascii art, then mode on to roleplay configuration, and then into the chat screen. After doing the model configuration, window 1 should be in "main loop" display, where the user will be observing the processes, and have "window1.py" just for the engine? Its a plan. Moving some of the messaging code to "window2.py", such as detecting raw output updates, then parsing output in window 2, and then saving to window2 own config file.
 3) When all is done, need to update docs.
 * Updates done for release v1.05 will be...
 1) 2 less scripts, python will now, resize and title, the windows with os dependent code in the, window1, window2, scripts (was main1, main2), utilizing code that will work on most linux setups, before this was done through batch and only available to windows users. (a improvement from the "other" project I have been working on).
