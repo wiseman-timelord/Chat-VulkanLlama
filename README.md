@@ -12,6 +12,7 @@
 3) scripts now correctly detect, extension of model files with multiple "." and UPPER/lower case, in the filename, such as "llama-2-7b-chat.Q8_K.gguf"
 4) Key names improved, the names for the, human_current and model_current and model_previous1 and model_previous2, have been renamed, to better names.
 5) Bad key name in emotions prompt fixed.
+6) Rotation counter moved to shift responses, logic for emotions prompt sending improved.
 
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The framework is designed for the creation of future Llama 2 based projects through forks. Llama2Robot a your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
