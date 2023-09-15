@@ -1,7 +1,7 @@
 # Llama2Robot-GGUF
 ### STATUS - BETA:
 * Outstanding/Current work...
-1) There is an issue with the emotions prompt, this is because of the GPT4 keeps creeping in for example key_1 at the end of a key instead of key1, the solution long-term is to use the _1 format, this will require re-working the scripts to implement this for all numbered keys. After fixing the issue, there may be other issues, but I dont think they will be show stoppers.
+1) There is an issue with the emotions prompt, its supposed to happen when, "model_output_1" and "model_output_2" and "model_output_3".
 2) New parsing of output can be done by window2.py, seems as window2, doesnt do so much and is the one that displays the information (another improvement from my "other" project. (though may not do this, as some people may just want the window2, to be easier to replicate or something. Additionally it would require more overall code.).
 3) Chat Input should be done through window 2, reducing window 1 to, functions for the engine and printed confirmations.
 4) When all is done, need to update docs.
