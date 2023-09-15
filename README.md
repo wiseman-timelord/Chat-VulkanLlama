@@ -115,25 +115,25 @@ llama_model_load_internal: mem required  = 4525.64 MB (+ 1026.00 MB per state)
  Human's Input:
 ------------------------------------------------------------------------------------------
 
- hello there! i never thought i would see you here on the mountain, do you come here often?!
+ you look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Wise-Llama's Response:
 ------------------------------------------------------------------------------------------
 
- "Ah, a surprise encounter indeed! I have been meditating here for some time now, seeking solace in the mountain's wisdom.", Wise-Llama says with a gentle nod as he closes his eyes to focus on his inner peace.
+ "Ah, a seeker of wisdom! I sense great potential in you, my young friend. Let me share some ancient insights with you...", Wise-Llama says with a gentle nod, as he settles into a comfortable position on the mountain.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Wise-Llama's State:
 ------------------------------------------------------------------------------------------
 
- indifferent
+ Love
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Event History:
 ------------------------------------------------------------------------------------------
 
- Human approaches Wise-Llama on the mountain, initiating a conversation with surprise and curiosity. Wise-Llama responds with a gentle nod and closed eyes, focusing on inner peace while expressing his presence in the area through meditation. Both parties exhibit nonverbal cues of calmness and serenity, creating a peaceful atmosphere for their interaction.
+ Human greeted Wise-Llama with a warm smile and expressed surprise at seeing the wise creature on the mountain again, leading to a gentle nod and lean in from Wise-Llama. In response, Wise-Llama smiled warmly and expressed gratitude towards Human for their familiarity, before sharing ancient insights with a gentle nod and comfortable position on the mountain. The exchange was marked by a sense of connection and potential for wisdom sharing between the two.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
