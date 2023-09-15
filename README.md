@@ -1,4 +1,4 @@
-# Llama2Robot-GGUF
+# Llama2Robot-Gguf
 ### STATUS - WORKING:
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
