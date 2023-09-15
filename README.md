@@ -2,7 +2,7 @@
 ### STATUS - WORKING:
 * Outstanding/Current work...
 1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
-2) Do testing with both, chat and instruct, models, tune prompts appropriately, instruct is supposed to be better for text processing, so it should be used optimally (currently I advise just using a chat model).
+2) Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
 3) When all is done, need to update docs.
 * Updates done for release v1.06 will be...
 1) none since last release.
