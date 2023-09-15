@@ -143,7 +143,7 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 * At the time of, inception and creation, of Robot, Llama 2 and GGML, was the chosen, model and format, because it was the only language model review on YouTube, that was able to correctly write a ".json" file, thereby denoting compitence on multi-line output, especially when this could then be combined with advanced configuration storage code such as YAML.
 
 ### WARNINGS:
-* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot, but the emotions part will still be faulty. 
+* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot, but the emotions code will still be faulty. 
 
 ### DISCLAIMER:
 * Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using Llama2Robot doesn't grant you any personal, rights or approvals, from the timelord himself, other than gratitude, that you are able to be a part of the AI revolution.
