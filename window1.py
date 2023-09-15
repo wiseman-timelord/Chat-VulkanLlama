@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser(description='Your script description here.')
 parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to logs')
 args = parser.parse_args()
 loaded_models = {}
+rotation_counter = 0
 
 # Set window title and size for Linux
 sys.stdout.write("\x1b]2;Llama2Robot-Window1\x07")
@@ -62,18 +63,19 @@ def handle_other(user_input, rotation_counter, loaded_models):
     model_output_2 = data.get('model_output_2')   
     model_output_3 = data.get('model_output_3')      
     start_time = time.time()
-    current_task = 'emotions' if rotation_counter == 3 else 'converse'
+    current_task = 'converse'
     response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_output_1')
+    if rotation_counter == 2:
+        emotion_dict = model_module.prompt_response('emotions', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_emotion')
+        new_emotion = emotion_dict.get('new_emotion')
+        if new_emotion:
+            utility.write_to_yaml('model_emotion', new_emotion)
     consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='session_history')
     if args.logs:
         utility.write_to_yaml('raw_output', response_dict['model_response'])
     new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
         utility.write_to_yaml('session_history', new_session_history)
-    if rotation_counter == 3:
-        new_emotion = response_dict.get('new_emotion')
-        if new_emotion:
-            utility.write_to_yaml('model_emotion', new_emotion)
     end_time = time.time()
     print(f"\n ...Time taken: {end_time - start_time:.2f} seconds...")
     utility.shift_responses()

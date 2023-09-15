@@ -62,7 +62,7 @@ class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
         global last_session_history, last_sound_event
-        should_update_display = False  # Flag to control display and sound updates
+        should_update_display = False  
         if event.src_path.endswith('config.yaml'):
             data = read_yaml()
             current_sound_event = data.get('sound_event', '')
@@ -74,19 +74,16 @@ class Handler(FileSystemEventHandler):
             current_session_history = data.get('session_history', '')
             if current_session_history != last_session_history:
                 last_session_history = current_session_history
-                should_update_display = True  # Set flag to True if session_history is updated
-                
-            if should_update_display:  # Check the flag before updating display and sound
+                should_update_display = True  
+            if should_update_display:  
                 print(" ...changes detected, re-printing Display...\n")
                 if args.sound:
                     play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
                 time.sleep(1)
                 fancy_delay(5)
                 display_interface()
-                
-                if args.tts and os_name == 'Windows':  # Moved this block here
+                if args.tts and os_name == 'Windows':  
                     speak_text(current_session_history)
-
     def on_modified(self, event):
         self.process(event)
 
