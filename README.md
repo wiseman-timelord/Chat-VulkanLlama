@@ -9,7 +9,7 @@
 1) none since release v1.05.
 
 ### DESCRIPTION:
-* This is a Llama 2 language model and llama-cpp based chatbot/agent framework in the form of an Advanced Chatbot. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The scripts can be modified via AI with the correct knowledge of AI Prompting, this then becomes a framework for forked AI Systems for your own projects. Llama2Robot as your own project, can be further developed for, reading and modifying and redacting, files and content, supposedly with multi-line output, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of your choice.
+* This is a Llama 2 language model and llama-cpp based chatbot/agent framework in the form of an Advanced Chatbot. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The scripts can be modified this then becomes a framework for forked AI Systems for your own projects. The finished Llama2Robot will be able to be further developed for, reading and modifying and redacting, files and content, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of preference.
 
   
 ### FEATURES:
