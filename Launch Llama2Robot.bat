@@ -40,8 +40,8 @@ echo Options for window2: --tts --sound
 echo.
 timeout /t 2 /nobreak >nul
 @echo on
-start cmd.exe /K "call wsl python3 window1.py --logs"
-start cmd.exe /K "call python window2.py --tts --sound"
+start cmd.exe /K "call wsl python3 window_1.py --logs"
+start cmd.exe /K "call python window_2.py --tts --sound"
 @echo off
 echo Exiting Launcher!
 echo.
