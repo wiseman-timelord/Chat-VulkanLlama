@@ -6,7 +6,7 @@
 3) Model setup, when detecting models, if not already added to the list in new file "./data/syntax.log", then ask user if the program should use one of the two options of, syntax for the model, and then save this preference to new line in the "./data/syntax.log", and use that method of syntax for the model in the session.
 4) When all is done, need to update docs with the new, improvements and upgrades.
 * Updates done for release v1.06 will be...
-1) none since release v1.05.
+1) Updated small glitch in Ascii Art.
 
 ### DESCRIPTION:
 * This is a Llama 2 language model and llama-cpp based chatbot/agent framework in the form of an Advanced Chatbot. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The scripts can be modified this then becomes a framework for forked AI Systems for your own projects. The finished Llama2Robot will be able to be further developed for, reading and modifying and redacting, files and content, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of preference.
