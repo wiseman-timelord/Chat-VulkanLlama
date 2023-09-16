@@ -124,7 +124,7 @@ Images may be from differing versions...
 * Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
 
 ### CODE INFO:
-* Scripts are, '.\window1.py' and '.\window2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
+* Scripts are, './window1.py' and './window2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
 The prompt syntax is standardaized between, chat and instruct, however, some models designed for roleplay may differ,.  
 
 ### TEST PROMPTS:
