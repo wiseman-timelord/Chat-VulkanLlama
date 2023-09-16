@@ -1,11 +1,10 @@
 # Llama2Robot-Gguf
 ### STATUS - WORKING:
 * Outstanding/Current work...
-1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file.
-2) Prompts are having code for preset, instruct or chat, versions of prompts using links to keys stored in YAML files, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window, and listen to each others yaml, but only write to their own yaml, thus eliminating writing issues.
-3) Model setup, when detecting models, if not already added to the list in new file "./data/syntax.log", then ask user if the program should use one of the two options of, syntax for the model, and then save this preference to new line in the "./data/syntax.log", and use that method of syntax for the model in the session.
+1) Start Window 2 with ASCII art, followed by roleplay setup. Window 1 focuses solely on the engine's main loop. Move message parsing and raw output detection to Window 2, which saves to its own config file, './data/config_1.yaml/' or './data/config_2.yaml'. so as to have 1 for each window, and listen to each others yaml, but only write to their own yaml, thus eliminating writing issues.
+3) Model setup, when detecting models, if not already added to the list in new file "./data/syntax.log", then ask user if the program should use one of the three options of, syntax for the model, and then save this preference to new line in the "./models/syntax.yaml" instead of "./models/syntax.log" , and use that method of syntax for the relevant model in future.
 4) When all is done, need to update docs with the new, improvements and upgrades.
-* Updates done for release v1.06 will be...
+* Updates done for release v1.06, are so far...
 1) Updated small glitch in Ascii Art.
 
 ### DESCRIPTION:
