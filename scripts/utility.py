@@ -7,7 +7,7 @@ import os
 import time
 import platform
 import random
-from window1 import rotation_counter
+from window_1 import rotation_counter
 
 # Maps 
 ordered_keys = [
