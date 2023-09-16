@@ -2,7 +2,7 @@
 ### STATUS - WORKING!
 
 ### DESCRIPTION:
-* This is a Llama 2 language model and llama-cpp based chatbot/agent framework in the form of an Advanced Chatbot. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The scripts can be modified this then becomes a framework for forked AI Systems for your own projects. The finished Llama2Robot will be able to be further developed for, reading and modifying and redacting, files and content, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of preference.
+* This is a Llama 2 language model and llama-cpp based chatbot/agent framework in the form of an Advanced Chatbot. It uses Python scripts, YAML files, and ASCII art to produce context-aware conversations. The scripts can be modified this then becomes a framework for forked AI Systems for your own projects. The finished Llama2Robot will be able to be further developed for, reading and modifying and redacting, files and content, furthermore, the second window can be easily, replicated and modified, to add additonal windows for displaying other keys of preference. Due to the way its done, even though the window_1 uses WSL/linux, the second window is using windows/linux python, and so, sounds and TTS, works, which is nice! 
 
   
 ### FEATURES:
@@ -138,8 +138,8 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 
 ### FUTURE PLANS:
 1) Model setup, when detecting models, if not already added to the list in new file "./data/syntax.log", then ask user if the program should use one of the three options of, syntax for the model, and then save this preference to new line in the "./models/syntax.yaml" instead of "./models/syntax.log" , and use that method of syntax for the relevant model in future. For now you need to edit the syntax in "./scripts/message.py". Note, already sepent a day implementing this, and it became frustrating, so it will have to wait. 
-2) Currently have to decide about this one...Remove sounds and tts, Start Window 2 with ASCII art, followed by roleplay setup. Window 1 then focuses solely on the, model setup and engine's main loop, where as window_2 would be, roleplay configuration and roleplay_display. It would have to be linux/wsl only scripts, to enable proper interaction between the windows, as complicated, listening to keys in each others yaml files and switching of state of other keys 0/1, is an insain way to do it by my fathoming.
-3) When all is done, need to update docs with the new, improvements and upgrades, they are outdated now.
+2) Currently have to decide about this one...Remove sounds and tts, Start Window 2 with ASCII art, followed by roleplay setup. Window 1 then focuses solely on the, model setup and engine's main loop, where as window_2 would be, roleplay configuration and roleplay_display. It would have to be linux/wsl only scripts, to enable proper interaction between the windows, as complicated, listening to keys in each others yaml files and switching of state of other keys 0/1, is an insain way to do it by my fathoming. **UPDATE** sound would still be optional through launching of 3rd mini-panel if specified in batch, so that windows users have tts/sound output, but, it would also have to have linux sound/tts code placeholder I guess, and I guess it could have sound visualization code, or something.
+3) When all is done, need to update docs with the new, improvements and upgrades, as they are outdated currently.
 
 ### WARNINGS:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot, but the emotions code will still be faulty. 
