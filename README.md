@@ -138,7 +138,7 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 
 ### FUTURE PLANS:
 1) When detecting models, user should be able to assign 1 of 3-4 preset syntax, to additional text in the list in "./models/identify.log", and then re-use this preference in future. Tried for a day to implement this, need try again sometime, seemingly simple, but GPT couldnt figure it out. 
-2) Start window_1 with model selection, then engine window. Start Window_2 with roleplay configuration, then as a interface for, displaying output and producing input. Tried for a day to implement this through IPC, last error was "Socket accept error: [Errno 22] Invalid argument".
+2) Start window_1 with model selection, then engine window. Start Window_2 with roleplay configuration, then as a interface for, displaying output and producing input. Tried for a day to implement this through IPC, last error was "Socket accept error: [Errno 22] Invalid argument". Alternatively it can be done through, "config.yaml" or maybe a new "interact.json".
 3) When all is done, need to update docs with the new, improvements and upgrades, as they are outdated currently.
 
 ### WARNINGS:
