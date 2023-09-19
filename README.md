@@ -96,6 +96,7 @@ Images may be from differing versions...
 ### USAGE (general):
 
 * Instruct is supposed to be better for text processing, however, the only instruct models in GGUF seem to be for, programming or large context, and we are not dealing with these things in the current framework! (currently I advise just using a chat model, but the basic code for instruct is there).
+* At the time of implementation of GGUF ~>15th September 2023, the only way to do GGUF was through experimental Llama.Cpp, if this is no longer be the case, you will want to revert relevant code to using non-experimental version of Llama.Cpp, I will check this next month at some point, and relevantly update. 
 
 ### USAGE (windows):
 * For Windows WSL:
