@@ -116,7 +116,7 @@ Images may be from differing versions...
 5) Copy the file `./data/example.ENV` to `./`, and then rename to `.ENV`, and then fill out relevant parts in `.ENV`.
 6) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
+* Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, `--tts` or `--sound` (for window2.py).
 
 ### CODE INFO:
 * Scripts are, './window_1.py' and './window_2.py' (standalone) and './scripts/utility.py' and './scripts/model.py' and  './scripts/message.py' and './scripts/interface.py' and  './scripts/ascii.py'.
