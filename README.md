@@ -113,7 +113,8 @@ Images may be from differing versions...
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in a shell with Admin privileges.
 2) Install Requirements: Run, `pip install -r ./data/req_wsl.txt` and `pip install -r ./data/req_win.txt`, in the shell, additionally run, `wsl pip install --upgrade --force-reinstall --no-cache-dir llama-cpp-python` for GGUF and `wsl pip install libncurses5-dev` for something?!.
 4) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder.
-5) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
+5) Copy the file "./data/example.ENV" to "./", and then rename to ".ENV", and then fill out relevant parts.
+6) Launch the Application: Run `python window1.py` and `python window2.py` in separate shell windows to start the program.
 * Optional (Untested) - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
 * Optional - Arguments: to run, 'main1.py' and 'main2.py' with relevant arguments like, `--logs` (for window.py), and, '--tts' or '--sound' (for window2.py).
 
