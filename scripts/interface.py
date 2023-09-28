@@ -26,7 +26,7 @@ def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
     print(ASCII_ART)
-    print("                                Welcome To Llama2Robot!")
+    print("                                Welcome To LlmCppPsBot!")
     print("=" * 90)
     utility.trigger_sound_event("startup_process")
     print("=-" * 45)    

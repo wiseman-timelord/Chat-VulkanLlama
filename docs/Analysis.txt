@@ -1,4 +1,4 @@
-# Analysis of the Llama2Robot Scripts
+# Analysis of the LlmCppPsBot Scripts
 
 ## main1.py
 
