@@ -1,5 +1,5 @@
 # LlmCppPyBot
-### STATUS - Pre-Release
+### STATUS - Under Development
 - Back to development stage, was working fine but just tried and noticed neet to tune prompts, while I am at it I will implement some features, that are new and from LlmCppPsBot, however, have other projects first to finish. 
 
 ### DESCRIPTION:
