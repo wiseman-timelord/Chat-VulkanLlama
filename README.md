@@ -1,8 +1,8 @@
-# Llama2Robot-Gguf
+# LlmCppPyBot
 ### STATUS - WORKING!
 
 ### DESCRIPTION:
-* The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, Llama2Robot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
+* The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPyBot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
   
 ### FEATURES:
 * Code is optimised yet retains clarity in certain functions, code has been distributed soes each file under 7K GPT4 limit.
@@ -31,7 +31,7 @@ Images may be from differing versions...
      |    |___|  |__/ __ \|  Y Y  \/ __ \|       \|    |   (  <_> ) \_\ (  <_> )  |
      |_______ \____(____  /__|_|  (____  Y_______ |____|___ \____/|_____ \____/|__|
              \/         \/      \/     \/        \/        \/           \/
-                                Welcome To Llama2Robot!
+                                Welcome To LlmCppPyBot!
 ==========================================================================================
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -115,10 +115,10 @@ Images may be from differing versions...
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
 2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, which includes experimental GGUF model support.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder. 
-4) Launch the Application: Double-click `Launch Llama2Robot.bat` to start the program.
+4) Launch the Application: Double-click `Launch LlmCppPyBot.bat` to start the program.
 * Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-* Optional - Arguments: Edit `Launch Llama2Robot.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
-* Note - Sounds and TTS and Logging, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch Llama2Robot.bat".
+* Optional - Arguments: Edit `Launch LlmCppPyBot.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
+* Note - Sounds and TTS and Logging, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch LlmCppPyBot.bat".
 
 ### USAGE (linux untested):
 * For Linux (Untested):
@@ -152,8 +152,8 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 3) When all is done, need to update docs with the new, improvements and upgrades. Only slightly depreciated currently.
 
 ### WARNINGS:
-* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Llama2Robot, but the emotions code will still be faulty. 
+* Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of LlmCppPyBot, but the emotions code will still be faulty. 
 
 ### DISCLAIMER:
-* Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using Llama2Robot doesn't grant you any personal, rights or approvals, from the timelord himself, other than gratitude, that you are able to be a part of the AI revolution.
+* Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using LlmCppPyBot doesn't grant you any personal, rights or approvals, from the timelord himself, other than gratitude, that you are able to be a part of the AI revolution.
 * This program is in no way affiliated with the producers of, Llama 2 or GGUF, the name means the program runs through the use of such things as, Llama2 and GGUF, however, Wiseman-Timelord may have met a few, Llamas and people with the surname Gguf, at some point also. The model was chosen as it was the only model reported to be able to correctly produce a json in reviews on youtube at the time. 
