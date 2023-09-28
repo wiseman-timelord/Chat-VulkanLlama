@@ -71,14 +71,17 @@ Images may be from differing versions...
  Human's Input:
 ------------------------------------------------------------------------------------------
 
- you look very wise, are you knowledgeable, do you, know wise things and have wise thoughts?
+ you look very wise, are you knowledgeable, do you, know wise things and have wise
+ thoughts?
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
  Wise-Llama's Response:
 ------------------------------------------------------------------------------------------
 
- "Ah, a seeker of wisdom! I sense great potential in you, my young friend. Let me share some ancient insights with you...", Wise-Llama says with a gentle nod, as he settles into a comfortable position on the mountain.
+ "Ah, a seeker of wisdom! I sense great potential in you, my young friend. Let me share
+ some ancient insights with you...", Wise-Llama says with a gentle nod, as he settles
+ into a comfortable position on the mountain.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -92,7 +95,12 @@ Images may be from differing versions...
  Event History:
 ------------------------------------------------------------------------------------------
 
- Human greeted Wise-Llama with a warm smile and expressed surprise at seeing the wise creature on the mountain again, leading to a gentle nod and lean in from Wise-Llama. In response, Wise-Llama smiled warmly and expressed gratitude towards Human for their familiarity, before sharing ancient insights with a gentle nod and comfortable position on the mountain. The exchange was marked by a sense of connection and potential for wisdom sharing between the two.
+ Human greeted Wise-Llama with a warm smile and expressed surprise at seeing the wise
+ creature on the mountain again, leading to a gentle nod and lean in from Wise-Llama. In
+ response, Wise-Llama smiled warmly and expressed gratitude towards Human for their
+ familiarity, before sharing ancient insights with a gentle nod and comfortable position
+ on the mountain. The exchange was marked by a sense of connection and potential for
+ wisdom sharing between the two.
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
