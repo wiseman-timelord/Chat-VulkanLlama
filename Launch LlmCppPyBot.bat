@@ -1,5 +1,5 @@
 @echo off
-mode 45,18
+mode 45,22
 title LlmCppPsBot-Launcher
 
 :: Intro
@@ -43,8 +43,9 @@ timeout /t 2 /nobreak >nul
 start cmd.exe /K "call wsl python3 window_1.py --logs"
 start cmd.exe /K "call python window_2.py --tts --sound"
 @echo off
-echo Exiting Launcher!
+echo.
+
+:: Exit Launcher
+echo Windows launched, closing in 3 seconds...
 echo.
 timeout /t 3 /nobreak >nul
-exit
-
