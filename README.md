@@ -1,7 +1,7 @@
 # LlmCppPyBot
 ### STATUS - Under Development
 I noticed the program does not run with these much anticipated llama 2 uncensored models (this is why only the models below work), hence, it is time for...
-- upon a new model being selected, that has not been loaded before, then the user will be prompted with a menu to set the syntax for that model.
+- upon a new model being selected, that has not been loaded before, then the user will be prompted with a menu to set the syntax for that model, this additonal data will then be saved for the automatic identification next time round.
 - yaml format for the "identify.log", that will become "identified.yaml".
 
 ### DESCRIPTION:
