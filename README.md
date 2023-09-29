@@ -1,6 +1,8 @@
 # LlmCppPyBot
 ### STATUS - Under Development
-- Back to development stage, was working fine but just tried and noticed neet to tune prompts, while I am at it I will implement some features, that are new and from LlmCppPsBot, however, have other projects first to finish. 
+I nodiced the program does not run with these much anticipated llama 2 uncensored models, hence, it is time for...
+- upon a new model being selected, that has not been loaded before, then the user will be prompted with a menu to set the syntax for that model.
+- yaml format for the "identify.log", that will become "identified.yaml".
 
 ### DESCRIPTION:
 * The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPyBot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
