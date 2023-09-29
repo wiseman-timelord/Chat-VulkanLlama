@@ -80,13 +80,13 @@ def read_env_file(env_file_path='./.ENV'):
 
 # Update identify.log
 def update_identify_log(model_name, model_type):
-    with open('./models/identify.log', 'a') as f:
+    with open('./data/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
 # Read identify.log
 def read_identify_log():
     try:
-        with open('./models/identify.log', 'r') as f:
+        with open('./data/identify.log', 'r') as f:
             lines = f.readlines()
         return {line.split()[0]: line.split()[1] for line in lines}
     except FileNotFoundError:
@@ -94,7 +94,7 @@ def read_identify_log():
 
 # write identify.log
 def write_identify_log(model_name, model_type):
-    with open('./models/identify.log', 'a') as f:
+    with open('./data/identify.log', 'a') as f:
         f.write(f"{model_name} {model_type}\n")
 
 # function

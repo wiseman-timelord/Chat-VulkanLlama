@@ -94,7 +94,7 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, loaded_mo
         return {"error": f"Invalid task name. Valid tasks are {', '.join(valid_tasks)}."}
     model_type = determine_model_type_for_task(task_name, loaded_models)
     print(f" Task type is {task_name}.")
-    prompt_file = f"./data/prompts/{task_name}.txt"  
+    prompt_file = f"./prompts/{task_name}.txt"  
     formatted_prompt = message.read_and_format_prompt(prompt_file, data, model_type, task_name)
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
