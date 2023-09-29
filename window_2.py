@@ -22,7 +22,7 @@ args = parser.parse_args()
 os_name = platform.system()
 last_session_history = None
 last_sound_event = None
-SOUND_DIRECTORY = "./data/sounds"
+SOUND_DIRECTORY = "./sounds"
 
 # Detect OS and set window size and title accordingly
 os_name = platform.system()
