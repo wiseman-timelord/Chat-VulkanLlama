@@ -16,7 +16,7 @@ loaded_models = {}
 rotation_counter = 0
 
 # Set window title and size for Linux
-sys.stdout.write("\x1b]2;LlmCppPsBot-Window1\x07")
+sys.stdout.write("\x1b]2;LlmCppPy-Bot-Window1\x07")
 sys.stdout.flush()
 os.system('echo -e "\e[8;45;90t"')
 

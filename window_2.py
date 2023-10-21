@@ -28,9 +28,9 @@ SOUND_DIRECTORY = "./sounds"
 os_name = platform.system()
 if os_name == 'Windows':
     os.system('mode con: cols=90 lines=45')
-    os.system('title LlmCppPsBot-Window2')
+    os.system('title LlmCppPy-Bot-Window2')
 elif os_name == 'Linux':
-    sys.stdout.write("\x1b]2;LlmCppPsBot-Window2\x07")
+    sys.stdout.write("\x1b]2;LlmCppPy-Bot-Window2\x07")
     sys.stdout.flush()
     os.system('echo -e "\e[8;45;90t"')
 

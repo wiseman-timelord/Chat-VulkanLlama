@@ -1,4 +1,4 @@
-# Analysis of the LlmCppPsBot Scripts
+# Analysis of the LlmCppPy-Bot Scripts
 
 ## main1.py
 

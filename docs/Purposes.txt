@@ -1,4 +1,4 @@
-The LlmCppPsBot framework, which is designed to convert natural language to robotic commands, has a wide range of potential applications beyond its original purpose. Here are some ideas for other purposes the code can be modified towards:
+The LlmCppPy-Bot framework, which is designed to convert natural language to robotic commands, has a wide range of potential applications beyond its original purpose. Here are some ideas for other purposes the code can be modified towards:
 
 ### Healthcare
 1. **Assistive Devices**: Convert voice commands into actions for assistive devices like wheelchairs or prosthetic limbs.
