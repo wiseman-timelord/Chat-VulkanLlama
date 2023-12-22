@@ -1,8 +1,8 @@
-# LlmCppPy-Bot
+# LlmCppPy-Chat
 ### STATUS - Under Development
 Working(ish). The batches for this program may only run on Windows 10 due to the different PowerShell launch commands required for various OS versions, that microsoft have bizarly chosen to use for each OS, and may cause endless launch loop on other systems.
 Program does not run with these much anticipated llama 2 uncensored models (only the models below currently work), this is because of syntax sent to prompt, also I noticed that while 2 models are loaded, the integration requires 3 keys for each model, that are not currently integrated. After completing work on ScriptClean, I will be completing this...
-- the user will be prompted with a menu to set the syntax for that model, this additonal data will then be saved for the automatic identification next time round.
+- the user will be prompted with a menu to set the syntax for that model, this additonal data will then be saved for the automatic identification next time round. This project will be re-visited and updated at some point.
 - yaml format for the now "./data/identify.log".
 Work done for next update...
 - Improved, code & text, in batch.
