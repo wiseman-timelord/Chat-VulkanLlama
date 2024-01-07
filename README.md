@@ -163,5 +163,5 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 ### WARNINGS:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of LlmCppPy-Bot, but the emotions code will still be faulty. 
 
-### DISCLAIMER:
-* Users and developers can modify it to create their own AI software for personal interests (see docs), however, they are solely responsible for any changes they make. If you profit significantly from your modified version, consider financially supporting the original author, Wiseman-Timelord, as a gesture of appreciation for his work. Note that using LlmCppPy-Bot doesn't grant you any personal, rights or approvals, from the timelord himself, other than gratitude, that you are able to be a part of the AI revolution.
+## DISCLAIMER:
+- This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
