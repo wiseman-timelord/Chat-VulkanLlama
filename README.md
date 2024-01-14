@@ -163,5 +163,5 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 ### WARNINGS:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of LlmCppPy-Bot, but the emotions code will still be faulty. 
 
-### DISCLAIMER:
-- This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
+## DISCLAIMER
+The "License.Txt" covers, this and relating, stuff.
