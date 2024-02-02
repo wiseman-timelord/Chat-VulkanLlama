@@ -1,4 +1,4 @@
-# LlmCppChat-Ps
+# LlmCppChat
 ### STATUS
 Working, but needs revisit & rebrand. The batches for this program may only run on Windows 10 due to the different PowerShell launch commands required for various OS versions, that microsoft have bizarly chosen to use for each OS, and may cause endless launch loop on other systems.
 Program does not run with these much anticipated llama 2 uncensored models (only the models below currently work), this is because of syntax sent to prompt, also I noticed that while 2 models are loaded, the integration requires 3 keys for each model, that are not currently integrated. After completing work on ScriptClean, I will be completing this, This project will be re-visited and updated at some point, and conformed for context aware chat purposes, where as my PS project will become based around an agent...
