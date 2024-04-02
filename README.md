@@ -1,13 +1,11 @@
 # LlmCppChat
 ### STATUS
-Working, but needs revisit & rebrand. The batches for this program may only run on Windows 10 due to the different PowerShell launch commands required for various OS versions, that microsoft have bizarly chosen to use for each OS, and may cause endless launch loop on other systems.
-Program does not run with these much anticipated llama 2 uncensored models (only the models below currently work), this is because of syntax sent to prompt, also I noticed that while 2 models are loaded, the integration requires 3 keys for each model, that are not currently integrated. After completing work on ScriptClean, I will be completing this, This project will be re-visited and updated at some point, and conformed for context aware chat purposes, where as my PS project will become based around an agent...
-- the user will be prompted with a menu to set the syntax for that model, this additonal data will then be saved for the automatic identification next time round. 
+Not working upon investigation, and worked before, but now needs, update & rebrand...
+- The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
+- The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it more future proof.
+- multi-model needs  to be implemented correctly, forget this until memory upgrade. Remove any multi-model currently present.
+- the user should be be prompted with a menu to set the syntax for that model, and have relating persistance. 
 - yaml format for the now "./data/identify.log".
-Work done for next update...
-- Improved, code & text, in batch.
-- Window of launcher fitted to contents correctly.
-- Utilization 0f 2 sets of 3 keys in "./data/config.yaml".
 
 ### DESCRIPTION:
 * The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
