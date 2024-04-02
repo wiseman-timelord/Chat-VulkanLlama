@@ -1,6 +1,6 @@
 # LlmCppChat
 ### STATUS
-Not working upon investigation and worked before. It needs, update & rebrand...
+Not working upon investigation and it worked before. It needs, update & rebrand...
 - The program is now named LlmCppChat, the program should reflect this.
 - The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
 - The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it more future proof.
