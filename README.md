@@ -3,7 +3,7 @@
 Not working upon investigation and it worked before. It needs, update & rebrand...
 - The program is now named LlmCppChat, the program should reflect this.
 - The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
-- The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it more future proof.
+- The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it, faster and more future proof.
 - multi-model needs  to be implemented correctly, forget this until memory upgrade. Remove any multi-model currently present.
 - the user should be be prompted with a menu to set the syntax for that model, and have relating persistance. 
 - yaml format for the now "./data/identify.log".
