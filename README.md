@@ -1,13 +1,6 @@
 # LlmCppPyChat
 ### STATUS
-Not working upon investigation and it worked before. It needs, update & rebrand...
-- Must get LlmCppPsAgent working before LlmCppPyChat 
-- The program is now named LlmCppChat, the program should reflect this.
-- The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
-- The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it, faster and more future proof.
-- multi-model needs  to be implemented correctly, forget this until memory upgrade. Remove any multi-model currently present.
-- the user should be be prompted with a menu to set the syntax for that model, and have relating persistance. 
-- yaml format for the now "./data/identify.log".
+* Working Last time investigated, though I don't have WSL in Win 8.1, So Further development is on hold, instead working on powershell/lammacpp binary project.
 
 ### DESCRIPTION:
 * The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
@@ -112,7 +105,6 @@ Images may be from differing versions...
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ```
-##
 
 ### USAGE (general):
 
@@ -159,6 +151,16 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 1) When detecting models, user should be able to assign 1 of 3-4 preset syntax, to additional text in the list in "./models/identify.log", and then re-use this preference in future.  Tried for 1 day to implement this, need try again sometime, seemingly simple, but GPT couldnt figure it out. Try again sometime. Will try again sometime.
 2) Start window_1 with model selection, then engine window. Start Window_2 with roleplay configuration, then as a interface for, displaying output and producing input. Tried for 1 day to implement this through IPC, last error was "Socket accept error: [Errno 22] Invalid argument". Alternatively it can be done through, "config.yaml" or maybe a new "interact.json". Will try again sometime.
 3) When all is done, need to update docs with the new, improvements and upgrades. Only slightly depreciated currently.
+
+### DEVELOPMENT NOTES:
+Not working upon investigation and it worked before. It needs, update & rebrand...
+- Must get LlmCppPsAgent working before LlmCppPyChat 
+- The program is now named LlmCppChat, the program should reflect this.
+- The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
+- The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it, faster and more future proof.
+- multi-model needs  to be implemented correctly, forget this until memory upgrade. Remove any multi-model currently present.
+- the user should be be prompted with a menu to set the syntax for that model, and have relating persistance. 
+- yaml format for the now "./data/identify.log".
 
 ### WARNINGS:
 * Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of LlmCppPy-Bot, but the emotions code will still be faulty. 
