@@ -21,7 +21,7 @@
 - Customizable Model Selection: Scans models and creates options of available Llama 2 GGML models in the `./models` directory.
 
 ### INTERFACE:
-- Window 1 - Starting up, this also involves Wise-Llama's choice of fortune cookie!...
+- Window 1 - Title screen with Wise-Llama's choice of fortune cookie!...
 ```
 ==========================================================================================
   .____    .__          _________              __________        __________        __   
