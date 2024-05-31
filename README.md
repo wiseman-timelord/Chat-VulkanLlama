@@ -2,10 +2,10 @@
 - Working Last time investigated. Development has been delayed, however, current work ....
 1. LM Studio, this will enable advanced GPU and CPU interface for models, that will not require me to periodically update something, plus multi-format support. Possibly this will streamline things. \
 2. Possibly there is a model with, map and image, generation.This would be solution for the map and ai graphics, need to research this. Map Generation could be text,  but it would make sense that when on the map, the user would be heading somewhere.
-3. AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics, separate, there would be configuration for this. 
-4. Map Generation, user then may travel to number of locations on the map, where at each place there is different person, There would still only be one person at each location. The user will be able to select "Go back to map, the picture of the character would be replaced with map, and then map menu in text box.
-5.  AI will generate themes of people; user would enter the themes as a list of words, the ai would then randomly generate characters based on, combination and/or individual, themes based on relevantly, combined or individual, words, and what they could implicate about a person, for example, "neat, wise, heroic, femenine, lol, awkward". 
-- Note Some content below has not been updated since early Llama 2 time period, it will be updated while waiting for GPT reloads.
+- AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics, separate, there would be configuration for this. 
+- Map Generation, user then may travel to number of locations on the map, where at each place there is different person, There would still only be one person at each location. The user will be able to select "Go back to map, the picture of the character would be replaced with map, and then map menu in text box.
+3.  AI will generate themes of people; user would enter the themes as a list of words, the ai would then randomly generate characters based on, combination and/or individual, themes based on relevantly, combined or individual, words, and what they could implicate about a person, for example, "neat, wise, heroic, femenine, lol, awkward". 
+
 
 ### DESCRIPTION:
 - The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
@@ -153,6 +153,9 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 - Windows with WSL or Linux (untested), + libraries listed in `./data/req_wsl.txt` + packages libncurses5-dev & xterm + experimental llama-cpp-python (for GGUF).
 - Python 3.x + libraries listed in `./data/req_win.txt`.
 - Large Language Models in the format of Llama 2, that could be from [7 billion parameter @ 8GB](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/blob/main/llama-2-7b-chat.Q8_0.gguf) to [70 billion parameter @ 48GB](https://huggingface.co/TheBloke/Llama-2-70B-chat-GGUF/blob/main/llama-2-70b-chat.Q5_K_M.gguf), however the [2 billion parameter @ 3GB](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF/blob/main/llama-2-7b-chat.Q2_K.gguf) versions should be used for working on the code for faster loading. Currently models be in the `[INST] <<SYS>>\n{system_input}\n<</SYS>>\n{instruct_input}[/INST]` syntax only, this is planned to have a menu in future release, but for now if you desiring to use other models will require manual modification of the syntax in `./scripts/message.py`. 
+
+### NOTES:
+- Note Some content on this page has not been updated since early Llama 2 time period, it will be updated as I go.
 
 ### FUTURE PLANS:
 1) When detecting models, user should be able to assign 1 of 3-4 preset syntax, to additional text in the list in "./models/identify.log", and then re-use this preference in future.  Tried for 1 day to implement this, need try again sometime, seemingly simple, but GPT couldnt figure it out. Try again sometime. Will try again sometime.
