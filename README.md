@@ -1,7 +1,7 @@
 # LlmCppPyChat
 - Working Last time investigated. Development has been delayed, however, current work ....
 1. LM Studio, this will enable advanced GPU and CPU interface for models, that will not require me to periodically update something, plus multi-format support. Possibly this will streamline things.
-2.  AI will generate theme of Personality though a list of words inputed by the user, for example, "neat, wise, heroic, femenine, lol, awkward" , the ai would then randomly generate characters based on, combination and/or individual, themes based on relevantly, combined or individual, words, and what they could implicate about a person.
+2.  AI will generate theme of Personality though a list of words inputed by the user, for example, "neat, wise, heroic, femenine, lol, awkward" , the ai would then randomly generate characters based on combination of what could be implicated about a person from the words chosen.
 3. Possibly there is a model with, map and image, generation.This would be solution for the map and ai graphics, need to research this. Map Generation could be text or image, depending on success of model finding.
 - We would need a New Window Just for graphics, so 3 windows in total, but it would make sense that when on the map, the user would be heading somewhere, so it would flip between characters and map.
 - AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics, separate, there would be configuration for this. 
