@@ -5,10 +5,11 @@
 3. AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics, separate, there would be configuration for this. 
 4. Map Generation, user then may travel to number of locations on the map, where at each place there is different person, There would still only be one person at each location. The user will be able to select "Go back to map, the picture of the character would be replaced with map, and then map menu in text box.
 5.  AI will generate themes of people; user would enter the themes as a list of words, the ai would then randomly generate characters based on, combination and/or individual, themes based on relevantly, combined or individual, words, and what they could implicate about a person, for example, "neat, wise, heroic, femenine, lol, awkward". 
+- Note Some content below has not been updated since early Llama 2 time period, it will be updated while waiting for GPT reloads.
 
 ### DESCRIPTION:
 - The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
-  
+
 ### FEATURES:
 - Code is optimised yet retains clarity in certain functions, code has been distributed soes each file under 7K GPT4 limit.
 - Only testing with GGUF now, gotta stay current, if you want GGML and it dont work, check out <=v1.03, its to do with llama. 
