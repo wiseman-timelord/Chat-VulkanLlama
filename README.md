@@ -2,6 +2,7 @@
 - Working Last time investigated. Development has been delayed, however, current work ....
 1. LM Studio, this will enable advanced GPU and CPU interface for models, that will not require me to periodically update something, plus multi-format support. 
 2. AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics.
+3. Map Generation, user then may travel to number of locations on the map, where at each place there is different person, AI will also generate themes of people, possibly the user would enter the themes as a list of words, the ai would then randomly generate characters based on, combination and/or individual, themes based on relevantly, combined or individual, words, and what they could implicate about a person. for example, "neat, fast, heroic, femenine, lol".   
 
 ### DESCRIPTION:
 - The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
