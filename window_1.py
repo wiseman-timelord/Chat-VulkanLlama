@@ -1,14 +1,11 @@
-# window1.py
-
-# imports
-from scripts import interface, model as model_module, utility
+from scripts import interface, model as agent_module, utility
 import time
 import argparse
 import sys
 import os
 import readline
 
-# globals
+# Global Variables
 parser = argparse.ArgumentParser(description='Your script description here.')
 parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to logs')
 args = parser.parse_args()
@@ -16,26 +13,32 @@ loaded_models = {}
 rotation_counter = 0
 
 # Set window title and size for Linux
-sys.stdout.write("\x1b]2;LlmCppPy-Bot-Window1\x07")
+sys.stdout.write("\x1b]2;LlmCppPsBot-Window1\x07")
 sys.stdout.flush()
 os.system('echo -e "\e[8;45;90t"')
 
 # Handle 'reset' input
 def handle_reset():
     utility.reset_keys_to_empty()
-    human_name, model_name, model_role, scenario_location, model_emotion, session_history = interface.roleplay_configuration()
+    config_data = utility.read_yaml()
+    human_name, agent_name, agent_role, scenario_location = (config_data.get('human_name'), config_data.get('agent_name'), 
+                                                            config_data.get('agent_role'), config_data.get('scenario_location'))
+    agent_emotion, session_history = config_data.get('agent_emotion'), config_data.get('session_history')
     yaml_data = {
         'human_name': human_name,
-        'model_name': model_name,        
-        'model_role': model_role,
+        'agent_name': agent_name,
+        'agent_role': agent_role,
         'scenario_location': scenario_location,
-        'model_emotion': model_emotion,
+        'agent_emotion': agent_emotion,
         'session_history': session_history,
         'human_input': "Empty",
-        'model_output_1': "Empty",
-        'model_output_2': "Empty",
-        'model_output_3': "Empty",
-        'sound_event': "None" 
+        'agent_output_1': "Empty",
+        'agent_output_2': "Empty",
+        'agent_output_3': "Empty",
+        'sound_event': "None",
+        'context_length': "Empty",
+        'syntax_type': "Empty",
+        'model_path': "Empty"
     }
     for key, value in yaml_data.items():
         utility.write_to_yaml(key, value)
@@ -49,30 +52,36 @@ def handle_quit():
 # Handle 'other' input
 def handle_other(user_input, rotation_counter, loaded_models):
     data = utility.read_yaml()
-    if 'model_output_2' not in data:
-        print("Error: 'model_output_2' key not found in YAML data.")
-        return
-    human_name = data.get('human_name')
-    model_name = data.get('model_name')
-    model_role = data.get('model_role')
-    model_emotion = data.get('model_emotion')
-    scenario_location = data.get('scenario_location')
-    session_history = data.get('session_history')
-    human_input = data.get('human_input') 
-    model_output_1 = data.get('model_output_1')
-    model_output_2 = data.get('model_output_2')   
-    model_output_3 = data.get('model_output_3')      
+    human_name, agent_name = data.get('human_name'), data.get('agent_name')
+    agent_role, agent_emotion, scenario_location = (data.get('agent_role'), data.get('agent_emotion'), 
+                                                     data.get('scenario_location'))
+    session_history, human_input = data.get('session_history'), data.get('human_input')
+    agent_output_1, agent_output_2, agent_output_3 = (data.get('agent_output_1'), data.get('agent_output_2'), 
+                                                      data.get('agent_output_3'))
     start_time = time.time()
     current_task = 'converse'
-    response_dict = model_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_output_1')
+    
+    # Determine the model type based on the task
+    if current_task == 'converse':
+        agent_type = 'chat'
+    elif current_task == 'instruct':
+        agent_type = 'instruct'
+    else:
+        agent_type = agent_module.determine_agent_type_for_task(current_task, loaded_models)
+
+    response_dict = agent_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, 
+                                                 loaded_models=loaded_models, save_to='agent_output_1', agent_type=agent_type)
+    
     if rotation_counter == 2:
-        emotion_dict = model_module.prompt_response('emotions', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='model_emotion')
+        emotion_dict = agent_module.prompt_response('emotions', rotation_counter, enable_logging=args.logs, 
+                                                    loaded_models=loaded_models, save_to='agent_emotion')
         new_emotion = emotion_dict.get('new_emotion')
         if new_emotion:
-            utility.write_to_yaml('model_emotion', new_emotion)
-    consolidate_dict = model_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, loaded_models=loaded_models, save_to='session_history')
+            utility.write_to_yaml('agent_emotion', new_emotion)
+    consolidate_dict = agent_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, 
+                                                    loaded_models=loaded_models, save_to='session_history')
     if args.logs:
-        utility.write_to_yaml('raw_output', response_dict['model_response'])
+        utility.write_to_yaml('raw_output', response_dict['agent_response'])
     new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
         utility.write_to_yaml('session_history', new_session_history)
@@ -92,35 +101,22 @@ def main():
             print("No Models, Exiting!")
             return
         loaded_models = {}
-        for model_type in ['chat', 'instruct']:
-            model = selected_models.get(model_type)
-            context_key = selected_models.get(model_type + '_context')
-            if model and model not in loaded_models.values():
-                model_module.initialize_model(model, optimal_threads, model_type=model_type, context_key=context_key)
-                loaded_models[model_type] = model
-        human_name, model_name, model_role, model_emotion, scenario_location, session_history = interface.roleplay_configuration()
-        yaml_data = {
-            'human_name': human_name,
-            'model_name': model_name,
-            'model_role': model_role,
-            'model_emotion': model_emotion,
-            'scenario_location': scenario_location,
-            'session_history': session_history,
-            'sound_event': "None" 
-        }
-        for key, value in yaml_data.items():
-            utility.write_to_yaml(key, value)
+        model = selected_models.get('model_path')
+        context_key = selected_models.get('context_length')
+        if model:
+            agent_module.initialize_model(model, optimal_threads, agent_type='chat', context_key=context_key)
+            loaded_models['chat'] = model
+            utility.write_to_yaml('model_path', model)
+            utility.write_to_yaml('context_length', CONTEXT_LENGTH_MAP['chat'].get(context_key, 4096))
+
         data = utility.read_yaml()
-        human_name = data.get('human_name')
-        model_name = data.get('model_name')
-        model_emotion = data.get('model_emotion')
-        session_history = data.get('session_history')
-        human_input = data.get('human_input')
-        model_output_1 = data.get('model_output_1') 
+        human_name, agent_name = data.get('human_name'), data.get('agent_name')
+        agent_role, agent_emotion = data.get('agent_role'), data.get('agent_emotion')
+        scenario_location, session_history = data.get('scenario_location'), data.get('session_history')
         rotation_counter = 0
         while True:
             interface.display_engine()  
-            user_input = input(f" Enter your message to {model_name} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
+            user_input = input(f" Enter your message to {agent_name} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
             if user_input == 'reset':
                 handle_reset()
             elif user_input == 'quit':
@@ -133,6 +129,5 @@ def main():
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Call the main function
 if __name__ == "__main__":
     main()

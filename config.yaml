@@ -1,0 +1,25 @@
+# DEFAULT_CONFIG:
+human_name: "Human"  # Start upper case, Default: Human
+agent_name: "Wise-Llama"  # Start upper case, Default: Wise-Llama
+agent_role: "Wise Oracle"  # Start upper case, Default: Wise Oracle
+scenario_location: "on a mountain"  # Start lower case, Default: on a mountain
+
+# HIDDEN_CONFIG:
+agent_emotion: "indifferent"  # Start lower case, Default: indifferent
+session_history: "the conversation started"  # Start lower case, Default: the conversation started
+
+# RUNTIME CONFIG:
+model_path: Empty
+agent_emotion: Empty
+agent_name: Empty
+agent_output_1: Empty
+agent_output_2: Empty
+agent_output_3: Empty
+agent_role: Empty
+context_length: Empty
+human_input: Empty
+human_name: Empty
+scenario_location: Empty
+session_history: Empty
+sound_event: startup_process
+syntax_type: Empty

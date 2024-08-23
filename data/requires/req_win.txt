@@ -1,0 +1,6 @@
+sounddevice
+pyttsx
+watchdog
+PyYAML
+wavio
+readline

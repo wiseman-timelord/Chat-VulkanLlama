@@ -22,15 +22,15 @@ args = parser.parse_args()
 os_name = platform.system()
 last_session_history = None
 last_sound_event = None
-SOUND_DIRECTORY = "./sounds"
+SOUND_DIRECTORY = "./data/sounds"
 
 # Detect OS and set window size and title accordingly
 os_name = platform.system()
 if os_name == 'Windows':
     os.system('mode con: cols=90 lines=45')
-    os.system('title LlmCppPy-Bot-Window2')
+    os.system('title LlmCppPsBot-Window2')
 elif os_name == 'Linux':
-    sys.stdout.write("\x1b]2;LlmCppPy-Bot-Window2\x07")
+    sys.stdout.write("\x1b]2;LlmCppPsBot-Window2\x07")
     sys.stdout.flush()
     os.system('echo -e "\e[8;45;90t"')
 
@@ -99,7 +99,7 @@ def fancy_delay(duration, message=" Loading..."):
     time.sleep(1)
 
 # Read the config.yaml        
-def read_yaml(file_path='./data/config.yaml'):
+def read_yaml(file_path='./config.yaml'):
     try:
         with open(file_path, 'r') as file:
             return yaml.safe_load(file)
@@ -143,9 +143,9 @@ def display_interface():
     if data is None:
         return
     human_name = data.get('human_name')
-    model_name = data.get('model_name')
-    model_output_1 = data.get('model_output_1')
-    model_emotion = data.get('model_emotion')
+    agent_name = data.get('agent_name')
+    agent_output_1 = data.get('agent_output_1')
+    agent_emotion = data.get('agent_emotion')
     session_history = data.get('session_history')
     human_input = data.get('human_input')
     print("=" * 90)
@@ -155,13 +155,13 @@ def display_interface():
     print("-" * 90)
     print(f"\n {human_input}\n")
     print("=-" * 45, "=-" * 44)
-    print(f" {model_name}'s Response:")
+    print(f" {agent_name}'s Response:")
     print("-" * 90)
-    print(f"\n {model_output_1}\n")
+    print(f"\n {agent_output_1}\n")
     print("=-" * 45, "=-" * 44)    
-    print(f" {model_name}'s State:")
+    print(f" {agent_name}'s State:")
     print("-" * 90)
-    print(f"\n {model_emotion}\n")  
+    print(f"\n {agent_emotion}\n")  
     print("=-" * 45, "=-" * 44)   
     print(" Event History:")
     print("-" * 90)
