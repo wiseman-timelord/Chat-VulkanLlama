@@ -3,7 +3,8 @@
 
 # CURRENTLY:
 Development is underway...
-2. Optional ".\data\temporaty.py", for all globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that, though this would probably require update to installer, to ensure that default settings are correct?
+1. Optional ".\data\temporaty.py", for all globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that, though this would probably require update to installer, to ensure that default settings are correct?
+2. Models do not mention the context length in the name of the file anymore. one way to do it, try 8k, if that dont work then try 4k. For model type, look for "Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2", in filename, and use format appropriate for relevantly "Llama 2", "Llama 3", "Qwen 1", "Qwen 2", it should be non-case-sensitive search. would that work?
 3. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
 4. Furthere Review and Improvement of batch script code using techniques and code learned.
 5. the installer should allow the options of, opencl, cuda, vulkan, for processing. downloads library, and installs in ".\libraries\llama.cpp". user will have to run installer again to use a diff library, and it will wipe the ".\libraries\llama.cpp" folder, and download the new version to ".\cache", then extract it directly into ".\libraries\llama.cpp".
