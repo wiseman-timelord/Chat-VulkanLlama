@@ -1,5 +1,5 @@
 # Chat-VulkanLlama
-- Working. Release version. 
+- Working. Release version (old version). 
 
 # CURRENTLY:
 Development is underway...
