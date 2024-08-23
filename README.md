@@ -5,7 +5,7 @@
 Development is underway...
 1. Merge, ".\scripts\message.py" and ".\scripts\model.py", scripts so as to have max 5 main scripts, to be compatible with claude.
 2. Optional ".\data\temporaty.py", for all globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that.
-3. optimization and correction through claude (original made in gpt4).
+3. optimization and correction of py code through claude.
 4. Furthere Review and Improvement of batch script code using techniques and code learned.
 - Possiblework or bridge too far...
 1. creation of gradio interfaces, for chat and engine windows. Engine window (Window_1) should have gradio interface, where the window should be displaying the normal engine printed text output in a text box, the second tab should be top half is configuration of model parameters and model name etc, all maintained in globals with a reset button to save the globals to the json and restart with a re-load of the model into ram with the new parameters. Chat Window (Window_2) also with gradio interface, should be the main chat interface, and on page 2 the roleplay configuration, player name npc name etc, and when settings are changed there then it will just be using those settings in the globals, for when the user next submits their response with the submit button on the chat interface. 
