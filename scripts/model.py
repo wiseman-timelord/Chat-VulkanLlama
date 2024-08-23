@@ -7,27 +7,7 @@ import os
 import time
 import re
 
-# globals
-llm = None
 
-agent_TYPE_TO_TEMPERATURE = {
-    'chat': 0.5,
-    'instruct': 0.25
-}
-
-PROMPT_TO_MAXTOKENS = {
-    'converse': 100,
-    'consolidate': 200,
-    'emotions': 300
-}
-
-CONTEXT_LENGTH_MAP = {
-    'chat': {
-        '4k': 4096,
-        '8k': 8192,
-        '16k': 16384
-    }
-}
 
 # Extract context key from model name
 def extract_context_key_from_model_name(agent_name):
@@ -44,7 +24,7 @@ def determine_agent_type_for_task(task_name, loaded_models):
 
 # initialize the model
 def initialize_model(selected_model_path, optimal_threads, agent_type='chat', context_key='4K'):
-    global llm
+    global llm  # Use global from temporary.py
     context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096)
     print(f"\n Loading {agent_type} model with context length {context_length}, be patient...")
     llm = Llama(
@@ -104,7 +84,7 @@ def log_message(message, log_type, prompt_name=None, event_name=None, enable_log
                 print(f"\n Logging {event_name}...")
                 print(" ...Output logged.")
     else:
-        print(f"File {log_path} not found. Logging failed.")        
+        print(f"File {log_path} not found. Logging failed.")         
 
 # Function to parse the model's raw response
 def parse_agent_response(raw_agent_response, data):

@@ -14,35 +14,14 @@ import platform
 import pyttsx3
 import wavio
 
-# General Variables
-parser = argparse.ArgumentParser(description='Your Project Description')
-parser.add_argument('--tts', action='store_true', help='Enable text-to-speech')
-parser.add_argument('--sound', action='store_true', help='Enable sounds')
-args = parser.parse_args()
-os_name = platform.system()
-last_session_history = None
-last_sound_event = None
-SOUND_DIRECTORY = "./data/sounds"
-
 # Detect OS and set window size and title accordingly
-os_name = platform.system()
-if os_name == 'Windows':
-    os.system('mode con: cols=90 lines=45')
-    os.system('title LlmCppPsBot-Window2')
-elif os_name == 'Linux':
-    sys.stdout.write("\x1b]2;LlmCppPsBot-Window2\x07")
-    sys.stdout.flush()
-    os.system('echo -e "\e[8;45;90t"')
-
-# TTS Variables
-TTS_RATE = 150  
-TTS_VOLUME = 0.9  
-TTS_VOICE_ID = 1
-tts_counter = 0  
+sys.stdout.write(WINDOW_TITLE_2)
+sys.stdout.flush()
+os.system(WINDOW_SIZE)
 
 # Class
 class Watcher:
-    DIRECTORY_TO_WATCH = "./data"
+    DIRECTORY_TO_WATCH = "./data/params"
     def __init__(self):
         self.observer = PollingObserver()
     def run(self):
@@ -61,7 +40,7 @@ class Watcher:
 class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
-        global last_session_history, last_sound_event
+        global last_session_history, last_sound_event  # Use globals from temporary.py
         should_update_display = False  
         if event.src_path.endswith('config.yaml'):
             data = read_yaml()
@@ -80,7 +59,7 @@ class Handler(FileSystemEventHandler):
                 if args.sound:
                     play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
                 time.sleep(1)
-                fancy_delay(5)
+                fancy_delay(3)
                 display_interface()
                 if args.tts and os_name == 'Windows':  
                     speak_text(current_session_history)
@@ -99,7 +78,7 @@ def fancy_delay(duration, message=" Loading..."):
     time.sleep(1)
 
 # Read the config.yaml        
-def read_yaml(file_path='./config.yaml'):
+def read_yaml(file_path='./data/params/persistent.yaml'):
     try:
         with open(file_path, 'r') as file:
             return yaml.safe_load(file)
@@ -112,7 +91,7 @@ def read_yaml(file_path='./config.yaml'):
 
 # Text-to-Speech Function
 def speak_text(text):
-    global tts_counter
+    global tts_counter  # Use global from temporary.py
     tts_counter += 1
     if not args.tts or tts_counter <= 1:
         return

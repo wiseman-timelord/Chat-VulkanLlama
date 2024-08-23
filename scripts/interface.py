@@ -36,16 +36,15 @@ SYNTAX_OPTIONS = [
 ]
 
 
-# function
+# Function
 def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n Loading..."):
-    step = duration / 100
+    step = duration / 60
     sys.stdout.write(f"{message} [")
     for _ in range(64):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
     sys.stdout.write("] Complete.\n")
-    utility.trigger_sound_event("robot whirr")
     time.sleep(2)
 
 # function
@@ -81,12 +80,10 @@ def display_model_selection():
     print("-" * 90)    
     print("\n Searching For Models...")
     
-    # Use the refactored function to get available models
     available_models_dict = utility.list_available_models()
     chat_models = available_models_dict.get('chat', [])
     instruct_models = available_models_dict.get('instruct', [])
     
-    # Use the refactored function to identify unknown models
     agent_files = glob.glob("./models/*.bin")
     unknown_models = [f for f in agent_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
     new_chat_models, new_instruct_models = utility.identify_unknown_models(unknown_models)
@@ -104,10 +101,9 @@ def display_model_selection():
             selected = input(f"Select a {agent_type} model by entering its number: ")
             selected_models[agent_type] = models[int(selected) - 1]
         
-        # Use the refactored function to extract context key
         if agent_type in selected_models:
             agent_name = os.path.basename(selected_models[agent_type])
-            context_key = model.extract_context_key_from_model_name(agent_name)
+            context_key = utility.extract_context_key_from_model_name(agent_name)
             if context_key:
                 selected_models[agent_type + '_context'] = context_key
 
@@ -140,7 +136,7 @@ def roleplay_configuration():
     print("=-" * 45,"=-" * 44) 
     print(" Roleplay Setup Processes:")
     print("-" * 90)
-    default_values = utility.read_env_file()
+    default_values = utility.read_yaml()
     print(f"\n Default Human Name = {default_values.get('human_name', 'Human')}")
     print(f" Default Model Name, Role = {default_values.get('agent_name', 'Wise-Llama')}, {default_values.get('agent_role', 'Mystical Oracle')}")
     print(f" Default Location = {default_values.get('scenario_location', 'on a mountain')}")
@@ -165,4 +161,4 @@ def display_engine():
     print("=" * 90, "=-" * 44)
     print(" Input/Output Processes:")
     print("-" * 90, "")
-    return 
+    return

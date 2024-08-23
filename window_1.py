@@ -5,13 +5,6 @@ import sys
 import os
 import readline
 
-# Global Variables
-parser = argparse.ArgumentParser(description='Your script description here.')
-parser.add_argument('--logs', action='store_true', help='Enable writing of raw output to logs')
-args = parser.parse_args()
-loaded_models = {}
-rotation_counter = 0
-
 # Set window title and size for Linux
 sys.stdout.write("\x1b]2;LlmCppPsBot-Window1\x07")
 sys.stdout.flush()
@@ -50,7 +43,8 @@ def handle_quit():
     sys.exit(0)
 
 # Handle 'other' input
-def handle_other(user_input, rotation_counter, loaded_models):
+def handle_other(user_input):
+    global rotation_counter, loaded_models  # Use globals from temporary.py
     data = utility.read_yaml()
     human_name, agent_name = data.get('human_name'), data.get('agent_name')
     agent_role, agent_emotion, scenario_location = (data.get('agent_role'), data.get('agent_emotion'), 
@@ -61,7 +55,6 @@ def handle_other(user_input, rotation_counter, loaded_models):
     start_time = time.time()
     current_task = 'converse'
     
-    # Determine the model type based on the task
     if current_task == 'converse':
         agent_type = 'chat'
     elif current_task == 'instruct':
@@ -92,6 +85,7 @@ def handle_other(user_input, rotation_counter, loaded_models):
 
 # Main function
 def main():
+    global rotation_counter, loaded_models  # Use globals from temporary.py
     try:
         optimal_threads = interface.display_intro_screen()
         time.sleep(1)
@@ -100,7 +94,6 @@ def main():
         if not selected_models:
             print("No Models, Exiting!")
             return
-        loaded_models = {}
         model = selected_models.get('model_path')
         context_key = selected_models.get('context_length')
         if model:
@@ -124,10 +117,13 @@ def main():
             else:
                 readline.add_history(user_input)
                 utility.write_to_yaml('human_input', user_input)
-                handle_other(user_input, rotation_counter, loaded_models)
+                handle_other(user_input)
             rotation_counter = (rotation_counter + 1) % 4
     except Exception as e:
         print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()

@@ -10,25 +10,6 @@ import random
 from window_1 import rotation_counter
 from functools import lru_cache
 
-# Dictionaries
-ORDERED_KEYS = [
-    'human_name', 'agent_name', 'agent_role', 
-    'scenario_location', 'agent_emotion', 'session_history',
-    'human_input', 'agent_output_1', 'agent_output_2', 
-    'agent_output_3', 'sound_event', 'context_length_1',
-    'context_length_2', 'syntax_type_1', 'syntax_type_2',
-    'model_path_1', 'model_path_2' 
-]
-
-KEYS_TO_CLEAR = [
-    'human_name', 'agent_name', 'agent_role', 
-    'scenario_location', 'agent_emotion', 'session_history',
-    'human_input', 'agent_output_1', 'agent_output_2', 
-    'agent_output_3', 'sound_event', 'context_length_1',
-    'context_length_2', 'syntax_type_1', 'syntax_type_2',
-    'model_path_1', 'model_path_2' 
-]
-
 # function
 def calculate_optimal_threads():
     total_threads = os.cpu_count()
@@ -83,7 +64,7 @@ def write_identify_log(agent_name, agent_type):
 
 # Read config.yaml
 @lru_cache(maxsize=1)
-def read_yaml(file_path='./config.yaml'):
+def read_yaml(file_path='./data/params/persistent.yaml'):
     try:
         with open(file_path, 'r') as file:
             return yaml.safe_load(file) or {}
@@ -95,7 +76,7 @@ def read_yaml(file_path='./config.yaml'):
         return {}
 
 # Write to config.yaml
-def write_to_yaml(key, value, file_path='./config.yaml'):
+def write_to_yaml(key, value, file_path='./data/params/persistent.yaml'):
     data = read_yaml(file_path)
     data[key] = value if value is not None else "Empty"
     try:
