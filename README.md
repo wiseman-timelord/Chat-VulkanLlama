@@ -3,10 +3,9 @@
 
 # CURRENTLY:
 Development is underway...
-1. ".\data\params\temporary.py", for all globals from all scrits to be only there, all scripts then access temporary for their globals. To elimintate import issues. though this would probably require update to installer, to ensure that default settings are correct.
-2. Models do not mention the context length in the name of the file anymore. one way to do it, try 8k, if that dont work then try 4k. For model type, look for "Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2", in filename, and use format appropriate for relevantly "Llama 2", "Llama 3", "Qwen 1", "Qwen 2", it should be non-case-sensitive search. would that work?
-3. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
-4. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
+1. Models do not mention the context length in the name of the file anymore. one way to do it, try 8k, if that dont work then try 4k. For model type, look for "Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2", in filename, and use format appropriate for relevantly "Llama 2", "Llama 3", "Qwen 1", "Qwen 2", it should be non-case-sensitive search. would that work?
+2. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
+3. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
 4. Furthere Review and Improvement of batch script code using techniques and code learned.
 5. the installer should allow the options of, opencl, cuda, vulkan, for processing. downloads library, and installs in ".\libraries\llama.cpp". user will have to run installer again to use a diff library, and it will wipe the ".\libraries\llama.cpp" folder, and download the new version to ".\cache", then extract it directly into ".\libraries\llama.cpp".
 6. if we can obtain the gpu load, then testing period in installer, press enter to begin test; count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for , know correct  
