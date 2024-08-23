@@ -1,13 +1,11 @@
 # Chat-VulkanLlama
-- Working Last time investigated. Development has been delayed, however, current work ....
-1. LM Studio, this will enable advanced GPU and CPU interface for models, that will not require me to periodically update something, plus multi-format support. Possibly this will streamline things.
-2.  AI will generate theme of Personality though a list of words inputed by the user, for example, "neat, wise, heroic, femenine, lol, awkward" , the ai would then randomly generate characters based on combination of what could be implicated about a person from the words chosen.
-3. Possibly there is a model with, map and image, generation.This would be solution for the map and ai graphics, need to research this. Map Generation could be text or image, depending on success of model finding.
-- We would need a New Window Just for graphics, so 3 windows in total, but it would make sense that when on the map, the user would be heading somewhere, so it would flip between characters and map.
-- AI Graphics, AI Animate Picture of your configured AI Personality, as the character whoms speaking, possibly additional window for graphics, separate, there would be configuration for this. 
-- Map Generation, user then may travel to number of locations on the map, where at each place there is different person, There would still only be one person at each location. The user will be able to select "Go back to map, the picture of the character would be replaced with map, and then map menu in text box.
-
-
+- Working Last time release version was investigated. Development is underway...
+1. optimization and correction through claude (original made in gpt4).
+2. Improvement of batch script code using techniques and code learned.
+3. creation of gradio interface(s), for chat and engine windows..
+- Potential ideas...
+1.  Option for AI to generate theme of Personality though a prompt to complete form for given location.
+2. There are some stable diffusion models for GGUF, if I can combine that, then We have map generation. Possibly the AI could generate a map with location names, then the player enter the name of the place to go, and the scene could be generated, or rolls of dice for case scenarios. Panel on chat window for AI generated Graphics fitting to the scene, generated every 3 interactions?
 
 ### DESCRIPTION:
 - The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, Chat-VulkanLlama remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
