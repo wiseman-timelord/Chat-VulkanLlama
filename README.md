@@ -1,4 +1,4 @@
-# LlmCppPyChat
+# Chat-VulkanLlama
 - Working Last time investigated. Development has been delayed, however, current work ....
 1. LM Studio, this will enable advanced GPU and CPU interface for models, that will not require me to periodically update something, plus multi-format support. Possibly this will streamline things.
 2.  AI will generate theme of Personality though a list of words inputed by the user, for example, "neat, wise, heroic, femenine, lol, awkward" , the ai would then randomly generate characters based on combination of what could be implicated about a person from the words chosen.
@@ -10,7 +10,7 @@
 
 
 ### DESCRIPTION:
-- The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, LlmCppPy-Bot remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
+- The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, Chat-VulkanLlama remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
 
 ### FEATURES:
 - Code is optimised yet retains clarity in certain functions, code has been distributed soes each file under 7K GPT4 limit.
@@ -38,7 +38,7 @@
   |    |___|  |_|  Y Y  \     \___|  |_> >  |_> >    |    \___  | |    |   (  <_> )  |  
   |_______ \____/__|_|  /\______  /   __/|   __/|____|    / ____| |______  /\____/|__|  
           \/          \/        \/|__|   |__|             \/             \/             
-                                Welcome To LlmCppPy-Bot!
+                                Welcome To Chat-VulkanLlama!
 ==========================================================================================
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -125,10 +125,10 @@
 1) Download the Package: Download the package and extract it to a dedicated folder. Open the folder in Windows Explorer with Admin rights or a shell with Admin privileges.
 2) Install Requirements: Double-click `Install Requirements.bat`, this will install all required, packages and libraries, which includes experimental GGUF model support.
 3) Download Models: Download the required GGML `*.bin` chat model files and place them in the `./models` folder. Note that the required `config.json` is already present in the `./models` folder. 
-4) Launch the Application: Double-click `Launch LlmCppPy-Bot.bat` to start the program.
+4) Launch the Application: Double-click `Launch Chat-VulkanLlama.bat` to start the program.
 - Optional - Window Resizing: Hold down Ctrl and scroll your mouse wheel to resize the window to your liking.
-- Optional - Arguments: Edit `Launch LlmCppPy-Bot.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
-- Note - Sounds and TTS and Logging, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch LlmCppPy-Bot.bat".
+- Optional - Arguments: Edit `Launch Chat-VulkanLlama.bat` to include or run Python with relevant arguments like, `--logs` and '--tts'.
+- Note - Sounds and TTS and Logging, are enabled by default, this may be altered through the editing of the arguements, --tts and --sound, in the file "Launch Chat-VulkanLlama.bat".
 
 ### USAGE (linux untested):
 - For Linux (Untested):
@@ -166,7 +166,7 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 
 ### DEVELOPMENT NOTES:
 Not working upon investigation and it worked before. It needs, update & rebrand...
-- Must get LlmCppPsAgent working before LlmCppPyChat 
+- Must get LlmCppPsAgent working before Chat-VulkanLlama 
 - The program is now named LlmCppChat, the program should reflect this.
 - The batches for this program need dp0 adding, and updating to not request Admin, users shoudl right click run as admin.
 - The program needs to work from LM Studio through, "tokentrim" and "llmlite", this will make it, faster and more future proof.
@@ -175,7 +175,7 @@ Not working upon investigation and it worked before. It needs, update & rebrand.
 - yaml format for the now "./data/identify.log".
 
 ### WARNINGS:
-- Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of LlmCppPy-Bot, but the emotions code will still be faulty. 
+- Using the experimental version of llama-cpp-python will possibly break support for GGML or other applications that use llama-cpp, ensure to, use environment or perform a backup, before running the install process. If you want a GGML version of the program, then consult versions <=1.03 of Chat-VulkanLlama, but the emotions code will still be faulty. 
 
 ## DISCLAIMER
 - This software is subject to the terms in License.Txt, covering usage, distribution, and modifications. For full details on your rights and obligations, refer to License.Txt.
