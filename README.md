@@ -2,10 +2,7 @@
 - Working Last time release version was investigated. Development is underway...
 1. optimization and correction through claude (original made in gpt4).
 2. Improvement of batch script code using techniques and code learned.
-3. creation of gradio interface(s), for chat and engine windows..
-- Potential ideas...
-1.  Option for AI to generate theme of Personality though a prompt to complete form for given location.
-2. There are some stable diffusion models for GGUF, if I can combine that, then We have map generation. Possibly the AI could generate a map with location names, then the player enter the name of the place to go, and the scene could be generated, or rolls of dice for case scenarios. Panel on chat window for AI generated Graphics fitting to the scene, generated every 3 interactions?
+3. creation of gradio interfaces, for chat and engine windows. Engine window (Window_1) should have gradio interface, where the window should be displaying the normal engine printed text output in a text box, the second tab should be top half is configuration of model parameters and model name etc, all maintained in globals with a reset button to save the globals to the json and restart with a re-load of the model into ram with the new parameters. Chat Window (Window_2) also with gradio interface, should be the main chat interface, and on page 2 the roleplay configuration, player name npc name etc, and when settings are changed there then it will just be using those settings in the globals, for when the user next submits their response with the submit button on the chat interface. 
 
 ### DESCRIPTION:
 - Work has began to make my llama python chatbot into the next generation. HEre is the old decription, and most of the content below will remain the same until there is a new release. The Llama 2 language model is an advanced chatbot using the llama-cpp engine/interface. It leverages Python scripts, YAML files, and ASCII art for context-aware conversations. While it's customizable for various projects like file management, it uniquely operates across WSL/Linux and Windows. This dual compatibility poses challenges, but it's beneficial as features like sounds and TTS work in Windows. Although I aim to enhance the project, Chat-VulkanLlama remains an invaluable tool for AI enthusiasts. My next step is to rebuild it using powershell, llama-cpp binaries, and named pipes.
@@ -159,8 +156,9 @@ The prompt syntax is standardaized between, chat and instruct, however, some mod
 
 ### FUTURE PLANS:
 1) When detecting models, user should be able to assign 1 of 3-4 preset syntax, to additional text in the list in "./models/identify.log", and then re-use this preference in future.  Tried for 1 day to implement this, need try again sometime, seemingly simple, but GPT couldnt figure it out. Try again sometime. Will try again sometime.
-2) Start window_1 with model selection, then engine window. Start Window_2 with roleplay configuration, then as a interface for, displaying output and producing input. Tried for 1 day to implement this through IPC, last error was "Socket accept error: [Errno 22] Invalid argument". Alternatively it can be done through, "config.yaml" or maybe a new "interact.json". Will try again sometime.
-3) When all is done, need to update docs with the new, improvements and upgrades. Only slightly depreciated currently.
+1.  Option for AI to generate theme of Personality though a prompt to complete form for given location.
+2. There are some stable diffusion models for GGUF, if I can combine that, then We have map generation. Possibly the AI could generate a map with location names, then the player enter the name of the place to go, and the scene could be generated, or rolls of dice for case scenarios. Panel on chat window for AI generated Graphics fitting to the scene, generated every 3 interactions?
+
 
 ### DEVELOPMENT NOTES:
 Not working upon investigation and it worked before. It needs, update & rebrand...
