@@ -3,9 +3,8 @@
 
 # CURRENTLY:
 Development is underway...
-1. Merge, ".\scripts\message.py" and ".\scripts\model.py", scripts so as to have max 5 main scripts, to be compatible with claude.
-2. Optional ".\data\temporaty.py", for all globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that.
-3. optimization and correction of py code through claude.
+2. Optional ".\data\temporaty.py", for all globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that, though this would probably require update to installer, to ensure that default settings are correct?
+3. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
 4. Furthere Review and Improvement of batch script code using techniques and code learned.
 5. the installer should allow the options of, opencl, cuda, vulkan, for processing. downloads library, and installs in ".\libraries\llama.cpp". user will have to run installer again to use a diff library, and it will wipe the ".\libraries\llama.cpp" folder, and download the new version to ".\cache", then extract it directly into ".\libraries\llama.cpp".
 6. if we can obtain the gpu load, then testing period in installer, press enter to begin test; count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for , know correct  
