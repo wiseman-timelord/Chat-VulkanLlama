@@ -7,13 +7,6 @@ import os
 import time
 import re
 
-
-
-# Extract context key from model name
-def extract_context_key_from_model_name(agent_name):
-    context_key = re.search(r'(4k|8k|16k|4K|8K|16K)', agent_name)
-    return context_key.group(1) if context_key else None
-
 # determine model for task
 def determine_agent_type_for_task(task_name, loaded_models):
     available_models = TASK_agent_MAPPING.get(task_name, ['chat'])
@@ -22,19 +15,49 @@ def determine_agent_type_for_task(task_name, loaded_models):
             return agent_type
     return 'chat' 
 
+def determine_model_type(filename):
+    model_types = ["Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2"]
+    for model_type in model_types:
+        if re.search(model_type, filename, re.IGNORECASE):
+            return model_type.replace(" ", "")
+    return None
+
+selected_model_type = determine_model_type(selected_model_filename)
+if selected_model_type:
+    print(f"Selected model type based on filename: {selected_model_type}")
+else:
+    print("Model type not recognized, using default settings.")
+
+
 # initialize the model
-def initialize_model(selected_model_path, optimal_threads, agent_type='chat', context_key='4K'):
+def initialize_model(selected_model_path, optimal_threads, agent_type='chat'):
     global llm  # Use global from temporary.py
-    context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096)
-    print(f"\n Loading {agent_type} model with context length {context_length}, be patient...")
-    llm = Llama(
-        model_path=selected_model_path,
-        n_ctx=context_length,
-        embedding=True,
-        n_threads=optimal_threads,
-        n_gpu_layers=-1,  # Use all available GPU layers
-        verbose=False
-    )
+    context_key = '8k'
+    try:
+        context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 8192)
+        print(f"\n Loading {agent_type} model with 8k context length, be patient...")
+        llm = Llama(
+            model_path=selected_model_path,
+            n_ctx=context_length,
+            embedding=True,
+            n_threads=optimal_threads,
+            n_gpu_layers=-1,  # Use all available GPU layers
+            verbose=False
+        )
+    except SomeSpecificException as e:
+        print(f"8k context failed due to {e}, falling back to 4k...")
+        context_key = '4k'
+        context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096)
+        llm = Llama(
+            model_path=selected_model_path,
+            n_ctx=context_length,
+            embedding=True,
+            n_threads=optimal_threads,
+            n_gpu_layers=-1,
+            verbose=False
+        )
+
+
 
 # Function to read and format prompts
 def read_and_format_prompt(file_name, data, agent_type, task_name, syntax_type):
