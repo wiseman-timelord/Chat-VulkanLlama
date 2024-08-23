@@ -2,6 +2,7 @@
 - Working Last time release version was investigated. Development is underway...
 1. optimization and correction through claude (original made in gpt4).
 2. Improvement of batch script code using techniques and code learned.
+3. Merge scripts so as to have max 5 scripts, to be compatible with claude.
 3. creation of gradio interfaces, for chat and engine windows. Engine window (Window_1) should have gradio interface, where the window should be displaying the normal engine printed text output in a text box, the second tab should be top half is configuration of model parameters and model name etc, all maintained in globals with a reset button to save the globals to the json and restart with a re-load of the model into ram with the new parameters. Chat Window (Window_2) also with gradio interface, should be the main chat interface, and on page 2 the roleplay configuration, player name npc name etc, and when settings are changed there then it will just be using those settings in the globals, for when the user next submits their response with the submit button on the chat interface. 
 
 ### DESCRIPTION:
