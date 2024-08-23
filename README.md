@@ -3,11 +3,11 @@
 
 # CURRENTLY:
 Development is underway...
-2. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
-3. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
-4. Furthere Review and Improvement of batch script code using techniques and code learned.
-5. the installer should allow the options of, opencl, cuda, vulkan, for processing. downloads library, and installs in ".\libraries\llama.cpp". user will have to run installer again to use a diff library, and it will wipe the ".\libraries\llama.cpp" folder, and download the new version to ".\cache", then extract it directly into ".\libraries\llama.cpp".
-6. if we can obtain the gpu load, then testing period in installer, press enter to begin test; count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for , know correct  
+1. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
+2. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
+3. Furthere Review and Improvement of batch script code using techniques and code learned.
+4. the installer should allow the options of, opencl, cuda, vulkan, for processing. downloads library, and installs in ".\libraries\llama.cpp". user will have to run installer again to use a diff library, and it will wipe the ".\libraries\llama.cpp" folder, and download the new version to ".\cache", then extract it directly into ".\libraries\llama.cpp".
+5. if we can obtain the gpu load, then testing period in installer, press enter to begin test; count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for , know correct  
 - Possiblework or bridge too far...
 1. creation of gradio interfaces, for chat and engine windows. Engine window (Window_1) should have gradio interface, where the window should be displaying the normal engine printed text output in a text box, the second tab should be top half is configuration of model parameters and model name etc, all maintained in globals with a reset button to save the globals to the json and restart with a re-load of the model into ram with the new parameters. Chat Window (Window_2) also with gradio interface, should be the main chat interface, and on page 2 the roleplay configuration, player name npc name etc, and when settings are changed there then it will just be using those settings in the globals, for when the user next submits their response with the submit button on the chat interface. 
 
