@@ -3,7 +3,6 @@
 
 # CURRENTLY:
 Development is underway...
-1. Models do not mention the context length in the name of the file anymore. one way to do it, try 8k, if that dont work then try 4k. For model type, look for "Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2", in filename, and use format appropriate for relevantly "Llama 2", "Llama 3", "Qwen 1", "Qwen 2", it should be non-case-sensitive search. would that work?
 2. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
 3. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
 4. Furthere Review and Improvement of batch script code using techniques and code learned.
