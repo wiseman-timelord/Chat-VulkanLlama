@@ -3,7 +3,7 @@
 
 # CURRENTLY:
 Development is underway...
-1. Optional ".\data\temporary.py", for all globals from all scrits to be only there, all scripts then access temporary for their globals. also we would be moving/renaming ".\config.yaml" to ".\data\persistent.yaml". To elimintate import issues, and I like it like that, though this would probably require update to installer, to ensure that default settings are correct.
+1. ".\data\params\temporary.py", for all globals from all scrits to be only there, all scripts then access temporary for their globals. To elimintate import issues. though this would probably require update to installer, to ensure that default settings are correct.
 2. Models do not mention the context length in the name of the file anymore. one way to do it, try 8k, if that dont work then try 4k. For model type, look for "Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2", in filename, and use format appropriate for relevantly "Llama 2", "Llama 3", "Qwen 1", "Qwen 2", it should be non-case-sensitive search. would that work?
 3. optimization and correction of py code through claude, fix all the recent work, ensure everything is logical and sound.
 4. Limit sounds to 2 files, 1 after when model is loaded, 2 after new response is displayed.
