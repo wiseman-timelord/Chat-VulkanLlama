@@ -3,23 +3,47 @@ setlocal enabledelayedexpansion
 cls
 
 :: Set the filename to download
-set "llamaVulkanZip=llama-b3617-bin-win-vulkan-x64.zip"
-set "downloadUrl=https://github.com/ggerganov/llama.cpp/releases/download/b3617/%llamaVulkanZip%"
+set "llamaVulkanVersion=llama-b3617-bin-win-vulkan-x64"
+set "downloadUrl=https://github.com/ggerganov/llama.cpp/releases/download/b3617/%llamaVulkanVersion%"
 
 :: Check for admin privileges
 net session >nul 2>&1
 if %errorLevel% neq 0 (
     echo This script requires administrative privileges.
     echo Please run this script as an administrator.
-    timeout /t 5
+    timeout /t 5 >nul
     goto :error
 )
 echo Running with Admin rights.
 
-:: Script Working Directory
+:: Working Fodler Fix After Admin
 set "ScriptDirectory=%~dp0"
 set "ScriptDirectory=%ScriptDirectory:~0,-1%"
 pushd "%ScriptDirectory%"
+
+:: Find Python 3.9 and pip
+set "PIP_EXE_TO_USE="
+set "PYTHON_EXE_TO_USE="
+set "PYTHON_FOLDER_TO_USE="
+for %%I in (
+    "C:\Python39\python.exe"
+    "C:\Program Files\Python39\"
+    "C:\Program Files (x86)\Python39\"
+    "%LocalAppData%\Programs\Python\Python39\"
+) do (
+    if exist "%%~I" (
+        set "PYTHON_FOLDER_TO_USE=%%~I"
+        set "PYTHON_EXE_TO_USE=%%~dpI\python.exe"
+        set "PIP_EXE_TO_USE=%%~dpI\Scripts\pip.exe"
+        goto :found_python311
+    )
+)
+:found_python311
+if not defined PYTHON_EXE_TO_USE (
+    echo Error: Python 3.11 not found. Please ensure it is installed.
+    timeout /t 5 >nul
+    goto :error
+)
 
 :: Custom Banner
 echo *******************************************************************************************************************
@@ -31,13 +55,13 @@ echo.
 
 :: Create Directories
 timeout /t 1
-echo Checking ".\libraries"...
-if not exist ".\libraries" (
-    echo ".\libraries" not found.
-    mkdir ".\libraries"
-    echo ".\libraries" created.
+echo Checking ".\data\libraries"...
+if not exist ".\data\libraries" (
+    echo ".\data\libraries" not found.
+    mkdir ".\data\libraries"
+    echo ".\data\libraries" created.
 ) else (
-    echo ".\libraries" exists.
+    echo ".\data\libraries" exists.
 )
 echo Checking for ".\data\cache"...
 if not exist ".\data\cache" (
@@ -47,7 +71,6 @@ if not exist ".\data\cache" (
 ) else (
     echo ".\data\cache" exists.
 )
-timeout /t 1
 echo Checking ".\models"...
 if not exist ".\models" (
     echo ".\models" not found.
@@ -56,17 +79,25 @@ if not exist ".\models" (
 ) else (
     echo ".\models" exists.
 )
-timeout /t 1
+timeout /t 1 >nul
 echo.
+
+:: Folder Maintenance
+if exist ".\data\libraries\*.*" (
+    echo Emptying .\data\libraries
+    del /s /q ".\data\libraries\*.*"
+	echo Emptied: .\data\libraries
+) 
+timeout /t 1 <nul
 
 :: Install Requirements
 echo Installing Pip Requirements...
-pip install -r ./data/requires/requirements.txt
+"%PIP_EXE_TO_USE%" install -r ./data/requirements.txt
 echo Requirements install finished.
 timeout /t 2
 
 :: Check if the file exists in the cache
-set "cachedFilePath=.\data\cache\%llamaVulkanZip%"
+set "cachedFilePath=.\data\cache\%llamaVulkanVersion%.zip"
 if exist "%cachedFilePath%" (
     echo Cached file found. Continuing.
 ) else (
@@ -77,7 +108,7 @@ if %errorlevel% neq 0 (
     echo Failed to download Llama Vulkan Binary.
     goto :error
 )
-timeout /t 2
+timeout /t 2 >nul
 
 :: Locate 7-Zip
 echo Locating 7-Zip...
@@ -93,33 +124,27 @@ if not defined sevenZipPath (
 ) else (
     echo 7-Zip found at "%sevenZipPath%".
 )
-timeout /t 2
+timeout /t 2 >nul
 
 :: Extract Llama Vulkan Binary
-if exist ".\libraries\*.*" (
-    echo Emptying .\libraries
-    del /s /q ".\libraries\*.*"
-	echo Emptied: .\libraries
-) 
-timeout /t 1
-echo Extracting Llama Vulkan Binary to ".\libraries"...
-"%sevenZipPath%" x "%cachedFilePath%" -o".\libraries" -mmt4 -y
+echo Extracting Llama Vulkan Binary to ".\data\libraries\LlamaCpp_Binaries"...
+"%sevenZipPath%" x "%cachedFilePath%" -o".\data\libraries\LlamaCpp_Binaries" -mmt4 -y
 if %errorlevel% neq 0 (
     echo Failed to extract Llama Vulkan Binary.
     goto :error
 )
-timeout /t 2
+timeout /t 2 >nul
 
 :: Installer Complete
 goto :end
 
 :error
-echo An error occurred during installation.
+echo An Error Occurred, Analyze Output For Clues.
 pause
 exit /b 1
 
 :end
 echo.
-echo Installation Processes Completed.
-timeout /t 2
+echo Installation Processes Completed Normally.
+pause
 exit /b 0
