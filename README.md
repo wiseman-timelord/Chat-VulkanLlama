@@ -44,17 +44,14 @@
 4) "Tell me, Wise-Llama, what is the purpose of humanity?"
 
 ### REQUIREMENTS:
-- Windows 7-11, I am guessing, , experimental llama-cpp-python (for GGUF).
+- Windows 8-11 - The official Python 3.9 wont run on earlier versions of windows, but the batches will. Though if need be, then earlier versions of python can be installed/used see below.
 - Python 3.9 non-Wsl (libraries `./data/requirements.txt`). Want to try other versions, then change "Python39" in the batch files to say "Python310", or whatever, in all cases. It will find it unless its in a wierd location.
-- Large Language Models in Llama 3 GGUF format, I advise "L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix", 8B is probably Optimal, the better q3s and most q4s, will be able to handle the text processing.
+- Large Language Models in Llama 3 GGUF format, I advise "L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix", 8B is probably Optimal, the better q3s and most q4s, will be able to handle the text processing prompts.
 
 ### FUTURE PLANS:
-1) Allow user to assign syntax presets to models.
-2) Implement AI-generated theme prompts.
-3) Explore integrating stable diffusion models for AI-generated maps and scenarios.
-
-### WARNINGS:
-- Experimental llama-cpp-python might break GGML support—use caution or backups.
+1) Allow user to assign syntax presets to models (ah thats what the maps are for!).
+2) Implement AI-generated theme prompts, to generate the rp aspects, such as random meetings, etc.
+3) Explore integrating stable diffusion models for AI-generated maps and scenarios, there are some in gguf. If maps were able to be generated, and the user types in the name of the place to go, then little else need be done other than 
 
 ## DISCLAIMER:
 - Refer to License.Txt for terms covering usage, distribution, and modifications.
