@@ -4,7 +4,8 @@
 # CURRENT STATUS: Development... 
 - Test and fix scipts.
 - Explore GPU load testing: if we can obtain the gpu load, then testing period in installer, count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for threads, to then leave a 10% buffer of give and take in the theoretical free threads.
-- Develop Gradio interfaces for both chat and engine windows, with configuration and roleplay settings.
+- creation of gradio interfaces, for chat and engine windows. Engine window (Window_1) should have gradio interface, where the window should be displaying the normal engine printed text output in a text box, the second tab should be top half is configuration of model parameters and model name etc, all maintained in globals with a reset button to save the globals to the json and restart with a re-load of the model into ram with the new parameters. Chat Window (Window_2) also with gradio interface, should be the main chat interface, and on page 2 the roleplay configuration, player name npc name etc, and when settings are changed there then it will just be using those settings when the user next submits their response with the submit button on the chat interface. 
+- Allow user to assign syntax presets to models (ah thats what the maps are for!).
 
 ### DESCRIPTION:
 - Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Now Compatible with Windows Only, but it also does not require WSL anymore either, and its got vulkan, AND it uses my new flashy batch code to detect where, 7-Zip and Python and Pip, are installed. If I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
@@ -50,7 +51,6 @@
 - Large Language Models in Llama 3 GGUF format, I advise "L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix", 8B is probably Optimal, the better q3s and most q4s, will be able to handle the text processing prompts.
 
 ### FUTURE PLANS:
-1) Allow user to assign syntax presets to models (ah thats what the maps are for!).
 2) Implement AI-generated theme prompts, to generate the rp aspects, such as random meetings, etc.
 3) Explore integrating stable diffusion models for AI-generated maps and scenarios, there are some in gguf. If maps were able to be generated, and the user types in the name of the place to go, then little else need be done other than 
 
