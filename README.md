@@ -6,7 +6,7 @@
 - Develop Gradio interfaces for both chat and engine windows, with configuration and roleplay settings.
 
 ### DESCRIPTION:
-- Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Now Compatible with Windows Only, but it also does not require WSL anymore either, and its got vulkan. If I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
+- Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Now Compatible with Windows Only, but it also does not require WSL anymore either, and its got vulkan, AND it uses my new flashy batch code to detect where, 7-Zip and Python and Pip, are installed. If I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
 
 ### FEATURES:
 - Optimized code, 5 main scripts, creation of required folders.
@@ -44,9 +44,9 @@
 4) "Tell me, Wise-Llama, what is the purpose of humanity?"
 
 ### REQUIREMENTS:
-- Windows with WSL or Linux (untested), experimental llama-cpp-python (for GGUF).
-- Python 3.x, relevant libraries in `./data/req_wsl.txt` and `./data/req_win.txt`.
-- Large Language Models in Llama 2 GGUF format (2B-70B parameters).
+- Windows 7-11, I am guessing, , experimental llama-cpp-python (for GGUF).
+- Python 3.9 non-Wsl (libraries `./data/requirements.txt`). Want to try other versions, then change "Python39" in the batch files to say "Python310", or whatever, in all cases. It will find it unless its in a wierd location.
+- Large Language Models in Llama 3 GGUF format, I advise "L3-8B-Stheno-v3.2-GGUF-IQ-Imatrix", 8B is probably Optimal, the better q3s and most q4s, will be able to handle the text processing.
 
 ### FUTURE PLANS:
 1) Allow user to assign syntax presets to models.
