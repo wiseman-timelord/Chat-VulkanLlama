@@ -7,18 +7,15 @@ import os
 import time
 import platform
 import random
+import psutil
 from window_1 import rotation_counter
 from functools import lru_cache
 
 # function
 def calculate_optimal_threads():
-    total_threads = os.cpu_count()
-    print(f" Optimizing for {platform.processor()}-T{total_threads}...")
+    total_threads = psutil.cpu_count(logical=False)
     threads_to_use = max(1, total_threads - min(4, total_threads // 4))
-    print(f" ...using {threads_to_use} out of {total_threads} threads.")
     return threads_to_use
-
-
 
 # List available models
 def list_available_models():

@@ -1,29 +1,30 @@
 # window2.py
 
-# Imports
 from watchdog.observers import Observer
-from watchdog.observers.polling import PollingObserver
 from watchdog.events import FileSystemEventHandler
-import sounddevice as sd
 import yaml
 import time
 import os
 import sys
 import argparse
-import platform
 import pyttsx3
 import wavio
+import sounddevice as sd
+import ctypes
 
-# Detect OS and set window size and title accordingly
-sys.stdout.write(WINDOW_TITLE_2)
-sys.stdout.flush()
-os.system(WINDOW_SIZE)
+# Set window title for Windows
+ctypes.windll.kernel32.SetConsoleTitleW("Chat-VulkanLlama-Window2")
 
-# Class
+# Constants (these should be moved to a separate config file or temporary.py)
+TTS_RATE = 150
+TTS_VOLUME = 0.7
+TTS_VOICE_ID = 0
+SOUND_DIRECTORY = "./data/sounds"
+
 class Watcher:
     DIRECTORY_TO_WATCH = "./data/params"
     def __init__(self):
-        self.observer = PollingObserver()
+        self.observer = Observer()
     def run(self):
         event_handler = Handler()
         self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
@@ -36,13 +37,12 @@ class Watcher:
             print("Observer stopped")
         self.observer.join()
 
-# Class
 class Handler(FileSystemEventHandler):
     @staticmethod
     def process(event):
-        global last_session_history, last_sound_event  # Use globals from temporary.py
+        global last_session_history, last_sound_event
         should_update_display = False  
-        if event.src_path.endswith('config.yaml'):
+        if event.src_path.endswith('persistent.yaml'):
             data = read_yaml()
             current_sound_event = data.get('sound_event', '')
             if current_sound_event != last_sound_event:
@@ -61,12 +61,11 @@ class Handler(FileSystemEventHandler):
                 time.sleep(1)
                 fancy_delay(3)
                 display_interface()
-                if args.tts and os_name == 'Windows':  
+                if args.tts:
                     speak_text(current_session_history)
     def on_modified(self, event):
         self.process(event)
 
-# Fancy loading bar
 def fancy_delay(duration, message=" Loading..."):
     step = duration / 100
     sys.stdout.write(f"{message} [")
@@ -77,30 +76,27 @@ def fancy_delay(duration, message=" Loading..."):
     sys.stdout.write("] Complete.\n")
     time.sleep(1)
 
-# Read the config.yaml        
 def read_yaml(file_path='./data/params/persistent.yaml'):
     try:
         with open(file_path, 'r') as file:
             return yaml.safe_load(file)
     except FileNotFoundError:
-        print("Error: config.yaml not found.")
+        print("Error: persistent.yaml not found.")
         return None
     except Exception as e:
-        print(f"An error occurred while reading config.yaml: {e}")
+        print(f"An error occurred while reading persistent.yaml: {e}")
         return None
 
-# Text-to-Speech Function
 def speak_text(text):
-    global tts_counter  # Use global from temporary.py
+    global tts_counter
     tts_counter += 1
     if not args.tts or tts_counter <= 1:
         return
-    if os_name == 'Windows':
-        engine = pyttsx3.init()
-        engine.setProperty('rate', TTS_RATE)
-        engine.setProperty('volume', TTS_VOLUME)
-        voices = engine.getProperty('voices')
-        engine.setProperty('voice', voices[TTS_VOICE_ID].id)
+    engine = pyttsx3.init()
+    engine.setProperty('rate', TTS_RATE)
+    engine.setProperty('volume', TTS_VOLUME)
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[TTS_VOICE_ID].id)
         engine.say(text)
         engine.runAndWait()
     elif os_name == 'Linux':

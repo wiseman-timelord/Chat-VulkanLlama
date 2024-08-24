@@ -3,65 +3,32 @@
 # imports
 from scripts import utility
 from llama_cpp import Llama
-import os
-import time
-import re
-
-# determine model for task
-def determine_agent_type_for_task(task_name, loaded_models):
-    available_models = TASK_agent_MAPPING.get(task_name, ['chat'])
-    for agent_type in available_models:
-        if agent_type in loaded_models:
-            return agent_type
-    return 'chat' 
-
-def determine_model_type(filename):
-    model_types = ["Llama 2", "Llama2", "Llama 3", "Llama3", "Qwen1", "Qwen 1", "Qwen2", "Qwen 2"]
-    for model_type in model_types:
-        if re.search(model_type, filename, re.IGNORECASE):
-            return model_type.replace(" ", "")
-    return None
-
-selected_model_type = determine_model_type(selected_model_filename)
-if selected_model_type:
-    print(f"Selected model type based on filename: {selected_model_type}")
-else:
-    print("Model type not recognized, using default settings.")
-
+import os, import time, import re
 
 # initialize the model
-def initialize_model(selected_model_path, optimal_threads, agent_type='chat'):
-    global llm  # Use global from temporary.py
-    context_key = '8k'
-    try:
-        context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 8192)
-        print(f"\n Loading {agent_type} model with 8k context length, be patient...")
-        llm = Llama(
-            model_path=selected_model_path,
-            n_ctx=context_length,
-            embedding=True,
-            n_threads=optimal_threads,
-            n_gpu_layers=-1,  # Use all available GPU layers
-            verbose=False
-        )
-    except SomeSpecificException as e:
-        print(f"8k context failed due to {e}, falling back to 4k...")
-        context_key = '4k'
-        context_length = CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096)
-        llm = Llama(
-            model_path=selected_model_path,
-            n_ctx=context_length,
-            embedding=True,
-            n_threads=optimal_threads,
-            n_gpu_layers=-1,
-            verbose=False
-        )
+def initialize_model(selected_model_path, optimal_threads):
+    global model_path, n_threads
+    model_path = selected_model_path
+    n_threads = optimal_threads
+    print(f"\n Model initialized with {n_threads} threads.")
 
-
+def run_llama_cli(prompt, max_tokens, temperature):
+    cmd = [
+        LLAMA_CLI_PATH,
+        "-m", model_path,
+        "-p", prompt,
+        "--temp", str(temperature),
+        "-n", str(max_tokens),
+        "-t", str(n_threads),
+        "--ctx_size", "2048",
+        "-ngl", "1"
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.stdout
 
 # Function to read and format prompts
-def read_and_format_prompt(file_name, data, agent_type, task_name, syntax_type):
-    syntax_type = utility.read_yaml().get(f'syntax_type_{1 if agent_type == "chat" else 2}', "{combined_input}")
+def read_and_format_prompt(file_name, data, task_name, syntax_type):
+    syntax_type = utility.read_yaml().get(f'syntax_type_1', "{combined_input}")  # Always use chat syntax
     try:
         with open(file_name, "r") as file:
             lines = file.readlines()
@@ -132,35 +99,37 @@ def parse_agent_response(raw_agent_response, data):
     cleaned_response = re.sub(rf'^### {agent_name}\n', '', cleaned_response, flags=re.MULTILINE)
     return cleaned_response
 
-def prompt_response(task_name, rotation_counter, enable_logging=False, save_to=None):
+def prompt_response(task_name, rotation_counter, enable_logging=False, save_to=None, loaded_models=None, agent_type=None):
     print("\n Reading YAML data...")
     data = utility.read_yaml()
     if data is None:
         return {"error": "Could not read config file."}
-    if task_name not in VALID_TASKS:
-        return {"error": f"Invalid task name. Valid tasks are {', '.join(VALID_TASKS)}."}
 
     print(f" Task type is {task_name}.")
     prompt_file = f"./data/prompts/{task_name}.txt"
-    syntax_key = 'syntax_type_1'  # Always use chat syntax
-    formatted_prompt = read_and_format_prompt(prompt_file, data, 'chat', task_name, data[syntax_key])
+    formatted_prompt = read_and_format_prompt(prompt_file, data, task_name)
     print(f" Checking for {os.path.basename(prompt_file)}...")
     if not os.path.exists(prompt_file):
         return {"error": f"Prompt file {prompt_file} not found."}
     if formatted_prompt is None:
         return {"error": "Failed to read or format the prompt."}
-    print(" Using chat format...")
-    print(" Prompt sent to chat model...\n")
-    max_tokens_for_task = PROMPT_TO_MAXTOKENS.get(task_name, 100)
-    raw_agent_response = llm(formatted_prompt, stop=["Q:", "### Human:", "### User:"], echo=False, temperature=agent_TYPE_TO_TEMPERATURE['chat'], max_tokens=max_tokens_for_task)["choices"][0]["text"]
+    print(" Prompt sent to model...\n")
+
+    temperature = 0.7 if task_name in ['consolidate', 'emotions'] else 0.9
+    max_tokens = 100 if task_name in ['consolidate', 'emotions'] else 2000
+
+    raw_agent_response = run_llama_cli(formatted_prompt, max_tokens, temperature)
+
     if enable_logging:
-        log_entry_name = f"{task_name}_chat"
+        log_entry_name = f"{task_name}_response"
         log_message(formatted_prompt, 'input', log_entry_name, "event " + str(rotation_counter), enable_logging)
         log_message(raw_agent_response, 'output', log_entry_name, "event " + str(rotation_counter), enable_logging)
+
     parsed_response = parse_agent_response(raw_agent_response, data)
     if save_to:
         utility.write_to_yaml(save_to, parsed_response)
         print(" ...Saved parsed response.")
+
     new_session_history = None
     new_emotion = None
     if task_name == 'consolidate':
@@ -173,6 +142,7 @@ def prompt_response(task_name, rotation_counter, enable_logging=False, save_to=N
         found_emotions = [word for word in emotion_keywords if re.search(rf"\b{word}\b", parsed_response, re.IGNORECASE)]  
         new_emotion = ", ".join(found_emotions)
         utility.write_to_yaml('agent_emotion', new_emotion)
+
     print(" Returning response...")  
     return {
         'agent_response': parsed_response,

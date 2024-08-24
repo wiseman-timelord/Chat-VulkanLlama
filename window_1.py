@@ -1,14 +1,13 @@
+import subprocess
 from scripts import interface, model as agent_module, utility
 import time
 import argparse
 import sys
 import os
-import readline
+import ctypes
 
-# Set window title and size for Linux
-sys.stdout.write("\x1b]2;LlmCppPsBot-Window1\x07")
-sys.stdout.flush()
-os.system('echo -e "\e[8;45;90t"')
+# Set window title for Windows
+ctypes.windll.kernel32.SetConsoleTitleW("Chat-VulkanLlama-Window1")
 
 # Handle 'reset' input
 def handle_reset():
@@ -44,7 +43,7 @@ def handle_quit():
 
 # Handle 'other' input
 def handle_other(user_input):
-    global rotation_counter, loaded_models  # Use globals from temporary.py
+    global rotation_counter, loaded_models
     data = utility.read_yaml()
     human_name, agent_name = data.get('human_name'), data.get('agent_name')
     agent_role, agent_emotion, scenario_location = (data.get('agent_role'), data.get('agent_emotion'), 
@@ -83,39 +82,33 @@ def handle_other(user_input):
     utility.shift_responses()
     print(" ...Key Display window updated.\n")
 
-# Main function
+# Main function adjustments:
 def main():
-    global rotation_counter, loaded_models  # Use globals from temporary.py
+    global rotation_counter, loaded_models
     try:
-        optimal_threads = interface.display_intro_screen()
+        optimal_threads = utility.calculate_optimal_threads()
         time.sleep(1)
         utility.reset_keys_to_empty()
-        selected_models = interface.display_model_selection()
-        if not selected_models:
+        selected_model = interface.display_model_selection()
+        if not selected_model:
             print("No Models, Exiting!")
             return
-        model = selected_models.get('model_path')
-        context_key = selected_models.get('context_length')
-        if model:
-            agent_module.initialize_model(model, optimal_threads, agent_type='chat', context_key=context_key)
-            loaded_models['chat'] = model
-            utility.write_to_yaml('model_path', model)
-            utility.write_to_yaml('context_length', CONTEXT_LENGTH_MAP['chat'].get(context_key, 4096))
+        model_path = selected_model.get('model_path')
+        if model_path:
+            agent_module.initialize_model(model_path, optimal_threads)
+            loaded_models['chat'] = model_path
+            utility.write_to_yaml('model_path', model_path)
 
         data = utility.read_yaml()
-        human_name, agent_name = data.get('human_name'), data.get('agent_name')
-        agent_role, agent_emotion = data.get('agent_role'), data.get('agent_emotion')
-        scenario_location, session_history = data.get('scenario_location'), data.get('session_history')
         rotation_counter = 0
         while True:
             interface.display_engine()  
-            user_input = input(f" Enter your message to {agent_name} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
+            user_input = input(f" Enter your message to {data['agent_name']} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
             if user_input == 'reset':
                 handle_reset()
             elif user_input == 'quit':
                 handle_quit()
             else:
-                readline.add_history(user_input)
                 utility.write_to_yaml('human_input', user_input)
                 handle_other(user_input)
             rotation_counter = (rotation_counter + 1) % 4
@@ -123,7 +116,7 @@ def main():
         print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    main()
-
-if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Chat-VulkanLlama")
+    parser.add_argument("--logs", action="store_true", help="Enable logging")
+    args = parser.parse_args()
     main()

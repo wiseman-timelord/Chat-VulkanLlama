@@ -8,50 +8,23 @@ import sys
 import glob
 import re
 
-# Global Variables
-selected = None
-
-# Dictionaries
-SYNTAX_OPTIONS_DISPLAY = [
-    "{combined_input}",
-    "User: {combined_input}",
-    "User:\\n{combined_input}",
-    "### Human: {combined_input}",
-    "### Human:\\n{combined_input}",
-    "### Instruction: {combined_input}",
-    "### Instruction:\\n{combined_input}",
-    "{system_input}. USER: {instruct_input}",
-    "{system_input}\\nUser: {instruct_input}"
-]
-SYNTAX_OPTIONS = [
-    "{combined_input}",
-    "User: {combined_input}",
-    "User:\n{combined_input}",
-    "### Human: {combined_input}",
-    "### Human:\n{combined_input}",
-    "### Instruction: {combined_input}",
-    "### Instruction:\n{combined_input}",
-    "{system_input}. USER: {instruct_input}",
-    "{system_input}\nUser: {instruct_input}"
-]
-
-
 # Function
-def fancy_delay(duration, message="=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\n Loading..."):
+def fancy_delay(duration, message=" Loading..."):
     step = duration / 60
     sys.stdout.write(f"{message} [")
-    for _ in range(64):
+    bar_length = 50
+    for _ in range(bar_length):
         time.sleep(step)
         sys.stdout.write("=")
         sys.stdout.flush()
     sys.stdout.write("] Complete.\n")
-    time.sleep(2)
+    time.sleep(1)
 
 # function
 def display_intro_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("=" * 90)
-    print("                                Welcome To LlmCppPsBot!")
+    print("                                Welcome To Chat-VulkanLlama!")
     print("=" * 90)
     utility.trigger_sound_event("startup_process")
     print("=-" * 45)    
@@ -62,68 +35,84 @@ def display_intro_screen():
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
 
-# Model/Syntax Selection
+# In interface.py - display_model_selection function
 def display_model_selection():
     def display_syntax_selection():
-        print("\n Available syntax options...")
-        for i, syntax_option in enumerate(SYNTAX_OPTIONS_DISPLAY):
-            print(f" {i+1}. {syntax_option}")
-        selected = int(input(" Select a syntax option by entering its number: ")) - 1
-        return SYNTAX_OPTIONS[selected]
+        try:
+            print("\n Available syntax options...")
+            for i, syntax_option in enumerate(SYNTAX_OPTIONS_DISPLAY):
+                print(f" {i+1}. {syntax_option}")
+            selected = int(input(" Select a syntax option by entering its number: ")) - 1
+            if selected not in range(len(SYNTAX_OPTIONS)):
+                raise ValueError("Invalid syntax option selected.")
+            return SYNTAX_OPTIONS[selected]
+        except ValueError as e:
+            print(f"Error: {e}")
+            return None
 
-    fancy_delay(5)
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print("=" * 90)
-    print("                                     MODEL CONFIGURATION")
-    print("=" * 90, "=-" * 44)    
-    print(" Model Setup Processes:")
-    print("-" * 90)    
-    print("\n Searching For Models...")
-    
-    available_models_dict = utility.list_available_models()
-    chat_models = available_models_dict.get('chat', [])
-    instruct_models = available_models_dict.get('instruct', [])
-    
-    agent_files = glob.glob("./models/*.bin")
-    unknown_models = [f for f in agent_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
-    new_chat_models, new_instruct_models = utility.identify_unknown_models(unknown_models)
-    chat_models.extend(new_chat_models)
-    instruct_models.extend(new_instruct_models)
-
-    selected_models = {}
-    for agent_type, models in {'chat': chat_models, 'instruct': instruct_models}.items():
-        if len(models) == 1:
-            selected_models[agent_type] = models[0]
-        elif len(models) > 1:
-            print(f"\nAvailable {agent_type} models:")
-            for i, model in enumerate(models):
-                print(f"{i+1}. {os.path.basename(model)}")
-            selected = input(f"Select a {agent_type} model by entering its number: ")
-            selected_models[agent_type] = models[int(selected) - 1]
+    try:
+        fancy_delay(5)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("=" * 90)
+        print("                                     MODEL CONFIGURATION")
+        print("=" * 90, "=-" * 44)    
+        print(" Model Setup Processes:")
+        print("-" * 90)    
+        print("\n Searching For Models...")
         
-        if agent_type in selected_models:
-            agent_name = os.path.basename(selected_models[agent_type])
-            context_key = utility.extract_context_key_from_model_name(agent_name)
-            if context_key:
-                selected_models[agent_type + '_context'] = context_key
+        available_models_dict = utility.list_available_models()
+        chat_models = available_models_dict.get('chat', [])
+        instruct_models = available_models_dict.get('instruct', [])
+        
+        agent_files = glob.glob("./models/*.bin")
+        unknown_models = [f for f in agent_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
+        new_chat_models, new_instruct_models = utility.identify_unknown_models(unknown_models)
+        chat_models.extend(new_chat_models)
+        instruct_models.extend(new_instruct_models)
 
-    for agent_type, idx in [('chat', 1), ('instruct', 2)]:
-        if agent_type in selected_models:
-            agent_name = os.path.basename(selected_models[agent_type])
-            context_key = selected_models.get(agent_type + '_context', '4k')
-            print(f" {agent_type.capitalize()} model is {agent_name} - CTX {context_key}")
-            utility.trigger_sound_event("agent_used")
-            selected_syntax = display_syntax_selection()
-            utility.write_to_yaml(f'syntax_type_{idx}', selected_syntax)
-            utility.write_to_yaml(f'model_path_{idx}', selected_models.get(agent_type))
-            utility.write_to_yaml(f'context_length_{idx}', CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096))
-    
-    if not chat_models:
-        print("No chat model, exiting!")
-        exit()
-    if not instruct_models:
-        print(" No Instruct model, chat-only!")
-    return selected_models if selected_models else None
+        if not chat_models and not instruct_models:
+            print("No models found, exiting!")
+            exit()
+
+        selected_models = {}
+        for agent_type, models in {'chat': chat_models, 'instruct': instruct_models}.items():
+            if len(models) == 1:
+                selected_models[agent_type] = models[0]
+            elif len(models) > 1:
+                print(f"\nAvailable {agent_type} models:")
+                for i, model in enumerate(models):
+                    print(f"{i+1}. {os.path.basename(model)}")
+                selected = input(f"Select a {agent_type} model by entering its number: ")
+                if selected.isdigit() and 0 < int(selected) <= len(models):
+                    selected_models[agent_type] = models[int(selected) - 1]
+                else:
+                    print(f"Invalid selection for {agent_type}.")
+                    return None
+            
+            if agent_type in selected_models:
+                agent_name = os.path.basename(selected_models[agent_type])
+                context_key = utility.extract_context_key_from_model_name(agent_name)
+                if context_key:
+                    selected_models[agent_type + '_context'] = context_key
+
+        if not selected_models:
+            print("No models were selected, exiting!")
+            exit()
+
+        for agent_type, idx in [('chat', 1), ('instruct', 2)]:
+            if agent_type in selected_models:
+                agent_name = os.path.basename(selected_models[agent_type])
+                context_key = selected_models.get(agent_type + '_context', '4k')
+                print(f" {agent_type.capitalize()} model is {agent_name} - CTX {context_key}")
+                utility.trigger_sound_event("agent_used")
+                selected_syntax = display_syntax_selection()
+                if selected_syntax:
+                    utility.write_to_yaml(f'syntax_type_{idx}', selected_syntax)
+                    utility.write_to_yaml(f'model_path_{idx}', selected_models.get(agent_type))
+                    utility.write_to_yaml(f'context_length_{idx}', CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096))
+    except Exception as e:
+        print(f"An error occurred during model selection: {e}")
+        return None
 
 
 # Roleplay Configuration Display
