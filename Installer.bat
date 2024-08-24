@@ -54,7 +54,7 @@ echo Working Dir: %ScriptDirectory%
 echo.
 
 :: Create Directories
-timeout /t 1
+timeout /t 1 >nul
 echo Checking ".\data\libraries"...
 if not exist ".\data\libraries" (
     echo ".\data\libraries" not found.
@@ -94,7 +94,7 @@ timeout /t 1 <nul
 echo Installing Pip Requirements...
 "%PIP_EXE_TO_USE%" install -r ./data/requirements.txt
 echo Requirements install finished.
-timeout /t 2
+timeout /t 2 >nul
 
 :: Check if the file exists in the cache
 set "cachedFilePath=.\data\cache\%llamaVulkanVersion%.zip"
@@ -102,13 +102,14 @@ if exist "%cachedFilePath%" (
     echo Cached file found. Continuing.
 ) else (
     echo Downloading Llama Vulkan Binary...
-    powershell -Command "Invoke-WebRequest -Uri '%downloadUrl%' -OutFile '%cachedFilePath%'"
+    powershell -Command "Invoke-WebRequest -Uri \"%downloadUrl%.zip\" -OutFile \"%cachedFilePath%\""
 )
+timeout /t 2 >nul
 if %errorlevel% neq 0 (
     echo Failed to download Llama Vulkan Binary.
     goto :error
 )
-timeout /t 2 >nul
+timeout /t 1 >nul
 
 :: Locate 7-Zip
 echo Locating 7-Zip...
