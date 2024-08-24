@@ -1,10 +1,9 @@
 # Chat-VulkanLlama
 - Release version available (non-Vulkan). 
 
-# CURRENT STATUS:
-- **Development:** 
-  - Explore GPU load testing: if we can obtain the gpu load, then testing period in installer, count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for threads, to then leave a 10% buffer of give and take in the theoretical free threads.
- - Develop Gradio interfaces for both chat and engine windows, with configuration and roleplay settings.
+# CURRENT STATUS: Development... 
+- Explore GPU load testing: if we can obtain the gpu load, then testing period in installer, count how many threads available, determine the average cpu use over 5 seconds, utilize a percent of the processor in threads, that represents the amount of % cpu load free, and subtract 10% from that, so as to have the average amount of cpu free over the 5 second period, minus 10%, so as for at a result of 20% cpu usage and 10 threads, then the script would calculate this to be 70% or 7/10 threads to use for threads, to then leave a 10% buffer of give and take in the theoretical free threads.
+- Develop Gradio interfaces for both chat and engine windows, with configuration and roleplay settings.
 
 ### DESCRIPTION:
 - Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Compatible with Windows Only, if I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
