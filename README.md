@@ -6,7 +6,7 @@
 - Develop Gradio interfaces for both chat and engine windows, with configuration and roleplay settings.
 
 ### DESCRIPTION:
-- Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Compatible with Windows Only, if I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
+- Enhancing my Llama-based Python chatbot. Currently the plan is llama-cpp-vulkan pre-compiled binaries for context-aware conversations, building upon my previous Llama2 RP Chatbot. Now Compatible with Windows Only, but it also does not require WSL anymore either, and its got vulkan. If I didnt drop linux to streamline, I would not even be able to consider a gradio interface, that is coming next hopefully.
 
 ### FEATURES:
 - Optimized code, 5 main scripts, creation of required folders.
