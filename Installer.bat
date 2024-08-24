@@ -35,12 +35,12 @@ for %%I in (
         set "PYTHON_FOLDER_TO_USE=%%~I"
         set "PYTHON_EXE_TO_USE=%%~dpI\python.exe"
         set "PIP_EXE_TO_USE=%%~dpI\Scripts\pip.exe"
-        goto :found_python311
+        goto :found_python39
     )
 )
-:found_python311
+:found_python39
 if not defined PYTHON_EXE_TO_USE (
-    echo Error: Python 3.11 not found. Please ensure it is installed.
+    echo Error: Python 3.9 not found. Please ensure it is installed.
     timeout /t 5 >nul
     goto :error
 )

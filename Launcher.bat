@@ -12,6 +12,31 @@ if %errorLevel% neq 0 (
 )
 echo Running with Admin rights.
 
+
+:: Find Python 3.9 and pip
+set "PIP_EXE_TO_USE="
+set "PYTHON_EXE_TO_USE="
+set "PYTHON_FOLDER_TO_USE="
+for %%I in (
+    "C:\Python39\python.exe"
+    "C:\Program Files\Python39\"
+    "C:\Program Files (x86)\Python39\"
+    "%LocalAppData%\Programs\Python\Python39\"
+) do (
+    if exist "%%~I" (
+        set "PYTHON_FOLDER_TO_USE=%%~I"
+        set "PYTHON_EXE_TO_USE=%%~dpI\python.exe"
+        set "PIP_EXE_TO_USE=%%~dpI\Scripts\pip.exe"
+        goto :found_python39
+    )
+)
+:found_python39
+if not defined PYTHON_EXE_TO_USE (
+    echo Error: Python 3.9 not found. Please ensure it is installed.
+    timeout /t 5 >nul
+    goto :error
+)
+
 :: Intro
 echo *********************************************
 echo         Chat-LlamaVulkan - Launcher
@@ -32,14 +57,14 @@ echo Options for window2: --tts --sound
 echo.
 timeout /t 2 /nobreak >nul
 
-start "" cmd /c "wsl python3 window_1.py --logs || pause"
+start "" cmd /c "%PYTHON_EXE_TO_USE% window_1.py --logs || pause"
 if errorlevel 1 (
     echo Error launching window 1.
     pause
     exit /b 1
 )
 
-start "" cmd /c "python window_2.py --tts --sound || pause"
+start "" cmd /c "%PYTHON_EXE_TO_USE% window_2.py --tts --sound || pause"
 if errorlevel 1 (
     echo Error launching window 2.
     pause
