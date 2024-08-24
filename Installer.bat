@@ -29,32 +29,50 @@ echo.
 echo Working Dir: %ScriptDirectory%
 echo.
 
+:: Create Directories
+timeout /t 1
+echo Checking ".\libraries"...
+if not exist ".\libraries" (
+    echo ".\libraries" not found.
+    mkdir ".\libraries"
+    echo ".\libraries" created.
+) else (
+    echo ".\libraries" exists.
+)
+echo Checking for ".\data\cache"...
+if not exist ".\data\cache" (
+    echo ".\data\cache" not found.
+    mkdir ".\data\cache"
+    echo ".\data\cache" created.
+) else (
+    echo ".\data\cache" exists.
+)
+timeout /t 1
+echo Checking ".\models"...
+if not exist ".\models" (
+    echo ".\models" not found.
+    mkdir ".\models"
+    echo ".\models" created.
+) else (
+    echo ".\models" exists.
+)
+timeout /t 1
+echo.
+
 :: Install Requirements
 echo Installing Pip Requirements...
 pip install -r ./data/requires/requirements.txt
 echo Requirements install finished.
 timeout /t 2
 
-:: Install Libraries
-echo Checking for ".\cache" directory...
-if not exist ".\cache" (
-    echo ".\cache" directory not found. Creating it...
-    mkdir ".\cache"
-    echo ".\cache" directory created.
-) else (
-    echo ".\cache" directory already exists.
-)
-timeout /t 2
-
 :: Check if the file exists in the cache
-set "cachedFilePath=.\cache\%llamaVulkanZip%"
+set "cachedFilePath=.\data\cache\%llamaVulkanZip%"
 if exist "%cachedFilePath%" (
     echo Cached file found. Continuing.
 ) else (
     echo Downloading Llama Vulkan Binary...
     powershell -Command "Invoke-WebRequest -Uri '%downloadUrl%' -OutFile '%cachedFilePath%'"
 )
-
 if %errorlevel% neq 0 (
     echo Failed to download Llama Vulkan Binary.
     goto :error
@@ -69,7 +87,6 @@ if exist "C:\Program Files\7-Zip\7z.exe" (
 ) else if exist "C:\Program Files (x86)\7-Zip\7z.exe" (
     set "sevenZipPath=C:\Program Files (x86)\7z.exe"
 )
-
 if not defined sevenZipPath (
     echo 7-Zip not found in default locations. Please install 7-Zip.
     goto :error
@@ -78,21 +95,13 @@ if not defined sevenZipPath (
 )
 timeout /t 2
 
-:: Ensure the .\libraries folder exists and is empty
-if not exist ".\libraries" (
-    mkdir ".\libraries"
-    echo ".\libraries" directory created.
-) else (
-    echo ".\libraries" directory already exists.
-    if exist ".\libraries\*.*" (
-        echo Clearing contents of ".\libraries" directory...
-        del /s /q ".\libraries\*.*"
-    )
-    echo ".\libraries" directory is now empty.
-)
-timeout /t 2
-
 :: Extract Llama Vulkan Binary
+if exist ".\libraries\*.*" (
+    echo Emptying .\libraries
+    del /s /q ".\libraries\*.*"
+	echo Emptied: .\libraries
+) 
+timeout /t 1
 echo Extracting Llama Vulkan Binary to ".\libraries"...
 "%sevenZipPath%" x "%cachedFilePath%" -o".\libraries" -mmt4 -y
 if %errorlevel% neq 0 (
