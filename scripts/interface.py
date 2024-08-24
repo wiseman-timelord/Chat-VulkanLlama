@@ -1,24 +1,13 @@
-# interface.py
+# .\scripts\interface.py
 
 # imports
 from scripts import utility
+from scripts.utility import fancy_delay
 import os
 import time
 import sys
 import glob
 import re
-
-# Function
-def fancy_delay(duration, message=" Loading..."):
-    step = duration / 60
-    sys.stdout.write(f"{message} [")
-    bar_length = 50
-    for _ in range(bar_length):
-        time.sleep(step)
-        sys.stdout.write("=")
-        sys.stdout.flush()
-    sys.stdout.write("] Complete.\n")
-    time.sleep(1)
 
 # function
 def display_intro_screen():
@@ -35,21 +24,37 @@ def display_intro_screen():
     utility.calculate_optimal_threads()
     return utility.clear_debug_logs()
 
-# In interface.py - display_model_selection function
-def display_model_selection():
-    def display_syntax_selection():
-        try:
-            print("\n Available syntax options...")
-            for i, syntax_option in enumerate(SYNTAX_OPTIONS_DISPLAY):
-                print(f" {i+1}. {syntax_option}")
-            selected = int(input(" Select a syntax option by entering its number: ")) - 1
-            if selected not in range(len(SYNTAX_OPTIONS)):
-                raise ValueError("Invalid syntax option selected.")
-            return SYNTAX_OPTIONS[selected]
-        except ValueError as e:
-            print(f"Error: {e}")
+# Select Model
+def select_model(models, agent_type):
+    if len(models) == 1:
+        return models[0]
+    elif len(models) > 1:
+        print(f"\nAvailable {agent_type} models:")
+        for i, model in enumerate(models):
+            print(f"{i+1}. {os.path.basename(model)}")
+        selected = input(f"Select a {agent_type} model by entering its number: ")
+        if selected.isdigit() and 0 < int(selected) <= len(models):
+            return models[int(selected) - 1]
+        else:
+            print(f"Invalid selection for {agent_type}.")
             return None
+    return None
 
+# Process Selected model
+def process_selected_model(agent_type, model_path, idx):
+    if model_path:
+        agent_name = os.path.basename(model_path)
+        context_key = utility.extract_context_key_from_model_name(agent_name)
+        print(f" {agent_type.capitalize()} model is {agent_name} - CTX {context_key}")
+        utility.trigger_sound_event("model_used")
+        selected_syntax = display_syntax_selection()
+        if selected_syntax:
+            utility.write_to_yaml(f'syntax_type_{idx}', selected_syntax)
+            utility.write_to_yaml(f'model_path_{idx}', model_path)
+            utility.write_to_yaml(f'context_length_{idx}', CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096))
+
+# Display Model Selection
+def display_model_selection():
     try:
         fancy_delay(5)
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -60,60 +65,69 @@ def display_model_selection():
         print("-" * 90)    
         print("\n Searching For Models...")
         
-        available_models_dict = utility.list_available_models()
-        chat_models = available_models_dict.get('chat', [])
-        instruct_models = available_models_dict.get('instruct', [])
+        available_models = [f for f in os.listdir("./models") if f.lower().endswith(('.bin', '.gguf'))]
         
-        agent_files = glob.glob("./models/*.bin")
-        unknown_models = [f for f in agent_files if 'chat' not in os.path.basename(f).lower() and 'instruct' not in os.path.basename(f).lower()]
-        new_chat_models, new_instruct_models = utility.identify_unknown_models(unknown_models)
-        chat_models.extend(new_chat_models)
-        instruct_models.extend(new_instruct_models)
-
-        if not chat_models and not instruct_models:
+        if not available_models:
             print("No models found, exiting!")
-            exit()
+            return None
 
-        selected_models = {}
-        for agent_type, models in {'chat': chat_models, 'instruct': instruct_models}.items():
-            if len(models) == 1:
-                selected_models[agent_type] = models[0]
-            elif len(models) > 1:
-                print(f"\nAvailable {agent_type} models:")
-                for i, model in enumerate(models):
-                    print(f"{i+1}. {os.path.basename(model)}")
-                selected = input(f"Select a {agent_type} model by entering its number: ")
-                if selected.isdigit() and 0 < int(selected) <= len(models):
-                    selected_models[agent_type] = models[int(selected) - 1]
-                else:
-                    print(f"Invalid selection for {agent_type}.")
-                    return None
-            
-            if agent_type in selected_models:
-                agent_name = os.path.basename(selected_models[agent_type])
-                context_key = utility.extract_context_key_from_model_name(agent_name)
-                if context_key:
-                    selected_models[agent_type + '_context'] = context_key
+        print("\nAvailable models:")
+        for i, model in enumerate(available_models):
+            print(f"{i+1}. {model}")
+        
+        selected = input("Select a model by entering its number: ")
+        if selected.isdigit() and 0 < int(selected) <= len(available_models):
+            selected_model = available_models[int(selected) - 1]
+        else:
+            print("Invalid selection.")
+            return None
 
-        if not selected_models:
-            print("No models were selected, exiting!")
-            exit()
+        model_path = os.path.join("./models", selected_model)
+        context_length = get_context_length(selected_model)
+        
+        if context_length:
+            print(f"Model {selected_model} has a context length of {context_length}.")
+        else:
+            print(f"Context length for {selected_model} not found in database.")
+            context_length = select_context_length()
+            if context_length:
+                update_model_database(selected_model, context_length)
+            else:
+                print("Invalid context length selection.")
+                return None
 
-        for agent_type, idx in [('chat', 1), ('instruct', 2)]:
-            if agent_type in selected_models:
-                agent_name = os.path.basename(selected_models[agent_type])
-                context_key = selected_models.get(agent_type + '_context', '4k')
-                print(f" {agent_type.capitalize()} model is {agent_name} - CTX {context_key}")
-                utility.trigger_sound_event("agent_used")
-                selected_syntax = display_syntax_selection()
-                if selected_syntax:
-                    utility.write_to_yaml(f'syntax_type_{idx}', selected_syntax)
-                    utility.write_to_yaml(f'model_path_{idx}', selected_models.get(agent_type))
-                    utility.write_to_yaml(f'context_length_{idx}', CONTEXT_LENGTH_MAP[agent_type].get(context_key, 4096))
+        utility.write_to_yaml('model_path', model_path)
+        utility.write_to_yaml('context_length', context_length)
+
+        return {'model_path': model_path, 'context_length': context_length}
     except Exception as e:
         print(f"An error occurred during model selection: {e}")
         return None
 
+def select_context_length():
+    print("\nAvailable context lengths:")
+    for i, length in enumerate(CONTEXT_LENGTH_MAP['chat'].values()):
+        print(f"{i+1}. {length}")
+    selected = input("Select a context length by entering its number: ")
+    if selected.isdigit() and 0 < int(selected) <= len(CONTEXT_LENGTH_MAP['chat']):
+        return list(CONTEXT_LENGTH_MAP['chat'].values())[int(selected) - 1]
+    return None
+
+def get_context_length(model_name):
+    database_path = r"D:\ProgsCreations\Chat-VulkanLlama\Chat-VulkanLlama\data\logs\model_database.txt"
+    try:
+        with open(database_path, 'r') as f:
+            for line in f:
+                if line.strip().startswith(model_name):
+                    return line.strip().split()[-1]
+    except FileNotFoundError:
+        print("Model database not found.")
+    return None
+
+def update_model_database(model_name, context_length):
+    database_path = r"D:\ProgsCreations\Chat-VulkanLlama\Chat-VulkanLlama\data\logs\model_database.txt"
+    with open(database_path, 'a') as f:
+        f.write(f"{model_name} {context_length}\n")
 
 # Roleplay Configuration Display
 def roleplay_configuration():

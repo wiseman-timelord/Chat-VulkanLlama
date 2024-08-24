@@ -1,13 +1,7 @@
-# utility.py
+# .\scripts\utility.py
 
 # imports
-import yaml
-import glob
-import os
-import time
-import platform
-import random
-import psutil
+import yaml, glob, os, sys, time, platform, random, psutil
 from window_1 import rotation_counter
 from functools import lru_cache
 
@@ -16,6 +10,18 @@ def calculate_optimal_threads():
     total_threads = psutil.cpu_count(logical=False)
     threads_to_use = max(1, total_threads - min(4, total_threads // 4))
     return threads_to_use
+
+# progress bar
+def fancy_delay(duration, message=" Loading..."):
+    step = duration / 60
+    sys.stdout.write(f"{message} [")
+    bar_length = 50
+    for _ in range(bar_length):
+        time.sleep(step)
+        sys.stdout.write("=")
+        sys.stdout.flush()
+    sys.stdout.write("] Complete.\n")
+    time.sleep(1)
 
 # List available models
 def list_available_models():
@@ -101,12 +107,11 @@ def shift_responses(enable_logging=False, formatted_prompt=None, raw_agent_respo
     data = read_yaml()
     for i in range(3, 1, -1):
         data[f'agent_output_{i}'] = data[f'agent_output_{i-1}']
-    data['agent_output_2'] = data['agent_output_1']
+        write_to_yaml(f'agent_output_{i}', data[f'agent_output_{i}'])
+    
     if enable_logging and formatted_prompt and raw_agent_response and log_entry_name:
         message.log_message(formatted_prompt, 'input', log_entry_name, f"event {rotation_counter}", enable_logging)
         message.log_message(raw_agent_response, 'output', log_entry_name, f"event {rotation_counter}", enable_logging)
-    write_to_yaml('agent_output_2', data['agent_output_2'])
-    write_to_yaml('agent_output_3', data['agent_output_3'])
 
 # function
 def trigger_sound_event(event_name):

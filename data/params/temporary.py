@@ -1,5 +1,7 @@
 # .\data\params\temporary.py
 
+# NOTE: Some variables here mirror those in persistent.yaml. Functions can read from these globals instead of accessing the YAML file, improving performance and reducing wear.
+
 # Imported Modules
 import argparse
 import os
@@ -21,26 +23,16 @@ TTS_VOLUME = 0.9
 TTS_VOICE_ID = 1
 tts_counter = 0
 
-# File Paths
-YAML_PATH = './data/params/persistent.yaml'
-LLAMA_CLI_PATH = r".\libraries\llama-b3617-bin-win-vulkan-x64\llama-cli.exe"
-SOUND_DIRECTORY = "./data/sounds"
-
-# Tasks
-VALID_TASKS = ['converse', 'consolidate', 'emotions']
-
 # Model Mapping
-agent_TYPE_TO_TEMPERATURE = {
-    'chat': 0.5,
-    'instruct': 0.25
+MODE_TO_TEMPERATURE = {
+    'RolePlaying': 0.7,
+    'TextProcessing': 0.3
 }
-
 PROMPT_TO_MAXTOKENS = {
-    'converse': 100,
+    'converse': 125,
     'consolidate': 200,
-    'emotions': 300
+    'emotions': 275
 }
-
 CONTEXT_LENGTH_MAP = {
     'chat': {
         '4k': 4096,
@@ -48,6 +40,13 @@ CONTEXT_LENGTH_MAP = {
         '16k': 16384
     }
 }
+
+# Tasks
+VALID_TASKS = [
+    'converse', 
+    'consolidate', 
+    'emotions'
+]
 
 # Keys to be managed in YAML
 ORDERED_KEYS = [
@@ -61,9 +60,8 @@ KEYS_TO_CLEAR = [
     'human_name', 'agent_name', 'agent_role', 
     'scenario_location', 'agent_emotion', 'session_history',
     'human_input', 'agent_output_1', 'agent_output_2', 
-    'agent_output_3', 'sound_event', 'context_length_1',
-    'context_length_2', 'syntax_type_1', 'syntax_type_2',
-    'model_path_1', 'model_path_2' 
+    'agent_output_3', 'sound_event', 'context_length',
+    'syntax_type', 'model_path'
 ]
 
 # Syntax Options

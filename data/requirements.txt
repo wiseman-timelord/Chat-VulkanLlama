@@ -1,0 +1,6 @@
+sounddevice
+pyttsx3
+watchdog
+PyYAML
+wavio
+psutil

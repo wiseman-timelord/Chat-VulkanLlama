@@ -1,16 +1,12 @@
-# window2.py
+# Script: .\window2.py
 
+# Imports
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
-import yaml
-import time
-import os
-import sys
-import argparse
-import pyttsx3
-import wavio
+import yaml, time, os, sys, argparse, pyttsx3, wavio, 
 import sounddevice as sd
 import ctypes
+from scripts.utility import fancy_delay
 
 # Set window title for Windows
 ctypes.windll.kernel32.SetConsoleTitleW("Chat-VulkanLlama-Window2")
@@ -19,7 +15,6 @@ ctypes.windll.kernel32.SetConsoleTitleW("Chat-VulkanLlama-Window2")
 TTS_RATE = 150
 TTS_VOLUME = 0.7
 TTS_VOICE_ID = 0
-SOUND_DIRECTORY = "./data/sounds"
 
 class Watcher:
     DIRECTORY_TO_WATCH = "./data/params"
@@ -38,43 +33,36 @@ class Watcher:
         self.observer.join()
 
 class Handler(FileSystemEventHandler):
-    @staticmethod
-    def process(event):
-        global last_session_history, last_sound_event
+    def __init__(self):
+        self.last_session_history = None
+        self.last_sound_event = None
+
+    def process(self, event):
         should_update_display = False  
         if event.src_path.endswith('persistent.yaml'):
             data = read_yaml()
             current_sound_event = data.get('sound_event', '')
-            if current_sound_event != last_sound_event:
-                last_sound_event = current_sound_event
-                sound_file = f"{SOUND_DIRECTORY}/{current_sound_event}.wav"
+            if current_sound_event != self.last_sound_event:
+                self.last_sound_event = current_sound_event
+                sound_file = f"{"./data/sounds"}/{current_sound_event}.wav"
                 if os.path.exists(sound_file) and args.sound:
                     play_wav(sound_file)
             current_session_history = data.get('session_history', '')
-            if current_session_history != last_session_history:
-                last_session_history = current_session_history
+            if current_session_history != self.last_session_history:
+                self.last_session_history = current_session_history
                 should_update_display = True  
             if should_update_display:  
                 print(" ...changes detected, re-printing Display...\n")
                 if args.sound:
-                    play_wav(f"{SOUND_DIRECTORY}/change_detect.wav")  
+                    play_wav(f"{"./data/sounds"}/change_detect.wav")  
                 time.sleep(1)
                 fancy_delay(3)
                 display_interface()
                 if args.tts:
                     speak_text(current_session_history)
+
     def on_modified(self, event):
         self.process(event)
-
-def fancy_delay(duration, message=" Loading..."):
-    step = duration / 100
-    sys.stdout.write(f"{message} [")
-    for _ in range(64):
-        time.sleep(step)
-        sys.stdout.write("=")
-        sys.stdout.flush()
-    sys.stdout.write("] Complete.\n")
-    time.sleep(1)
 
 def read_yaml(file_path='./data/params/persistent.yaml'):
     try:
@@ -96,13 +84,10 @@ def speak_text(text):
     engine.setProperty('rate', TTS_RATE)
     engine.setProperty('volume', TTS_VOLUME)
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[TTS_VOICE_ID].id)
-        engine.say(text)
-        engine.runAndWait()
-    elif os_name == 'Linux':
-        print("Linux TTS is not yet implemented.")
-    else:
-        print("Unsupported OS for TTS.")
+    if TTS_VOICE_ID < len(voices):
+        engine.setProperty('voice', voices[TTS_VOICE_ID].id)
+    engine.say(text)
+    engine.runAndWait()
 
 # Play the sample
 def play_wav(filename):

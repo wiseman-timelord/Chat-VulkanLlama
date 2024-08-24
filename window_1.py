@@ -1,3 +1,5 @@
+# Script: .\window_1.py
+
 import subprocess
 from scripts import interface, model as agent_module, utility
 import time
@@ -16,8 +18,7 @@ def handle_reset():
     human_name, agent_name, agent_role, scenario_location = (config_data.get('human_name'), config_data.get('agent_name'), 
                                                             config_data.get('agent_role'), config_data.get('scenario_location'))
     agent_emotion, session_history = config_data.get('agent_emotion'), config_data.get('session_history')
-    yaml_data = {
-        'human_name': human_name,
+    yaml_data =
         'agent_name': agent_name,
         'agent_role': agent_role,
         'scenario_location': scenario_location,
@@ -45,21 +46,10 @@ def handle_quit():
 def handle_other(user_input):
     global rotation_counter, loaded_models
     data = utility.read_yaml()
-    human_name, agent_name = data.get('human_name'), data.get('agent_name')
-    agent_role, agent_emotion, scenario_location = (data.get('agent_role'), data.get('agent_emotion'), 
-                                                     data.get('scenario_location'))
-    session_history, human_input = data.get('session_history'), data.get('human_input')
-    agent_output_1, agent_output_2, agent_output_3 = (data.get('agent_output_1'), data.get('agent_output_2'), 
-                                                      data.get('agent_output_3'))
     start_time = time.time()
     current_task = 'converse'
     
-    if current_task == 'converse':
-        agent_type = 'chat'
-    elif current_task == 'instruct':
-        agent_type = 'instruct'
-    else:
-        agent_type = agent_module.determine_agent_type_for_task(current_task, loaded_models)
+    agent_type = 'chat' if current_task == 'converse' else 'instruct'
 
     response_dict = agent_module.prompt_response(current_task, rotation_counter, enable_logging=args.logs, 
                                                  loaded_models=loaded_models, save_to='agent_output_1', agent_type=agent_type)
@@ -70,21 +60,20 @@ def handle_other(user_input):
         new_emotion = emotion_dict.get('new_emotion')
         if new_emotion:
             utility.write_to_yaml('agent_emotion', new_emotion)
+    
     consolidate_dict = agent_module.prompt_response('consolidate', rotation_counter, enable_logging=args.logs, 
                                                     loaded_models=loaded_models, save_to='session_history')
-    if args.logs:
-        utility.write_to_yaml('raw_output', response_dict['agent_response'])
     new_session_history = consolidate_dict.get('new_session_history')
     if new_session_history:
         utility.write_to_yaml('session_history', new_session_history)
+    
     end_time = time.time()
     print(f"\n ...Time taken: {end_time - start_time:.2f} seconds...")
     utility.shift_responses()
     print(" ...Key Display window updated.\n")
 
 # Main function adjustments:
-def main():
-    global rotation_counter, loaded_models
+def main(args):
     try:
         optimal_threads = utility.calculate_optimal_threads()
         time.sleep(1)
@@ -93,14 +82,16 @@ def main():
         if not selected_model:
             print("No Models, Exiting!")
             return
+
         model_path = selected_model.get('model_path')
         if model_path:
             agent_module.initialize_model(model_path, optimal_threads)
-            loaded_models['chat'] = model_path
             utility.write_to_yaml('model_path', model_path)
 
         data = utility.read_yaml()
         rotation_counter = 0
+        loaded_models = {}
+
         while True:
             interface.display_engine()  
             user_input = input(f" Enter your message to {data['agent_name']} or 'reset' to Restart or 'quit' to Exit?:\n").lower()
@@ -110,7 +101,7 @@ def main():
                 handle_quit()
             else:
                 utility.write_to_yaml('human_input', user_input)
-                handle_other(user_input)
+                handle_other(user_input, rotation_counter, args, loaded_models)
             rotation_counter = (rotation_counter + 1) % 4
     except Exception as e:
         print(f"An error occurred: {e}")
